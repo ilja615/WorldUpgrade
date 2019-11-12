@@ -1,0 +1,29 @@
+package ilja615.worldupgrade.blocks;
+
+import ilja615.worldupgrade.init.ModBlocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FallingBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+
+public class BlockGravel extends FallingBlock
+{
+    private int dustColor = -8356741;
+    public BlockGravel(String name, int dustColor)
+    {
+        super(Properties.create(Material.EARTH)
+                .sound(SoundType.GROUND)
+                .hardnessAndResistance(0.6F, 3.0F));
+
+        this.dustColor = dustColor;
+        setRegistryName(name);
+        ModBlocks.BLOCKS.add(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getDustColor(BlockState state) {
+        return this.dustColor;
+    }
+}

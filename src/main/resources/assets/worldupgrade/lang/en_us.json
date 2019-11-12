@@ -1,0 +1,22 @@
+{
+  "block.worldupgrade.gravel_dark": "Dark Gravel",
+  "block.worldupgrade.gravel_light": "Light Gravel",
+  "block.worldupgrade.dead_log": "Dead Log",
+  "block.worldupgrade.dead_leaves": "Dead Leaves",
+  "block.worldupgrade.smoke_vent": "Smoke Vent",
+  "block.worldupgrade.fire_jet": "Fire Jet",
+  "block.worldupgrade.dead_leaves_carpet": "Fallen Dead Leaves",
+  "block.worldupgrade.oak_leaves_carpet": "Fallen Oak Leaves",
+  "block.worldupgrade.birch_leaves_carpet": "Fallen Birch Leaves",
+  "block.worldupgrade.spruce_leaves_carpet": "Fallen Spruce Leaves",
+  "block.worldupgrade.jungle_leaves_carpet": "Fallen Jungle Leaves",
+  "block.worldupgrade.acacia_leaves_carpet": "Fallen Acacia Leaves",
+  "block.worldupgrade.dark_oak_leaves_carpet": "Fallen Dark Oak Leaves",
+  "block.worldupgrade.jungle_rock": "Jungle Rock",
+  "block.worldupgrade.jungle_rock_overgrown": "Overgrown Jungle Rock",
+
+  "biome.worldupgrade.volcanic_plains": "Volcanic Plains",
+  "biome.worldupgrade.overgrown_peaks": "Overgrown Peaks",
+
+  "itemGroup.worldupgrade": "WorldUpgrade"
+}

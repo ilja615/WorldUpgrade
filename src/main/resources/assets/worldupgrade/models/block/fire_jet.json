@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "worldupgrade:block/fire_jet_top",
+    "down": "worldupgrade:block/smoke_vent",
+    "up": "worldupgrade:block/fire_jet_top",
+    "north": "worldupgrade:block/smoke_vent",
+    "east": "worldupgrade:block/smoke_vent",
+    "south": "worldupgrade:block/smoke_vent",
+    "west": "worldupgrade:block/smoke_vent"
+  }
+}
