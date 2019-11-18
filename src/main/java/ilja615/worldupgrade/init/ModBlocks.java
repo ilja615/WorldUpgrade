@@ -1,6 +1,7 @@
 package ilja615.worldupgrade.init;
 
 import ilja615.worldupgrade.blocks.*;
+import ilja615.worldupgrade.blocks.special.CobbleWebStone;
 import ilja615.worldupgrade.blocks.special.FireJet;
 import ilja615.worldupgrade.blocks.special.OvergrownJungleRock;
 import ilja615.worldupgrade.blocks.special.SmokeVent;
@@ -40,4 +41,5 @@ public class ModBlocks
     // Special Blocks:
     public static SmokeVent SMOKE_VENT = new SmokeVent();
     public static FireJet FIRE_JET = new FireJet();
+    public static CobbleWebStone COBBLEWEBSTONE = new CobbleWebStone();
 }

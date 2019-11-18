@@ -44,7 +44,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
         {
             for (int j = startPosition.getY() + 1; j <= startPosition.getY() + 1 + hight; ++j)
             {
-                this.setLogState(changedBlocks, worldIn, new BlockPos(startPosition.getX(), j, startPosition.getZ()), TRUNK, p_208519_5_);
+                worldIn.setBlockState(new BlockPos(startPosition.getX(), j, startPosition.getZ()), TRUNK, 18);
 
                 // To spawn a leaf or branch.
                 lchance = rand.nextInt(7);
@@ -72,7 +72,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
 
         for (int j = continuePos.getY(); j <= continuePos.getY() + hight2; ++j)
         {
-            this.setLogState(changedBlocks, worldIn, new BlockPos(continuePos.getX(), j, continuePos.getZ()), TRUNK, p_208519_5_);
+            worldIn.setBlockState(new BlockPos(continuePos.getX(), j, continuePos.getZ()), TRUNK, 18);
 
             // To spawn a leaf or branch.
             lchance = rand.nextInt(6);
@@ -83,9 +83,9 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
         }
 
         // Top leaves
-        this.setLogState(changedBlocks, worldIn, new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 1, continuePos.getZ()), LEAF, p_208519_5_);
+        worldIn.setBlockState(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 1, continuePos.getZ()), LEAF, 18);
         if (rand.nextBoolean() == true)
-            this.setLogState(changedBlocks, worldIn, new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 2, continuePos.getZ()), LEAF, p_208519_5_);
+            worldIn.setBlockState(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 2, continuePos.getZ()), LEAF, 18);
 
 
         return false;
@@ -95,16 +95,16 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
     {
         int chance = rand.nextInt(4);
         if (chance == 0) {
-            this.setLogState(changedBlocks, worldIn, middle.east(1), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.east(1), LEAF, 18);
         }
         if (chance == 1) {
-            this.setLogState(changedBlocks, worldIn, middle.west(1), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.west(1), LEAF, 18);
         }
         if (chance == 2) {
-            this.setLogState(changedBlocks, worldIn, middle.north(1), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.north(1), LEAF, 18);
         }
         if (chance == 3) {
-            this.setLogState(changedBlocks, worldIn, middle.south(1), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.south(1), LEAF, 18);
         }
     }
 
@@ -112,20 +112,29 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
     {
         int chance = rand.nextInt(4);
         if (chance == 0) {
-            this.setLogState(changedBlocks, worldIn, middle.east(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
-             this.setLogState(changedBlocks, worldIn, middle.east(2), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.east(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
+            worldIn.setBlockState(middle.east(2), LEAF, 18);
+//            this.setLogState(changedBlocks, worldIn, middle.east(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
+//             this.setLogState(changedBlocks, worldIn, middle.east(2), LEAF, p_208519_5_);
         }
         if (chance == 1) {
-            this.setLogState(changedBlocks, worldIn, middle.west(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
-            this.setLogState(changedBlocks, worldIn, middle.west(2), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.west(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
+            worldIn.setBlockState(middle.west(2), LEAF, 18);
+//            this.setLogState(changedBlocks, worldIn, middle.west(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
+//            this.setLogState(changedBlocks, worldIn, middle.west(2), LEAF, p_208519_5_);
         }
         if (chance == 2) {
-            this.setLogState(changedBlocks, worldIn, middle.north(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), p_208519_5_);
-            this.setLogState(changedBlocks, worldIn, middle.north(2), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.north(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
+            worldIn.setBlockState(middle.north(2), LEAF, 18);
+//            this.setLogState(changedBlocks, worldIn, middle.north(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), p_208519_5_);
+//            this.setLogState(changedBlocks, worldIn, middle.north(2), LEAF, p_208519_5_);
         }
         if (chance == 3) {
-            this.setLogState(changedBlocks, worldIn, middle.south(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), p_208519_5_);
-            this.setLogState(changedBlocks, worldIn, middle.south(2), LEAF, p_208519_5_);
+//            this.setLogState(changedBlocks, worldIn, middle.south(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), p_208519_5_);
+//            this.setLogState(changedBlocks, worldIn, middle.south(2), LEAF, p_208519_5_);
+            worldIn.setBlockState(middle.south(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
+            worldIn.setBlockState(middle.south(2), LEAF, 18);
+
         }
     }
 }

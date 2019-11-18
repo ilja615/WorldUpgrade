@@ -1,5 +1,6 @@
 package ilja615.worldupgrade.client.models;
 
+import ilja615.worldupgrade.WorldUpgrade;
 import ilja615.worldupgrade.entities.WebSpiderEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
@@ -29,12 +30,14 @@ public class WebSpiderModel extends EntityModel<WebSpiderEntity>
 
         legs = new RendererModel(this);
         legs.setRotationPoint(0.0F, 24.0F, 0.0F);
-        legs.cubeList.add(new ModelBox(legs, 40, 64, -10.0F, -12.0F, -10.0F, 2, 12, 2, 0.0F, false));
-        legs.cubeList.add(new ModelBox(legs, 32, 64, -1.0F, -12.0F, -10.0F, 2, 12, 2, 0.0F, false));
-        legs.cubeList.add(new ModelBox(legs, 24, 16, 8.0F, -12.0F, -10.0F, 2, 12, 2, 0.0F, false));
-        legs.cubeList.add(new ModelBox(legs, 16, 16, -10.0F, -12.0F, 8.0F, 2, 12, 2, 0.0F, false));
-        legs.cubeList.add(new ModelBox(legs, 8, 16, -1.0F, -12.0F, 8.0F, 2, 12, 2, 0.0F, false));
-        legs.cubeList.add(new ModelBox(legs, 0, 16, 8.0F, -12.0F, 8.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 40, 64, -11.0F, -12.0F, -11.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 32, 64, -4.0F, -12.0F, -11.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 24, 16, 2.0F, -12.0F, -11.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 16, 16, 9.0F, -12.0F, -11.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 8, 16, -11.0F, -12.0F, 9.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 0, 16, -4.0F, -12.0F, 9.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 0, 16, 2.0F, -12.0F, 9.0F, 2, 12, 2, 0.0F, false));
+        legs.cubeList.add(new ModelBox(legs, 0, 16, 9.0F, -12.0F, 9.0F, 2, 12, 2, 0.0F, false));
 
         silk1 = new RendererModel(this);
         silk1.setRotationPoint(-15.0F, -4.0F, 15.0F);
@@ -76,12 +79,12 @@ public class WebSpiderModel extends EntityModel<WebSpiderEntity>
 
 
     @Override
-    public void render(WebSpiderEntity entity, float f1, float f2, float f3, float f4, float f5, float f6) {
-        main.render(f5);
-        legs.render(f5);
-        silk1.render(f5);
-        silk2.render(f5);
-        silk3.render(f5);
-        silk4.render(f5);
+    public void render(WebSpiderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+        main.render(scale);
+        legs.render(scale);
+        silk1.render(scale);
+        silk2.render(scale);
+        silk3.render(scale);
+        silk4.render(scale);
     }
 }

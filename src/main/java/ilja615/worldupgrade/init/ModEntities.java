@@ -25,7 +25,7 @@ public class ModEntities
 
     public static void registerEntityWorldSpawns()
     {
-        registerEntityWorldSpawn(WEB_SPIDER, 1000, 2,4, Biomes.PLAINS);
+        //registerEntityWorldSpawn(WEB_SPIDER, 1000, 2,4, Biomes.PLAINS);
     }
 
     public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)

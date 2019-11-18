@@ -11,6 +11,6 @@ public class ModRenderRegistry
 {
     public static void registerEntityRenderers()
     {
-        RenderingRegistry.registerEntityRenderingHandler(WebSpiderEntity.class, new WebSpiderRender.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(WebSpiderEntity.class, WebSpiderRender::new);
     }
 }

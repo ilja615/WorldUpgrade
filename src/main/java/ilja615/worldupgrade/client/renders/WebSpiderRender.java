@@ -10,6 +10,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
+import javax.annotation.Nullable;
+
 @OnlyIn(Dist.CLIENT)
 public class WebSpiderRender extends LivingRenderer<WebSpiderEntity, WebSpiderModel>
 {
@@ -18,16 +20,18 @@ public class WebSpiderRender extends LivingRenderer<WebSpiderEntity, WebSpiderMo
         super(manager, new WebSpiderModel(), 1.0f);
     }
 
+    @Nullable
     @Override
     protected ResourceLocation getEntityTexture(WebSpiderEntity entity) {
         return new ResourceLocation("worldupgrade:textures/entity/web_spider.png");
     }
 
-    public static class RenderFactory implements IRenderFactory<WebSpiderEntity>
+   /*public static class RenderFactory implements IRenderFactory<WebSpiderEntity>
     {
         @Override
         public EntityRenderer<? super WebSpiderEntity> createRenderFor(EntityRendererManager manager)
         {
             return new WebSpiderRender(manager);
         }
-    }   }
+    }*/
+}
