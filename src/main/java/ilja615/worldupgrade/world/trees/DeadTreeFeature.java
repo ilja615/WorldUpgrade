@@ -1,5 +1,6 @@
 package ilja615.worldupgrade.world.trees;
 
+
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
@@ -45,6 +46,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
             for (int j = startPosition.getY() + 1; j <= startPosition.getY() + 1 + hight; ++j)
             {
                 worldIn.setBlockState(new BlockPos(startPosition.getX(), j, startPosition.getZ()), TRUNK, 18);
+                changedBlocks.add(new BlockPos(startPosition.getX(), j, startPosition.getZ()));
 
                 // To spawn a leaf or branch.
                 lchance = rand.nextInt(7);
@@ -73,6 +75,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
         for (int j = continuePos.getY(); j <= continuePos.getY() + hight2; ++j)
         {
             worldIn.setBlockState(new BlockPos(continuePos.getX(), j, continuePos.getZ()), TRUNK, 18);
+            changedBlocks.add(new BlockPos(continuePos.getX(), j, continuePos.getZ()));
 
             // To spawn a leaf or branch.
             lchance = rand.nextInt(6);
@@ -84,8 +87,12 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
 
         // Top leaves
         worldIn.setBlockState(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 1, continuePos.getZ()), LEAF, 18);
+        changedBlocks.add(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 1, continuePos.getZ()));
         if (rand.nextBoolean() == true)
+        {
             worldIn.setBlockState(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 2, continuePos.getZ()), LEAF, 18);
+            changedBlocks.add(new BlockPos(continuePos.getX(), continuePos.getY() + hight2 + 2, continuePos.getZ()));
+        }
 
 
         return false;
@@ -96,15 +103,19 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
         int chance = rand.nextInt(4);
         if (chance == 0) {
             worldIn.setBlockState(middle.east(1), LEAF, 18);
+            changedBlocks.add(middle.east(1));
         }
         if (chance == 1) {
             worldIn.setBlockState(middle.west(1), LEAF, 18);
+            changedBlocks.add(middle.west(1));
         }
         if (chance == 2) {
             worldIn.setBlockState(middle.north(1), LEAF, 18);
+            changedBlocks.add(middle.north(1));
         }
         if (chance == 3) {
             worldIn.setBlockState(middle.south(1), LEAF, 18);
+            changedBlocks.add(middle.north(1));
         }
     }
 
@@ -114,18 +125,24 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
         if (chance == 0) {
             worldIn.setBlockState(middle.east(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
             worldIn.setBlockState(middle.east(2), LEAF, 18);
+            changedBlocks.add(middle.east(1));
+            changedBlocks.add(middle.east(2));
 //            this.setLogState(changedBlocks, worldIn, middle.east(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
 //             this.setLogState(changedBlocks, worldIn, middle.east(2), LEAF, p_208519_5_);
         }
         if (chance == 1) {
             worldIn.setBlockState(middle.west(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
             worldIn.setBlockState(middle.west(2), LEAF, 18);
+            changedBlocks.add(middle.west(1));
+            changedBlocks.add(middle.west(2));
 //            this.setLogState(changedBlocks, worldIn, middle.west(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.X), p_208519_5_);
 //            this.setLogState(changedBlocks, worldIn, middle.west(2), LEAF, p_208519_5_);
         }
         if (chance == 2) {
             worldIn.setBlockState(middle.north(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
             worldIn.setBlockState(middle.north(2), LEAF, 18);
+            changedBlocks.add(middle.north(1));
+            changedBlocks.add(middle.north(2));
 //            this.setLogState(changedBlocks, worldIn, middle.north(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), p_208519_5_);
 //            this.setLogState(changedBlocks, worldIn, middle.north(2), LEAF, p_208519_5_);
         }
@@ -134,6 +151,8 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig>
 //            this.setLogState(changedBlocks, worldIn, middle.south(2), LEAF, p_208519_5_);
             worldIn.setBlockState(middle.south(1), TRUNK.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 18);
             worldIn.setBlockState(middle.south(2), LEAF, 18);
+            changedBlocks.add(middle.south(1));
+            changedBlocks.add(middle.south(2));
 
         }
     }
