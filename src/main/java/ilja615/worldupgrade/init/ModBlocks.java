@@ -1,10 +1,7 @@
 package ilja615.worldupgrade.init;
 
 import ilja615.worldupgrade.blocks.*;
-import ilja615.worldupgrade.blocks.special.CobbleWebStone;
-import ilja615.worldupgrade.blocks.special.FireJet;
-import ilja615.worldupgrade.blocks.special.OvergrownJungleRock;
-import ilja615.worldupgrade.blocks.special.SmokeVent;
+import ilja615.worldupgrade.blocks.special.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -27,6 +24,8 @@ public class ModBlocks
     public static BlockLeavesCarpet DEAD_LEAVES_CARPET = new BlockLeavesCarpet("dead_leaves_carpet");
     public static BlockBase JUNGLE_ROCK = new BlockBase("jungle_rock", Material.ROCK, SoundType.STONE, 1.5F, 30.0F);
     public static OvergrownJungleRock JUNGLE_ROCK_OVERGROWN = new OvergrownJungleRock();
+    public static BlockBase JUNGLE_COBBLE = new BlockBase("jungle_cobble", Material.ROCK, SoundType.STONE, 1.5F, 30.0F);
+
 
 
     // Variants From Vanilla:
@@ -42,4 +41,6 @@ public class ModBlocks
     public static SmokeVent SMOKE_VENT = new SmokeVent();
     public static FireJet FIRE_JET = new FireJet();
     public static CobbleWebStone COBBLEWEBSTONE = new CobbleWebStone();
+    public static JungleFossil JUNGLE_FOSSIL = new JungleFossil();
+
 }

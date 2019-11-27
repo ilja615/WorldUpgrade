@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      { "model": "worldupgrade:block/jungle_fossil_1" },
+      { "model": "worldupgrade:block/jungle_fossil_2" },
+      { "model": "worldupgrade:block/jungle_fossil_3"}
+    ]
+  }
+}

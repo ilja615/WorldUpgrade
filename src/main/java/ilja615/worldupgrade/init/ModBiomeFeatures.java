@@ -5,7 +5,6 @@ import ilja615.worldupgrade.world.features.VolcanicFeature;
 import ilja615.worldupgrade.world.surfacebuilding.OvergrownPeeksSurfaceBuilder;
 import ilja615.worldupgrade.world.surfacebuilding.VolcanicSurfaceBuilder;
 import ilja615.worldupgrade.world.trees.DeadTreeFeature;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;

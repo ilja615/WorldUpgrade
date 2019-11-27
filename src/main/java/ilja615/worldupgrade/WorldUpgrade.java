@@ -83,7 +83,9 @@ public class WorldUpgrade
                     new BlockItem(ModBlocks.DARK_OAK_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("dark_oak_leaves_carpet"),
                     new BlockItem(ModBlocks.JUNGLE_ROCK, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_rock"),
                     new BlockItem(ModBlocks.JUNGLE_ROCK_OVERGROWN, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_rock_overgrown"),
-                    new BlockItem(ModBlocks.COBBLEWEBSTONE, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("cobblewebstone")
+                    new BlockItem(ModBlocks.COBBLEWEBSTONE, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("cobblewebstone"),
+                    new BlockItem(ModBlocks.JUNGLE_COBBLE, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_cobble"),
+                    new BlockItem(ModBlocks.JUNGLE_FOSSIL, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_fossil")
             );
 
             ModEntities.registerEntitySpawnEggs(event);
