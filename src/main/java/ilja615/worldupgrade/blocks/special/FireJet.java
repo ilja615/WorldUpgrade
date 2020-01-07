@@ -20,11 +20,9 @@ import java.util.Random;
 
 public class FireJet extends Block
 {
-    public FireJet()
+    public FireJet(Properties properties)
     {
-        super(Properties.create(Material.EARTH)
-                .sound(SoundType.SAND)
-                .hardnessAndResistance(0.6F, 3.0F));
+        super(properties);
 
         setRegistryName("fire_jet");
         ModBlocks.BLOCKS.add(this);

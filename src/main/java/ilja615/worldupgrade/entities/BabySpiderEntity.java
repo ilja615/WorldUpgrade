@@ -9,10 +9,10 @@ import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
-public class WebSpiderEntity extends MonsterEntity
+public class BabySpiderEntity extends MonsterEntity
 {
-    public WebSpiderEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
-        super((EntityType<? extends MonsterEntity>) ModEntities.WEB_SPIDER, worldIn);
+    public BabySpiderEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+        super((EntityType<? extends MonsterEntity>) ModEntities.BABY_SPIDER, worldIn);
     }
 
     @Override
@@ -32,13 +32,11 @@ public class WebSpiderEntity extends MonsterEntity
     @Override
     protected void registerAttributes() {
         super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0d);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1d);
-        this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(15.0d);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0d);
-        this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.0d);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(5.0d);
+        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0d);
     }
 
-
-
+    @Override
+    public boolean isOnLadder() { return true; }
 }

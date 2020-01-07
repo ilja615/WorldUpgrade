@@ -15,16 +15,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class CobbleWebStone extends Block
+public class SilkiBlock extends Block
 {
 
-    public CobbleWebStone()
+    public SilkiBlock(Properties properties)
     {
-        super(Properties.create(Material.ROCK)
-                .sound(SoundType.STONE)
-                .hardnessAndResistance(0.6F, 3.0F));
+        super(properties);
 
-        setRegistryName("cobblewebstone");
+        setRegistryName("silki_block");
         ModBlocks.BLOCKS.add(this);
     }
 

@@ -1,6 +1,7 @@
 package ilja615.worldupgrade.init;
 
 import ilja615.worldupgrade.world.biomes.BiomeOvergrownPeaks;
+import ilja615.worldupgrade.world.biomes.BiomeSpiderGlade;
 import ilja615.worldupgrade.world.biomes.BiomeVolcanicPlains;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -17,6 +18,7 @@ public class ModBiomes
     {
         registerBiome(new BiomeVolcanicPlains(), "volcanic_plains", BiomeDictionary.Type.SPOOKY);
         registerBiome(new BiomeOvergrownPeaks(), "overgrown_peaks", BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
+        registerBiome(new BiomeSpiderGlade(), "spider_glade", BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD);
 
     }
 

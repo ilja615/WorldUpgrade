@@ -8,11 +8,9 @@ import net.minecraft.block.material.Material;
 public class JungleFossil extends Block
 {
 
-    public JungleFossil()
+    public JungleFossil(Properties properties)
     {
-        super(Properties.create(Material.ROCK)
-                .sound(SoundType.STONE)
-                .hardnessAndResistance(1.5F, 30.0F));
+        super(properties);
 
         setRegistryName("jungle_fossil");
         ModBlocks.BLOCKS.add(this);

@@ -5,6 +5,7 @@ import ilja615.worldupgrade.blocks.special.FireJet;
 import ilja615.worldupgrade.blocks.special.SmokeVent;
 import ilja615.worldupgrade.client.ModRenderRegistry;
 import ilja615.worldupgrade.init.ModEntities;
+import ilja615.worldupgrade.init.ModProperties;
 import ilja615.worldupgrade.util.ItemGroupWU;
 import ilja615.worldupgrade.init.ModBlocks;
 import ilja615.worldupgrade.proxy.ClientProxy;
@@ -66,30 +67,12 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void onItemRegistry(final RegistryEvent.Register<Item> event)
         {
-            event.getRegistry().registerAll
-            (
-                    new BlockItem(ModBlocks.GRAVEL_DARK, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("gravel_dark"),
-                    new BlockItem(ModBlocks.GRAVEL_LIGHT, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("gravel_light"),
-                    new BlockItem(ModBlocks.DEAD_LOG, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("dead_log"),
-                    new BlockItem(ModBlocks.SMOKE_VENT, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("smoke_vent"),
-                    new BlockItem(ModBlocks.FIRE_JET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("fire_jet"),
-                    new BlockItem(ModBlocks.DEAD_LEAVES, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("dead_leaves"),
-                    new BlockItem(ModBlocks.DEAD_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("dead_leaves_carpet"),
-                    new BlockItem(ModBlocks.OAK_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("oak_leaves_carpet"),
-                    new BlockItem(ModBlocks.BIRCH_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("birch_leaves_carpet"),
-                    new BlockItem(ModBlocks.SPRUCE_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("spruce_leaves_carpet"),
-                    new BlockItem(ModBlocks.JUNGLE_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_leaves_carpet"),
-                    new BlockItem(ModBlocks.ACACIA_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("acacia_leaves_carpet"),
-                    new BlockItem(ModBlocks.DARK_OAK_LEAVES_CARPET, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("dark_oak_leaves_carpet"),
-                    new BlockItem(ModBlocks.JUNGLE_ROCK, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_rock"),
-                    new BlockItem(ModBlocks.JUNGLE_ROCK_OVERGROWN, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_rock_overgrown"),
-                    new BlockItem(ModBlocks.COBBLEWEBSTONE, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("cobblewebstone"),
-                    new BlockItem(ModBlocks.JUNGLE_COBBLE, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_cobble"),
-                    new BlockItem(ModBlocks.JUNGLE_FOSSIL, new Item.Properties().group(ItemGroupWU.instance)).setRegistryName("jungle_fossil")
-            );
+            for (Block block : ModBlocks.BLOCKS)
+            {
+                event.getRegistry().register(new BlockItem(block, ModProperties.ITEM_PROPERTY).setRegistryName(block.getRegistryName()));
+            }
 
             ModEntities.registerEntitySpawnEggs(event);
-
         }
 
         @SubscribeEvent
@@ -97,7 +80,8 @@ public class WorldUpgrade
         {
             event.getRegistry().registerAll
             (
-                ModEntities.WEB_SPIDER
+                ModEntities.WEB_SPIDER,
+                    ModEntities.BABY_SPIDER
             );
             ModEntities.registerEntityWorldSpawns();
         }

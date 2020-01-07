@@ -23,11 +23,9 @@ public class BlockLeavesCarpet extends Block
 {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public BlockLeavesCarpet(String name)
+    public BlockLeavesCarpet(String name, Properties properties)
     {
-        super(Properties.create(Material.PLANTS)
-                .sound(SoundType.PLANT)
-                .hardnessAndResistance(0.2F, 1.0F));
+        super(properties);
 
         setRegistryName(name);
         ModBlocks.BLOCKS.add(this);

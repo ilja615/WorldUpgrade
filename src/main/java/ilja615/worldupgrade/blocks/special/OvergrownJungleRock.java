@@ -8,12 +8,9 @@ import net.minecraft.block.material.Material;
 
 public class OvergrownJungleRock extends GrassBlock
 {
-    public OvergrownJungleRock()
+    public OvergrownJungleRock(Properties properties)
     {
-        super(Properties.create(Material.ROCK)
-                .tickRandomly()
-                .sound(SoundType.STONE)
-                .hardnessAndResistance(1.5F, 30.0F));
+        super(properties);
 
         setRegistryName("jungle_rock_overgrown");
         ModBlocks.BLOCKS.add(this);

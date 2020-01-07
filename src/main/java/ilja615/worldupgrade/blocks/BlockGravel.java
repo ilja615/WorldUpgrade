@@ -11,11 +11,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BlockGravel extends FallingBlock
 {
     private int dustColor = -8356741;
-    public BlockGravel(String name, int dustColor)
+    public BlockGravel(String name, int dustColor, Properties properties)
     {
-        super(Properties.create(Material.EARTH)
-                .sound(SoundType.GROUND)
-                .hardnessAndResistance(0.6F, 3.0F));
+        super(properties);
 
         this.dustColor = dustColor;
         setRegistryName(name);

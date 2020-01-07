@@ -10,11 +10,9 @@ import net.minecraft.tags.BlockTags;
 
 public class BlockLog extends LogBlock
 {
-    public BlockLog(String name)
+    public BlockLog(String name, Properties properties)
     {
-        super(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                .sound(SoundType.WOOD)
-                .hardnessAndResistance(0.6F, 3.0F));
+        super(MaterialColor.WOOD, properties);
 
         setRegistryName(name);
         ModBlocks.BLOCKS.add(this);

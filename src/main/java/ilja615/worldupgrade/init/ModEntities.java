@@ -1,6 +1,7 @@
 package ilja615.worldupgrade.init;
 
 import ilja615.worldupgrade.WorldUpgrade;
+import ilja615.worldupgrade.entities.BabySpiderEntity;
 import ilja615.worldupgrade.entities.WebSpiderEntity;
 import ilja615.worldupgrade.util.ItemGroupWU;
 import net.minecraft.entity.EntityClassification;
@@ -14,12 +15,15 @@ import net.minecraftforge.event.RegistryEvent;
 public class ModEntities
 {
     public static EntityType<?> WEB_SPIDER = EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":web_spider").setRegistryName("web_spider");
+    public static EntityType<?> BABY_SPIDER = EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":baby_spider").setRegistryName("baby_spider");
 
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item> event)
     {
         event.getRegistry().registerAll
         (
-            ModItems.WEB_SPIDER_EGG = registerEntitySpawnEgg(WEB_SPIDER, 0xf2f0f0, 0x5e565e, "web_spider_egg")
+            ModItems.WEB_SPIDER_EGG = registerEntitySpawnEgg(WEB_SPIDER, 0xf2f0f0, 0x5e565e, "web_spider_egg"),
+            ModItems.BABY_SPIDER_EGG = registerEntitySpawnEgg(BABY_SPIDER, 0xffffff, 0x121212, "baby_spider_egg")
+
         );
     }
 

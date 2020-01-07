@@ -18,11 +18,9 @@ import java.util.Random;
 public class SmokeVent extends Block
 {
 
-    public SmokeVent()
+    public SmokeVent(Properties properties)
     {
-        super(Properties.create(Material.EARTH)
-                .sound(SoundType.SAND)
-                .hardnessAndResistance(0.6F, 3.0F));
+        super(properties);
 
         setRegistryName("smoke_vent");
         ModBlocks.BLOCKS.add(this);

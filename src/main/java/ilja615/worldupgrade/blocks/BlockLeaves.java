@@ -8,12 +8,9 @@ import net.minecraft.block.material.Material;
 
 public class BlockLeaves extends LeavesBlock
 {
-    public BlockLeaves(String name)
+    public BlockLeaves(String name, Properties properties)
     {
-        super(Properties.create(Material.PLANTS)
-                .tickRandomly()
-                .sound(SoundType.PLANT)
-                .hardnessAndResistance(0.2F, 1.0F));
+        super(properties);
 
         setRegistryName(name);
         ModBlocks.BLOCKS.add(this);
