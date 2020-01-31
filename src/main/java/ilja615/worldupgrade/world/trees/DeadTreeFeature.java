@@ -37,6 +37,10 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
         // Moving down until it is on the ground
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition)) startPosition = startPosition.down();
 
+        if (!isSoil(worldIn, startPosition, null))
+        {
+            return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
+        }
         // Make main trunk
         // Randonmize the heights
         int hight = rand.nextInt(3) + 2;
@@ -92,6 +96,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
 
         return true;
     }
+
 
     private void leafSpawn(Set<BlockPos> changedBlocks, IWorldGenerationReader worldIn, Random rand, BlockPos middle, MutableBoundingBox p_208519_5_)
     {

@@ -15,10 +15,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class SmokeVent extends Block
+public class SmokeVentBlock extends Block
 {
 
-    public SmokeVent(Properties properties)
+    public SmokeVentBlock(Properties properties)
     {
         super(properties);
 

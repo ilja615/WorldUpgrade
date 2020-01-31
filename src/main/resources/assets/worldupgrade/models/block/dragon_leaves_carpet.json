@@ -1,7 +1,7 @@
 {   "parent": "block/thin_block",
   "textures": {
-    "particle": "worldupgrade:block/palm_leaves",
-    "0": "worldupgrade:block/palm_leaves"
+    "particle": "worldupgrade:block/dragon_leaves",
+    "0": "worldupgrade:block/dragon_leaves"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],

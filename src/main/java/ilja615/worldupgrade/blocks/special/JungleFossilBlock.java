@@ -5,10 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class JungleFossil extends Block
+public class JungleFossilBlock extends Block
 {
 
-    public JungleFossil(Properties properties)
+    public JungleFossilBlock(Properties properties)
     {
         super(properties);
 

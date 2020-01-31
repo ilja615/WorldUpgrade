@@ -7,6 +7,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 
 public class BlockGravel extends FallingBlock
 {
@@ -23,5 +24,10 @@ public class BlockGravel extends FallingBlock
     @OnlyIn(Dist.CLIENT)
     public int getDustColor(BlockState state) {
         return this.dustColor;
+    }
+
+    @Override
+    public ToolType getHarvestTool(BlockState state) {
+        return ToolType.SHOVEL;
     }
 }

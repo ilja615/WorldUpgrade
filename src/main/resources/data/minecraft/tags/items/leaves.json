@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "worldupgrade:dead_leaves"
+    "worldupgrade:dead_leaves",
+    "worldupgrade:dragon_leaves"
   ]
 }

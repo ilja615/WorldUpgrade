@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "age=0, hanging=false":  { "model": "worldupgrade:block/coconut_small" },
+    "age=1, hanging=false":  { "model": "worldupgrade:block/coconut_small" },
+    "age=2, hanging=false":  { "model": "worldupgrade:block/coconut_small" },
+    "age=3, hanging=false":   { "model": "worldupgrade:block/coconut"},
+
+    "age=0, hanging=true":  { "model": "worldupgrade:block/coconut_small_hanging" },
+    "age=1, hanging=true":  { "model": "worldupgrade:block/coconut_small_hanging" },
+    "age=2, hanging=true":  { "model": "worldupgrade:block/coconut_small_hanging" },
+    "age=3, hanging=true":   { "model": "worldupgrade:block/coconut_hanging"}
+  }
+}

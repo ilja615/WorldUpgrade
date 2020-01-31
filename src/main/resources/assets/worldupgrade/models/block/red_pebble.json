@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "worldupgrade:block/jungle_fossil_2"
+    "all": "worldupgrade:block/red_pebble"
   }
 }

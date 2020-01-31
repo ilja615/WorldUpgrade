@@ -1,6 +1,6 @@
 {
   "parent": "block/leaves",
   "textures": {
-    "all": "worldupgrade:block/palm_leaves"
+    "all": "worldupgrade:block/dragon_leaves"
   }
 }

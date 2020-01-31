@@ -1,12 +1,8 @@
 package ilja615.worldupgrade;
 
-import ilja615.worldupgrade.blocks.*;
-import ilja615.worldupgrade.blocks.special.FireJet;
-import ilja615.worldupgrade.blocks.special.SmokeVent;
 import ilja615.worldupgrade.client.ModRenderRegistry;
 import ilja615.worldupgrade.init.ModEntities;
 import ilja615.worldupgrade.init.ModProperties;
-import ilja615.worldupgrade.util.ItemGroupWU;
 import ilja615.worldupgrade.init.ModBlocks;
 import ilja615.worldupgrade.proxy.ClientProxy;
 import ilja615.worldupgrade.proxy.IProxy;
@@ -22,9 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-
-import javax.swing.text.html.parser.Entity;
 
 import static ilja615.worldupgrade.WorldUpgrade.MOD_ID;
 

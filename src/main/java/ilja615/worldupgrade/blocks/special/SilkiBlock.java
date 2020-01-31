@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 
 import java.util.Random;
 
@@ -24,6 +25,11 @@ public class SilkiBlock extends Block
 
         setRegistryName("silki_block");
         ModBlocks.BLOCKS.add(this);
+    }
+
+    @Override
+    public ToolType getHarvestTool(BlockState state) {
+        return ToolType.PICKAXE;
     }
 
 

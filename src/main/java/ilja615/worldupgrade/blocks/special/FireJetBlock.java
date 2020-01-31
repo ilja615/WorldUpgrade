@@ -18,9 +18,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Collection;
 import java.util.Random;
 
-public class FireJet extends Block
+public class FireJetBlock extends Block
 {
-    public FireJet(Properties properties)
+    public FireJetBlock(Properties properties)
     {
         super(properties);
 
