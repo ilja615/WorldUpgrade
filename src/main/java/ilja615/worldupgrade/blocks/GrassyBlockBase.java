@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
@@ -10,13 +10,13 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
-public class OvergrownJungleRockBlock extends GrassBlock
+public class GrassyBlockBase extends GrassBlock
 {
-    public OvergrownJungleRockBlock(Properties properties)
+    public GrassyBlockBase(String name, Properties properties)
     {
         super(properties);
 
-        setRegistryName("jungle_rock_overgrown");
+        setRegistryName(name);
         ModBlocks.BLOCKS.add(this);
     }
 

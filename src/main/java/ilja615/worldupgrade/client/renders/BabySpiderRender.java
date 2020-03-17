@@ -23,7 +23,7 @@ public class BabySpiderRender extends MobRenderer<BabySpiderEntity, BabySpiderMo
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(BabySpiderEntity entity) {
+    public ResourceLocation getEntityTexture(BabySpiderEntity entity) {
         return new ResourceLocation("worldupgrade:textures/entity/baby_spider.png");
     }
 

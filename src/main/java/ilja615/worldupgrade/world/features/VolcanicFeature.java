@@ -20,9 +20,9 @@ public class VolcanicFeature extends Feature<NoFeatureConfig> {
 
     private static final BlockState SMOKE_VENT = ModBlocks.SMOKE_VENT.getDefaultState();
 
-    public VolcanicFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn, boolean doBlockNotifyIn)
+    public VolcanicFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn)
     {
-        super(configIn, doBlockNotifyIn);
+        super(configIn);
     }
 
     @Override

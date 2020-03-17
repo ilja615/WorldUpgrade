@@ -20,9 +20,9 @@ public class CourseDirtPatchFeature extends Feature<NoFeatureConfig> {
 
     private static final BlockState COURSE_DIRT = Blocks.COARSE_DIRT.getDefaultState();
 
-    public CourseDirtPatchFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn, boolean doBlockNotifyIn)
+    public CourseDirtPatchFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn)
     {
-        super(configIn, doBlockNotifyIn);
+        super(configIn);
     }
 
     @Override

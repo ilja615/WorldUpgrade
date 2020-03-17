@@ -19,11 +19,11 @@ import java.util.Random;
 public class SilkiBlock extends Block
 {
 
-    public SilkiBlock(Properties properties)
+    public SilkiBlock(String name, Properties properties)
     {
         super(properties);
 
-        setRegistryName("silki_block");
+        setRegistryName(name);
         ModBlocks.BLOCKS.add(this);
     }
 

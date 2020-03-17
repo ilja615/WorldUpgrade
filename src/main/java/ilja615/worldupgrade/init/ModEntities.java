@@ -4,18 +4,25 @@ import ilja615.worldupgrade.WorldUpgrade;
 import ilja615.worldupgrade.entities.BabySpiderEntity;
 import ilja615.worldupgrade.entities.WebSpiderEntity;
 import ilja615.worldupgrade.util.ItemGroupWU;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.event.RegistryEvent;
 
 public class ModEntities
 {
-    public static EntityType<?> WEB_SPIDER = EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":web_spider").setRegistryName("web_spider");
-    public static EntityType<?> BABY_SPIDER = EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":baby_spider").setRegistryName("baby_spider");
+    //public static EntityType<WebSpiderEntity> WEB_SPIDER = EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":web_spider").setRegistryName("web_spider");
+   // public static EntityType<BabySpiderEntity> BABY_SPIDER = EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":baby_spider").setRegistryName("baby_spider");
+
+    public static final EntityType<WebSpiderEntity> WEB_SPIDER = register("worldupgrade:web_spider", EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).size(0.7F, 0.6F));
+    public static final EntityType<BabySpiderEntity> BABY_SPIDER = register("worldupgrade:baby_spider", EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).size(0.7F, 0.6F));
+
 
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item> event)
     {
@@ -48,5 +55,9 @@ public class ModEntities
                 biome.getSpawns(entity.getClassification()).add(new Biome.SpawnListEntry(entity, weight, minGroupCountIn, maxGroupCountIn));
             }
         }
+    }
+
+    private static <T extends Entity> EntityType<T> register(String key, EntityType.Builder<T> builder) {
+        return Registry.register(Registry.ENTITY_TYPE, key, builder.build(key));
     }
 }

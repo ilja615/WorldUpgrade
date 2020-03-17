@@ -1,6 +1,7 @@
 package ilja615.worldupgrade.world.biomes;
 
 import ilja615.worldupgrade.init.ModBiomeFeatures;
+import ilja615.worldupgrade.init.ModEntities;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
@@ -24,37 +25,34 @@ public class BiomeSpiderGlade extends Biome
 {
     public BiomeSpiderGlade()
     {
-        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)).precipitation(RainType.RAIN).category(Category.PLAINS).depth(0.02F).scale(0.06F).temperature(0.25F).downfall(0.6F).waterColor(4159204).waterFogColor(11649740).parent((String)null));
+        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.SPIDERGLADE_SURFACE_BUILDER, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)).precipitation(RainType.RAIN).category(Category.PLAINS).depth(0.01F).scale(0.3F).temperature(0.25F).downfall(0.6F).waterColor(4159204).waterFogColor(11649740).parent((String)null));
 
-        this.addStructure(Feature.MINESHAFT, new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL));
-        this.addStructure(Feature.STRONGHOLD, IFeatureConfig.NO_FEATURE_CONFIG);
+        this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
+        this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addStoneVariants(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addTaigaLargeFerns(this);
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(DefaultBiomeFeatures.OAK_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(3, 0.1F, 1))));
 
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.SPIDER, 200, 1, 3));
-        this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.CAVE_SPIDER, 50, 2, 6));
-
+        this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.CAVE_SPIDER, 50, 2, 4));
+        this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(ModEntities.BABY_SPIDER, 150, 3, 6));
     }
 
     @Override
-    public int getGrassColor(BlockPos pos)
-    {
-        return 0xE5E5E5;
+    public int getGrassColor(double p_225528_1_, double p_225528_3_) {
+        return 0xECECEC;
     }
 
     @Override
-    public int getFoliageColor(BlockPos pos)
-    {
-        return 0xC5C5C5;
+    public int getFoliageColor() {
+        return 0xDDDDDD;
     }
 
     @Override
-    public int getSkyColorByTemp(float currentTemperature)
-    {
-        //return super.getSkyColorByTemp(currentTemperature);
+    public int getSkyColor() {
         return 0x434343;
     }
 }

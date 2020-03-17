@@ -37,6 +37,7 @@ public class RedPebbleBlock extends FallingBlock
 
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
+
         PlantType type = plantable.getPlantType(world, pos.up());
 
         switch (type) {

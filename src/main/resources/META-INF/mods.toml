@@ -1,9 +1,9 @@
 modLoader="javafml" #mandatory
-loaderVersion="[28.1]" #mandatory. 26 for 1.14.2, 27 for 1.14.3
+loaderVersion="[31.1]" #mandatory
 credits="Credits to the boiz." #optional
 [[mods]] #mandatory
 modId="worldupgrade" #mandatory
-version="1.0" #mandatory
+version="0.1" #mandatory
 displayName="WorldUpgrade" #mandatory
 description='''
 A mod that upgrades your exploration experience and adds much more detail to the world!

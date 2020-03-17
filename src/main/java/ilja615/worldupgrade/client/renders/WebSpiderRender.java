@@ -23,7 +23,7 @@ public class WebSpiderRender extends MobRenderer<WebSpiderEntity, WebSpiderModel
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(WebSpiderEntity entity) {
+    public ResourceLocation getEntityTexture(WebSpiderEntity entity) {
         return new ResourceLocation("worldupgrade:textures/entity/web_spider.png");
     }
 

@@ -6,7 +6,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -31,13 +30,14 @@ public class BlockLeavesCarpet extends Block
         ModBlocks.BLOCKS.add(this);
     }
 
+    /* copied from LeavesBlock*/
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (worldIn.isRainingAt(pos.up())) {
             if (rand.nextInt(15) == 1) {
                 BlockPos blockpos = pos.down();
                 BlockState blockstate = worldIn.getBlockState(blockpos);
-                if (!blockstate.isSolid() || !blockstate.func_224755_d(worldIn, blockpos, Direction.UP)) {
+                if (!blockstate.isSolid() || !blockstate.isSolidSide(worldIn, blockpos, Direction.UP)) {
                     double d0 = (double)((float)pos.getX() + rand.nextFloat());
                     double d1 = (double)pos.getY() - 0.05D;
                     double d2 = (double)((float)pos.getZ() + rand.nextFloat());
@@ -47,9 +47,9 @@ public class BlockLeavesCarpet extends Block
         }
     }
 
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
+//    public BlockRenderLayer getRenderLayer() {
+//        return BlockRenderLayer.CUTOUT;
+//    }
 
     @Override
     public boolean causesSuffocation(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -58,7 +58,7 @@ public class BlockLeavesCarpet extends Block
 
     @Override
     public boolean canEntitySpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
-        return type == EntityType.OCELOT || type == EntityType.PARROT;
+        return false;
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

@@ -41,7 +41,7 @@ public class OvergrownPeeksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
         BlockState lvt_15_1_ = topMaterial;
         BlockState lvt_16_1_;
         lvt_16_1_ = underMaterial;
-        BlockPos.MutableBlockPos lvt_17_1_ = new BlockPos.MutableBlockPos();
+        BlockPos.Mutable lvt_17_1_ = new BlockPos.Mutable();
         int lvt_18_1_ = -1;
         int lvt_19_1_ = (int)(noise / 3.0D + topLayerThickness + random.nextDouble() * 0.25D); // Default top layer thickness is 3
         int lvt_20_1_ = x & 15;
@@ -63,7 +63,7 @@ public class OvergrownPeeksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
                     }
 
                     if (lvt_22_1_ < seaLevel && (lvt_15_1_ == null || lvt_15_1_.isAir())) {
-                        if (biomeIn.func_225486_c(lvt_17_1_.setPos(x, lvt_22_1_, z)) < 0.15F) {
+                        if (biomeIn.getTemperature(lvt_17_1_.setPos(x, lvt_22_1_, z)) < 0.15F) {
                             lvt_15_1_ = Blocks.ICE.getDefaultState();
                         } else {
                             lvt_15_1_ = defaultFluid;
