@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "half=upper,above=false":  { "model": "worldupgrade:block/reed_3" },
+    "half=lower,above=false":   { "model": "worldupgrade:block/reed_1"},
+    "half=upper,above=true":  { "model": "worldupgrade:block/reed_2" },
+    "half=lower,above=true":   { "model": "worldupgrade:block/reed_1"}
+  }
+}

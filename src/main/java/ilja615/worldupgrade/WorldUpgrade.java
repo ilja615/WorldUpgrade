@@ -2,6 +2,7 @@ package ilja615.worldupgrade;
 
 import ilja615.worldupgrade.client.ModRenderRegistry;
 import ilja615.worldupgrade.init.ModEntities;
+import ilja615.worldupgrade.init.ModItems;
 import ilja615.worldupgrade.init.ModProperties;
 import ilja615.worldupgrade.init.ModBlocks;
 import ilja615.worldupgrade.proxy.ClientProxy;
@@ -64,7 +65,10 @@ public class WorldUpgrade
             {
                 event.getRegistry().register(new BlockItem(block, ModProperties.ITEM_PROPERTY).setRegistryName(block.getRegistryName()));
             }
-
+            for (Item item : ModItems.ITEMS)
+            {
+                    event.getRegistry().register(item);
+            }
             ModEntities.registerEntitySpawnEggs(event);
         }
 

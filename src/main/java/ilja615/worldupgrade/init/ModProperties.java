@@ -27,6 +27,7 @@ public class ModProperties
     public static final Block.Properties FALLERN_LEAVES_PROPERTY = Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(0.2F, 1.0F).doesNotBlockMovement();
     public static final Block.Properties GRASSY_CLAY_PROPERTY = Block.Properties.create(Material.CLAY).sound(SoundType.GROUND).hardnessAndResistance(0.6F, 3.0F).tickRandomly();
     public static final Block.Properties GRASSY_STONE_PROPERTY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F).tickRandomly();
+    public static final Block.Properties REED_PLANT_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement().tickRandomly();
 
     //items
     public static final Item.Properties ITEM_PROPERTY = new Item.Properties().group(ItemGroupWU.instance);

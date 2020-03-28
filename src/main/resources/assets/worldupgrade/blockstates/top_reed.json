@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "above=false":   { "model": "worldupgrade:block/reed_3"},
+    "above=true":  { "model": "worldupgrade:block/reed_2" }
+  }
+}

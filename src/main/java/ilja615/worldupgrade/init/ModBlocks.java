@@ -34,6 +34,10 @@ public class ModBlocks
     // Plants
     public static AloeVeraOrAgaveBlock ALOE_VERA = new AloeVeraOrAgaveBlock("aloe_vera", ModProperties.ALOE_VERA_OR_AGAVE_PROPERTY);
     public static AloeVeraOrAgaveBlock AGAVE = new AloeVeraOrAgaveBlock("agave", ModProperties.ALOE_VERA_OR_AGAVE_PROPERTY);
+    public static DoubleReedPlantBlock TALL_REED = new DoubleReedPlantBlock("tall_reed", ModProperties.REED_PLANT_PROPERTY);
+    public static ExtraReedBlock TOP_REED = new ExtraReedBlock("top_reed", ModProperties.REED_PLANT_PROPERTY);
+    public static DoubleReedPlantBlock DRY_TALL_REED = new DoubleReedPlantBlock("dry_tall_reed", ModProperties.REED_PLANT_PROPERTY);
+    public static ExtraReedBlock DRY_TOP_REED = new ExtraReedBlock("dry_top_reed", ModProperties.REED_PLANT_PROPERTY);
 
     // Variants For Vanilla:
     public static BlockLeavesCarpet OAK_LEAVES_CARPET = new BlockLeavesCarpet("oak_leaves_carpet", ModProperties.FALLERN_LEAVES_PROPERTY);

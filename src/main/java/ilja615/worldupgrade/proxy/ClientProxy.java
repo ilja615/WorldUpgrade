@@ -11,16 +11,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeColors;
 
 public class ClientProxy implements IProxy
-{
-    @Override
-    public World getClientWorld()
     {
-        return Minecraft.getInstance().world;
-    }
+        @Override
+        public World getClientWorld()
+        {
+            return Minecraft.getInstance().world;
+        }
 
-    @Override
-    public void init()
-    {
+        @Override
+        public void init()
+        {
         Minecraft.getInstance().getBlockColors().register((x, reader, pos, u)
                 -> reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos)
                 : FoliageColors.getDefault(), ModBlocks.OAK_LEAVES_CARPET);
@@ -69,5 +69,11 @@ public class ClientProxy implements IProxy
         RenderTypeLookup.setRenderLayer(ModBlocks.DARK_OAK_LEAVES_CARPET, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERA, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_CLAY, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_STONE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.JUNGLE_ROCK_OVERGROWN, RenderType.getCutout());
+
     }
 }

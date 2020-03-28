@@ -1,0 +1,143 @@
+package ilja615.worldupgrade.blocks.special;
+
+import ilja615.worldupgrade.init.ModBlocks;
+import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.EnumProperty;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
+
+import javax.annotation.Nullable;
+import java.util.Random;
+
+public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidContainer
+{
+    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty ABOVE = BooleanProperty.create("above");
+
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+
+    public DoubleReedPlantBlock(String name, Properties properties)
+    {
+        super(properties);
+
+        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false));
+
+        setRegistryName(name);
+        ModBlocks.BLOCKS.add(this);
+    }
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public boolean canContainFluid(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, Fluid fluid) {
+        return false;
+    }
+
+    @Override
+    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, IFluidState iFluidState) {
+        return false;
+    }
+
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(HALF, WATERLOGGED, ABOVE, AGE);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext context)
+    { //ty Squishling for help mate
+        BlockPos blockpos = context.getPos();
+        IFluidState fluidstate = context.getWorld().getFluidState(context.getPos());
+        boolean water = context.getWorld().getFluidState(context.getPos()).isTagged(FluidTags.WATER) && context.getWorld().getFluidState(context.getPos()).getLevel() == 8;
+        BlockState state = getDefaultState().with(WATERLOGGED, water);
+
+        return blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) && !context.getWorld().getFluidState(blockpos.up()).isTagged(FluidTags.WATER) ? state : null;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
+    {
+        BlockState blockState = worldIn.getBlockState(pos.up());
+        if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.TALL_REED || worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.TOP_REED)
+        {
+            worldIn.setBlockState(pos, ModBlocks.TOP_REED.getDefaultState(), 3);
+        }
+        else if (blockState.isAir(worldIn,pos.up()))
+            worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, false), 3);
+    }
+
+    @Override
+    public BlockState updatePostPlacement(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2) {
+        if (state.get(WATERLOGGED)) world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+
+        if (world.getBlockState(pos.up()).getBlock() == ModBlocks.TALL_REED || world.getBlockState(pos.up()).getBlock() == ModBlocks.TOP_REED) {state = state.with(ABOVE, true);}
+        else {state = state.with(ABOVE, false);}
+
+        return super.updatePostPlacement(state, direction, state2, world, pos, pos2);
+    }
+
+    public IFluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+    }
+
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+        if (!worldIn.isAreaLoaded(pos, 1)) return; // prevent growing from loading unloaded chunks with block update
+        if (!state.isValidPosition(worldIn, pos)) {
+            worldIn.destroyBlock(pos, true);
+        } else {
+            BlockPos blockpos = pos.up();
+            if (worldIn.isAirBlock(blockpos)) {
+
+                int j = state.get(AGE);
+                if(net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true)) {
+                    if (j == 15) {
+                        worldIn.setBlockState(blockpos, ModBlocks.TOP_REED.getDefaultState());
+                        BlockState blockstate = state.with(AGE, Integer.valueOf(0));
+                        worldIn.setBlockState(pos, blockstate, 4);
+                        blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
+                    } else {
+                        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(j + 1)).with(ABOVE, true), 4);
+                    }
+                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+                }
+        //:smileW:
+            }
+        }
+    }
+
+    @Override
+    public Block.OffsetType getOffsetType() {
+        return OffsetType.NONE;
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        Block block = state.getBlock();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocks.TALL_REED|| block == ModBlocks.TOP_REED;
+    }
+}

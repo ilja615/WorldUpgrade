@@ -64,6 +64,10 @@ public class BlockLeavesCarpet extends Block
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
+    public Block.OffsetType getOffsetType() {
+        return OffsetType.XZ;
+    }
+
 }
 
 
