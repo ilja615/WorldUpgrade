@@ -23,7 +23,7 @@ public class BiomeDragonDessert extends Biome
 {
     public BiomeDragonDessert()
     {
-        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.DRAGON_DESSERT_SURFACE_BUILDER, DragonDessertSurfaceBuilder.RED_PEBBLE_CONFIG)).precipitation(RainType.RAIN).category(Category.DESERT).depth(0.125F).scale(0.05F).temperature(2.0F).downfall(0.0F).waterColor(4159204).waterFogColor(329011).parent((String)null));
+        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.DRAGON_DESSERT_SURFACE_BUILDER, SurfaceBuilder.GRASS_DIRT_SAND_CONFIG)).precipitation(RainType.RAIN).category(Category.DESERT).depth(0.125F).scale(0.05F).temperature(2.0F).downfall(0.0F).waterColor(4159204).waterFogColor(329011).parent((String)null));
 
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));

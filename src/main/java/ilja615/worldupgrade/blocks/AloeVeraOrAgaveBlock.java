@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.*;
@@ -22,7 +22,7 @@ public class AloeVeraOrAgaveBlock extends BushBlock implements IPlantable
         super(properties);
 
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

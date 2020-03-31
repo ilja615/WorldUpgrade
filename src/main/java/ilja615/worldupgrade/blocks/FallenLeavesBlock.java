@@ -18,16 +18,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class BlockLeavesCarpet extends Block
+public class FallenLeavesBlock extends Block
 {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public BlockLeavesCarpet(String name, Properties properties)
+    public FallenLeavesBlock(String name, Properties properties)
     {
         super(properties);
 
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     /* copied from LeavesBlock*/

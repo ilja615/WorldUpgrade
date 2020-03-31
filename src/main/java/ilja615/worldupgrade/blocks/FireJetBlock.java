@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -25,7 +25,7 @@ public class FireJetBlock extends Block
         super(properties);
 
         setRegistryName("fire_jet");
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     @Override

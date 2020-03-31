@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -24,7 +24,7 @@ public class SilkiBlock extends Block
         super(properties);
 
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     @Override

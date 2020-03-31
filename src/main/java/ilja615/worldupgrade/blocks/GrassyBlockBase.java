@@ -17,7 +17,7 @@ public class GrassyBlockBase extends GrassBlock
         super(properties);
 
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     @Override

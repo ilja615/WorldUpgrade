@@ -1,11 +1,11 @@
 package ilja615.worldupgrade.world.features;
 
 import com.mojang.datafixers.Dynamic;
-import ilja615.worldupgrade.blocks.special.AloeVeraOrAgaveBlock;
+import ilja615.worldupgrade.blocks.AloeVeraOrAgaveBlock;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DeadBushBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class AgaveFeature extends Feature<NoFeatureConfig> {
-   private static final AloeVeraOrAgaveBlock AGAVE_BLOCK = ModBlocks.AGAVE;
+   private static final Block AGAVE_BLOCK = ModBlocksNew.AGAVE.get();
 
    public AgaveFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49894_1_) {
       super(p_i49894_1_);

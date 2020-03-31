@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
@@ -22,7 +22,7 @@ public class RedPebbleBlock extends FallingBlock
 
         this.dustColor = dustColor;
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     @OnlyIn(Dist.CLIENT)

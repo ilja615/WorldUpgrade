@@ -2,6 +2,7 @@ package ilja615.worldupgrade.world.surfacebuilding;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
@@ -17,7 +18,7 @@ import java.util.function.Function;
 public class PolderSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
     public static final SurfaceBuilderConfig DIRT_AND_CLAY_CONFIG = new SurfaceBuilderConfig(Blocks.CLAY.getDefaultState(), DIRT, Blocks.CLAY.getDefaultState());
-    public static final SurfaceBuilderConfig DIRT_AND_GRASSY_CLAY_CONFIG = new SurfaceBuilderConfig(ModBlocks.GRASSY_CLAY.getDefaultState(), DIRT, Blocks.CLAY.getDefaultState());
+    public static final SurfaceBuilderConfig DIRT_AND_GRASSY_CLAY_CONFIG = new SurfaceBuilderConfig(ModBlocksNew.GRASSY_CLAY.get().getDefaultState(), DIRT, Blocks.CLAY.getDefaultState());
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(4208L), 4, 0);
 
     public PolderSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer)

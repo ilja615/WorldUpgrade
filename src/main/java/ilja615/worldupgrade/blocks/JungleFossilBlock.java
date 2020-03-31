@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -13,7 +13,7 @@ public class JungleFossilBlock extends Block
         super(properties);
 
         setRegistryName("jungle_fossil");
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
 

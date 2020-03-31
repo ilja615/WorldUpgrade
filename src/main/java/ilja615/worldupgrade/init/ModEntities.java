@@ -1,18 +1,15 @@
 package ilja615.worldupgrade.init;
 
-import ilja615.worldupgrade.WorldUpgrade;
 import ilja615.worldupgrade.entities.BabySpiderEntity;
 import ilja615.worldupgrade.entities.WebSpiderEntity;
 import ilja615.worldupgrade.util.ItemGroupWU;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.event.RegistryEvent;
 
 public class ModEntities
@@ -28,8 +25,8 @@ public class ModEntities
     {
         event.getRegistry().registerAll
         (
-            ModItems.WEB_SPIDER_EGG = registerEntitySpawnEgg(WEB_SPIDER, 0xf2f0f0, 0x5e565e, "web_spider_egg"),
-            ModItems.BABY_SPIDER_EGG = registerEntitySpawnEgg(BABY_SPIDER, 0xffffff, 0x121212, "baby_spider_egg")
+            ModSpawnEggs.WEB_SPIDER_EGG = registerEntitySpawnEgg(WEB_SPIDER, 0xf2f0f0, 0x5e565e, "web_spider_egg"),
+            ModSpawnEggs.BABY_SPIDER_EGG = registerEntitySpawnEgg(BABY_SPIDER, 0xffffff, 0x121212, "baby_spider_egg")
 
         );
     }

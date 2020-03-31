@@ -18,7 +18,7 @@ public class BlockGravel extends FallingBlock
 
         this.dustColor = dustColor;
         setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        //ModBlocks.BLOCKS.add(this);
     }
 
     @OnlyIn(Dist.CLIENT)

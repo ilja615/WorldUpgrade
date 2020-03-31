@@ -2,6 +2,7 @@ package ilja615.worldupgrade.world.surfacebuilding;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -16,9 +17,9 @@ import java.util.function.Function;
 
 public class SpiderGladeSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    private static final BlockState SILKIBLOCK = ModBlocks.SILKI_BLOCK.getDefaultState();
-    private static final BlockState SILKIBLOCK_EXTRA = ModBlocks.SILKI_BLOCK_EXTRA.getDefaultState();
-    private static final BlockState GRASSY_STONE = ModBlocks.GRASSY_STONE.getDefaultState();
+    private static final BlockState SILKIBLOCK = ModBlocksNew.SILKI_BLOCK.get().getDefaultState();
+    private static final BlockState SILKIBLOCK_EXTRA = ModBlocksNew.SILKI_BLOCK_EXTRA.get().getDefaultState();
+    private static final BlockState GRASSY_STONE = ModBlocksNew.GRASSY_STONE.get().getDefaultState();
 
     public static final SurfaceBuilderConfig SPIDERGLADESURFACEBUIDERCONFIG = new SurfaceBuilderConfig(GRASS_BLOCK, GRAVEL, SILKIBLOCK);
 

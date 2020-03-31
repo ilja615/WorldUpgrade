@@ -3,6 +3,7 @@ package ilja615.worldupgrade.world.trees;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import ilja615.worldupgrade.util.DirectionsUtilities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -23,8 +24,8 @@ import java.util.Set;
 import java.util.function.Function;
 
 public class DeadTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig> {
-    private static final BlockState TRUNK = ModBlocks.DEAD_LOG.getDefaultState();
-    private static final BlockState LEAF = ModBlocks.DEAD_LEAVES.getDefaultState();
+    private static final BlockState TRUNK = ModBlocksNew.DEAD_LOG.get().getDefaultState();
+    private static final BlockState LEAF = ModBlocksNew.DEAD_LEAVES.get().getDefaultState();
 
     private final boolean useExtraRandomHeight;
 

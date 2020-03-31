@@ -1,6 +1,7 @@
-package ilja615.worldupgrade.blocks.special;
+package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -26,15 +27,14 @@ public class DriedExtraReedBlock extends BushBlock
 
 
     public static final BooleanProperty ABOVE = BooleanProperty.create("above");
-    public DriedExtraReedBlock(String name, Properties properties)
+    public DriedExtraReedBlock(Properties properties)
     {
         super(properties);
 
         this.setDefaultState(this.stateContainer.getBaseState().with(ABOVE, false));
 
-
-        setRegistryName(name);
-        ModBlocks.BLOCKS.add(this);
+        setRegistryName("dry_top_reed");
+        //ModBlocks.BLOCKS.add(this);
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -43,7 +43,7 @@ public class DriedExtraReedBlock extends BushBlock
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
         BlockState downblockstate = worldIn.getBlockState(pos.down());
-        return (downblockstate.getBlock() == ModBlocks.DRY_TALL_REED || downblockstate.getBlock() == ModBlocks.DRY_TOP_REED);
+        return (downblockstate.getBlock() == ModBlocksNew.DRY_TALL_REED.get() || downblockstate.getBlock() == ModBlocksNew.DRY_TOP_REED.get());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class DriedExtraReedBlock extends BushBlock
 
     @Override
     public BlockState updatePostPlacement(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2) {
-        if (world.getBlockState(pos.up()).getBlock() == ModBlocks.DRY_TALL_REED || world.getBlockState(pos.up()).getBlock() == ModBlocks.DRY_TOP_REED) {state = state.with(ABOVE, true);}
+        if (world.getBlockState(pos.up()).getBlock() == ModBlocksNew.DRY_TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocksNew.DRY_TOP_REED.get()) {state = state.with(ABOVE, true);}
         else {state = state.with(ABOVE, false);}
 
         return super.updatePostPlacement(state, direction, state2, world, pos, pos2);
@@ -65,12 +65,12 @@ public class DriedExtraReedBlock extends BushBlock
             worldIn.destroyBlock(pos, true);
         } else {
             BlockPos blockpos = pos.up();
-            if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.DRY_TALL_REED) {
+            if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(pos.down()).getBlock() == ModBlocksNew.DRY_TALL_REED.get()) {
 
                 int j = state.get(AGE);
                 if(net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true)) {
                     if (j == 15) {
-                        worldIn.setBlockState(blockpos, ModBlocks.DRY_TOP_REED.getDefaultState());
+                        worldIn.setBlockState(blockpos, ModBlocksNew.DRY_TOP_REED.get().getDefaultState());
                         BlockState blockstate = state.with(AGE, Integer.valueOf(0)).with(ABOVE, true);
                         worldIn.setBlockState(pos, blockstate, 4);
                         blockstate.neighborChanged(worldIn, blockpos, this, pos, false);

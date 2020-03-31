@@ -2,6 +2,7 @@ package ilja615.worldupgrade.world.surfacebuilding;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 public class DragonDessertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final BlockState RED_PEBBLE = ModBlocks.RED_PEBBLE.getDefaultState();
+    public static final BlockState RED_PEBBLE = ModBlocksNew.RED_PEBBLE.get().getDefaultState();
 
     public static final SurfaceBuilderConfig RED_PEBBLE_CONFIG = new SurfaceBuilderConfig(RED_PEBBLE, RED_PEBBLE, RED_PEBBLE);
    public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(8544L), 4, 0);

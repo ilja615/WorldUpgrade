@@ -2,6 +2,7 @@ package ilja615.worldupgrade.world.surfacebuilding;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
+import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -15,12 +16,12 @@ import java.util.function.Function;
 
 public class OvergrownPeeksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    private static final BlockState JUNGLE_ROCK = ModBlocks.JUNGLE_ROCK.getDefaultState();
-    private static final BlockState OVERGROWN = ModBlocks.JUNGLE_ROCK_OVERGROWN.getDefaultState();
+    private static final BlockState JUNGLE_ROCK = ModBlocksNew.JUNGLE_ROCK.get().getDefaultState();
+    private static final BlockState OVERGROWN = ModBlocksNew.JUNGLE_ROCK_OVERGROWN.get().getDefaultState();
     private static final BlockState GRASS = Blocks.GRASS_BLOCK.getDefaultState();
     private static final BlockState SAND = Blocks.SAND.getDefaultState();
-    private static final BlockState JUNGLE_COBBLE = ModBlocks.JUNGLE_COBBLE.getDefaultState();
-    private static final BlockState JUNGLE_FOSSIL = ModBlocks.JUNGLE_FOSSIL.getDefaultState();
+    private static final BlockState JUNGLE_COBBLE = ModBlocksNew.JUNGLE_COBBLE.get().getDefaultState();
+    private static final BlockState JUNGLE_FOSSIL = ModBlocksNew.JUNGLE_FOSSIL.get().getDefaultState();
 
 
     public OvergrownPeeksSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer)
