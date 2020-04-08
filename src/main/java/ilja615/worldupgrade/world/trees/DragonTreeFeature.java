@@ -3,25 +3,22 @@ package ilja615.worldupgrade.world.trees;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
 public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig> {
-    private static final BlockState TRUNK = ModBlocksNew.DRAGON_LOG.get().getDefaultState();
-    private static final BlockState LEAF = ModBlocksNew.DRAGON_LEAVES.get().getDefaultState();
+    private static final BlockState TRUNK = ModBlocks.DRAGON_LOG.get().getDefaultState();
+    private static final BlockState LEAF = ModBlocks.DRAGON_LEAVES.get().getDefaultState().with(LeavesBlock.DISTANCE, 1);
     private static final Direction[] DIRECTIONS_4 = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
     private final boolean useExtraRandomHeight;
 

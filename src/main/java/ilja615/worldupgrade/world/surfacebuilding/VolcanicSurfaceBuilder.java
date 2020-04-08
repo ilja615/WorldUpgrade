@@ -2,12 +2,10 @@ package ilja615.worldupgrade.world.surfacebuilding;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
@@ -16,7 +14,7 @@ import java.util.function.Function;
 
 public class VolcanicSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final BlockState GRAVEL_DARK = ModBlocksNew.GRAVEL_DARK.get().getDefaultState();
+    public static final BlockState GRAVEL_DARK = ModBlocks.GRAVEL_DARK.get().getDefaultState();
     //public static final BlockState GRAVEL_LIGHT = ModBlocks.GRAVEL_LIGHT.getDefaultState();
     public static final BlockState COARSE_DIRT = Blocks.COARSE_DIRT.getDefaultState();
 

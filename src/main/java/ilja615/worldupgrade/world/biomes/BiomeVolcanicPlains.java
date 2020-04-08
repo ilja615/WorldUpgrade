@@ -1,11 +1,7 @@
 package ilja615.worldupgrade.world.biomes;
 
-import com.google.common.collect.Lists;
 import ilja615.worldupgrade.init.ModBiomeFeatures;
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
@@ -15,7 +11,6 @@ import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 public class BiomeVolcanicPlains extends Biome
 {

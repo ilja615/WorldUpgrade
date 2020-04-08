@@ -1,10 +1,7 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -21,9 +18,6 @@ public class SmokeVentBlock extends Block
     public SmokeVentBlock(Properties properties)
     {
         super(properties);
-
-        setRegistryName("smoke_vent");
-        //ModBlocks.BLOCKS.add(this);
     }
 
     @OnlyIn(Dist.CLIENT)

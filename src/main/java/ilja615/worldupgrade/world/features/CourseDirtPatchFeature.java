@@ -1,7 +1,6 @@
 package ilja615.worldupgrade.world.features;
 
 import com.mojang.datafixers.Dynamic;
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;

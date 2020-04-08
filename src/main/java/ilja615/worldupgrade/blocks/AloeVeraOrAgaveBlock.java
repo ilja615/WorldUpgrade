@@ -1,15 +1,10 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
@@ -17,12 +12,9 @@ public class AloeVeraOrAgaveBlock extends BushBlock implements IPlantable
 {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public AloeVeraOrAgaveBlock(String name, Properties properties)
+    public AloeVeraOrAgaveBlock(Properties properties)
     {
         super(properties);
-
-        setRegistryName(name);
-        //ModBlocks.BLOCKS.add(this);
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

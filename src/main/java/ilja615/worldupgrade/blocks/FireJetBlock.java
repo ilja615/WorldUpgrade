@@ -1,13 +1,9 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.state.IProperty;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -15,7 +11,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Collection;
 import java.util.Random;
 
 public class FireJetBlock extends Block
@@ -23,9 +18,6 @@ public class FireJetBlock extends Block
     public FireJetBlock(Properties properties)
     {
         super(properties);
-
-        setRegistryName("fire_jet");
-        //ModBlocks.BLOCKS.add(this);
     }
 
     @Override

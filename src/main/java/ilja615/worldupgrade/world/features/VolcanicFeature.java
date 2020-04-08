@@ -2,9 +2,7 @@ package ilja615.worldupgrade.world.features;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -19,7 +17,7 @@ import java.util.function.Function;
 
 public class VolcanicFeature extends Feature<NoFeatureConfig> {
 
-    private static final BlockState SMOKE_VENT = ModBlocksNew.SMOKE_VENT.get().getDefaultState();
+    private static final BlockState SMOKE_VENT = ModBlocks.SMOKE_VENT.get().getDefaultState();
 
     public VolcanicFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn)
     {
@@ -30,7 +28,7 @@ public class VolcanicFeature extends Feature<NoFeatureConfig> {
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos startPosition, NoFeatureConfig config)
     {
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition)) startPosition = startPosition.down();
-        worldIn.setBlockState(startPosition, ModBlocksNew.FIRE_JET.get().getDefaultState(), 2);
+        worldIn.setBlockState(startPosition, ModBlocks.FIRE_JET.get().getDefaultState(), 2);
         worldIn.setBlockState(startPosition.south(), SMOKE_VENT, 2);
         worldIn.setBlockState(startPosition.north(), SMOKE_VENT, 2);
         worldIn.setBlockState(startPosition.west(), SMOKE_VENT, 2);

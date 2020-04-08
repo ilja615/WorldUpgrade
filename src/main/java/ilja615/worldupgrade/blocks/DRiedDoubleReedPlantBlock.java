@@ -1,7 +1,6 @@
 package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluid;
@@ -34,7 +33,7 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty ABOVE = BooleanProperty.create("above");
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public DRiedDoubleReedPlantBlock(Properties properties)
@@ -43,8 +42,6 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
 
         this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false));
 
-        setRegistryName("dry_tall_reed");
-        //ModBlocks.BLOCKS.add(this);
     }
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
@@ -81,9 +78,9 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
     {
         BlockState blockState = worldIn.getBlockState(pos.up());
-        if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocksNew.DRY_TALL_REED.get() || worldIn.getBlockState(pos.down()).getBlock() == ModBlocksNew.DRY_TOP_REED.get())
+        if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.DRY_TALL_REED.get() || worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.DRY_TOP_REED.get())
         {
-            worldIn.setBlockState(pos, ModBlocksNew.DRY_TOP_REED.get().getDefaultState(), 3);
+            worldIn.setBlockState(pos, ModBlocks.DRY_TOP_REED.get().getDefaultState(), 3);
         }
         else if (blockState.isAir(worldIn,pos.up()))
             worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, false), 3);
@@ -93,7 +90,7 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     public BlockState updatePostPlacement(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2) {
         if (state.get(WATERLOGGED)) world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 
-        if (world.getBlockState(pos.up()).getBlock() == ModBlocksNew.DRY_TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocksNew.DRY_TOP_REED.get()) {state = state.with(ABOVE, true);}
+        if (world.getBlockState(pos.up()).getBlock() == ModBlocks.DRY_TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocks.DRY_TOP_REED.get()) {state = state.with(ABOVE, true);}
         else {state = state.with(ABOVE, false);}
 
         return super.updatePostPlacement(state, direction, state2, world, pos, pos2);
@@ -113,10 +110,10 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
 
                 int j = state.get(AGE);
                 if(net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true)) {
-                    if (j == 15) {
-                        worldIn.setBlockState(blockpos, ModBlocksNew.DRY_TOP_REED.get().getDefaultState());
+                    if (j == 3) {
+                        worldIn.setBlockState(blockpos, ModBlocks.DRY_TOP_REED.get().getDefaultState());
                         BlockState blockstate = state.with(AGE, Integer.valueOf(0));
-                        worldIn.setBlockState(pos, blockstate, 4);
+                        worldIn.setBlockState(pos, blockstate, 3);
                         blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
                     } else {
                         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(j + 1)).with(ABOVE, true), 4);
@@ -136,6 +133,6 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocksNew.DRY_TALL_REED.get()|| block == ModBlocksNew.DRY_TOP_REED.get();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocks.DRY_TALL_REED.get()|| block == ModBlocks.DRY_TOP_REED.get();
     }
 }

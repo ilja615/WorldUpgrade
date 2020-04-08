@@ -1,16 +1,12 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,12 +18,9 @@ public class FallenLeavesBlock extends Block
 {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public FallenLeavesBlock(String name, Properties properties)
+    public FallenLeavesBlock(Properties properties)
     {
         super(properties);
-
-        setRegistryName(name);
-        //ModBlocks.BLOCKS.add(this);
     }
 
     /* copied from LeavesBlock*/

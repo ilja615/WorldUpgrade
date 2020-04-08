@@ -1,6 +1,5 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GrassBlock;
 import net.minecraft.block.material.Material;
@@ -12,12 +11,9 @@ import net.minecraftforge.common.PlantType;
 
 public class GrassyBlockBase extends GrassBlock
 {
-    public GrassyBlockBase(String name, Properties properties)
+    public GrassyBlockBase(Properties properties)
     {
         super(properties);
-
-        setRegistryName(name);
-        //ModBlocks.BLOCKS.add(this);
     }
 
     @Override

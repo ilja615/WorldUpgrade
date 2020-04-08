@@ -1,7 +1,6 @@
 package ilja615.worldupgrade.util;
 
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -17,6 +16,6 @@ public class ItemGroupWU extends ItemGroup
     @Override
     public ItemStack createIcon()
     {
-        return new ItemStack(ModBlocksNew.GRAVEL_DARK.get());
+        return new ItemStack(ModBlocks.GRAVEL_DARK.get());
     }
 }

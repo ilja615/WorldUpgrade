@@ -1,8 +1,6 @@
 package ilja615.worldupgrade.blocks;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -10,7 +8,6 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -24,7 +21,7 @@ import java.util.Random;
 
 public class ExtraReedBlock extends BushBlock
 {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
 
@@ -35,9 +32,6 @@ public class ExtraReedBlock extends BushBlock
 
         this.setDefaultState(this.stateContainer.getBaseState().with(ABOVE, false));
 
-
-        setRegistryName("top_reed");
-        //ModBlocks.BLOCKS.add(this);
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -46,7 +40,7 @@ public class ExtraReedBlock extends BushBlock
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
         BlockState downblockstate = worldIn.getBlockState(pos.down());
-        return (downblockstate.getBlock() == ModBlocksNew.TALL_REED.get() || downblockstate.getBlock() == ModBlocksNew.TOP_REED.get());
+        return (downblockstate.getBlock() == ModBlocks.TALL_REED.get() || downblockstate.getBlock() == ModBlocks.TOP_REED.get());
     }
 
     @Override
@@ -56,7 +50,7 @@ public class ExtraReedBlock extends BushBlock
 
     @Override
     public BlockState updatePostPlacement(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2) {
-        if (world.getBlockState(pos.up()).getBlock() == ModBlocksNew.TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocksNew.TOP_REED.get()) {state = state.with(ABOVE, true);}
+        if (world.getBlockState(pos.up()).getBlock() == ModBlocks.TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocks.TOP_REED.get()) {state = state.with(ABOVE, true);}
         else {state = state.with(ABOVE, false);}
 
         return super.updatePostPlacement(state, direction, state2, world, pos, pos2);
@@ -68,14 +62,14 @@ public class ExtraReedBlock extends BushBlock
             worldIn.destroyBlock(pos, true);
         } else {
             BlockPos blockpos = pos.up();
-            if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(pos.down()).getBlock() == ModBlocksNew.TALL_REED.get()) {
+            if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.TALL_REED.get()) {
 
                 int j = state.get(AGE);
                 if(net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true)) {
-                    if (j == 15) {
-                        worldIn.setBlockState(blockpos, ModBlocksNew.TOP_REED.get().getDefaultState());
+                    if (j == 3) {
+                        worldIn.setBlockState(blockpos, ModBlocks.TOP_REED.get().getDefaultState());
                         BlockState blockstate = state.with(AGE, Integer.valueOf(0)).with(ABOVE, true);
-                        worldIn.setBlockState(pos, blockstate, 4);
+                        worldIn.setBlockState(pos, blockstate, 3);
                         blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
                     } else {
                         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(j + 1)), 4);

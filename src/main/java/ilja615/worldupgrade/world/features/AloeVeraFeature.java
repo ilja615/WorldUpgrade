@@ -1,9 +1,7 @@
 package ilja615.worldupgrade.world.features;
 
 import com.mojang.datafixers.Dynamic;
-import ilja615.worldupgrade.blocks.AloeVeraOrAgaveBlock;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tags.BlockTags;
@@ -18,7 +16,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class AloeVeraFeature extends Feature<NoFeatureConfig> {
-   private static final Block ALOE_VERA_BLOCK = ModBlocksNew.ALOE_VERA.get();
+   private static final Block ALOE_VERA_BLOCK = ModBlocks.ALOE_VERA.get();
 
    public AloeVeraFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49894_1_) {
       super(p_i49894_1_);

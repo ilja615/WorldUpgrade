@@ -1,6 +1,5 @@
 package ilja615.worldupgrade.blocks;
 
-import ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.material.Material;
@@ -16,13 +15,11 @@ import net.minecraftforge.common.ToolType;
 public class RedPebbleBlock extends FallingBlock
 {
     private int dustColor = -8356741;
-    public RedPebbleBlock(String name, int dustColor, Properties properties)
+    public RedPebbleBlock(int dustColor, Properties properties)
     {
         super(properties);
 
         this.dustColor = dustColor;
-        setRegistryName(name);
-        //ModBlocks.BLOCKS.add(this);
     }
 
     @OnlyIn(Dist.CLIENT)

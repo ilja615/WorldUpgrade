@@ -5,11 +5,11 @@ import ilja615.worldupgrade.init.*;
 import ilja615.worldupgrade.proxy.ClientProxy;
 import ilja615.worldupgrade.proxy.IProxy;
 import ilja615.worldupgrade.proxy.ServerProxy;
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.RegistryObject;
@@ -29,7 +29,11 @@ public class WorldUpgrade
 
     public WorldUpgrade()
     {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(this::setup);
+
+        ModItemsNew.ITEMS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -59,16 +63,11 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
             final IForgeRegistry<Item> registry = event.getRegistry();
-            ModBlocksNew.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
+            ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
                 final BlockItem blockItem = new BlockItem(block, ModProperties.ITEM_PROPERTY);
                 blockItem.setRegistryName(block.getRegistryName());
                 registry.register(blockItem);
             });
-        }
-
-        @SubscribeEvent
-        public static void onItemRegistry(final RegistryEvent.Register<Item> event)
-        {
             ModEntities.registerEntitySpawnEggs(event); //It registers the spawn egg items
         }
 

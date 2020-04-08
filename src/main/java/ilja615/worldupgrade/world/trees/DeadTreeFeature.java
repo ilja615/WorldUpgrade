@@ -3,29 +3,24 @@ package ilja615.worldupgrade.world.trees;
 
 import com.mojang.datafixers.Dynamic;
 import ilja615.worldupgrade.init.ModBlocks;
-import ilja615.worldupgrade.init.ModBlocksNew;
 import ilja615.worldupgrade.util.DirectionsUtilities;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
 public class DeadTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig> {
-    private static final BlockState TRUNK = ModBlocksNew.DEAD_LOG.get().getDefaultState();
-    private static final BlockState LEAF = ModBlocksNew.DEAD_LEAVES.get().getDefaultState();
+    private static final BlockState TRUNK = ModBlocks.DEAD_LOG.get().getDefaultState();
+    private static final BlockState LEAF = ModBlocks.DEAD_LEAVES.get().getDefaultState().with(LeavesBlock.DISTANCE, 1);
 
     private final boolean useExtraRandomHeight;
 
