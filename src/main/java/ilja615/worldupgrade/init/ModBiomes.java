@@ -15,11 +15,11 @@ public class ModBiomes
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event)
     {
-        registerBiome(new BiomeVolcanicPlains(), "volcanic_plains", 100, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
-        registerBiome(new BiomeOvergrownPeaks(), "overgrown_peaks", 100, BiomeManager.BiomeType.WARM, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
-        registerBiome(new BiomeSpiderGlade(), "spider_glade", 10, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD);
-        registerBiome(new BiomeDragonDessert(), "dragon_dessert", 100, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
-        registerBiome(new BiomePolder(), "polder", 100, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
+        registerBiome(new BiomeVolcanicPlains(), "blistering_plains", 4, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
+        registerBiome(new BiomeOvergrownPeaks(), "overgrown_peaks", 4, BiomeManager.BiomeType.WARM, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
+        registerBiome(new BiomeSpiderGlade(), "spider_glade", 2, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD);
+        registerBiome(new BiomeDragonDessert(), "dragon_dessert", 8, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
+        registerBiome(new BiomePolder(), "polder", 8, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
 
     }
 

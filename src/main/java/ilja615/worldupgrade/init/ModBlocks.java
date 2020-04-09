@@ -46,16 +46,4 @@ public class ModBlocks {
     public static final RegistryObject<Block> DRAGON_LOG = BLOCKS.register("dragon_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
     public static final RegistryObject<Block> DRAGON_LEAVES = BLOCKS.register("dragon_leaves", () -> new LeavesBlock(ModProperties.LEAVES_PROPERTY));
 
-
-    //fallen leaves
-    public static final RegistryObject<Block> FALLEN_DEAD_LEAVES = BLOCKS.register("fallen_dead_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_DRAGON_LEAVES = BLOCKS.register("fallen_dragon_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-//vanilla variants fallen leaves
-    public static final RegistryObject<Block> FALLEN_OAK_LEAVES = BLOCKS.register("fallen_oak_leaves", () -> new FallenLeavesBlock( ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_BIRCH_LEAVES = BLOCKS.register("fallen_birch_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_SPRUZE_LEAVES = BLOCKS.register("fallen_spruce_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_JUNGLE_LEAVES = BLOCKS.register("fallen_jungle_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_ACACIA_LEAVES = BLOCKS.register("fallen_acacia_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-    public static final RegistryObject<Block> FALLEN_DARK_OAK_LEAVES = BLOCKS.register("fallen_dark_oak_leaves", () -> new FallenLeavesBlock(ModProperties.FALLERN_LEAVES_PROPERTY));
-
 }

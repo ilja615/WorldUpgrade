@@ -1,31 +1,42 @@
 {
+  "item.worldupgrade.trilobite_shell": "Sturdy Trilobite Shell",
+
   "block.worldupgrade.gravel_dark": "Dark Gravel",
   "block.worldupgrade.gravel_light": "Light Gravel",
   "block.worldupgrade.dead_log": "Dead Log",
   "block.worldupgrade.dead_leaves": "Dead Leaves",
   "block.worldupgrade.smoke_vent": "Smoke Vent",
   "block.worldupgrade.fire_jet": "Fire Jet",
-  "block.worldupgrade.dead_leaves_carpet": "Fallen Dead Leaves",
-  "block.worldupgrade.oak_leaves_carpet": "Fallen Oak Leaves",
-  "block.worldupgrade.birch_leaves_carpet": "Fallen Birch Leaves",
-  "block.worldupgrade.spruce_leaves_carpet": "Fallen Spruce Leaves",
-  "block.worldupgrade.jungle_leaves_carpet": "Fallen Jungle Leaves",
-  "block.worldupgrade.acacia_leaves_carpet": "Fallen Acacia Leaves",
-  "block.worldupgrade.dark_oak_leaves_carpet": "Fallen Dark Oak Leaves",
   "block.worldupgrade.jungle_rock": "Jungle Rock",
   "block.worldupgrade.jungle_rock_overgrown": "Overgrown Jungle Rock",
-  "block.worldupgrade.silki_block": "Silki Stone Block",
+  "block.worldupgrade.jungle_cobble": "Cobbled Jungle Rock",
+  "block.worldupgrade.jungle_fossil": "Jungle Rock Embedded Fossil",
+  "block.worldupgrade.silki_block": "Silky Stone Block",
+  "block.worldupgrade.silki_block_extra": "Extra Silky Stone Block",
+  "block.worldupgrade.dragon_log": "Dragon Log",
+  "block.worldupgrade.dragon_leaves": "Dragon Leaves",
+  "block.worldupgrade.grassy_clay": "Grassy Clay",
+  "block.worldupgrade.grassy_stone": "Grassy Stone",
+
   "block.worldupgrade.aloe_vera": "Aloe Vera",
   "block.worldupgrade.agave": "Agave",
-  "block.worldupgrade.palm_log": "Palm Log",
-  "block.worldupgrade.palm_leaves": "Palm Leaves",
-  "block.worldupgrade.palm_leaves_carpet": "Palm Leaves Carpet",
+  "block.worldupgrade.tall_reed": "Reed",
+  "block.worldupgrade.dry_tall_reed": "Dry Reed",
+  "block.worldupgrade.top_reed": "Reed",
+  "block.worldupgrade.dry_top_reed": "Dry Reed",
+  "block.worldupgrade.reed_bale": "Reed Bale",
+  "block.worldupgrade.dry_reed_bale": "Dry Reed Bale",
 
   "item.worldupgrade.web_spider_egg": "Spiderweb Spawn Egg",
   "item.worldupgrade.baby_spider_egg": "Baby Spider Spawn Egg",
 
-  "biome.worldupgrade.volcanic_plains": "Volcanic Plains",
+
+  "biome.worldupgrade.blistering_plains": "Blistering Plains",
   "biome.worldupgrade.overgrown_peaks": "Overgrown Peaks",
+  "biome.worldupgrade.spider_glade": "Spider Glade",
+  "biome.worldupgrade.dragon_dessert": "Dragon Desert",
+  "biome.worldupgrade.polder": "Polder",
+
 
   "itemGroup.worldupgrade": "WorldUpgrade"
 }
