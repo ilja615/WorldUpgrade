@@ -62,7 +62,7 @@ public class DeadTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig> 
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
         // Make main trunk
-        // Randonmize the heights
+        // Randomize the heights
         int hight = rand.nextInt(3) + 2;
         int hight2 = rand.nextInt(2) + 2;
         float lchance = 0;

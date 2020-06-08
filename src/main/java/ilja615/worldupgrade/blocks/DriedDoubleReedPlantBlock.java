@@ -27,7 +27,7 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiquidContainer
+public class DriedDoubleReedPlantBlock extends DoublePlantBlock implements ILiquidContainer
 {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -36,11 +36,11 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
-    public DRiedDoubleReedPlantBlock(Properties properties)
+    public DriedDoubleReedPlantBlock(Properties properties)
     {
         super(properties);
 
-        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false));
+        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false).with(AGE, 0));
 
     }
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -133,6 +133,6 @@ public class DRiedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocks.DRY_TALL_REED.get()|| block == ModBlocks.DRY_TOP_REED.get();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.CLAY || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocks.DRY_TALL_REED.get()|| block == ModBlocks.DRY_TOP_REED.get();
     }
 }

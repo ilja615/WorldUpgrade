@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[31.1]" #mandatory
+loaderVersion="[31.2]" #mandatory
 credits="Credits to the boiz." #optional
 [[mods]] #mandatory
 modId="worldupgrade" #mandatory

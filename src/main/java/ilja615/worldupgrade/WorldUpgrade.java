@@ -70,31 +70,5 @@ public class WorldUpgrade
             });
             ModEntities.registerEntitySpawnEggs(event); //It registers the spawn egg items
         }
-
-        /*@SubscribeEvent
-
-        [OLD CODE]
-
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event)
-        {
-            for (Block block : ModBlocks.BLOCKS)
-            {
-                event.getRegistry().register(block);
-            }
-        }
-
-        @SubscribeEvent
-        public static void onItemRegistry(final RegistryEvent.Register<Item> event)
-        {
-            for (Block block : ModBlocks.BLOCKS)
-            {
-                event.getRegistry().register(new BlockItem(block, ModProperties.ITEM_PROPERTY).setRegistryName(block.getRegistryName()));
-            }
-            for (Item item : ModItems.ITEMS)
-            {
-                event.getRegistry().register(item);
-            }
-            ModEntities.registerEntitySpawnEggs(event);
-        }*/
     }
 }

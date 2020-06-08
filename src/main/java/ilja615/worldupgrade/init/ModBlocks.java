@@ -34,10 +34,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> AGAVE = BLOCKS.register("agave", () -> new AloeVeraOrAgaveBlock(ModProperties.ALOE_VERA_OR_AGAVE_PROPERTY));
     public static final RegistryObject<Block> TALL_REED = BLOCKS.register("tall_reed", () -> new DoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> TOP_REED = BLOCKS.register("top_reed", () -> new ExtraReedBlock( ModProperties.REED_PLANT_PROPERTY));
-    public static final RegistryObject<Block> DRY_TALL_REED = BLOCKS.register("dry_tall_reed", () -> new DRiedDoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
+    public static final RegistryObject<Block> DRY_TALL_REED = BLOCKS.register("dry_tall_reed", () -> new DriedDoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> DRY_TOP_REED = BLOCKS.register("dry_top_reed", () -> new DriedExtraReedBlock( ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
     public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
+    public static final RegistryObject<Block> LEAVES_PILE = BLOCKS.register("leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
 
     //wood
     public static final RegistryObject<Block> DEAD_LOG = BLOCKS.register("dead_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
