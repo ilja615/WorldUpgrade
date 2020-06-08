@@ -1,9 +1,7 @@
 package ilja615.worldupgrade.blocks;
 
 import ilja615.worldupgrade.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -25,15 +23,38 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class BrambleFullBlock extends Block implements IGrowable
+public class BrambleBushBlock extends BushBlock implements IGrowable
 {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    protected static final VoxelShape field_226930_a_ = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public BrambleFullBlock(Properties p_i48440_1_) {
+    public BrambleBushBlock(Properties p_i48440_1_) {
         super(p_i48440_1_);
 
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+    }
+
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
+
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        Block block = state.getBlock();
+        return super.isValidGround(state, worldIn, pos) || block == ModBlocks.BRAMBLE_FULL.get();
+    }
+
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        if (entityIn instanceof LivingEntity && entityIn.getType() != EntityType.FOX && entityIn.getType() != EntityType.BEE) {
+            entityIn.setMotionMultiplier(state, new Vec3d((double)0.8F, 0.75D, (double)0.8F));
+            if (!worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
+                double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
+                double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
+                if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
+                    entityIn.attackEntityFrom(DamageSource.SWEET_BERRY_BUSH, 1.0F);
+                }
+            }
+
+        }
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -56,21 +77,6 @@ public class BrambleFullBlock extends Block implements IGrowable
         }
     }
 
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (entityIn instanceof LivingEntity && entityIn.getType() != EntityType.FOX && entityIn.getType() != EntityType.BEE) {
-            //entityIn.setMotionMultiplier(state, new Vec3d((double)0.8F, 1.0D, (double)0.8F));
-            entityIn.setMotion(new Vec3d(entityIn.getMotion().getX()*0.5,entityIn.getMotion().getY(),entityIn.getMotion().getZ()*0.5));
-            if (!worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
-                double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
-                double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
-                if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
-                    entityIn.attackEntityFrom(DamageSource.SWEET_BERRY_BUSH, 1.0F);
-                }
-            }
-
-        }
-    }
-
     @Override
     public boolean canGrow(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
         return blockState.get(AGE) < 3;
@@ -85,10 +91,5 @@ public class BrambleFullBlock extends Block implements IGrowable
     public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_) {
         int i = Math.min(3, p_225535_4_.get(AGE) + 1);
         p_225535_1_.setBlockState(p_225535_3_, p_225535_4_.with(AGE, Integer.valueOf(i)), 2);
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
-        return field_226930_a_;
     }
 }

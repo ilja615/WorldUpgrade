@@ -3,18 +3,24 @@ package ilja615.worldupgrade.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.IProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
@@ -59,7 +65,7 @@ public class LeavesPileBlock extends Block
 //        } else {
 //            return lvt_3_1_ == 1;
 //        }
-        if (blockItemUseContext.getItem().getItem() == this.asItem() && blockState.get(LAYERS) < 8) {
+        if (blockItemUseContext.getItem().getItem() == this.asItem() && blockState.get(LAYERS) < 4) {
             if (blockItemUseContext.replacingClickedOnBlock()) {
                 return blockItemUseContext.getFace() == Direction.UP;
             } else {
@@ -87,5 +93,10 @@ public class LeavesPileBlock extends Block
                 Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
                 Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
         };
+    }
+
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        //entityIn.setMotionMultiplier(state, new Vec3d((double)0.99F, 1.0D, (double)0.99F));
+        entityIn.setMotion(new Vec3d(entityIn.getMotion().getX()*0.75,entityIn.getMotion().getY(),entityIn.getMotion().getZ()*0.75));
     }
 }

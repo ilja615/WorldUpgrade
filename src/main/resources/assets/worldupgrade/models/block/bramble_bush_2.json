@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/bramble_bush_2",
+    "cross": "worldupgrade:block/bramble_bush_2"
+  }
+}
