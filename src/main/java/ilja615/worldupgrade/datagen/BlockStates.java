@@ -20,16 +20,17 @@ public class BlockStates extends BlockStateProvider
     @Override
     protected void registerStatesAndModels()
     {
-        this.slabBlock((SlabBlock) ModBlocks.JUNGLE_COBBLE_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_coblle"), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_coblle"));
-        this.slabBlock((SlabBlock) ModBlocks.JUNGLE_ROCK_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock"), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock"));
-        this.slabBlock((SlabBlock) ModBlocks.JUNGLE_ROCK_BRICKS_MOSSY_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks_mossy"), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks_mossy"));
-        this.slabBlock((SlabBlock) ModBlocks.JUNGLE_ROCK_BRICKS_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks"), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks"));
-        this.slabBlock((SlabBlock) ModBlocks.JUNGLE_COBBLE_MOSSY_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_cobble_mossy"), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_cobble_mossy"));
+        System.out.println("hel,lo");
+        this.slabBlock(ModBlocks.JUNGLE_COBBLE_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_coblle"), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_coblle"));
+        this.slabBlock(ModBlocks.JUNGLE_ROCK_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock"), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock"));
+        this.slabBlock(ModBlocks.JUNGLE_ROCK_BRICKS_MOSSY_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks_mossy"), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks_mossy"));
+        this.slabBlock(ModBlocks.JUNGLE_ROCK_BRICKS_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks"), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks"));
+        this.slabBlock(ModBlocks.JUNGLE_COBBLE_MOSSY_SLAB.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_cobble_mossy"), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_cobble_mossy"));
 
-        this.wallBlock((WallBlock)ModBlocks.JUNGLE_COBBLE_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_coblle"));
-        this.wallBlock((WallBlock)ModBlocks.JUNGLE_COBBLE_MOSSY_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_cobble_mossy"));
-        this.wallBlock((WallBlock)ModBlocks.JUNGLE_ROCK_BRICKS_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks"));
-        this.wallBlock((WallBlock)ModBlocks.JUNGLE_ROCK_BRICKS_MOSSY_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "block/jungle_rock_bricks_mossy"));
+        this.wallBlock(ModBlocks.JUNGLE_COBBLE_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_coblle"));
+        this.wallBlock(ModBlocks.JUNGLE_COBBLE_MOSSY_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_cobble_mossy"));
+        this.wallBlock(ModBlocks.JUNGLE_ROCK_BRICKS_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks"));
+        this.wallBlock(ModBlocks.JUNGLE_ROCK_BRICKS_MOSSY_WALL.get(), new ResourceLocation(WorldUpgrade.MOD_ID, "textures/block/jungle_rock_bricks_mossy"));
 
     }
 }
