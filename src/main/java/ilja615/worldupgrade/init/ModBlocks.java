@@ -32,20 +32,20 @@ public class ModBlocks {
     public static final RegistryObject<Block> JUNGLE_ROCK_BRICKS_CRACKED = BLOCKS.register("jungle_rock_bricks_cracked", () -> new Block(ModProperties.JUNGLE_COBBLE_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_COBBLE_MOSSY = BLOCKS.register("jungle_cobble_mossy", () -> new Block(ModProperties.JUNGLE_COBBLE_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_ROCK_CHISELED = BLOCKS.register("jungle_rock_chiseled", () -> new Block(ModProperties.JUNGLE_COBBLE_PROPERTY));
-//    public static final RegistryObject<Block> JUNGLE_ROCK_STAIRS = BLOCKS.register("jungle_rock_stairs", () -> new StairsBlock((Supplier<BlockState>) JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-//    public static final RegistryObject<Block> JUNGLE_COBBLE_STAIRS = BLOCKS.register("jungle_cobble_stairs", () -> new StairsBlock((Supplier<BlockState>) JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-//    public static final RegistryObject<Block> JUNGLE_ROCK_BRICKS_STAIRS = BLOCKS.register("jungle_rock_bricks_stairs", () -> new StairsBlock((Supplier<BlockState>) JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-//    public static final RegistryObject<Block> JUNGLE_ROCK_BRICKS_MOSSY_STAIRS = BLOCKS.register("jungle_rock_bricks_mossy_stairs", () -> new StairsBlock((Supplier<BlockState>) JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-//    public static final RegistryObject<Block> JUNGLE_COBBLE_MOSSY_STAIRS = BLOCKS.register("jungle_cobble_mossy_stairs", () -> new StairsBlock((Supplier<BlockState>) JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<StairsBlock> JUNGLE_ROCK_STAIRS = BLOCKS.register("jungle_rock_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_STAIRS = BLOCKS.register("jungle_cobble_stairs", () -> new StairsBlock(() ->  JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_STAIRS = BLOCKS.register("jungle_rock_bricks_stairs", () -> new StairsBlock(() ->  JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_MOSSY_STAIRS = BLOCKS.register("jungle_rock_bricks_mossy_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_MOSSY_STAIRS = BLOCKS.register("jungle_cobble_mossy_stairs", () -> new StairsBlock(() ->  JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_ROCK_SLAB = BLOCKS.register("jungle_rock_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_COBBLE_SLAB = BLOCKS.register("jungle_cobble_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_ROCK_BRICKS_SLAB = BLOCKS.register("jungle_rock_bricks_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_ROCK_BRICKS_MOSSY_SLAB = BLOCKS.register("jungle_rock_bricks_mossy_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_COBBLE_MOSSY_SLAB = BLOCKS.register("jungle_cobble_mossy_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<WallBlock> JUNGLE_COBBLE_WALL = BLOCKS.register("jungle_cobble_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<WallBlock> JUNGLE_ROCK_BRICKS_WALL = BLOCKS.register("jungle_rock_bricks_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<WallBlock> JUNGLE_ROCK_BRICKS_MOSSY_WALL = BLOCKS.register("jungle_rock_bricks_mossy_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<WallBlock> JUNGLE_COBBLE_MOSSY_WALL = BLOCKS.register("jungle_cobble_mossy_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<WallBlock> JUNGLE_COBBLE_WALL = BLOCKS.register("jungle_cobble_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<WallBlock> JUNGLE_ROCK_BRICKS_WALL = BLOCKS.register("jungle_rock_bricks_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<WallBlock> JUNGLE_ROCK_BRICKS_MOSSY_WALL = BLOCKS.register("jungle_rock_bricks_mossy_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
+      public static final RegistryObject<WallBlock> JUNGLE_COBBLE_MOSSY_WALL = BLOCKS.register("jungle_cobble_mossy_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
 
 
     //Plants

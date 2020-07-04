@@ -9,7 +9,7 @@
 //import net.minecraft.util.ResourceLocation;
 //import net.minecraftforge.client.model.generators.BlockStateProvider;
 //import net.minecraftforge.client.model.generators.ExistingFileHelper;
-//
+////-XstartOnFirstThread
 //public class BlockStates extends BlockStateProvider
 //{
 //    public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper)
