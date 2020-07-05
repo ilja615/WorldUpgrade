@@ -18,4 +18,26 @@ public class DirectionsUtilities {
             default: return Direction.Axis.Y;
         }
     }
+
+    public static Direction getClockWise(Direction direction)
+    {
+        switch (direction) {
+            case NORTH: return Direction.EAST;
+            case SOUTH: return Direction.WEST;
+            case EAST: return Direction.SOUTH;
+            case WEST: return Direction.NORTH;
+            default: return Direction.NORTH;
+        }
+    }
+
+    public static Direction getCounterClockWise(Direction direction)
+    {
+        switch (direction) {
+            case NORTH: return Direction.WEST;
+            case SOUTH: return Direction.EAST;
+            case EAST: return Direction.NORTH;
+            case WEST: return Direction.SOUTH;
+            default: return Direction.NORTH;
+        }
+    }
 }

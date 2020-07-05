@@ -4,7 +4,7 @@
     "bottom": "block/clay",
     "top": "block/grass_block_top",
     "side": "block/clay",
-    "overlay": "block/grass_block_side_overlay"
+    "overlay": "worldupgrade:block/overgrown_overlay"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],

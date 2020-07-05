@@ -1,6 +1,5 @@
 package ilja615.worldupgrade.init;
 
-import com.google.common.collect.ImmutableList;
 import ilja615.worldupgrade.world.features.*;
 import ilja615.worldupgrade.world.surfacebuilding.*;
 import ilja615.worldupgrade.world.trees.DeadTreeFeature;
@@ -9,15 +8,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.carver.CaveWorldCarver;
-import net.minecraft.world.gen.carver.ICarverConfig;
-import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
 
 
 public class ModBiomeFeatures
@@ -35,7 +28,7 @@ public class ModBiomeFeatures
     public static final Feature<NoFeatureConfig> ALOE_VERA = register("aloe_vera", new AloeVeraFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> AGAVE = register("agave", new AgaveFeature(NoFeatureConfig::deserialize));
     public static final Feature<BaseTreeFeatureConfig> DRAGON_TREE = register("dragon_tree", new DragonTreeFeature(BaseTreeFeatureConfig::deserialize, false));
-    public static final Feature<NoFeatureConfig> DRY_REEDS = register("dry_reeds", new DryReedsFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> DRY_REEDS = register("dry_reeds", new ReedsFeature(NoFeatureConfig::deserialize));
 
     //public static final WorldCarver<ProbabilityConfig> TINY_RIVER = registerCarver("tiny_river", new PolderTinyRiverCarver(ProbabilityConfig::deserialize, 256));
 

@@ -19,6 +19,7 @@ public class ModBiomes
         registerBiome(new BiomeOvergrownPeaks(), "overgrown_peaks", 4, true, BiomeManager.BiomeType.WARM, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
         registerBiome(new BiomeDragonDessert(), "dragon_dessert", 8, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
         registerBiome(new BiomePolder(), "polder", 8, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
+        registerBiome(new BiomeCloudForrest(), "cloud_forrest", 6, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.CONIFEROUS, BiomeDictionary.Type.LUSH);
 
     }
 
@@ -29,6 +30,5 @@ public class ModBiomes
         BiomeDictionary.addTypes(biome, types);
         if (isSpawnBiome) BiomeManager.addSpawnBiome(biome);
         BiomeManager.addBiome(biomeManagerType, new BiomeManager.BiomeEntry(biome, weight));
-
     }
 }
