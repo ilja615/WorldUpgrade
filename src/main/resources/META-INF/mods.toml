@@ -1,10 +1,10 @@
 modLoader="javafml" #mandatory
 loaderVersion="[31.2]" #mandatory
-credits="Credits to the boiz." #optional
+credits="Credit to the people" #optional
 [[mods]] #mandatory
 modId="worldupgrade" #mandatory
-version="0.1" #mandatory
+version="1.15.2-0.1" #mandatory
 displayName="WorldUpgrade" #mandatory
 description='''
-A mod that upgrades your exploration and adventuring experience and adds much more fun to the world! New biomes, structures, mobs and minibosses, loot, and more awaits!
+A mod that upgrades your exploration and adventuring experience and adds much more fun to the world! New biomes, structures, mobs, loot, and more awaits!
 '''

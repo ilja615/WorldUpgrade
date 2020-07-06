@@ -27,7 +27,7 @@ public class BiomePolder extends Biome
 
     public BiomePolder()
     {
-        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.POLDER_SUFACE_BUILDER, PolderSurfaceBuilder.DIRT_AND_GRASSY_CLAY_CONFIG)).precipitation(RainType.RAIN).category(Category.DESERT).depth(0.0F).scale(0.0F).temperature(0.8F).downfall(0.4F).waterColor(4159204).waterFogColor(329011).parent((String)null));
+        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.POLDER_SUFACE_BUILDER, PolderSurfaceBuilder.GRASSY_CLAY_CONFIG)).precipitation(RainType.RAIN).category(Category.DESERT).depth(0.0F).scale(0.0F).temperature(0.8F).downfall(0.4F).waterColor(4159204).waterFogColor(329011).parent((String)null));
 
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.RABBIT, 4, 2, 3));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(EntityType.BAT, 10, 8, 8));

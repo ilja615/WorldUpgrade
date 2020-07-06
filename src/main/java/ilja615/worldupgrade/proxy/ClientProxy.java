@@ -49,20 +49,21 @@ public class ClientProxy implements IProxy
                 -> FoliageColors.getDefault(), ModBlocks.DRAGON_LEAVES.get());
 
             // Cutout s render layer;
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DEAD_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERA.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TALL_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TOP_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_CLAY.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_STONE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.JUNGLE_ROCK_OVERGROWN.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_BUSH.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_FULL.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.DEAD_LEAVES.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERA.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TALL_REED.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TOP_REED.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_CLAY.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_STONE.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.JUNGLE_ROCK_OVERGROWN.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_BUSH.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_FULL.get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_FALLEN_LEAVES.get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_FULL_BLOCK.get(), RenderType.getTranslucent());
         }
 }

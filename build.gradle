@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.15.2-0.0.1'
+version = '1.15.2-0.1'
 group = 'mod.ilja615.worldupgrade' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'worldupgrade'
 
