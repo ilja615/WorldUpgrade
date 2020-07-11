@@ -88,10 +88,14 @@ public class LeavesPileBlock extends Block
 
     static {
         SHAPES = new VoxelShape[]{
-                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
-                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
-                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
+//                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+//                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+//                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+//                Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
+                Block.makeCuboidShape(0.0D, 3.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+                Block.makeCuboidShape(0.0D, 7.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+                Block.makeCuboidShape(0.0D, 11.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+                Block.makeCuboidShape(0.0D, 15.0D, 0.0D, 16.0D, 16.0D, 16.0D)
         };
     }
 

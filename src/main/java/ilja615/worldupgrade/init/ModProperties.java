@@ -21,7 +21,7 @@ public class ModProperties
     public static final Block.Properties JUNGLE_ROCK_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.2F, 21.0F);
     public static final Block.Properties JUNGLE_COBBLE_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.2F, 21.0F);
     public static final Block.Properties OVERGROWN_JUNGLE_ROCK_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.2F, 21.0F).tickRandomly();
-    public static final Block.Properties ALOE_VERA_OR_AGAVE_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement();
+    public static final Block.Properties AGAVE_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement();
     public static final Block.Properties VOLCANIC_STUFF_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.5F, 45.0F);
     public static final Block.Properties SILKI_BLOCK_PROPERY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F);
     public static final Block.Properties FALLERN_LEAVES_PROPERTY = Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(0.2F, 1.0F).doesNotBlockMovement();

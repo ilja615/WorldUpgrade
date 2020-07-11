@@ -1,6 +1,5 @@
 {
   "variants": {
-    "above=false":   { "model": "worldupgrade:block/dry_reed_3"},
-    "above=true":  { "model": "worldupgrade:block/dry_reed_2" }
+    "":   { "model": "worldupgrade:block/dry_reed_3"}
   }
 }

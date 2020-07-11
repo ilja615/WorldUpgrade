@@ -8,8 +8,6 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Supplier;
-
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<Block>(ForgeRegistries.BLOCKS, WorldUpgrade.MOD_ID);
 
@@ -49,8 +47,7 @@ public class ModBlocks {
 
 
     //Plants
-    public static final RegistryObject<Block> ALOE_VERA = BLOCKS.register("aloe_vera", () -> new AloeVeraOrAgaveBlock( ModProperties.ALOE_VERA_OR_AGAVE_PROPERTY));
-    public static final RegistryObject<Block> AGAVE = BLOCKS.register("agave", () -> new AloeVeraOrAgaveBlock(ModProperties.ALOE_VERA_OR_AGAVE_PROPERTY));
+    public static final RegistryObject<Block> AGAVE = BLOCKS.register("agave", () -> new AgavePlantBlock(ModProperties.AGAVE_PROPERTY));
     public static final RegistryObject<Block> TALL_REED = BLOCKS.register("tall_reed", () -> new DoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> TOP_REED = BLOCKS.register("top_reed", () -> new ExtraReedBlock( ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> DRY_TALL_REED = BLOCKS.register("dry_tall_reed", () -> new DriedDoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
@@ -65,7 +62,6 @@ public class ModBlocks {
     // Plant crafted blocks
     public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
     public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
-    public static final RegistryObject<Block> ALOE_FULL_BLOCK = BLOCKS.register("aloe_full_block", () -> new Block(Block.Properties.from(Blocks.SLIME_BLOCK)));
 
     //wood
     public static final RegistryObject<Block> DEAD_LOG = BLOCKS.register("dead_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));

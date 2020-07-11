@@ -133,6 +133,6 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || block == ModBlocks.TALL_REED.get()|| block == ModBlocks.TOP_REED.get();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || (block == ModBlocks.TALL_REED.get()&&state.get(BlockStateProperties.DOUBLE_BLOCK_HALF)==DoubleBlockHalf.UPPER);
     }
 }

@@ -25,10 +25,10 @@ public class ModBiomeFeatures
     public static final Feature<BaseTreeFeatureConfig> DEAD_TREE = register("dead_tree", new DeadTreeFeature(BaseTreeFeatureConfig::deserialize, false));
     public static final Feature<NoFeatureConfig> COURSE_DIRT_PATCH = register("course_dirt_patch", new CourseDirtPatchFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> SMOKE_VENT_FIRE_JET = register("smoke_vent_fire_jet", new VolcanicFeature(NoFeatureConfig::deserialize));
-    public static final Feature<NoFeatureConfig> ALOE_VERA = register("aloe_vera", new AloeVeraFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> AGAVE = register("agave", new AgaveFeature(NoFeatureConfig::deserialize));
     public static final Feature<BaseTreeFeatureConfig> DRAGON_TREE = register("dragon_tree", new DragonTreeFeature(BaseTreeFeatureConfig::deserialize, false));
     public static final Feature<NoFeatureConfig> DRY_REEDS = register("dry_reeds", new ReedsFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> BRAMBLE = register("bramble", new BrambleFeature(NoFeatureConfig::deserialize));
 
     //public static final WorldCarver<ProbabilityConfig> TINY_RIVER = registerCarver("tiny_river", new PolderTinyRiverCarver(ProbabilityConfig::deserialize, 256));
 

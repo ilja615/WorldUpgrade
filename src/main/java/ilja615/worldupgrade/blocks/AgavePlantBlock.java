@@ -8,11 +8,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
-public class AloeVeraOrAgaveBlock extends BushBlock implements IPlantable
+public class AgavePlantBlock extends BushBlock implements IPlantable
 {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public AloeVeraOrAgaveBlock(Properties properties)
+    public AgavePlantBlock(Properties properties)
     {
         super(properties);
     }

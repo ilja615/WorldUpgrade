@@ -28,14 +28,18 @@ import java.util.function.Function;
 public class ReedsFeature extends Feature<NoFeatureConfig> {
 
     // oi janky code mate
-    private static final BlockState REED_1_234 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState REED_2_2 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, false).with(DoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState REED_2_34 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState REED_3_3 = ModBlocks.TOP_REED.get().getDefaultState().with(ExtraReedBlock.ABOVE, false);
-    private static final BlockState REED_3_4 = REED_2_34;
-    private static final BlockState REED_4_4 = REED_3_3;
-    private static final BlockState REED_1_234_w = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, true);
-
+//    private static final BlockState REED_1_234 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
+//    private static final BlockState REED_2_2 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, false).with(DoubleReedPlantBlock.WATERLOGGED, false);
+//    private static final BlockState REED_2_34 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
+//    private static final BlockState REED_3_3 = ModBlocks.TOP_REED.get().getDefaultState().with(ExtraReedBlock.ABOVE, false);
+//    private static final BlockState REED_3_4 = REED_2_34;
+//    private static final BlockState REED_4_4 = REED_3_3;
+//    private static final BlockState REED_1_234_w = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, true);
+    private static final BlockState BOTTOM_REED = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState BOTTOM_REED_W = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, true);
+    private static final BlockState MIDDLE_REED = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState TOP_REED_2 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, false).with(DoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState TOP_REED_3 = ModBlocks.TOP_REED.get().getDefaultState();
 
     public ReedsFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn)
     {
@@ -73,23 +77,16 @@ public class ReedsFeature extends Feature<NoFeatureConfig> {
         }
 
         int randomint = rand.nextInt(10);
-        if (randomint <= 1) //20% chance to get 3 hight
+        if (randomint <= 6) //70% chance to get 3 hight
         {
-            setBlockState(worldIn, startPosition, REED_1_234);
-            setBlockState(worldIn, startPosition.up(1), REED_2_34);
-            setBlockState(worldIn, startPosition.up(2), REED_3_3);
+            setBlockState(worldIn, startPosition, BOTTOM_REED);
+            setBlockState(worldIn, startPosition.up(1), MIDDLE_REED);
+            setBlockState(worldIn, startPosition.up(2), TOP_REED_3);
 
-        } else if (randomint <= 3 ) //20% chance to get 4 hight
-        {
-            setBlockState(worldIn, startPosition, REED_1_234);
-            setBlockState(worldIn, startPosition.up(1), REED_2_34);
-            setBlockState(worldIn, startPosition.up(2), REED_3_4);
-            setBlockState(worldIn, startPosition.up(3), REED_4_4);
+        } else { //30 % chance to get 2 hight
 
-        } else { //60 % chance to get 2 hight
-
-            setBlockState(worldIn, startPosition, REED_1_234);
-            setBlockState(worldIn, startPosition.up(1), REED_2_2);
+            setBlockState(worldIn, startPosition, BOTTOM_REED);
+            setBlockState(worldIn, startPosition.up(1), TOP_REED_2);
 
         }
         return s;
