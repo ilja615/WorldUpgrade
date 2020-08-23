@@ -1,8 +1,11 @@
 package ilja615.worldupgrade.world.features;
 
 import com.mojang.datafixers.Dynamic;
+import ilja615.worldupgrade.blocks.BrambleFullBlock;
 import ilja615.worldupgrade.init.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -25,32 +28,53 @@ public class VolcanicFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos startPosition, NoFeatureConfig config)
+    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition)) startPosition = startPosition.down();
-        worldIn.setBlockState(startPosition, ModBlocks.FIRE_JET.get().getDefaultState(), 2);
-        worldIn.setBlockState(startPosition.south(), SMOKE_VENT, 2);
-        worldIn.setBlockState(startPosition.north(), SMOKE_VENT, 2);
-        worldIn.setBlockState(startPosition.west(), SMOKE_VENT, 2);
-        worldIn.setBlockState(startPosition.east(), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.south(2), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.north(2), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.west(2), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.east(2), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.south().east(), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.north().west(), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.west().south(), SMOKE_VENT, 2);
-        if (rand.nextBoolean() == true)
-            worldIn.setBlockState(startPosition.east().north(), SMOKE_VENT, 2);
-        return false;
+        pos = pos.down(2);
+        int i = 2 + rand.nextInt(2);
+        int j = 2 + rand.nextInt(2);
+
+        for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-i, 0, -j), pos.add(i, 0, j))) {
+            int k = pos.getX() - blockpos.getX();
+            int l = pos.getZ() - blockpos.getZ();
+            float c1 = (float)(k * k + l * l);
+            float c2 = rand.nextFloat() * 8.0F - rand.nextFloat() * 6.0F;
+            if (c1 <= c2-3) {
+                setBlockState(worldIn, blockpos, SMOKE_VENT);
+                setBlockState(worldIn, blockpos.up(), SMOKE_VENT);
+                setBlockState(worldIn, blockpos.up(2), ModBlocks.FIRE_JET.get().getDefaultState());
+            } else if (c1 <= c2) {
+                setBlockState(worldIn, blockpos, SMOKE_VENT);
+                if (rand.nextBoolean())
+                    setBlockState(worldIn, blockpos.up(), SMOKE_VENT);
+                else
+                    setBlockState(worldIn, blockpos.up(), ModBlocks.FIRE_JET.get().getDefaultState());
+            } else if (c1 <= c2+3) {
+                setBlockState(worldIn, blockpos, SMOKE_VENT);
+            } else if ((double)rand.nextFloat() < 0.031D) {
+                setBlockState(worldIn, blockpos, SMOKE_VENT);
+            }
+        }
+        for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-i, 0, -j), pos.add(i, 2, j))) {
+            if (worldIn.getBlockState(blockpos).getBlock() == ModBlocks.SMOKE_VENT.get())
+            {
+                Block block = worldIn.getBlockState(blockpos.up()).getBlock();
+                if (block == ModBlocks.GRAVEL_DARK.get()
+                    || block == Blocks.DIRT
+                        || block == Blocks.COARSE_DIRT
+                            || block == Blocks.GRASS_BLOCK)
+                    setBlockState(worldIn, blockpos.up(), Blocks.AIR.getDefaultState());
+                Block block2 = worldIn.getBlockState(blockpos.up(2)).getBlock();
+                if (block2 == ModBlocks.GRAVEL_DARK.get()
+                    || block2 == Blocks.DIRT
+                        || block2 == Blocks.COARSE_DIRT
+                            || block2 == Blocks.GRASS_BLOCK)
+                setBlockState(worldIn, blockpos.up(2), Blocks.AIR.getDefaultState());
+            }
+        }
+        return true;
     }
+
 
     protected static boolean isAirOrLeaves(IWorldGenerationBaseReader worldIn, BlockPos pos) {
         if (!(worldIn instanceof net.minecraft.world.IWorldReader)) // FORGE: Redirect to state method when possible

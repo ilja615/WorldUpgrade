@@ -48,16 +48,20 @@ public class ModBlocks {
 
     //Plants
     public static final RegistryObject<Block> AGAVE = BLOCKS.register("agave", () -> new AgavePlantBlock(ModProperties.AGAVE_PROPERTY));
+    public static final RegistryObject<Block> ALOE_VERY = BLOCKS.register("aloe_vera", () -> new AgavePlantBlock(ModProperties.AGAVE_PROPERTY));
     public static final RegistryObject<Block> TALL_REED = BLOCKS.register("tall_reed", () -> new DoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> TOP_REED = BLOCKS.register("top_reed", () -> new ExtraReedBlock( ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> DRY_TALL_REED = BLOCKS.register("dry_tall_reed", () -> new DriedDoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> DRY_TOP_REED = BLOCKS.register("dry_top_reed", () -> new DriedExtraReedBlock( ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> LEAVES_PILE = BLOCKS.register("leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
-    public static final RegistryObject<Block> BRAMBLE_FULL = BLOCKS.register("bramble_full", () -> new BrambleFullBlock( Block.Properties.from(Blocks.SWEET_BERRY_BUSH)));
-    public static final RegistryObject<Block> BRAMBLE_BUSH = BLOCKS.register("bramble_bush", () -> new BrambleBushBlock( Block.Properties.from(Blocks.SWEET_BERRY_BUSH)));
+    public static final RegistryObject<Block> BRAMBLE_FULL = BLOCKS.register("bramble_full", () -> new BrambleFullBlock( Block.Properties.from(Blocks.SWEET_BERRY_BUSH).tickRandomly()));
+    public static final RegistryObject<Block> BRAMBLE_BUSH = BLOCKS.register("bramble_bush", () -> new BrambleBushBlock( Block.Properties.from(Blocks.SWEET_BERRY_BUSH).tickRandomly()));
     public static final RegistryObject<Block> FALLEN_LEAVES = BLOCKS.register("fallen_leaves", () -> new FallenLeavesBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> AUTUMN_FALLEN_LEAVES = BLOCKS.register("autumn_fallen_leaves", () -> new FallenLeavesBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> AUTUMN_LEAVES_PILE = BLOCKS.register("autumn_leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> GUNNERA_LEAF = BLOCKS.register("gunnera_leaf", () -> new GunneraLeafBlock(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> MOSS = BLOCKS.register("moss", () -> new MossBlock(Block.Properties.from(Blocks.VINE)));
 
     // Plant crafted blocks
     public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));

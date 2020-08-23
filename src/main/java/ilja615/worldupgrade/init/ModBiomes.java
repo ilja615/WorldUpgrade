@@ -20,6 +20,8 @@ public class ModBiomes
         registerBiome(new BiomeDragonDessert(), "dragon_dessert", 8, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
         registerBiome(new BiomePolder(), "polder", 8, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
         registerBiome(new BiomeCloudForrest(), "cloud_forrest", 6, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.CONIFEROUS, BiomeDictionary.Type.LUSH);
+        registerBiome(new BiomeCharredForrest(), "charred_forrest", 6, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
+        registerBiome(new BiomeDragonTreeForrest(), "dragon_tree_forrest", 6, true, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SAVANNA);
 
     }
 

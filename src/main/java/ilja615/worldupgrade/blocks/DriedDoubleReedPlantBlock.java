@@ -40,7 +40,7 @@ public class DriedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     {
         super(properties);
 
-        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false).with(AGE, 0));
+        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false));
 
     }
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -120,19 +120,19 @@ public class DriedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
                     }
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
-        //:smileW:
+                //:smileW:
             }
         }
     }
 
     @Override
-    public OffsetType getOffsetType() {
+    public Block.OffsetType getOffsetType() {
         return OffsetType.NONE;
     }
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.CLAY || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || (block == ModBlocks.DRY_TALL_REED.get()&&state.get(BlockStateProperties.DOUBLE_BLOCK_HALF)==DoubleBlockHalf.LOWER);
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || (block == ModBlocks.DRY_TALL_REED.get()&&state.get(BlockStateProperties.DOUBLE_BLOCK_HALF)==DoubleBlockHalf.UPPER);
     }
 }

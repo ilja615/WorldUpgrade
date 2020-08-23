@@ -39,7 +39,7 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
 // Make main trunk
-        int hight = rand.nextInt(3) + 3;
+        int hight = rand.nextInt(4)*2 + 3;
         if (startPosition.getY() >= 1 && startPosition.getY() + hight + 8 +1 <= worldIn.getMaxHeight())
         {
             for (int j = startPosition.getY() + 1; j <= startPosition.getY() + 1 + hight; ++j)
@@ -54,11 +54,11 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
         {
             for (int iz = -5; iz <= 5; ++iz)
             {
-                for (int iy = 0; iy <= 2; ++iy)
+                for (int iy = 1; iy <= 2; ++iy)
                 {
-                    if (ix*ix + iz*iz + 6*iy*iy <= 36)
+                    if (ix*ix + iz*iz + 6*iy*iy <= 36 && ix*ix + iz*iz + 3*iy*iy >= 9)
                     {
-                        setBlockState(worldIn, startPosition.add(ix, 5+hight+iy,iz), LEAF);
+                        setBlockState(worldIn, startPosition.add(ix, 4+hight+iy,iz), LEAF);
                     }
                 }
             }
@@ -74,6 +74,8 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
+            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 5, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
+
         }
 
         return true;

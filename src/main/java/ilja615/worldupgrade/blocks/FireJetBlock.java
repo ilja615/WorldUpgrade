@@ -2,8 +2,11 @@ package ilja615.worldupgrade.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +26,9 @@ public class FireJetBlock extends Block
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.setFire(5);
+        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
+            entityIn.attackEntityFrom(DamageSource.IN_FIRE, 1.0F);
+        }
         super.onEntityWalk(worldIn, pos, entityIn);
     }
 

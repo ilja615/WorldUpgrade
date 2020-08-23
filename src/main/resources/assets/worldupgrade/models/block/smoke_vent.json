@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "worldupgrade:block/smoke_vent"
+    "all": "worldupgrade:block/fire_jet_bottom"
   }
 }
