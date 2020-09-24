@@ -8,6 +8,6 @@ import java.util.List;
 
 public class ModSpawnEggs
 {
-    public static Item WEB_SPIDER_EGG;
-    public static Item BABY_SPIDER_EGG;
+    public static Item BUBBLE_EEL_EGG;
+    public static Item SPOONBILL_EGG;
 }

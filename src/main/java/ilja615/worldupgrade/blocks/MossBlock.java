@@ -1,9 +1,7 @@
 package ilja615.worldupgrade.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SixWayBlock;
+import ilja615.worldupgrade.util.DirectionsUtilities;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -16,36 +14,40 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
-public class MossBlock extends Block
+public class MossBlock extends Block implements IGrowable
 {
-    public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
-    public static final BooleanProperty EAST = BlockStateProperties.EAST;
-    public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
-    public static final BooleanProperty WEST = BlockStateProperties.WEST;
-    public static final BooleanProperty UP = BlockStateProperties.UP;
-    public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
-    public static final BooleanProperty BELOW = BooleanProperty.create("below");
+    private static final BooleanProperty NORTH = BlockStateProperties.NORTH;
+    private static final BooleanProperty EAST = BlockStateProperties.EAST;
+    private static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
+    private static final BooleanProperty WEST = BlockStateProperties.WEST;
+    private static final BooleanProperty UP = BlockStateProperties.UP;
+    private static final BooleanProperty DOWN = BlockStateProperties.DOWN;
+    private static final BooleanProperty BELOW = BooleanProperty.create("below");
+    private static final BooleanProperty CAN_GROW = BooleanProperty.create("can_grow");
 
-    public static final Map<Direction, BooleanProperty> FACING_TO_PROPERTY_MAP = SixWayBlock.FACING_TO_PROPERTY_MAP;
-    protected static final VoxelShape UP_AABB = Block.makeCuboidShape(0.0D, 15.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape DOWN_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
-    protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
-    protected static final VoxelShape EAST_AABB = Block.makeCuboidShape(15.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 15.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape WEST_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 0.0D, 1.0D, 16.0D, 16.0D);
-    protected static final VoxelShape EAST_SMALL_AABB = Block.makeCuboidShape(15.0D, 3.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape NORTH_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 0.0D, 16.0D, 16.0D, 1.0D);
-    protected static final VoxelShape SOUTH_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 15.0D, 16.0D, 16.0D, 16.0D);
+    private static final Map<Direction, BooleanProperty> FACING_TO_PROPERTY_MAP = SixWayBlock.FACING_TO_PROPERTY_MAP;
+    private static final VoxelShape UP_AABB = Block.makeCuboidShape(0.0D, 15.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    private static final VoxelShape DOWN_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    private static final VoxelShape WEST_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
+    private static final VoxelShape EAST_AABB = Block.makeCuboidShape(15.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    private static final VoxelShape NORTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1.0D);
+    private static final VoxelShape SOUTH_AABB = Block.makeCuboidShape(0.0D, 0.0D, 15.0D, 16.0D, 16.0D, 16.0D);
+    private static final VoxelShape WEST_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 0.0D, 1.0D, 16.0D, 16.0D);
+    private static final VoxelShape EAST_SMALL_AABB = Block.makeCuboidShape(15.0D, 3.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    private static final VoxelShape NORTH_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 0.0D, 16.0D, 16.0D, 1.0D);
+    private static final VoxelShape SOUTH_SMALL_AABB = Block.makeCuboidShape(0.0D, 3.0D, 15.0D, 16.0D, 16.0D, 16.0D);
 
     public MossBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(UP, Boolean.valueOf(false)).with(DOWN, Boolean.valueOf(false)).with(NORTH, Boolean.valueOf(false)).with(EAST, Boolean.valueOf(false)).with(SOUTH, Boolean.valueOf(false)).with(WEST, Boolean.valueOf(false)).with(BELOW, Boolean.valueOf(false)));
-
+        this.setDefaultState(this.stateContainer.getBaseState().with(UP, Boolean.valueOf(false)).with(DOWN, Boolean.valueOf(false)).with(NORTH, Boolean.valueOf(false)).with(EAST, Boolean.valueOf(false)).with(SOUTH, Boolean.valueOf(false)).with(WEST, Boolean.valueOf(false)).with(BELOW, Boolean.valueOf(false)).with(CAN_GROW, Boolean.valueOf(true)));
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -135,39 +137,47 @@ public class MossBlock extends Block
         return Block.doesSideFillSquare(blockstate.getCollisionShape(p_196542_0_, worldIn), neighborPos.getOpposite());
     }
 
-    private BlockState func_196545_h(BlockState p_196545_1_, IBlockReader p_196545_2_, BlockPos p_196545_3_) {
-        BlockPos blockpos = p_196545_3_.up();
-        if (p_196545_1_.get(UP)) {
-            p_196545_1_ = p_196545_1_.with(UP, Boolean.valueOf(canAttachTo(p_196545_2_, blockpos, Direction.DOWN)));
+    private BlockState func_196545_h(BlockState blockState, IBlockReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.up();
+        BlockState aboveBlockState = worldIn.getBlockState(pos.up());
+        boolean b;
+        if (blockState.get(UP)) {
+            blockState = blockState.with(UP, Boolean.valueOf(canAttachTo(worldIn, blockpos, Direction.DOWN)));
         }
 
-        blockpos = p_196545_3_.down();
-        if (p_196545_1_.get(DOWN)) {
-            p_196545_1_ = p_196545_1_.with(DOWN, Boolean.valueOf(canAttachTo(p_196545_2_, blockpos, Direction.UP)));
+        blockpos = pos.down();
+        if (blockState.get(DOWN)) {
+            blockState = blockState.with(DOWN, Boolean.valueOf(canAttachTo(worldIn, blockpos, Direction.UP)));
         }
 
-        if (p_196545_2_.getBlockState(p_196545_3_.down()).getBlock() == this) {p_196545_1_ = p_196545_1_.with(BELOW, Boolean.valueOf(true));}
-
-
-        BlockState blockstate = null;
-
-        for(Direction direction : Direction.Plane.HORIZONTAL) {
-            BooleanProperty booleanproperty = getPropertyFor(direction);
-            if (p_196545_1_.get(booleanproperty)) {
-                boolean flag = this.func_196541_a(p_196545_2_, p_196545_3_, direction);
-                if (!flag) {
-                    if (blockstate == null) {
-                        blockstate = p_196545_2_.getBlockState(blockpos);
+        for (Direction direction : Direction.values())
+        {
+            if (direction.getAxis() != Direction.Axis.Y)
+            {
+                blockpos = pos.offset(direction);
+                if (blockState.get(FACING_TO_PROPERTY_MAP.get(direction)))
+                {
+                    if (aboveBlockState.getBlock() instanceof MossBlock)
+                    {
+                        b = Boolean.valueOf(canAttachTo(worldIn, blockpos, direction.getOpposite())) || aboveBlockState.get(FACING_TO_PROPERTY_MAP.get(direction));
+                    }else{
+                        b = Boolean.valueOf(canAttachTo(worldIn, blockpos, direction.getOpposite()));
                     }
-
-                    flag = blockstate.getBlock() == this && blockstate.get(booleanproperty);
+                    blockState = blockState.with(FACING_TO_PROPERTY_MAP.get(direction), b);
                 }
-
-                p_196545_1_ = p_196545_1_.with(booleanproperty, Boolean.valueOf(flag));
+            } else {
+                blockpos = pos.offset(direction);
+                if (blockState.get(FACING_TO_PROPERTY_MAP.get(direction)))
+                {
+                    blockState = blockState.with(FACING_TO_PROPERTY_MAP.get(direction), Boolean.valueOf(canAttachTo(worldIn, blockpos, direction.getOpposite())));
+                }
             }
         }
 
-        return p_196545_1_;
+        if (worldIn.getBlockState(pos.down()).getBlock() == this) {blockState = blockState.with(BELOW, Boolean.valueOf(true));}
+        if (blockState.get(DOWN)) {blockState = blockState.with(BELOW, Boolean.valueOf(true));}
+
+        return blockState;
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
@@ -192,7 +202,6 @@ public class MossBlock extends Block
         boolean flag = blockstate.getBlock() == this;
         BlockState blockstate1 = flag ? blockstate : this.getDefaultState();
 
-
         if (context.getWorld().getBlockState(context.getPos().down()).getBlock() == this) {blockstate1 = blockstate1.with(BELOW, Boolean.valueOf(true));}
         for(Direction direction : context.getNearestLookingDirections()) {
             BooleanProperty booleanproperty = getPropertyFor(direction);
@@ -206,6 +215,124 @@ public class MossBlock extends Block
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST, BELOW);
+        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST, BELOW, CAN_GROW);
+    }
+
+    @Override
+    public boolean canGrow(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
+        return blockState.get(CAN_GROW);
+    }
+
+    @Override
+    public boolean canUseBonemeal(World world, Random random, BlockPos blockPos, BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    {
+        if (state.getBlock() instanceof MossBlock)
+        {
+            if (state.get(CAN_GROW))
+            {
+                if (worldIn.isAreaLoaded(pos, 4)) // Forge: check area to prevent loading unloaded chunks
+                {
+                    Direction face = getRandomSide(rand, getAttachedSides(state));
+                    if (rand.nextFloat() > 0.4f)
+                    {
+                        //growInnerCorner
+                        face = getRandomSide(rand, getNotAttachedSides(state));
+                        if (Boolean.valueOf(canAttachTo(worldIn, pos.offset(face), face)))
+                            worldIn.setBlockState(pos, state.with(FACING_TO_PROPERTY_MAP.get(face), true), 3);
+                    }
+                    if (rand.nextFloat() > 0.4f)
+                    {
+                        //growOuterCorner
+                        face = getRandomSide(rand, getAttachedSides(state));
+                        BlockPos bp = pos.offset(face);
+                        Direction direction1 = Direction.random(rand);
+                        if (direction1 != face && direction1 != face.getOpposite())
+                        {
+                            BlockPos newPos = bp.offset(direction1);
+                            if (!worldIn.getBlockState(newPos).isAir(worldIn, newPos)) { return; }
+                            BlockState newMossBlockState = this.getDefaultState().with(FACING_TO_PROPERTY_MAP.get(direction1.getOpposite()), true);
+                            if (rand.nextFloat() > 0.3f)
+                                newMossBlockState = newMossBlockState.with(CAN_GROW, false);
+                            if (isValidPosition(newMossBlockState, worldIn, newPos))
+                            {
+                                worldIn.setBlockState(newPos, newMossBlockState, 3);
+                                updateNeighbors(state, worldIn, pos, 2);
+                                if (rand.nextFloat() > 0.6f && worldIn.getBlockState(pos).getBlock() instanceof MossBlock)
+                                    worldIn.setBlockState(pos, worldIn.getBlockState(pos).with(CAN_GROW, false), 3);
+                            }
+                        }
+                    }
+                    {
+                        //growAtSameLevel
+                        if (!state.get(FACING_TO_PROPERTY_MAP.get(face))) { return; }
+                        Direction growingDirection = DirectionsUtilities.getRandomMossGrowthDirection(face, rand);
+                        BlockPos newPos = pos.offset(growingDirection);
+                        if (!worldIn.getBlockState(newPos).isAir(worldIn, newPos)) { return; }
+                        BlockState newMossBlockState = this.getDefaultState().with(FACING_TO_PROPERTY_MAP.get(face), true);
+                        if (rand.nextFloat() > 0.4f)
+                            newMossBlockState = newMossBlockState.with(CAN_GROW, false);
+                        if (isValidPosition(newMossBlockState, worldIn, newPos)) {
+                            worldIn.setBlockState(newPos, newMossBlockState, 3);
+                            updateNeighbors(state, worldIn, pos, 2);
+                            if (rand.nextFloat() > 0.6f && worldIn.getBlockState(pos).getBlock() instanceof MossBlock)
+                                worldIn.setBlockState(pos, worldIn.getBlockState(pos).with(CAN_GROW, false), 3);
+                            if (rand.nextFloat() > 0.5f) {
+                                BlockPos pos1 = pos.offset(growingDirection.getOpposite());
+                                BlockState state1 = worldIn.getBlockState(pos1);
+                                if (worldIn.getBlockState(pos1).getBlock() instanceof MossBlock)
+                                    if (!worldIn.getBlockState(pos1).get(BELOW))
+                                        worldIn.setBlockState(pos1, state1.with(FACING_TO_PROPERTY_MAP.get(face), false), 3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
+    {
+        super.tick(state, worldIn, pos, rand);
+        grow(worldIn, rand, pos, state);
+    }
+
+    public ArrayList<Direction> getAttachedSides(BlockState state)
+    {
+        ArrayList<Direction> sides = new ArrayList<Direction>();
+        for (Direction side : Direction.values())
+        {
+            if (state.getBlock() instanceof MossBlock)
+            {
+                if (state.get(FACING_TO_PROPERTY_MAP.get(side))) { sides.add(side); }
+            }
+        }
+        return sides;
+    }
+
+    public ArrayList<Direction> getNotAttachedSides(BlockState state)
+    {
+        ArrayList<Direction> sides = new ArrayList<Direction>();
+        for (Direction side : Direction.values())
+        {
+            if (state.getBlock() instanceof MossBlock)
+            {
+                if (!state.get(FACING_TO_PROPERTY_MAP.get(side))) { sides.add(side); }
+            }
+        }
+        return sides;
+    }
+
+    public Direction getRandomSide(Random rand, ArrayList<Direction> sides)
+    {
+        if (sides.size() > 0)
+            return sides.get(rand.nextInt(sides.size()));
+        else
+            return Direction.DOWN;
     }
 }

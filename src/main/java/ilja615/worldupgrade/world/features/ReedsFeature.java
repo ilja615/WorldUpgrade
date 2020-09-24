@@ -25,16 +25,8 @@ import net.minecraft.world.gen.feature.ProbabilityConfig;
 import java.util.Random;
 import java.util.function.Function;
 
-public class ReedsFeature extends Feature<NoFeatureConfig> {
-
-    // oi janky code mate
-//    private static final BlockState REED_1_234 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
-//    private static final BlockState REED_2_2 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, false).with(DoubleReedPlantBlock.WATERLOGGED, false);
-//    private static final BlockState REED_2_34 = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
-//    private static final BlockState REED_3_3 = ModBlocks.TOP_REED.get().getDefaultState().with(ExtraReedBlock.ABOVE, false);
-//    private static final BlockState REED_3_4 = REED_2_34;
-//    private static final BlockState REED_4_4 = REED_3_3;
-//    private static final BlockState REED_1_234_w = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, true);
+public class ReedsFeature extends Feature<NoFeatureConfig>
+{
     private static final BlockState BOTTOM_REED = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);
     private static final BlockState BOTTOM_REED_W = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, true);
     private static final BlockState MIDDLE_REED = ModBlocks.TALL_REED.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DoubleReedPlantBlock.ABOVE, true).with(DoubleReedPlantBlock.WATERLOGGED, false);

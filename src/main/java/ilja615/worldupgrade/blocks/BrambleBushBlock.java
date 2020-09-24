@@ -92,4 +92,11 @@ public class BrambleBushBlock extends BushBlock implements IGrowable
         int i = Math.min(3, p_225535_4_.get(AGE) + 1);
         p_225535_1_.setBlockState(p_225535_3_, p_225535_4_.with(AGE, Integer.valueOf(i)), 2);
     }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
+    {
+        super.tick(state, worldIn, pos, rand);
+        grow(worldIn, rand, pos, state);
+    }
 }

@@ -19,6 +19,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GRASSY_STONE = BLOCKS.register("grassy_stone", () -> new GrassyBlockBase(ModProperties.GRASSY_STONE_PROPERTY));
     public static final RegistryObject<Block> SMOKE_VENT = BLOCKS.register("smoke_vent", () -> new SmokeVentBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
     public static final RegistryObject<Block> FIRE_JET = BLOCKS.register("fire_jet", () -> new FireJetBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
+    public static final RegistryObject<Block> CHAR_EMBERS = BLOCKS.register("char_embers", () -> new CharEmbersBlock(ModProperties.CHAR_EMBERS_PROPRETY));
+    public static final RegistryObject<Block> COARSE_SAND = BLOCKS.register("coarse_sand", () -> new CoarseSandBlock(ModProperties.SAND_PROPERTY));
 
     // JUngle Rocks
     public static final RegistryObject<Block> JUNGLE_ROCK = BLOCKS.register("jungle_rock", () -> new Block(ModProperties.JUNGLE_ROCK_PROPERTY));
@@ -61,7 +63,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUTUMN_LEAVES_PILE = BLOCKS.register("autumn_leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> GUNNERA_LEAF = BLOCKS.register("gunnera_leaf", () -> new GunneraLeafBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.LEAVES_PROPERTY));
-    public static final RegistryObject<Block> MOSS = BLOCKS.register("moss", () -> new MossBlock(Block.Properties.from(Blocks.VINE)));
+    public static final RegistryObject<Block> MOSS = BLOCKS.register("moss", () -> new MossBlock(Block.Properties.from(Blocks.VINE).tickRandomly()));
+    public static final RegistryObject<Block> TALL_DEAD_BUSH = BLOCKS.register("tall_dead_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
 
     // Plant crafted blocks
     public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock( Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));

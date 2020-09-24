@@ -1,7 +1,8 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "0": "worldupgrade:block/mossy_hanging"
+        "0": "worldupgrade:block/mossy_hanging",
+        "particle": "worldupgrade:block/mossy_hanging"
     },
     "elements": [
         {

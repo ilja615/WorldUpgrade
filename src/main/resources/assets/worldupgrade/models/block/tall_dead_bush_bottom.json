@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/tall_db_top",
+    "cross": "worldupgrade:block/tall_db_top"
+  }
+}

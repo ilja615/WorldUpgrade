@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "":
+    [
+      { "model": "worldupgrade:block/char_embers" },
+      { "model": "worldupgrade:block/char_embers", "y": 90 },
+      { "model": "worldupgrade:block/char_embers", "y": 180 },
+      { "model": "worldupgrade:block/char_embers", "y": 270 }
+    ]
+  }
+}

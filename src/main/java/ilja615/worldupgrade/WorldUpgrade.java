@@ -1,5 +1,6 @@
 package ilja615.worldupgrade;
 
+import ilja615.worldupgrade.blocks.BrambleBushBlock;
 import ilja615.worldupgrade.client.ModRenderRegistry;
 import ilja615.worldupgrade.init.*;
 import ilja615.worldupgrade.proxy.ClientProxy;
@@ -54,8 +55,8 @@ public class WorldUpgrade
         public static void onEntitiesRegistry(final RegistryEvent.Register<EntityType<?>> event) {
             event.getRegistry().registerAll
                     (
-                            ModEntities.WEB_SPIDER,
-                            ModEntities.BABY_SPIDER
+                            ModEntities.BUBBLE_EEL,
+                            ModEntities.SPOONBILL
                     );
             ModEntities.registerEntityWorldSpawns();
         }
@@ -63,8 +64,15 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
             final IForgeRegistry<Item> registry = event.getRegistry();
-            ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-                final BlockItem blockItem = new BlockItem(block, ModProperties.ITEM_PROPERTY);
+            ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block ->
+            {
+                BlockItem blockItem;
+                if (block instanceof BrambleBushBlock) {
+                    blockItem = new BlockItem(block, ModProperties.BRAMBLE_FOOD_ITEM_PROPERTY);
+                }
+                else {
+                    blockItem = new BlockItem(block, ModProperties.ITEM_PROPERTY);
+                }
                 blockItem.setRegistryName(block.getRegistryName());
                 registry.register(blockItem);
             });

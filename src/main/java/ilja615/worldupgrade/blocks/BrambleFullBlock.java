@@ -91,4 +91,11 @@ public class BrambleFullBlock extends Block implements IGrowable
     public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
         return field_226930_a_;
     }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
+    {
+        super.tick(state, worldIn, pos, rand);
+        grow(worldIn, rand, pos, state);
+    }
 }

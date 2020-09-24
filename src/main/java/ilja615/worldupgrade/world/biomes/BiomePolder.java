@@ -27,7 +27,7 @@ public class BiomePolder extends Biome
 
     public BiomePolder()
     {
-        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.POLDER_SUFACE_BUILDER, PolderSurfaceBuilder.GRASSY_CLAY_CONFIG)).precipitation(RainType.RAIN).category(Category.SWAMP).depth(-0.09F).scale(-0.09F).temperature(0.8F).downfall(0.4F).waterColor(4159204).waterFogColor(329011).parent((String)null));
+        super((new Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.POLDER_SUFACE_BUILDER, PolderSurfaceBuilder.GRASSY_CLAY_CONFIG)).precipitation(RainType.RAIN).category(Category.SWAMP).depth(-0.09F).scale(-0.09F).temperature(0.6F).downfall(0.7F).waterColor(4159204).waterFogColor(329011).parent((String)null));
 
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.RABBIT, 12, 2, 3));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COW, 12, 2, 3));
@@ -58,7 +58,7 @@ public class BiomePolder extends Biome
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(YELLOW_FLOWER_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(DefaultBiomeFeatures.SWAMP_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(1, 0.3F, 2))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRY_REEDS.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.TOP_SOLID_HEIGHTMAP_NOISE_BIASED.configure(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D, Heightmap.Type.WORLD_SURFACE_WG))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.BRAMBLE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(3))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.BRAMBLE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
 
 
 // i think it is needed

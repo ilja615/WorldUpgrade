@@ -1,7 +1,7 @@
 package ilja615.worldupgrade.init;
 
-import ilja615.worldupgrade.entities.BabySpiderEntity;
-import ilja615.worldupgrade.entities.WebSpiderEntity;
+import ilja615.worldupgrade.entities.BubbleEelEntity;
+import ilja615.worldupgrade.entities.SpoonBillEntity;
 import ilja615.worldupgrade.util.ItemGroupWU;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -14,20 +14,15 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class ModEntities
 {
-    //public static EntityType<WebSpiderEntity> WEB_SPIDER = EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":web_spider").setRegistryName("web_spider");
-   // public static EntityType<BabySpiderEntity> BABY_SPIDER = EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).build(WorldUpgrade.MOD_ID + ":baby_spider").setRegistryName("baby_spider");
-
-    public static final EntityType<WebSpiderEntity> WEB_SPIDER = register("worldupgrade:web_spider", EntityType.Builder.create(WebSpiderEntity::new, EntityClassification.MONSTER).size(0.7F, 0.6F));
-    public static final EntityType<BabySpiderEntity> BABY_SPIDER = register("worldupgrade:baby_spider", EntityType.Builder.create(BabySpiderEntity::new, EntityClassification.MONSTER).size(0.7F, 0.6F));
-
+    public static final EntityType<BubbleEelEntity> BUBBLE_EEL = register("worldupgrade:bubble_eel", EntityType.Builder.create(BubbleEelEntity::new, EntityClassification.WATER_CREATURE).size(0.4F, 0.4F));
+    public static final EntityType<SpoonBillEntity> SPOONBILL = register("worldupgrade:spoonbill", EntityType.Builder.create(SpoonBillEntity::new, EntityClassification.CREATURE).size(0.8F, 1.5F));
 
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item> event)
     {
         event.getRegistry().registerAll
         (
-            ModSpawnEggs.WEB_SPIDER_EGG = registerEntitySpawnEgg(WEB_SPIDER, 0xf2f0f0, 0x5e565e, "web_spider_egg"),
-            ModSpawnEggs.BABY_SPIDER_EGG = registerEntitySpawnEgg(BABY_SPIDER, 0xffffff, 0x121212, "baby_spider_egg")
-
+                ModSpawnEggs.BUBBLE_EEL_EGG = registerEntitySpawnEgg(BUBBLE_EEL, 0xffffff, 0x121212, "bubble_eel_egg"),
+                ModSpawnEggs.SPOONBILL_EGG = registerEntitySpawnEgg(SPOONBILL, 0xff345f, 0xaa8112, "spoonbill_egg")
         );
     }
 

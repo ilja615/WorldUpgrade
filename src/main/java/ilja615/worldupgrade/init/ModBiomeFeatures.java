@@ -32,12 +32,7 @@ public class ModBiomeFeatures
     public static final Feature<NoFeatureConfig> BRAMBLE = register("bramble", new BrambleFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> ALOE_VERA = register("aloe_vera", new AloeVeraFeature(NoFeatureConfig::deserialize));
 
-    //public static final WorldCarver<ProbabilityConfig> TINY_RIVER = registerCarver("tiny_river", new PolderTinyRiverCarver(ProbabilityConfig::deserialize, 256));
-
     private static <C extends IFeatureConfig, F extends Feature<C>> F register(String key, F value) {
         return (F)(Registry.<Feature<?>>register(Registry.FEATURE, key, value));
     }
-//    private static <C extends ICarverConfig, F extends WorldCarver<C>> F registerCarver(String key, F carver) {
-//        return (F)(Registry.<WorldCarver<?>>register(Registry.CARVER, key, carver));
-//    }
 }

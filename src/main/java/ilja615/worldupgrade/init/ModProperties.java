@@ -4,6 +4,7 @@ import ilja615.worldupgrade.util.ItemGroupWU;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.ToolType;
 
@@ -28,7 +29,13 @@ public class ModProperties
     public static final Block.Properties GRASSY_CLAY_PROPERTY = Block.Properties.create(Material.CLAY).sound(SoundType.GROUND).hardnessAndResistance(0.6F, 3.0F).tickRandomly();
     public static final Block.Properties GRASSY_STONE_PROPERTY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F).tickRandomly();
     public static final Block.Properties REED_PLANT_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement().tickRandomly();
+    public static final Block.Properties CHAR_EMBERS_PROPRETY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.5F, 45.0F).doesNotBlockMovement();
+
+    //foods
+    public static final Food BRAMBLE = (new Food.Builder()).hunger(2).saturation(0.1F).build();
 
     //items
     public static final Item.Properties ITEM_PROPERTY = new Item.Properties().group(ItemGroupWU.instance);
+    public static final Item.Properties BRAMBLE_FOOD_ITEM_PROPERTY = new Item.Properties().group(ItemGroupWU.instance).food(BRAMBLE);
+
 }
