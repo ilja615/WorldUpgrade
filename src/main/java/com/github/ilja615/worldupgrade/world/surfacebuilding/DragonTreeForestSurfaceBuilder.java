@@ -1,0 +1,41 @@
+package com.github.ilja615.worldupgrade.world.surfacebuilding;
+
+import com.github.ilja615.worldupgrade.init.ModBlocks;
+import com.mojang.datafixers.Dynamic;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.SharedSeedRandom;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.IChunk;
+import net.minecraft.world.gen.PerlinNoiseGenerator;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+
+import java.util.Random;
+import java.util.function.Function;
+
+public class DragonTreeForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
+{
+    public static final BlockState RED_PEBBLE = ModBlocks.RED_PEBBLE.get().getDefaultState();
+
+    public static final SurfaceBuilderConfig RED_PEBBLE_CONFIG = new SurfaceBuilderConfig(RED_PEBBLE, RED_PEBBLE, RED_PEBBLE);
+    public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(8544L), 4, 0);
+    private final int r = 0;
+
+    public DragonTreeForestSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer)
+    {
+        super(deserializer);
+    }
+
+    @Override
+    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    {
+
+        if (perlinNoiseGenerator.noiseAt(x, z, false) < -0.25)
+        { //-3
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, RED_PEBBLE_CONFIG);
+        } else
+        {
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
+        }
+    }
+}

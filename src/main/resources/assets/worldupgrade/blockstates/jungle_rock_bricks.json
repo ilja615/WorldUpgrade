@@ -1,7 +1,9 @@
 {
   "variants": {
     "": [
-      { "model": "worldupgrade:block/jungle_rock_bricks" }
+      {
+        "model": "worldupgrade:block/jungle_rock_bricks"
+      }
     ]
   }
 }

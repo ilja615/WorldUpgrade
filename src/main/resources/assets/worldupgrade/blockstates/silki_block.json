@@ -1,8 +1,9 @@
 {
   "variants": {
-    "":
-    [
-      { "model": "worldupgrade:block/silki_block" }
+    "": [
+      {
+        "model": "worldupgrade:block/silki_block"
+      }
     ]
   }
 }
