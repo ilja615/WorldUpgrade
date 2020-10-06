@@ -1,6 +1,6 @@
 package com.github.ilja615.worldupgrade.world.biomes;
 
-import com.github.ilja615.worldupgrade.init.ModBiomeFeatures;
+import com.github.ilja615.worldupgrade.init.ModSurfaceBuilders;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -22,7 +22,7 @@ public class OvergrownPeaksBiome extends Biome
     public OvergrownPeaksBiome()
     {
         super(new Builder()
-                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModBiomeFeatures.OVERGROWN_PEAKS_SURFACE_BUILDER, SurfaceBuilder.GRAVEL_CONFIG))
+                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModSurfaceBuilders.OVERGROWN_PEAKS_SURFACE_BUILDER.get(), SurfaceBuilder.GRAVEL_CONFIG))
                 .precipitation(RainType.RAIN)
                 .category(Category.JUNGLE)
                 .depth(0.1F)

@@ -1,6 +1,7 @@
 package com.github.ilja615.worldupgrade.world.biomes;
 
 import com.github.ilja615.worldupgrade.init.ModBiomeFeatures;
+import com.github.ilja615.worldupgrade.init.ModSurfaceBuilders;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -21,7 +22,7 @@ public class DragonDesertBiome extends Biome
     public DragonDesertBiome()
     {
         super(new Builder()
-                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModBiomeFeatures.DRAGON_DESSERT_SURFACE_BUILDER, SurfaceBuilder.GRASS_DIRT_SAND_CONFIG))
+                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModSurfaceBuilders.DRAGON_DESERT_SURFACE_BUILDER.get(), SurfaceBuilder.GRASS_DIRT_SAND_CONFIG))
                 .precipitation(RainType.RAIN)
                 .category(Category.DESERT)
                 .depth(0.125F)
@@ -61,9 +62,9 @@ public class DragonDesertBiome extends Biome
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.TALL_GRASS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(4))));
 
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.AGAVE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRAGON_TREE.withConfiguration(DefaultBiomeFeatures.OAK_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(0, 0.4F, 1))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.ALOE_VERA.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.AGAVE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRAGON_TREE.get().withConfiguration(DefaultBiomeFeatures.OAK_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(0, 0.4F, 1))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.ALOE_VERA.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
 
 // ??? weird stuff but i think it is needed
         DefaultBiomeFeatures.addFreezeTopLayer(this);

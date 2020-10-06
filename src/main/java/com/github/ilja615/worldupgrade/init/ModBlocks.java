@@ -1,6 +1,7 @@
 package com.github.ilja615.worldupgrade.init;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
+import com.github.ilja615.worldupgrade.blocks.GravelBlock;
 import com.github.ilja615.worldupgrade.blocks.*;
 import net.minecraft.block.*;
 import net.minecraft.block.GravelBlock;
@@ -14,8 +15,8 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, WorldUpgrade.MOD_ID);
 
     // Terrain Blocks:
-    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new GravelBlock(ModProperties.GRAVEL_PROPERTY));
-    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new GravelBlock(ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new GravelBlock(-0x4c494c, ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new GravelBlock(-0xc2c0ba, ModProperties.GRAVEL_PROPERTY));
     public static final RegistryObject<Block> GRASSY_CLAY = BLOCKS.register("grassy_clay", () -> new GrassyBlockBase(ModProperties.GRASSY_CLAY_PROPERTY));
     public static final RegistryObject<Block> REGOLITH = BLOCKS.register("regolith", () -> new CoarseSandBlock(ModProperties.STONE_PROPERTY));
     public static final RegistryObject<Block> GRASSY_STONE = BLOCKS.register("grassy_stone", () -> new GrassyBlockBase(ModProperties.GRASSY_STONE_PROPERTY));
@@ -25,7 +26,7 @@ public class ModBlocks
     public static final RegistryObject<Block> COARSE_SAND = BLOCKS.register("coarse_sand", () -> new CoarseSandBlock(ModProperties.SAND_PROPERTY));
     public static final RegistryObject<Block> PINK_SAND = BLOCKS.register("pink_sand", () -> new SandBlock(-0xff9c99, ModProperties.SAND_PROPERTY));
 
-    // JUngle Rocks
+    // Jungle Rocks
     public static final RegistryObject<Block> JUNGLE_ROCK = BLOCKS.register("jungle_rock", () -> new Block(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_ROCK_OVERGROWN = BLOCKS.register("jungle_rock_overgrown", () -> new GrassyBlockBase(ModProperties.OVERGROWN_JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_FOSSIL = BLOCKS.register("jungle_fossil", () -> new JungleFossilBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
