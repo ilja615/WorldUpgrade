@@ -37,18 +37,15 @@ public class CharredForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCo
         if (perlinNoiseGenerator.noiseAt(x, z, false) > -0.26)
         {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, COARSE_DIRT_CONFIG);
-        }
-        else
+        } else
         {
             if (noise > 3.0D)
             {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRAVEL_DARK_CONFIG);
-            }
-            else if (noise < -2.0D)
+            } else if (noise < -2.0D)
             {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG);
-            }
-            else
+            } else
             {
                 int r = random.nextInt(2);
                 if (r == 0)

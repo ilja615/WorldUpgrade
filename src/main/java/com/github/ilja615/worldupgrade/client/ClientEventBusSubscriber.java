@@ -8,7 +8,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = WorldUpgrade.MOD_ID, value = Dist.CLIENT)
-public class ClientEventsForMod
+public class ClientEventBusSubscriber
 {
     @SubscribeEvent
     public static void onFogColor(EntityViewRenderEvent.FogColors event)
@@ -26,9 +26,9 @@ public class ClientEventsForMod
     {
         if (event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition()) instanceof CloudForestBiome)
         {
-            if(event.getDensity() < 0.05)
+            if (event.getDensity() < 0.05)
                 event.setDensity(event.getDensity() + 0.005F);
-            else if(event.getDensity() > 0.05)
+            else if (event.getDensity() > 0.05)
                 event.setDensity(event.getDensity() - 0.005F);
             event.setCanceled(true);
         }
