@@ -1,6 +1,5 @@
 {
   "item.worldupgrade.trilobite_shell": "Sturdy Trilobite Shell",
-
   "block.worldupgrade.gravel_dark": "Dark Gravel",
   "block.worldupgrade.gravel_light": "Light Gravel",
   "block.worldupgrade.dead_log": "Dead Log",
@@ -11,7 +10,6 @@
   "block.worldupgrade.dragon_leaves": "Dragon Leaves",
   "block.worldupgrade.grassy_clay": "Grassy Clay",
   "block.worldupgrade.grassy_stone": "Grassy Stone",
-
   "block.worldupgrade.jungle_rock": "Coquina",
   "block.worldupgrade.jungle_rock_overgrown": "Overgrown Coquina",
   "block.worldupgrade.jungle_cobble": "Cobbled Coquina",
@@ -35,7 +33,6 @@
   "block.worldupgrade.jungle_rock_bricks_wall": "Coquina Brick Wall",
   "block.worldupgrade.jungle_rock_bricks_mossy_wall": "Mossy Coquina Brick Wall",
   "block.worldupgrade.jungle_cobble_mossy_wall": "Mossy Cobbled Coquina Wall",
-
   "block.worldupgrade.aloe_vera": "Aloe Vera",
   "block.worldupgrade.agave": "Agave",
   "block.worldupgrade.tall_reed": "Reed",
@@ -46,11 +43,8 @@
   "block.worldupgrade.dry_reed_bale": "Dry Reed Bale",
   "block.worldupgrade.leaves_pile": "Pile of Fallen Leaves",
   "block.worldupgrade.aloe_full_block": "Aloe Vera Block",
-
   "item.worldupgrade.web_spider_egg": "Spiderweb Spawn Egg",
   "item.worldupgrade.baby_spider_egg": "Baby Spider Spawn Egg",
-
-
   "biome.worldupgrade.blistering_plains": "Blistering Fields",
   "biome.worldupgrade.overgrown_peaks": "Overgrown Peaks",
   "biome.worldupgrade.dragon_dessert": "Dragon Desert",
@@ -58,7 +52,5 @@
   "biome.worldupgrade.cloud_forrest": "Cloud Forest",
   "biome.worldupgrade.charred_forrest": "Charred Forest",
   "biome.worldupgrade.dragon_tree_forrest": "Dragon Tree Forest",
-
-
   "itemGroup.worldupgrade": "WorldUpgrade"
 }

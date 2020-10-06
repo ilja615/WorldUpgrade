@@ -1,8 +1,9 @@
 {
   "variants": {
-    "":
-    [
-      { "model": "worldupgrade:block/aloe_vera" }
+    "": [
+      {
+        "model": "worldupgrade:block/aloe_vera"
+      }
     ]
   }
 }
