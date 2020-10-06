@@ -29,15 +29,13 @@ public class CharEmbersFeature extends Feature<NoFeatureConfig>
     {
         for (BlockState blockstate = worldIn.getBlockState(pos); (blockstate.isAir(worldIn, pos) || blockstate.isIn(BlockTags.LEAVES)) && pos.getY() > 0; blockstate = worldIn.getBlockState(pos))
             pos = pos.down();
-        {
-        }
 
         BlockState blockstate1 = CHAR_EMBERS_BLOCK.getDefaultState();
 
         for (int i = 0; i < 4; ++i)
         {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-            if (worldIn.isAirBlock(blockpos) && blockstate1.isValidPosition(worldIn, blockpos))
+            if (worldIn.isAirBlock(blockpos) && !worldIn.isAirBlock(blockpos.down()))
             {
                 worldIn.setBlockState(blockpos, blockstate1, 2);
             }

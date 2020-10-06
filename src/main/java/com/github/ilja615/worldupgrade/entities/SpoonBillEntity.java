@@ -1,4 +1,4 @@
-package ilja615.worldupgrade.entities;
+package com.github.ilja615.worldupgrade.entities;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;

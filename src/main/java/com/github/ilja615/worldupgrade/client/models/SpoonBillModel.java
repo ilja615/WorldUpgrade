@@ -1,12 +1,11 @@
 package com.github.ilja615.worldupgrade.client.models;
 
-import com.github.ilja615.worldupgrade.entities.SpoonBillEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
-public class SpoonBillModel extends EntityModel<SpoonBillEntity>
+public class SpoonBillModel extends EntityModel<ilja615.worldupgrade.entities.SpoonBillEntity>
 {
     private final ModelRenderer leg1;
     private final ModelRenderer leg2;
@@ -95,7 +94,7 @@ public class SpoonBillModel extends EntityModel<SpoonBillEntity>
     }
 
     @Override
-    public void setRotationAngles(SpoonBillEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+    public void setRotationAngles(ilja615.worldupgrade.entities.SpoonBillEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
     {
         if (entity.flying)
         {
