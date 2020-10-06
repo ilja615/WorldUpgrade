@@ -1,5 +1,7 @@
 {
   "variants": {
-    "":   { "model": "worldupgrade:block/reed_3"}
+    "": {
+      "model": "worldupgrade:block/reed_3"
+    }
   }
 }
