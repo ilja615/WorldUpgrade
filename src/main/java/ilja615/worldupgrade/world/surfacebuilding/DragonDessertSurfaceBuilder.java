@@ -15,10 +15,13 @@ import java.util.function.Function;
 
 public class DragonDessertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final BlockState RED_PEBBLE = ModBlocks.RED_PEBBLE.get().getDefaultState();
+    public static final BlockState REGOLITH = ModBlocks.REGOLITH.get().getDefaultState();
+    public static final BlockState COARSE_SAND = ModBlocks.COARSE_SAND.get().getDefaultState();
 
-    public static final SurfaceBuilderConfig RED_PEBBLE_CONFIG = new SurfaceBuilderConfig(RED_PEBBLE, RED_PEBBLE, RED_PEBBLE);
-   public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(8544L), 4, 0);
+    public static final SurfaceBuilderConfig CONFIG1 = new SurfaceBuilderConfig(REGOLITH, REGOLITH, REGOLITH);
+    public static final SurfaceBuilderConfig CONFIG2 = new SurfaceBuilderConfig(COARSE_SAND, COARSE_SAND, COARSE_SAND);
+
+    public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(8544L), 4, 0);
     private int r = 0;
 
     public DragonDessertSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer)
@@ -29,10 +32,10 @@ public class DragonDessertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCo
     @Override
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
 
-        if (perlinNoiseGenerator.noiseAt(x, z, false) < 0.2) { //-3
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, RED_PEBBLE_CONFIG);
+        if (perlinNoiseGenerator.noiseAt(x, z, false)+(random.nextFloat()/5.0f) < 0.2) { //-3
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
         } else {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG2);
         }
     }
 }
