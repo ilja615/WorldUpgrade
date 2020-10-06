@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+            { "model": "worldupgrade:block/pink_sand" },
+            { "model": "worldupgrade:block/pink_sand", "y": 90 },
+            { "model": "worldupgrade:block/pink_sand", "y": 180 },
+            { "model": "worldupgrade:block/pink_sand", "y": 270 }
+        ]
+    }
+}

@@ -32,6 +32,6 @@ public class CharEmbersFeature extends Feature<NoFeatureConfig>                 
 
       for(int i = 0; i < 4; ++i)                                                                                                             {
          BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-         if (worldIn.isAirBlock(blockpos) && blockstate1.isValidPosition(worldIn, blockpos))                                                 {
+         if (worldIn.isAirBlock(blockpos) && !worldIn.isAirBlock(blockpos.down()))                                                 {
             worldIn.setBlockState(blockpos, blockstate1, 2)                                                                            ;}}
       return true                                                                                                                            ;}}

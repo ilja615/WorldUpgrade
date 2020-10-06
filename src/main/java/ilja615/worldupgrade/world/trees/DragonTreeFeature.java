@@ -2,6 +2,7 @@ package ilja615.worldupgrade.world.trees;
 
 
 import com.mojang.datafixers.Dynamic;
+import ilja615.worldupgrade.blocks.CoarseSandBlock;
 import ilja615.worldupgrade.init.ModBlocks;
 import ilja615.worldupgrade.util.DirectionsUtilities;
 import net.minecraft.block.BlockState;
@@ -34,7 +35,7 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
         // Moving down until it is on the ground
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition)) startPosition = startPosition.down();
 
-        if (!isSoil(worldIn, startPosition, null))
+        if (!isSoil(worldIn, startPosition, null) && !(worldIn.hasBlockState(startPosition, state -> state.getBlock() instanceof CoarseSandBlock)))
         {
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
@@ -56,7 +57,7 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
             {
                 for (int iy = 1; iy <= 2; ++iy)
                 {
-                    if (ix*ix + iz*iz + 6*iy*iy <= 36 && ix*ix + iz*iz + 3*iy*iy >= 9)
+                    if (ix*ix + iz*iz + 6*iy*iy <= 34 + rand.nextInt(5) && ix*ix + iz*iz + 3*iy*iy >= 8 + rand.nextInt(3))
                     {
                         setBlockState(worldIn, startPosition.add(ix, 4+hight+iy,iz), LEAF);
                     }
@@ -70,12 +71,20 @@ public class DragonTreeFeature extends AbstractTreeFeature<BaseTreeFeatureConfig
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 2, startPosition.getZ()).offset(direction, 1), TRUNK);
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 2), TRUNK);
             setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 3), TRUNK);
-            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getClockWise(direction)), TRUNK);
-            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
-            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
-            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
-            setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 5, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
-
+            if (rand.nextBoolean())
+            {
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 5, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getCounterClockWise(direction), 2), TRUNK);
+            } else {
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getCounterClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 4).offset(DirectionsUtilities.getClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 3, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getClockWise(direction)), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 4, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getClockWise(direction), 2), TRUNK);
+                setBlockState(worldIn, new BlockPos(startPosition.getX(), startPosition.up(hight).getY() + 5, startPosition.getZ()).offset(direction, 2).offset(DirectionsUtilities.getClockWise(direction), 2), TRUNK);
+            }
         }
 
         return true;

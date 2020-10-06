@@ -12,15 +12,16 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<Block>(ForgeRegistries.BLOCKS, WorldUpgrade.MOD_ID);
 
     // Terrain Blocks:
-    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new BlockGravel( -8356741, ModProperties.GRAVEL_PROPERTY));
-    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new BlockGravel( -8356741, ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new BlockGravel( -0x4c494c, ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new BlockGravel( -0xc2c0ba, ModProperties.GRAVEL_PROPERTY));
     public static final RegistryObject<Block> GRASSY_CLAY = BLOCKS.register("grassy_clay", () -> new GrassyBlockBase(ModProperties.GRASSY_CLAY_PROPERTY));
-    public static final RegistryObject<Block> RED_PEBBLE = BLOCKS.register("red_pebble", () -> new RedPebbleBlock(-8356741, ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> REGOLITH = BLOCKS.register("regolith", () -> new CoarseSandBlock(ModProperties.STONE_PROPERTY));
     public static final RegistryObject<Block> GRASSY_STONE = BLOCKS.register("grassy_stone", () -> new GrassyBlockBase(ModProperties.GRASSY_STONE_PROPERTY));
     public static final RegistryObject<Block> SMOKE_VENT = BLOCKS.register("smoke_vent", () -> new SmokeVentBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
     public static final RegistryObject<Block> FIRE_JET = BLOCKS.register("fire_jet", () -> new FireJetBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
     public static final RegistryObject<Block> CHAR_EMBERS = BLOCKS.register("char_embers", () -> new CharEmbersBlock(ModProperties.CHAR_EMBERS_PROPRETY));
     public static final RegistryObject<Block> COARSE_SAND = BLOCKS.register("coarse_sand", () -> new CoarseSandBlock(ModProperties.SAND_PROPERTY));
+    public static final RegistryObject<Block> PINK_SAND = BLOCKS.register("pink_sand", () -> new SandBlock(-0xff9c99, ModProperties.SAND_PROPERTY));
 
     // JUngle Rocks
     public static final RegistryObject<Block> JUNGLE_ROCK = BLOCKS.register("jungle_rock", () -> new Block(ModProperties.JUNGLE_ROCK_PROPERTY));
@@ -62,7 +63,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUTUMN_FALLEN_LEAVES = BLOCKS.register("autumn_fallen_leaves", () -> new FallenLeavesBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> AUTUMN_LEAVES_PILE = BLOCKS.register("autumn_leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> GUNNERA_LEAF = BLOCKS.register("gunnera_leaf", () -> new GunneraLeafBlock(ModProperties.LEAVES_PROPERTY));
-    public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> STEM = BLOCKS.register("stem", () -> new RotatedPillarBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> MOSS = BLOCKS.register("moss", () -> new MossBlock(Block.Properties.from(Blocks.VINE).tickRandomly()));
     public static final RegistryObject<Block> TALL_DEAD_BUSH = BLOCKS.register("tall_dead_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
 

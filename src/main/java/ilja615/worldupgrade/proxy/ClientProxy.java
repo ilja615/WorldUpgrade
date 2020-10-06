@@ -21,7 +21,6 @@ public class ClientProxy implements IProxy
         public void init()
         {
             //Block colors
-
         Minecraft.getInstance().getBlockColors().register((x, reader, pos, u)
                 -> reader != null && pos != null ? BiomeColors.getGrassColor(reader, pos)
                 : GrassColors.get(0.5D, 1.0D), ModBlocks.JUNGLE_ROCK_OVERGROWN.get());
@@ -32,12 +31,11 @@ public class ClientProxy implements IProxy
                 -> reader != null && pos != null ? BiomeColors.getGrassColor(reader, pos)
                 : GrassColors.get(0.5D, 1.0D), ModBlocks.GRASSY_STONE.get());
 
-        Minecraft.getInstance().getBlockColors().register((x, reader, pos, u)
-                -> reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos)
-                : FoliageColors.getDefault(), ModBlocks.DRAGON_LEAVES.get());
+//        Minecraft.getInstance().getBlockColors().register((x, reader, pos, u)
+//                -> reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos)
+//                : FoliageColors.getDefault(), ModBlocks.DRAGON_LEAVES.get());
 
         // Item colors/*GrassColors.get(0.5D, 1.0D)*/
-
         Minecraft.getInstance().getItemColors().register((x, u)
                 -> GrassColors.get(0.5D, 1.0D), ModBlocks.GRASSY_STONE.get());
         Minecraft.getInstance().getItemColors().register((x, u)
@@ -45,8 +43,8 @@ public class ClientProxy implements IProxy
         Minecraft.getInstance().getItemColors().register((x, u)
                 -> GrassColors.get(0.5D, 1.0D), ModBlocks.JUNGLE_ROCK_OVERGROWN.get());
 
-        Minecraft.getInstance().getItemColors().register((x, u)
-                -> FoliageColors.getDefault(), ModBlocks.DRAGON_LEAVES.get());
+//        Minecraft.getInstance().getItemColors().register((x, u)
+//                -> FoliageColors.getDefault(), ModBlocks.DRAGON_LEAVES.get());
 
             // Cutout s render layer;
             RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
@@ -67,6 +65,5 @@ public class ClientProxy implements IProxy
             RenderTypeLookup.setRenderLayer(ModBlocks.MOSS.get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.CHAR_EMBERS.get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.TALL_DEAD_BUSH.get(), RenderType.getCutout());
-
         }
 }

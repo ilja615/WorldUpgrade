@@ -12,9 +12,9 @@ import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
-public class BiomeVolcanicPlains extends Biome
+public class BiomeBlisteringPlains extends Biome
 {
-    public BiomeVolcanicPlains()
+    public BiomeBlisteringPlains()
     { super((new Biome.Builder()).surfaceBuilder(new ConfiguredSurfaceBuilder(ModBiomeFeatures.VOLCANIC_SURFACE_BUILDER, SurfaceBuilder.GRAVEL_CONFIG)).precipitation(RainType.NONE).category(Category.PLAINS).depth(0.08F).scale(0.0F).temperature(0.4F).downfall(0.4F).waterColor(4159204).waterFogColor(329011).parent((String)null));
 
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));

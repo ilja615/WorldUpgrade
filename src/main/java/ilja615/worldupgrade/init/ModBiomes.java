@@ -15,7 +15,7 @@ public class ModBiomes
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event)
     {
-        registerBiome(new BiomeVolcanicPlains(), "blistering_plains", 4, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
+        registerBiome(new BiomeBlisteringPlains(), "blistering_plains", 4, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
         registerBiome(new BiomeOvergrownPeaks(), "overgrown_peaks", 4, true, BiomeManager.BiomeType.WARM, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
         registerBiome(new BiomeDragonDessert(), "dragon_dessert", 8, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
         registerBiome(new BiomePolder(), "polder", 8, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);

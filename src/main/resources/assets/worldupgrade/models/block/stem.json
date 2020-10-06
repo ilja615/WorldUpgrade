@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "worldupgrade:block/stem_top",
+    "side": "worldupgrade:block/stem"
+  }
+}

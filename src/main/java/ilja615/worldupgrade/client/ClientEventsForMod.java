@@ -27,7 +27,10 @@ public class ClientEventsForMod
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
         if (event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition()) instanceof BiomeCloudForrest)
         {
-            event.setDensity(0.05F);
+            if(event.getDensity() < 0.05)
+                event.setDensity(event.getDensity() + 0.005F);
+            else if(event.getDensity() > 0.05)
+                event.setDensity(event.getDensity() - 0.005F);
             event.setCanceled(true);
         }
     }

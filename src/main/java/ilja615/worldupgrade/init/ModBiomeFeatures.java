@@ -31,6 +31,9 @@ public class ModBiomeFeatures
     public static final Feature<NoFeatureConfig> DRY_REEDS = register("dry_reeds", new ReedsFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> BRAMBLE = register("bramble", new BrambleFeature(NoFeatureConfig::deserialize));
     public static final Feature<NoFeatureConfig> ALOE_VERA = register("aloe_vera", new AloeVeraFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> CHAR_EMBER = register("char_embers", new CharEmbersFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> TALL_DEADBUSH = register("tall_deadbush", new TallDeadBushFeature(NoFeatureConfig::deserialize));
+
 
     private static <C extends IFeatureConfig, F extends Feature<C>> F register(String key, F value) {
         return (F)(Registry.<Feature<?>>register(Registry.FEATURE, key, value));

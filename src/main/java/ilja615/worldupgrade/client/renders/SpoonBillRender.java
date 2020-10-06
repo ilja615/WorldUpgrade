@@ -15,6 +15,13 @@ import javax.annotation.Nullable;
 @OnlyIn(Dist.CLIENT)
 public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel>
 {
+    private static final ResourceLocation[] SPOONBILL_TEXTURES = new ResourceLocation[]
+    {
+        new ResourceLocation("worldupgrade:textures/entity/common_spoonbill.png"),
+        new ResourceLocation("worldupgrade:textures/entity/royal_spoonbill.png"),
+        new ResourceLocation("worldupgrade:textures/entity/yellow_billed_spoonbill.png"),
+        new ResourceLocation("worldupgrade:textures/entity/roseate_spoonbill.png")
+    };
 
     public SpoonBillRender(EntityRendererManager manager) {
         super(manager, new SpoonBillModel(), 0.8f);
@@ -23,6 +30,6 @@ public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(SpoonBillEntity entity) {
-        return new ResourceLocation("worldupgrade:textures/entity/common_spoonbill.png");
+        return SPOONBILL_TEXTURES[entity.getVariant()];
     }
 }

@@ -54,6 +54,7 @@ public class BiomeDragonTreeForrest extends Biome
         //this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.AGAVE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRAGON_TREE.withConfiguration(DefaultBiomeFeatures.OAK_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(2, 0.3F, 2))));
         //this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.ALOE_VERA.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.TALL_DEADBUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(12))));
 
 // ??? weird stuff but i think it is needed
         DefaultBiomeFeatures.addFreezeTopLayer(this);
@@ -62,5 +63,15 @@ public class BiomeDragonTreeForrest extends Biome
 
     }
 
+    @Override
+    public int getGrassColor(double p_225528_1_, double p_225528_3_) {
+        return 0xa8996e;
+    }
+
+    @Override
+    public int getFoliageColor() {
+        //
+        return 0x98864f;
+    }
 
 }
