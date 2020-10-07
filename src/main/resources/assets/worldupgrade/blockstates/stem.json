@@ -1,16 +1,7 @@
 {
   "variants": {
-    "axis=y": {
-      "model": "worldupgrade:block/stem"
-    },
-    "axis=z": {
-      "model": "worldupgrade:block/stem",
-      "x": 90
-    },
-    "axis=x": {
-      "model": "worldupgrade:block/stem",
-      "x": 90,
-      "y": 90
-    }
+    "axis=y":  { "model": "worldupgrade:block/stem" },
+    "axis=z":   { "model": "worldupgrade:block/stem", "x": 90 },
+    "axis=x":   { "model": "worldupgrade:block/stem", "x": 90, "y": 90 }
   }
 }

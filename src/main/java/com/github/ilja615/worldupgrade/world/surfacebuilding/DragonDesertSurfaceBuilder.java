@@ -22,7 +22,7 @@ public class DragonDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     public static final SurfaceBuilderConfig CONFIG2 = new SurfaceBuilderConfig(COARSE_SAND, COARSE_SAND, COARSE_SAND);
 
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(8544L), 4, 0);
-    private final int r = 0;
+    private int r = 0;
 
     public DragonDesertSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer)
     {
@@ -32,10 +32,11 @@ public class DragonDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     @Override
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
-        if (perlinNoiseGenerator.noiseAt(x, z, false) + (random.nextFloat() / 5.0f) < 0.2)
+        if (perlinNoiseGenerator.noiseAt(x, z, false)+(random.nextFloat()/5.0f) < 0.2)
         {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
-        } else
+        }
+        else
         {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG2);
         }

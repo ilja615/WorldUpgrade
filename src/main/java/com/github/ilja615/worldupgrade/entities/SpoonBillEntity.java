@@ -2,12 +2,13 @@ package com.github.ilja615.worldupgrade.entities;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.PanicGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +18,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -65,24 +67,14 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         return null;
     }
 
-    @Override
-    protected void registerData()
-    {
-        super.registerData();
-        this.dataManager.register(SPOONBILL_TYPE, 0);
-    }
+    protected void registerData() { super.registerData(); this.dataManager.register(SPOONBILL_TYPE, 0); }
 
-    public int getVariant()
-    {
-        return MathHelper.clamp(this.dataManager.get(SPOONBILL_TYPE), 0, 3);
-    }
+    public int getVariant() { return MathHelper.clamp(this.dataManager.get(SPOONBILL_TYPE), 0, 3); }
 
-    public void setVariant(int variantIn)
-    {
+    public void setVariant(int variantIn) {
         this.dataManager.set(SPOONBILL_TYPE, variantIn);
     }
 
-    @Override
     @Nullable
     public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
     {
@@ -90,34 +82,19 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         int f;
         if (spawnDataIn instanceof SpoonBillEntity.SpoonBillData)
         {
-            i = ((SpoonBillEntity.SpoonBillData) spawnDataIn).variant;
-        } else
-        {
+            i = ((SpoonBillEntity.SpoonBillData)spawnDataIn).variant;
+        } else {
             i = 0;
             f = rand.nextInt(10);
-            if (f > 6) i = 0;
-            else if (f > 4) i = 1;
-            else if (f > 2) i = 2;
-            else i = 3;
+                 if (f > 6)  i = 0;
+            else if (f > 4)  i = 1;
+            else if (f > 2)  i = 2;
+            else             i = 3;
             spawnDataIn = new SpoonBillEntity.SpoonBillData(i);
         }
 
         this.setVariant(i);
         return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-    }
-
-    @Override
-    public void writeAdditional(CompoundNBT compound)
-    {
-        super.writeAdditional(compound);
-        compound.putInt("Variant", this.getVariant());
-    }
-
-    @Override
-    public void readAdditional(CompoundNBT compound)
-    {
-        super.readAdditional(compound);
-        this.setVariant(compound.getInt("Variant"));
     }
 
     static class SpoonBillData extends AgeableEntity.AgeableData
@@ -129,4 +106,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
             this.variant = variantIn;
         }
     }
+
+    public void writeAdditional(CompoundNBT compound) { super.writeAdditional(compound); compound.putInt("Variant", this.getVariant()); }
+    public void readAdditional(CompoundNBT compound) { super.readAdditional(compound); this.setVariant(compound.getInt("Variant")); }
 }

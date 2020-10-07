@@ -1,7 +1,6 @@
 package com.github.ilja615.worldupgrade.world.biomes;
 
 import com.github.ilja615.worldupgrade.init.ModBiomeFeatures;
-import com.github.ilja615.worldupgrade.init.ModSurfaceBuilders;
 import com.github.ilja615.worldupgrade.world.surfacebuilding.PolderSurfaceBuilder;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
@@ -28,7 +27,7 @@ public class PolderBiome extends Biome
     public PolderBiome()
     {
         super(new Builder()
-                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModSurfaceBuilders.POLDER_SURFACE_BUILDER.get(), PolderSurfaceBuilder.GRASSY_CLAY_CONFIG))
+                .surfaceBuilder(new ConfiguredSurfaceBuilder<>(ModBiomeFeatures.POLDER_SUFACE_BUILDER, PolderSurfaceBuilder.GRASSY_CLAY_CONFIG))
                 .precipitation(RainType.RAIN)
                 .category(Category.SWAMP)
                 .depth(-0.09F)
@@ -67,8 +66,8 @@ public class PolderBiome extends Biome
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(DefaultBiomeFeatures.BIRCH_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(1, 0.15F, 4))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(YELLOW_FLOWER_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(DefaultBiomeFeatures.SWAMP_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(1, 0.3F, 2))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRY_REEDS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.TOP_SOLID_HEIGHTMAP_NOISE_BIASED.configure(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D, Heightmap.Type.WORLD_SURFACE_WG))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.BRAMBLE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.DRY_REEDS.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.TOP_SOLID_HEIGHTMAP_NOISE_BIASED.configure(new TopSolidWithNoiseConfig(160, 80.0D, 0.3D, Heightmap.Type.WORLD_SURFACE_WG))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModBiomeFeatures.BRAMBLE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
 
 
 // i think it is needed

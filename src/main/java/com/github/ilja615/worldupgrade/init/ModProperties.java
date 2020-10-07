@@ -10,7 +10,7 @@ import net.minecraftforge.common.ToolType;
 
 public class ModProperties
 {
-    //block default
+    //blocsk default
     public static final Block.Properties GRAVEL_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(0.6F, 3.0F);
     public static final Block.Properties LOG_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 10.0F).harvestLevel(0).harvestTool(ToolType.AXE);
     public static final Block.Properties LEAVES_PROPERTY = Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(0.2F, 1.0F).tickRandomly().notSolid();
@@ -37,4 +37,5 @@ public class ModProperties
     //items
     public static final Item.Properties ITEM_PROPERTY = new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE);
     public static final Item.Properties BRAMBLE_FOOD_ITEM_PROPERTY = new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE).food(BRAMBLE);
+
 }

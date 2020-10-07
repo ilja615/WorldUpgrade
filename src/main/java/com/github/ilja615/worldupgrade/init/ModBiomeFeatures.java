@@ -1,34 +1,42 @@
 package com.github.ilja615.worldupgrade.init;
 
-import com.github.ilja615.worldupgrade.WorldUpgrade;
 import com.github.ilja615.worldupgrade.world.features.*;
 import com.github.ilja615.worldupgrade.world.features.trees.DeadTreeFeature;
 import com.github.ilja615.worldupgrade.world.features.trees.DragonTreeFeature;
+import com.github.ilja615.worldupgrade.world.surfacebuilding.*;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 
 public class ModBiomeFeatures
 {
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, WorldUpgrade.MOD_ID);
-    public static final BlockClusterFeatureConfig FERN_CONFIG = new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.FERN.getDefaultState()), new SimpleBlockPlacer()).tries(32).build();
+    public static final BlockClusterFeatureConfig FERN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.FERN.getDefaultState()), new SimpleBlockPlacer())).tries(32).build();
 
-    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> DEAD_TREE = FEATURES.register("dead_tree", () -> new DeadTreeFeature(BaseTreeFeatureConfig::deserialize/*, false*/));
-    public static final RegistryObject<Feature<NoFeatureConfig>> CHAR_EMBER = FEATURES.register("char_embers", () -> new CharEmbersFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<NoFeatureConfig>> TALL_DEADBUSH = FEATURES.register("tall_deadbush", () -> new TallDeadBushFeature(NoFeatureConfig::deserialize));
+    public static final SurfaceBuilder<SurfaceBuilderConfig> VOLCANIC_SURFACE_BUILDER = new VolcanicSurfaceBuilder(SurfaceBuilderConfig::deserialize);
+    public static final SurfaceBuilder<SurfaceBuilderConfig> OVERGROWN_PEAKS_SURFACE_BUILDER = new OvergrownPeaksSurfaceBuilder(SurfaceBuilderConfig::deserialize);
+    public static final SurfaceBuilder<SurfaceBuilderConfig> DRAGON_DESSERT_SURFACE_BUILDER = new DragonDesertSurfaceBuilder(SurfaceBuilderConfig::deserialize);
+    public static final SurfaceBuilder<SurfaceBuilderConfig> POLDER_SUFACE_BUILDER = new PolderSurfaceBuilder(SurfaceBuilderConfig::deserialize);
+    public static final SurfaceBuilder<SurfaceBuilderConfig> CHARRED_F_SURFACE_BUILDER = new CharredForestSurfaceBuilder(SurfaceBuilderConfig::deserialize);
+    public static final SurfaceBuilder<SurfaceBuilderConfig> DRAGON_F_SURFACE_BUILDER = new DragonTreeForestSurfaceBuilder(SurfaceBuilderConfig::deserialize);
 
-    public static final RegistryObject<Feature<NoFeatureConfig>> SMOKE_VENT_FIRE_JET = FEATURES.register("smoke_vent_fire_jet", () -> new VolcanicFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<NoFeatureConfig>> AGAVE = FEATURES.register("agave", () -> new AgaveFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> DRAGON_TREE = FEATURES.register("dragon_tree", () -> new DragonTreeFeature(BaseTreeFeatureConfig::deserialize, false));
-    public static final RegistryObject<Feature<NoFeatureConfig>> DRY_REEDS = FEATURES.register("dry_reeds", () -> new ReedsFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<NoFeatureConfig>> BRAMBLE = FEATURES.register("bramble", () -> new BrambleFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<NoFeatureConfig>> ALOE_VERA = FEATURES.register("aloe_vera", () -> new AloeVeraFeature(NoFeatureConfig::deserialize));
+    public static final Feature<BaseTreeFeatureConfig> DEAD_TREE = register("dead_tree", new DeadTreeFeature(BaseTreeFeatureConfig::deserialize/*, false*/));
+    public static final Feature<NoFeatureConfig> SMOKE_VENT_FIRE_JET = register("smoke_vent_fire_jet", new VolcanicFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> AGAVE = register("agave", new AgaveFeature(NoFeatureConfig::deserialize));
+    public static final Feature<BaseTreeFeatureConfig> DRAGON_TREE = register("dragon_tree", new DragonTreeFeature(BaseTreeFeatureConfig::deserialize, false));
+    public static final Feature<NoFeatureConfig> DRY_REEDS = register("dry_reeds", new ReedsFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> BRAMBLE = register("bramble", new BrambleFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> ALOE_VERA = register("aloe_vera", new AloeVeraFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> CHAR_EMBER = register("char_embers", new CharEmbersFeature(NoFeatureConfig::deserialize));
+    public static final Feature<NoFeatureConfig> TALL_DEADBUSH = register("tall_deadbush", new TallDeadBushFeature(NoFeatureConfig::deserialize));
+
+
+    private static <C extends IFeatureConfig, F extends Feature<C>> F register(String key, F value)
+    {
+        return Registry.register(Registry.FEATURE, key, value);
+    }
 }

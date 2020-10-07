@@ -3,6 +3,7 @@ package com.github.ilja615.worldupgrade.world.surfacebuilding;
 import com.github.ilja615.worldupgrade.init.ModBlocks;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
@@ -31,13 +32,14 @@ public class DragonTreeForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilde
     @Override
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
-        if (perlinNoiseGenerator.noiseAt(x, z, false) + (random.nextFloat() / 4.0f) > 0)
+        if (perlinNoiseGenerator.noiseAt(x, z, false) + (random.nextFloat()/4.0f) > 0 )
         {
             if (random.nextBoolean())
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
             else
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG2);
-        } else
+        }
+        else
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
     }
 }
