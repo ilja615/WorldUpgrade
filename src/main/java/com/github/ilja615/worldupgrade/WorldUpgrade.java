@@ -2,7 +2,12 @@ package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.blocks.BrambleBushBlock;
 import com.github.ilja615.worldupgrade.client.ModRenderRegistry;
-import com.github.ilja615.worldupgrade.init.*;
+import com.github.ilja615.worldupgrade.init.ModBlocks;
+import com.github.ilja615.worldupgrade.init.ModEntities;
+import com.github.ilja615.worldupgrade.init.ModItems;
+import com.github.ilja615.worldupgrade.init.ModProperties;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -29,10 +34,6 @@ public class WorldUpgrade
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
-        ModEntities.ENTITY_TYPES.register(modEventBus);
-        ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
-        ModBiomeFeatures.FEATURES.register(modEventBus);
-        ModBiomes.BIOMES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -48,13 +49,15 @@ public class WorldUpgrade
             ModRenderRegistry.registerEntityRenderers();
         }
 
-        /*
         @SubscribeEvent
         public static void onEntitiesRegistry(final RegistryEvent.Register<EntityType<?>> event)
         {
+            event.getRegistry().registerAll(
+                    ModEntities.BUBBLE_EEL,
+                    ModEntities.SPOONBILL
+            );
             ModEntities.registerEntityWorldSpawns();
         }
-        */
 
         @SubscribeEvent
         public static void onRegisterItems(final RegistryEvent.Register<Item> event)
@@ -73,6 +76,7 @@ public class WorldUpgrade
                 blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
                 registry.register(blockItem);
             });
+            ModEntities.registerEntitySpawnEggs(event); //It registers the spawn egg items
         }
     }
 }
