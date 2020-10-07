@@ -1,6 +1,7 @@
 package com.github.ilja615.worldupgrade.client.renders;
 
 import com.github.ilja615.worldupgrade.client.models.SpoonBillModel;
+import com.github.ilja615.worldupgrade.entities.SpoonBillEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -10,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class SpoonBillRender extends MobRenderer<ilja615.worldupgrade.entities.SpoonBillEntity, SpoonBillModel>
+public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel>
 {
     private static final ResourceLocation[] SPOONBILL_TEXTURES = new ResourceLocation[]
     {
@@ -27,7 +28,7 @@ public class SpoonBillRender extends MobRenderer<ilja615.worldupgrade.entities.S
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(ilja615.worldupgrade.entities.SpoonBillEntity entity)
+    public ResourceLocation getEntityTexture(SpoonBillEntity entity)
     {
         return SPOONBILL_TEXTURES[entity.getVariant()];
     }

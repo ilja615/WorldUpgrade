@@ -1,8 +1,9 @@
 package com.github.ilja615.worldupgrade.init;
 
-import ilja615.worldupgrade.WorldUpgrade;
-import ilja615.worldupgrade.blocks.*;
+import com.github.ilja615.worldupgrade.WorldUpgrade;
+import com.github.ilja615.worldupgrade.blocks.*;
 import net.minecraft.block.*;
+import net.minecraft.block.GravelBlock;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,8 +14,8 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, WorldUpgrade.MOD_ID);
 
     // Terrain Blocks:
-    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new GravelBlock( -0x4c494c, ModProperties.GRAVEL_PROPERTY));
-    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new GravelBlock( -0xc2c0ba, ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_DARK = BLOCKS.register("gravel_dark", () -> new GravelBlock(ModProperties.GRAVEL_PROPERTY));
+    public static final RegistryObject<Block> GRAVEL_LIGHT = BLOCKS.register("gravel_light", () -> new GravelBlock(ModProperties.GRAVEL_PROPERTY));
     public static final RegistryObject<Block> GRASSY_CLAY = BLOCKS.register("grassy_clay", () -> new GrassyBlockBase(ModProperties.GRASSY_CLAY_PROPERTY));
     public static final RegistryObject<Block> REGOLITH = BLOCKS.register("regolith", () -> new CoarseSandBlock(ModProperties.STONE_PROPERTY));
     public static final RegistryObject<Block> GRASSY_STONE = BLOCKS.register("grassy_stone", () -> new GrassyBlockBase(ModProperties.GRASSY_STONE_PROPERTY));

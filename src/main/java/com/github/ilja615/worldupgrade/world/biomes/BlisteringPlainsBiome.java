@@ -1,6 +1,6 @@
 package com.github.ilja615.worldupgrade.world.biomes;
 
-import ilja615.worldupgrade.init.ModBiomeFeatures;
+import com.github.ilja615.worldupgrade.init.ModBiomeFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;

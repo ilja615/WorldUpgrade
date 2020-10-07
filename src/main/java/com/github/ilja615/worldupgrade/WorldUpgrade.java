@@ -7,7 +7,6 @@ import com.github.ilja615.worldupgrade.init.ModEntities;
 import com.github.ilja615.worldupgrade.init.ModItems;
 import com.github.ilja615.worldupgrade.init.ModProperties;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
