@@ -4,7 +4,6 @@ import com.github.ilja615.worldupgrade.WorldUpgrade;
 import com.github.ilja615.worldupgrade.blocks.GravelBlock;
 import com.github.ilja615.worldupgrade.blocks.*;
 import net.minecraft.block.*;
-import net.minecraft.block.GravelBlock;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

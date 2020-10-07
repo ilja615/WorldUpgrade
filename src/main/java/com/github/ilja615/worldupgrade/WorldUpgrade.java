@@ -30,9 +30,9 @@ public class WorldUpgrade
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
-        ModBiomes.BIOMES.register(modEventBus);
-        ModBiomeFeatures.FEATURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
+        ModBiomeFeatures.FEATURES.register(modEventBus);
+        ModBiomes.BIOMES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
