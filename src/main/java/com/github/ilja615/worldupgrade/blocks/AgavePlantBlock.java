@@ -44,6 +44,6 @@ public class AgavePlantBlock extends BushBlock implements IPlantable
     {
         Block block = world.getBlockState(pos).getBlock();
 
-        return PlantType.Desert;
+        return PlantType.DESERT;
     }
 }

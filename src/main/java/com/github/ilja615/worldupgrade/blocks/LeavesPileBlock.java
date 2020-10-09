@@ -8,10 +8,10 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -112,6 +112,6 @@ public class LeavesPileBlock extends Block
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
         //entityIn.setMotionMultiplier(state, new Vec3d((double)0.99F, 1.0D, (double)0.99F));
-        entityIn.setMotion(new Vec3d(entityIn.getMotion().getX() * 0.75, entityIn.getMotion().getY(), entityIn.getMotion().getZ() * 0.75));
+        entityIn.setMotion(new Vector3d(entityIn.getMotion().getX() * 0.75, entityIn.getMotion().getY(), entityIn.getMotion().getZ() * 0.75));
     }
 }

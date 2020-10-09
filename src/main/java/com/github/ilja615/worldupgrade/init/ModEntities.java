@@ -37,16 +37,16 @@ public class ModEntities
         return item;
     }
 
-    public static void registerEntityWorldSpawn(EntityType<?> entity, int weight, int minGroupCountIn, int maxGroupCountIn, Biome... biomes)
-    {
-        for (Biome biome : biomes)
-        {
-            if (biome != null)
-            {
-                biome.getSpawns(entity.getClassification()).add(new Biome.SpawnListEntry(entity, weight, minGroupCountIn, maxGroupCountIn));
-            }
-        }
-    }
+//    public static void registerEntityWorldSpawn(EntityType<?> entity, int weight, int minGroupCountIn, int maxGroupCountIn, Biome... biomes)
+//    {
+//        for (Biome biome : biomes)
+//        {
+//            if (biome != null)
+//            {
+//                biome.getSpawns(entity.getClassification()).add(new Biome.SpawnListEntry(entity, weight, minGroupCountIn, maxGroupCountIn));
+//            }
+//        }
+//    }
 
     private static <T extends Entity> EntityType<T> register(String key, EntityType.Builder<T> builder)
     {

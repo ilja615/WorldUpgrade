@@ -1,6 +1,7 @@
 modLoader = "javafml"
-loaderVersion = "[31.2]"
+loaderVersion = "[34,)"
 issueTrackerURL = "https://github.com/ilja615/WorldUpgrade/issues/"
+license="Abnormals License"
 [[mods]]
 modId = "worldupgrade"
 version = "${version}"

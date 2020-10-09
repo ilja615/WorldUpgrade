@@ -155,7 +155,7 @@ public class MossBlock extends Block implements IGrowable
         return i;
     }
 
-    private boolean func_196541_a(IBlockReader p_196541_1_, BlockPos p_196541_2_, Direction p_196541_3_)
+    private boolean hasAttachment(IBlockReader p_196541_1_, BlockPos p_196541_2_, Direction p_196541_3_)
     {
 
         BlockPos blockpos = p_196541_2_.offset(p_196541_3_);
@@ -259,7 +259,7 @@ public class MossBlock extends Block implements IGrowable
         {
             BooleanProperty booleanproperty = getPropertyFor(direction);
             boolean flag1 = flag && blockstate.get(booleanproperty);
-            if (!flag1 && this.func_196541_a(context.getWorld(), context.getPos(), direction))
+            if (!flag1 && this.hasAttachment(context.getWorld(), context.getPos(), direction))
             {
                 return blockstate1.with(booleanproperty, true);
             }
@@ -308,7 +308,7 @@ public class MossBlock extends Block implements IGrowable
                         //growOuterCorner
                         face = getRandomSide(rand, getAttachedSides(state));
                         BlockPos bp = pos.offset(face);
-                        Direction direction1 = Direction.random(rand);
+                        Direction direction1 = Direction.getRandomDirection(rand);
                         if (direction1 != face && direction1 != face.getOpposite())
                         {
                             BlockPos newPos = bp.offset(direction1);
@@ -322,7 +322,7 @@ public class MossBlock extends Block implements IGrowable
                             if (isValidPosition(newMossBlockState, worldIn, newPos))
                             {
                                 worldIn.setBlockState(newPos, newMossBlockState, 3);
-                                updateNeighbors(state, worldIn, pos, 2);
+                                updateNeighbors(worldIn, pos, 2);
                                 if (rand.nextFloat() > 0.6f && worldIn.getBlockState(pos).getBlock() instanceof MossBlock)
                                     worldIn.setBlockState(pos, worldIn.getBlockState(pos).with(CAN_GROW, false), 3);
                             }
@@ -346,7 +346,7 @@ public class MossBlock extends Block implements IGrowable
                         if (isValidPosition(newMossBlockState, worldIn, newPos))
                         {
                             worldIn.setBlockState(newPos, newMossBlockState, 3);
-                            updateNeighbors(state, worldIn, pos, 2);
+                            updateNeighbors(worldIn, pos, 2);
                             if (rand.nextFloat() > 0.6f && worldIn.getBlockState(pos).getBlock() instanceof MossBlock)
                                 worldIn.setBlockState(pos, worldIn.getBlockState(pos).with(CAN_GROW, false), 3);
                             if (rand.nextFloat() > 0.5f)
@@ -409,5 +409,10 @@ public class MossBlock extends Block implements IGrowable
             return sides.get(rand.nextInt(sides.size()));
         else
             return Direction.DOWN;
+    }
+
+    public void updateNeighbors(ServerWorld worldIn, BlockPos pos, int flags)
+    {
+        worldIn.getBlockState(pos).updateNeighbours(worldIn, pos, flags);
     }
 }

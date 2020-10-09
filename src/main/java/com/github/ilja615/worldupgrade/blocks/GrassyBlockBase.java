@@ -21,21 +21,15 @@ public class GrassyBlockBase extends GrassBlock
     {
         PlantType type = plantable.getPlantType(world, pos.up());
 
-        switch (type)
-        {
-            case Desert:
-            case Plains:
-            case Cave:
-                return true;
-            case Nether:
-            case Water:
-            case Crop:
-                return false;
-            case Beach:
-                return (world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
-                        world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
-                        world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
-                        world.getBlockState(pos.south()).getMaterial() == Material.WATER);
+        if (PlantType.DESERT.equals(type) || PlantType.PLAINS.equals(type) || PlantType.CAVE.equals(type)) {
+            return true;
+        } else if (PlantType.NETHER.equals(type) || PlantType.WATER.equals(type) || PlantType.CROP.equals(type)) {
+            return false;
+        } else if (PlantType.BEACH.equals(type)) {
+            return (world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.south()).getMaterial() == Material.WATER);
         }
         return false;
     }

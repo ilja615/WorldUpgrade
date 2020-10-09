@@ -2,6 +2,8 @@ package com.github.ilja615.worldupgrade.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
@@ -19,8 +21,7 @@ public class GravelBlock extends FallingBlock
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public int getDustColor(BlockState state)
-    {
+    public int getDustColor(BlockState state, IBlockReader reader, BlockPos pos) {
         return this.dustColor;
     }
 

@@ -17,9 +17,9 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -56,7 +56,7 @@ public class BrambleBushBlock extends BushBlock implements IGrowable
     {
         if (entityIn instanceof LivingEntity && entityIn.getType() != EntityType.FOX && entityIn.getType() != EntityType.BEE)
         {
-            entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
+            entityIn.setMotionMultiplier(state, new Vector3d(0.8F, 0.75D, 0.8F));
             if (!worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ()))
             {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);

@@ -4,8 +4,8 @@ import com.github.ilja615.worldupgrade.init.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
@@ -57,7 +57,7 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     }
 
     @Override
-    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, IFluidState iFluidState)
+    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, FluidState iFluidState)
     {
         return false;
     }
@@ -73,11 +73,11 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     public BlockState getStateForPlacement(BlockItemUseContext context)
     { //ty Squishling for help mate
         BlockPos blockpos = context.getPos();
-        IFluidState fluidstate = context.getWorld().getFluidState(context.getPos());
+        FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
         boolean water = context.getWorld().getFluidState(context.getPos()).isTagged(FluidTags.WATER) && context.getWorld().getFluidState(context.getPos()).getLevel() == 8;
         BlockState state = getDefaultState().with(WATERLOGGED, water);
 
-        return blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) && !context.getWorld().getFluidState(blockpos.up()).isTagged(FluidTags.WATER) ? state : null;
+        return blockpos.getY() < context.getWorld().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) && !context.getWorld().getFluidState(blockpos.up()).isTagged(FluidTags.WATER) ? state : null;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     }
 
     @Override
-    public IFluidState getFluidState(BlockState state)
+    public FluidState getFluidState(BlockState state)
     {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }

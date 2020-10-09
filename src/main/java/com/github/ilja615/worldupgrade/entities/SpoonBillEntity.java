@@ -18,10 +18,11 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 
@@ -62,8 +63,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
 
     @Nullable
     @Override
-    public AgeableEntity createChild(AgeableEntity ageable)
-    {
+    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return null;
     }
 
@@ -76,7 +76,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     }
 
     @Nullable
-    public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
     {
         int i;
         int f;
@@ -103,6 +103,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
 
         private SpoonBillData(int variantIn)
         {
+            super(true);
             this.variant = variantIn;
         }
     }
