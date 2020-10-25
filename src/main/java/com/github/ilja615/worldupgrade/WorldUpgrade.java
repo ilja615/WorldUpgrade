@@ -2,10 +2,7 @@ package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.blocks.BrambleBushBlock;
 import com.github.ilja615.worldupgrade.client.ModRenderRegistry;
-import com.github.ilja615.worldupgrade.init.ModBlocks;
-import com.github.ilja615.worldupgrade.init.ModEntities;
-import com.github.ilja615.worldupgrade.init.ModItems;
-import com.github.ilja615.worldupgrade.init.ModProperties;
+import com.github.ilja615.worldupgrade.init.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -33,6 +30,10 @@ public class WorldUpgrade
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModBiomeFeatures.FEATURES.register(modEventBus);
+        ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
+        ModBiomes.reserveBiomeIDs();
+        ModBiomes.registerBiomes();
     }
 
     private void setup(final FMLCommonSetupEvent event)

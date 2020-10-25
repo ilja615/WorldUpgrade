@@ -1,35 +1,34 @@
-//package com.github.ilja615.worldupgrade.init;
-//
-//import com.github.ilja615.worldupgrade.world.biomes.*;
-//import net.minecraft.world.biome.Biome;
-//import net.minecraftforge.common.BiomeManager;
-//import net.minecraftforge.event.RegistryEvent;
-//import net.minecraftforge.eventbus.api.SubscribeEvent;
-//import net.minecraftforge.fml.common.Mod;
-//import net.minecraftforge.registries.ForgeRegistries;
-//
-//@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-//public class ModBiomes
-//{
-//    @SubscribeEvent
-//    public static void registerBiomes(RegistryEvent.Register<Biome> event)
-//    {
-//        registerBiome(new BlisteringPlainsBiome(), "blistering_plains", 4, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
-//        registerBiome(new OvergrownPeaksBiome(), "overgrown_peaks", 4, true, BiomeManager.BiomeType.WARM, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
-//        registerBiome(new DragonDesertBiome(), "dragon_dessert", 8, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SANDY);
-//        registerBiome(new PolderBiome(), "polder", 8, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
-//        registerBiome(new CloudForestBiome(), "cloud_forrest", 6, true, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.CONIFEROUS, BiomeDictionary.Type.LUSH);
-//        registerBiome(new CharredForestBiome(), "charred_forrest", 6, false, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.SPARSE);
-//        registerBiome(new DragonTreeForestBiome(), "dragon_tree_forrest", 6, true, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SAVANNA);
-//
-//    }
-//
-//    public static void registerBiome(Biome biome, String name, int weight, boolean isSpawnBiome, BiomeManager.BiomeType biomeManagerType, BiomeDictionary.Type... types)
-//    {
-//        biome.setRegistryName(name);
-//        ForgeRegistries.BIOMES.register(biome);
-//        BiomeDictionary.addTypes(biome, types);
-//        if (isSpawnBiome) BiomeManager.addSpawnBiome(biome);
-//        BiomeManager.addBiome(biomeManagerType, new BiomeManager.BiomeEntry(biome, weight));
-//    }
-//}
+package com.github.ilja615.worldupgrade.init;
+
+import com.github.ilja615.worldupgrade.WorldUpgrade;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeMaker;
+import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.event.RegistryEvent;
+
+public class ModBiomes
+{
+    public static RegistryKey<Biome> OVERGROWN_PEAKS = registryKey("overgrown_peaks");;
+
+    public static void registerBiomes()
+    {
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(OVERGROWN_PEAKS, 4));
+    }
+
+    public static RegistryKey<Biome> registryKey(String name)
+    {
+        return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, name));
+    }
+
+    public static void reserveBiomeIDs()
+    {
+        //Reserve biome IDs for the json version to replace
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "overgrown_peaks"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "polder"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert"), BiomeMaker.makeOceanBiome(false));
+    }
+}
