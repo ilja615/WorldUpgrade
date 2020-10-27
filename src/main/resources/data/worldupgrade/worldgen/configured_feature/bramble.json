@@ -1,0 +1,15 @@
+{
+  "config": {
+    "feature": {
+      "config": {},
+      "type": "worldupgrade:bramble"
+    },
+    "decorator": {
+      "config": {
+        "count": 5
+      },
+      "type": "minecraft:count"
+    }
+  },
+  "type": "minecraft:decorated"
+}

@@ -12,11 +12,13 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class ModBiomes
 {
-    public static RegistryKey<Biome> OVERGROWN_PEAKS = registryKey("overgrown_peaks");;
+    public static RegistryKey<Biome> OVERGROWN_PEAKS = registryKey("overgrown_peaks");
+    public static RegistryKey<Biome> POLDER = registryKey("polder");
 
     public static void registerBiomes()
     {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(OVERGROWN_PEAKS, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(POLDER, 8));
     }
 
     public static RegistryKey<Biome> registryKey(String name)
@@ -29,6 +31,6 @@ public class ModBiomes
         //Reserve biome IDs for the json version to replace
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "overgrown_peaks"), BiomeMaker.makeOceanBiome(false));
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "polder"), BiomeMaker.makeOceanBiome(false));
-        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert"), BiomeMaker.makeOceanBiome(false));
+        //Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert"), BiomeMaker.makeOceanBiome(false));
     }
 }
