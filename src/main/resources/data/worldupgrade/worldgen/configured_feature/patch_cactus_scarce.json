@@ -2,10 +2,7 @@
   "config": {
     "feature": {
       "config": {
-        "feature": {
-          "config": {},
-          "type": "worldupgrade:bramble"
-        },
+        "feature": "minecraft:patch_cactus",
         "decorator": {
           "config": {
             "outer": {
@@ -24,7 +21,7 @@
     },
     "decorator": {
       "config": {
-        "count": 4
+        "count": 5
       },
       "type": "minecraft:count"
     }

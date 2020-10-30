@@ -1,6 +1,8 @@
 package com.github.ilja615.worldupgrade.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.GrassBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.Direction;

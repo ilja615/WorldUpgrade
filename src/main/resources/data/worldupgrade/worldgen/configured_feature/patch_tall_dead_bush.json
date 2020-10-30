@@ -4,7 +4,7 @@
       "config": {
         "feature": {
           "config": {},
-          "type": "worldupgrade:bramble"
+          "type": "worldupgrade:tall_dead_bush"
         },
         "decorator": {
           "config": {
@@ -24,7 +24,7 @@
     },
     "decorator": {
       "config": {
-        "count": 4
+        "count": 12
       },
       "type": "minecraft:count"
     }

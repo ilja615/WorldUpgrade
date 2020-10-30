@@ -38,7 +38,7 @@ public class ClientEventBusSubscriber
         });
         //render layers
         RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DEAD_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.getCutout());

@@ -1,5 +1,5 @@
 {
-  "scale": -0.09,
+  "scale": 0.05,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,7 +12,7 @@
     "water_color": 4159204,
     "water_fog_color": 329011
   },
-  "surface_builder": "worldupgrade:polder",
+  "surface_builder": "worldupgrade:dragon_desert",
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -22,7 +22,6 @@
   "features": [
     [],
     [
-      "minecraft:lake_water",
       "minecraft:lake_lava"
     ],
     [],
@@ -49,29 +48,27 @@
     ],
     [],
     [
-      "minecraft:bamboo_light",
-      "minecraft:trees_jungle",
-      "minecraft:flower_warm",
-      "minecraft:patch_grass_jungle",
+      "worldupgrade:patch_dead_bush_4",
+      "worldupgrade:patch_tall_dead_bush",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "minecraft:patch_sugar_cane_desert",
+      "minecraft:patch_cactus_desert",
+      "worldupgrade:aloe_vera",
+      "worldupgrade:agave",
       "minecraft:spring_water",
       "minecraft:spring_lava",
-      "minecraft:patch_waterlilly",
-      "minecraft:seagrass_swamp",
-      "minecraft:patch_large_fern"
+      "worldupgrade:trees_dragon_desert"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
   "starts": [
-    "minecraft:jungle_pyramid",
     "minecraft:mineshaft",
     "minecraft:stronghold",
-    "minecraft:ruined_portal_jungle"
+    "minecraft:ruined_portal_desert"
   ],
   "spawners": {
     "monster": [
@@ -193,10 +190,10 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": true,
+  "player_spawn_friendly": false,
   "precipitation": "rain",
-  "temperature": 0.6,
-  "downfall": 0.7,
-  "category": "swamp",
-  "depth": -0.09
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "category": "desert",
+  "depth": 0.125
 }

@@ -53,7 +53,9 @@
       "minecraft:patch_tall_grass",
       "minecraft:flower_plain_decorated",
       "worldupgrade:trees_birch_polder",
-      "worldupgrade:trees_swamp_polder"
+      "worldupgrade:trees_swamp_polder",
+      "worldupgrade:bramble",
+      "worldupgrade:reeds"
     ],
     [
       "minecraft:freeze_top_layer"

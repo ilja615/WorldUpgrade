@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "worldupgrade:grassy_stone",
+    "worldupgrade:grassy_clay",
     "worldupgrade:jungle_rock_overgrown"
   ]
 }

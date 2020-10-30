@@ -14,11 +14,21 @@ public class ModBiomes
 {
     public static RegistryKey<Biome> OVERGROWN_PEAKS = registryKey("overgrown_peaks");
     public static RegistryKey<Biome> POLDER = registryKey("polder");
+    public static RegistryKey<Biome> DRAGON_FOREST = registryKey("dragon_forest");
+    public static RegistryKey<Biome> DRAGON_DESERT = registryKey("dragon_desert");
+    public static RegistryKey<Biome> CLOUD_FOREST = registryKey("cloud_forest");
+    public static RegistryKey<Biome> SCORCHED_FOREST = registryKey("scorched_forest");
+    public static RegistryKey<Biome> VOLCANIC_PLAINS = registryKey("volcanic_plains");
 
     public static void registerBiomes()
     {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(OVERGROWN_PEAKS, 4));
         BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(POLDER, 8));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(DRAGON_DESERT, 8));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(DRAGON_FOREST, 6));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(CLOUD_FOREST, 6));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SCORCHED_FOREST, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(VOLCANIC_PLAINS, 4));
     }
 
     public static RegistryKey<Biome> registryKey(String name)
@@ -28,9 +38,13 @@ public class ModBiomes
 
     public static void reserveBiomeIDs()
     {
-        //Reserve biome IDs for the json version to replace
+        // Here we reserve biome IDs for the json version to replace
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "overgrown_peaks"), BiomeMaker.makeOceanBiome(false));
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "polder"), BiomeMaker.makeOceanBiome(false));
-        //Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_forest"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "cloud_forest"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "scorched_forest"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "volcanic_plains"), BiomeMaker.makeOceanBiome(false));
     }
 }

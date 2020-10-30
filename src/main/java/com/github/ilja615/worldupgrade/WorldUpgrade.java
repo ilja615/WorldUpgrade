@@ -30,7 +30,7 @@ public class WorldUpgrade
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
-        ModBiomeFeatures.FEATURES.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
         ModBiomes.reserveBiomeIDs();
         ModBiomes.registerBiomes();

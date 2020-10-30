@@ -74,8 +74,8 @@ public class ModBlocks
     public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
 
     //wood
-    public static final RegistryObject<Block> DEAD_LOG = BLOCKS.register("dead_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
-    public static final RegistryObject<Block> DEAD_LEAVES = BLOCKS.register("dead_leaves", () -> new LeavesBlock(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> CHARRED_LOG = BLOCKS.register("charred_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
+    public static final RegistryObject<Block> CHARRED_LEAVES = BLOCKS.register("charred_leaves", () -> new LeavesBlock(ModProperties.LEAVES_PROPERTY));
 
     public static final RegistryObject<Block> DRAGON_LOG = BLOCKS.register("dragon_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
     public static final RegistryObject<Block> DRAGON_LEAVES = BLOCKS.register("dragon_leaves", () -> new LeavesBlock(ModProperties.LEAVES_PROPERTY));

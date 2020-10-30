@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.function.Function;
 
-public class DragonTreeForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
+public class DragonForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(2448L), Collections.singletonList(3));
 
@@ -24,7 +24,7 @@ public class DragonTreeForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilde
     public static final SurfaceBuilderConfig CONFIG1 = new SurfaceBuilderConfig(REGOLITH, REGOLITH, REGOLITH);
     public static final SurfaceBuilderConfig CONFIG2 = new SurfaceBuilderConfig(COARSE_SAND, COARSE_SAND, COARSE_SAND);
 
-    public DragonTreeForestSurfaceBuilder(Codec<SurfaceBuilderConfig> p_i232136_1_)
+    public DragonForestSurfaceBuilder(Codec<SurfaceBuilderConfig> p_i232136_1_)
     {
         super(p_i232136_1_);
     }

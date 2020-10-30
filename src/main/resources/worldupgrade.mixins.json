@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.github.ilja615.worldupgrade.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "worldupgrade.refmap.json",
+  "mixins": [
+    "AnimalEntityMixin"
+  ],
+  "client":[
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
