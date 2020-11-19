@@ -150,7 +150,7 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     @Override
     public Block.OffsetType getOffsetType()
     {
-        return OffsetType.NONE;
+        return OffsetType.XZ;
     }
 
     @Override

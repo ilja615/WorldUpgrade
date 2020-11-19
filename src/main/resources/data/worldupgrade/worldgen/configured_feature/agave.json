@@ -7,12 +7,12 @@
             "can_replace": false,
             "project": true,
             "need_water": false,
-            "xspread": 7,
+            "xspread": 9,
             "yspread": 3,
-            "zspread": 7,
+            "zspread": 9,
             "whitelist": [],
             "blacklist": [],
-            "tries": 32,
+            "tries": 40,
             "state_provider": {
               "state": {
                 "Name": "worldupgrade:agave"
@@ -43,7 +43,7 @@
     },
     "decorator": {
       "config": {
-        "count": 8
+        "count": 2
       },
       "type": "minecraft:count"
     }

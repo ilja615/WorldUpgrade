@@ -2,7 +2,10 @@
   "config": {
     "feature": {
       "config": {
-        "feature": "worldupgrade:dragon_tree",
+        "feature": {
+          "config": {},
+          "type": "worldupgrade:dragon_tree"
+        },
         "decorator": {
           "config": {
             "outer": {

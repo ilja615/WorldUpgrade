@@ -5,9 +5,7 @@
         "feature": {
           "config": {
             "feature": {
-              "config": {
-                "probability": 0.2
-              },
+              "config": {},
               "type": "worldupgrade:reeds"
             },
             "decorator": {

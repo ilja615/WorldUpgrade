@@ -37,7 +37,7 @@ public class TallDeadBushFeature extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
+    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
     {
         // Moving down until it is on the ground
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition))

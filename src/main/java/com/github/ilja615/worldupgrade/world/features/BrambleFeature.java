@@ -30,16 +30,16 @@ public class BrambleFeature extends Feature<NoFeatureConfig>
 
 
     @Override
-    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        int i = 2 + rand.nextInt(3);
-        int j = 2 + rand.nextInt(3);
+        int i = 3 + rand.nextInt(3);
+        int j = 3 + rand.nextInt(3);
 
         for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-i, 0, -j), pos.add(i, 1, j)))
         {
             int k = pos.getX() - blockpos.getX();
             int l = pos.getZ() - blockpos.getZ();
-            if ((float) (k * k + l * l) <= rand.nextFloat() * 10.0F - rand.nextFloat() * 6.0F)
+            if ((float) (k * k + l * l) <= rand.nextFloat() * 16.0F - rand.nextFloat() * 6.0F)
             {
                 this.placeBlockAt(worldIn, blockpos, rand);
             } else if ((double) rand.nextFloat() < 0.031D)

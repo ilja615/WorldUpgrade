@@ -35,6 +35,6 @@ public class DriedExtraReedBlock extends BushBlock
     @Override
     public Block.OffsetType getOffsetType()
     {
-        return OffsetType.NONE;
+        return OffsetType.XZ;
     }
 }

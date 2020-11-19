@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "worldupgrade:block/big_plant_leaf"
+    },
+    "facing=west": {
+      "model": "worldupgrade:block/big_plant_leaf",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "worldupgrade:block/big_plant_leaf",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "worldupgrade:block/big_plant_leaf",
+      "y": 270
+    }
+  }
+}

@@ -2,10 +2,16 @@ package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.blocks.BrambleBushBlock;
 import com.github.ilja615.worldupgrade.client.ModRenderRegistry;
+import com.github.ilja615.worldupgrade.entities.BubbleEelEntity;
+import com.github.ilja615.worldupgrade.entities.SpoonBillEntity;
 import com.github.ilja615.worldupgrade.init.*;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,10 +19,14 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Mod(WorldUpgrade.MOD_ID)
 public class WorldUpgrade
@@ -26,7 +36,7 @@ public class WorldUpgrade
     public WorldUpgrade()
     {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::commonSetup);
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
@@ -36,8 +46,22 @@ public class WorldUpgrade
         ModBiomes.registerBiomes();
     }
 
-    private void setup(final FMLCommonSetupEvent event)
+    private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(WorldUpgrade::afterCommonSetup);
+        GlobalEntityTypeAttributes.put(ModEntities.BUBBLE_EEL, BubbleEelEntity.prepareAttributes().create());
+        GlobalEntityTypeAttributes.put(ModEntities.SPOONBILL, SpoonBillEntity.prepareAttributes().create());
+    }
+
+    static void afterCommonSetup()
+    {
+        ModBlocks.initializeLists();
+        ForgeRegistries.WORLD_CARVERS.getEntries().forEach(c ->
+        {
+            Set<Block> cb = new HashSet<Block>(c.getValue().carvableBlocks);
+            for (Block block : ModBlocks.CARVABLE_BLOCKS) cb.add(block);
+            c.getValue().carvableBlocks = cb;
+        });
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)

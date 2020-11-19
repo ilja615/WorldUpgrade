@@ -10,7 +10,9 @@
     "sky_color": 8037887,
     "fog_color": 12638463,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 11049326,
+    "foliage_color": 9601349
   },
   "surface_builder": "worldupgrade:dragon_forest",
   "carvers": {
@@ -21,7 +23,10 @@
   },
   "features": [
     [],
-    [],
+    [
+      "minecraft:lake_water",
+      "minecraft:lake_lava"
+    ],
     [],
     [
       "minecraft:monster_room"
@@ -77,13 +82,13 @@
       },
       {
         "type": "minecraft:zombie",
-        "weight": 19,
+        "weight": 95,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "minecraft:zombie_villager",
-        "weight": 1,
+        "weight": 5,
         "minCount": 1,
         "maxCount": 1
       },
@@ -116,18 +121,42 @@
         "weight": 5,
         "minCount": 1,
         "maxCount": 1
-      },
-      {
-        "type": "minecraft:husk",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
       }
     ],
     "creature": [
       {
+        "type": "minecraft:sheep",
+        "weight": 12,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:chicken",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cow",
+        "weight": 8,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:horse",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 6
+      },
+      {
+        "type": "minecraft:donkey",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
         "type": "minecraft:rabbit",
-        "weight": 4,
+        "weight": 12,
         "minCount": 2,
         "maxCount": 3
       }

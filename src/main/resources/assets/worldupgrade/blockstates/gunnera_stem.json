@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "worldupgrade:block/gunnera_stem" },
+    "axis=z":   { "model": "worldupgrade:block/gunnera_stem", "x": 90 },
+    "axis=x":   { "model": "worldupgrade:block/gunnera_stem", "x": 90, "y": 90 }
+  }
+}

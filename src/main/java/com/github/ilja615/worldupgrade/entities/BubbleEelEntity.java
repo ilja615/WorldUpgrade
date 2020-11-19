@@ -2,6 +2,10 @@ package com.github.ilja615.worldupgrade.entities;
 
 import com.github.ilja615.worldupgrade.init.ModItems;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -46,11 +50,11 @@ public class BubbleEelEntity extends AbstractGroupFishEntity
         return SoundEvents.ENTITY_COD_FLOP;
     }
 
-//    @Override
-//    protected void registerAttributes() {
-//        super.registerAttributes();
-//        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.0d);
-//        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(5.0d);
-//        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0d);
-//    }
+    public static AttributeModifierMap.MutableAttribute prepareAttributes()
+    {
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 5.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+    }
 }

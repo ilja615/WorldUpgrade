@@ -1,13 +1,12 @@
 package com.github.ilja615.worldupgrade.entities;
 
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.PanicGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.IFlyingAnimal;
@@ -110,4 +109,12 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
 
     public void writeAdditional(CompoundNBT compound) { super.writeAdditional(compound); compound.putInt("Variant", this.getVariant()); }
     public void readAdditional(CompoundNBT compound) { super.readAdditional(compound); this.setVariant(compound.getInt("Variant")); }
+
+    public static AttributeModifierMap.MutableAttribute prepareAttributes()
+    {
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 1.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+    }
 }
