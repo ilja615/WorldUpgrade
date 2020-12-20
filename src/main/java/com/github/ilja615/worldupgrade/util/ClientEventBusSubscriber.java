@@ -31,10 +31,10 @@ public class ClientEventBusSubscriber
                     ModBlocks.GRASSY_CLAY.get(),
                     ModBlocks.GRASSY_STONE.get()
             );
-            Minecraft.getInstance().getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null
-                            ? BiomeColors.getFoliageColor(reader, pos)
-                            : FoliageColors.getDefault(),
-                    ModBlocks.DRAGON_LEAVES.get());
+//            Minecraft.getInstance().getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null
+//                            ? BiomeColors.getFoliageColor(reader, pos)
+//                            : FoliageColors.getDefault(),
+//                    ModBlocks.DRAGON_LEAVES.get());
         });
         //render layers
         RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
@@ -57,6 +57,8 @@ public class ClientEventBusSubscriber
         RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_BUSH.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TALL_CHARRED_BUSH.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.ASH_DIRT.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_LEAVES_PILE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LEAVES_PILE.get(), RenderType.getCutout());
 
     }
 }

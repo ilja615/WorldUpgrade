@@ -1,8 +1,13 @@
 package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.blocks.BrambleBushBlock;
+import com.github.ilja615.worldupgrade.blocks.DoubleReedPlantBlock;
+import com.github.ilja615.worldupgrade.blocks.DriedExtraReedBlock;
+import com.github.ilja615.worldupgrade.blocks.ExtraReedBlock;
 import com.github.ilja615.worldupgrade.client.ModRenderRegistry;
+import com.github.ilja615.worldupgrade.entities.BeaverEntity;
 import com.github.ilja615.worldupgrade.entities.BubbleEelEntity;
+import com.github.ilja615.worldupgrade.entities.GribberEntity;
 import com.github.ilja615.worldupgrade.entities.SpoonBillEntity;
 import com.github.ilja615.worldupgrade.init.*;
 import net.minecraft.block.Block;
@@ -49,8 +54,7 @@ public class WorldUpgrade
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(WorldUpgrade::afterCommonSetup);
-        GlobalEntityTypeAttributes.put(ModEntities.BUBBLE_EEL, BubbleEelEntity.prepareAttributes().create());
-        GlobalEntityTypeAttributes.put(ModEntities.SPOONBILL, SpoonBillEntity.prepareAttributes().create());
+        ModEntities.SetupEntityAttributes();
     }
 
     static void afterCommonSetup()
@@ -76,10 +80,8 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void onEntitiesRegistry(final RegistryEvent.Register<EntityType<?>> event)
         {
-            event.getRegistry().registerAll(
-                    ModEntities.BUBBLE_EEL,
-                    ModEntities.SPOONBILL
-            );
+            for (EntityType e : ModEntities.ENTITY_TYPES_FOR_REGISTRY) { event.getRegistry().register(e); }
+
             ModEntities.registerEntityWorldSpawns();
         }
 
@@ -89,16 +91,16 @@ public class WorldUpgrade
             final IForgeRegistry<Item> registry = event.getRegistry();
             ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block ->
             {
-                BlockItem blockItem;
-                if (block instanceof BrambleBushBlock)
-                {
-                    blockItem = new BlockItem(block, ModProperties.BRAMBLE_FOOD_ITEM_PROPERTY);
-                } else
-                {
-                    blockItem = new BlockItem(block, ModProperties.ITEM_PROPERTY);
+                if (!(block instanceof ExtraReedBlock) && !(block instanceof DriedExtraReedBlock)) {
+                    BlockItem blockItem;
+                    if (block instanceof BrambleBushBlock) {
+                        blockItem = new BlockItem(block, ModProperties.BRAMBLE_FOOD_ITEM_PROPERTY);
+                    } else {
+                        blockItem = new BlockItem(block, ModProperties.ITEM_PROPERTY);
+                    }
+                    blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
+                    registry.register(blockItem);
                 }
-                blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
-                registry.register(blockItem);
             });
             ModEntities.registerEntitySpawnEggs(event); //It registers the spawn egg items
         }

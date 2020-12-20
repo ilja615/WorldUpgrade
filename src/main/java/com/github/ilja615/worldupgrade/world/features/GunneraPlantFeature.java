@@ -70,7 +70,7 @@ public class GunneraPlantFeature extends Feature<NoFeatureConfig>
 
     private void bigLeaf(ISeedReader worldIn, Random rand, BlockPos startPosition, Direction randomDirection)
     {
-        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection);
+        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection.getOpposite());
         ifAirSetBlock(worldIn, startPosition, configuredLeafState);
         for (int i = 0; i < 5; i++)
         {
@@ -91,7 +91,7 @@ public class GunneraPlantFeature extends Feature<NoFeatureConfig>
 
     private void smolLeaf(ISeedReader worldIn, Random rand, BlockPos startPosition, Direction randomDirection)
     {
-        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection);
+        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection.getOpposite());
         ifAirSetBlock(worldIn, startPosition, configuredLeafState);
         ifAirSetBlock(worldIn, startPosition.offset(randomDirection,1), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
         ifAirSetBlock(worldIn, startPosition.offset(randomDirection,2), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));

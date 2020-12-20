@@ -114,7 +114,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     {
         return MobEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 1.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.1D)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 }

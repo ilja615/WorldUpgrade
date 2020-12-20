@@ -19,6 +19,10 @@ public class ModBiomes
     public static RegistryKey<Biome> CLOUD_FOREST = registryKey("cloud_forest");
     public static RegistryKey<Biome> SCORCHED_FOREST = registryKey("scorched_forest");
     public static RegistryKey<Biome> FUMAROLE_FIELDS = registryKey("fumarole_fields");
+    public static RegistryKey<Biome> COBBLED_CLIFFS = registryKey("cobbled_cliffs");
+    public static RegistryKey<Biome> HEATH = registryKey("heath");
+    public static RegistryKey<Biome> LILY_POND = registryKey("lily_pond");
+    public static RegistryKey<Biome> PEAT_BOG = registryKey("peat_bog");
 
     public static void registerBiomes()
     {
@@ -27,8 +31,12 @@ public class ModBiomes
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(DRAGON_DESERT, 8));
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(DRAGON_FOREST, 6));
         BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(CLOUD_FOREST, 6));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SCORCHED_FOREST, 4));
-        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(FUMAROLE_FIELDS, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SCORCHED_FOREST, 3));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(FUMAROLE_FIELDS, 2));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(COBBLED_CLIFFS, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(HEATH, 6));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(LILY_POND, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(PEAT_BOG, 5));
     }
 
     public static RegistryKey<Biome> registryKey(String name)
@@ -46,5 +54,9 @@ public class ModBiomes
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "cloud_forest"), BiomeMaker.makeOceanBiome(false));
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "scorched_forest"), BiomeMaker.makeOceanBiome(false));
         Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "fumarole_fields"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "cobbled_cliffs"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "heath"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "lily_pond"), BiomeMaker.makeOceanBiome(false));
+        Registry.register(WorldGenRegistries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, "peat_bog"), BiomeMaker.makeOceanBiome(false));
     }
 }

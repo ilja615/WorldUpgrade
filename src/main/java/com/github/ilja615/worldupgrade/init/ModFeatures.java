@@ -3,8 +3,20 @@ package com.github.ilja615.worldupgrade.init;
 import com.github.ilja615.worldupgrade.WorldUpgrade;
 import com.github.ilja615.worldupgrade.world.features.*;
 import com.github.ilja615.worldupgrade.world.features.DragonTreeFeature;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.common.util.Lazy;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -22,5 +34,23 @@ public class ModFeatures
     public static final RegistryObject<CharredTreeFeature> CHARRED_TREE = FEATURES.register("charred_tree", () -> new CharredTreeFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<TallCharredBushFeature> TALL_CHARRED_BUSH = FEATURES.register("tall_charred_bush", () -> new TallCharredBushFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<GunneraPlantFeature> GUNNERA_PLANT = FEATURES.register("gunnera_plant", () -> new GunneraPlantFeature(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<BigFlowerFeature> BIG_FLOWER = FEATURES.register("big_flower", () -> new BigFlowerFeature(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<RockFeature> ROCK1 = FEATURES.register("rock1", () -> new RockFeature(BlockStateFeatureConfig.field_236455_a_));
 
+    // configured feature
+    public static final Lazy<ConfiguredFeature<?, ?>> CONFIGURED_BIG_FLOWER = Lazy.of(() -> Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "big_flower"), BIG_FLOWER.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1)))));
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class FeatureEvents
+    {
+        @SubscribeEvent
+        public static void biomeModification(final BiomeLoadingEvent event)
+        {
+            System.out.println("Biome Modification Event");
+            if (RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName()).equals(Biomes.FLOWER_FOREST)) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> CONFIGURED_BIG_FLOWER.get());
+                System.out.println("added flower to biome");
+            }
+        }
+    }
 }

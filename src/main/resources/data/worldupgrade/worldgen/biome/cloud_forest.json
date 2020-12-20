@@ -25,7 +25,9 @@
       "minecraft:lake_water",
       "minecraft:lake_lava"
     ],
-    [],
+    [
+      "worldupgrade:gunnera_plant"
+    ],
     [
       "minecraft:monster_room"
     ],
@@ -60,8 +62,7 @@
       "minecraft:spring_water",
       "minecraft:spring_lava",
       "minecraft:vines",
-      "minecraft:patch_large_fern",
-      "worldupgrade:gunnera_plant"
+      "minecraft:patch_large_fern"
     ],
     [
       "minecraft:freeze_top_layer"

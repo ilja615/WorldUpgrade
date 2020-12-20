@@ -7,12 +7,12 @@
             "can_replace": false,
             "project": true,
             "need_water": false,
-            "xspread": 9,
+            "xspread": 6,
             "yspread": 3,
-            "zspread": 9,
+            "zspread": 6,
             "whitelist": [],
             "blacklist": [],
-            "tries": 40,
+            "tries": 24,
             "state_provider": {
               "state": {
                 "Name": "worldupgrade:aloe_vera"
@@ -43,7 +43,7 @@
     },
     "decorator": {
       "config": {
-        "count": 2
+        "count": 3
       },
       "type": "minecraft:count"
     }

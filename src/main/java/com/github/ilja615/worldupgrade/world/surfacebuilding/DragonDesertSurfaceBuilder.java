@@ -33,7 +33,7 @@ public class DragonDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     @Override
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
-        if (perlinNoiseGenerator.noiseAt(x, z, false)+(random.nextFloat()/5.0f) < 0.2)
+        if (perlinNoiseGenerator.noiseAt(x, z, false)+(random.nextFloat()/5.0f) < -0.1)
         {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
         }

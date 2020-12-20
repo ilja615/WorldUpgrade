@@ -24,12 +24,12 @@ public class ModProperties
     public static final Block.Properties OVERGROWN_JUNGLE_ROCK_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.2F, 21.0F).tickRandomly();
     public static final Block.Properties AGAVE_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement();
     public static final Block.Properties VOLCANIC_STUFF_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.5F, 45.0F);
-    public static final Block.Properties SILKI_BLOCK_PROPERY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F);
     public static final Block.Properties FALLERN_LEAVES_PROPERTY = Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(0.2F, 1.0F).doesNotBlockMovement();
     public static final Block.Properties GRASSY_CLAY_PROPERTY = Block.Properties.create(Material.CLAY).sound(SoundType.GROUND).hardnessAndResistance(0.6F, 3.0F).tickRandomly();
     public static final Block.Properties GRASSY_STONE_PROPERTY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F).tickRandomly();
     public static final Block.Properties REED_PLANT_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement().tickRandomly();
-    public static final Block.Properties CHAR_EMBERS_PROPRETY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.5F, 45.0F).doesNotBlockMovement();
+    public static final Block.Properties BIG_PLANT_OR_GUNNERA_STEM_OR_LEAF_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.2F, 1.0F);
+    public static final Block.Properties BIG_WATER_LILY_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.LILY_PADS).hardnessAndResistance(0.2F, 1.0F);
 
     //foods
     public static final Food BRAMBLE = (new Food.Builder()).hunger(2).saturation(0.1F).build();

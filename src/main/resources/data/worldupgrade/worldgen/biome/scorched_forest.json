@@ -17,8 +17,8 @@
     "fog_color": 14211288,
     "water_color": 5855344,
     "water_fog_color": 921114,
-    "grass_color": 2171423,
-    "foliage_color": 1907481
+    "grass_color": 5856087,
+    "foliage_color": 4341562
   },
   "surface_builder": "worldupgrade:charred_forest",
   "carvers": {

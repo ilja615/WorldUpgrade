@@ -1,5 +1,5 @@
 {
-  "scale": 0.05,
+  "scale": 0.09,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -25,7 +25,10 @@
       "minecraft:lake_water",
       "minecraft:lake_lava"
     ],
-    [],
+    [
+      "worldupgrade:rock1",
+      "worldupgrade:boulder_rubble"
+    ],
     [
       "minecraft:monster_room"
     ],
@@ -50,6 +53,7 @@
     [],
     [
       "worldupgrade:patch_dead_bush_4",
+      "worldupgrade:patch_grass_scarce",
       "worldupgrade:patch_tall_dead_bush",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",

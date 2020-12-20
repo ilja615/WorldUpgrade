@@ -27,19 +27,18 @@ public class GeothermalVentFeature extends Feature<NoFeatureConfig>
         super(config);
     }
 
-
-    protected static boolean isAirOrLeaves(IWorldGenerationBaseReader worldIn, BlockPos pos)
-    {
-        if (!(worldIn instanceof net.minecraft.world.IWorldReader)) // FORGE: Redirect to state method when possible
-            return worldIn.hasBlockState(pos, (p_214581_0_) -> p_214581_0_.isAir() || p_214581_0_.isIn(BlockTags.LEAVES));
-        else
-            return worldIn.hasBlockState(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
-    }
-
     @Override
     public boolean generate(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        pos = pos.down(2);
+        // Moving down until it is on the ground
+        while (pos.getY() > 1 && isAirOrLeavesAt(worldIn, pos)) pos = pos.down();
+
+        if (!isDirtAt(worldIn, pos) && !(worldIn.hasBlockState(pos, state -> state.getBlock().equals(ModBlocks.ASH_DIRT.get()))) && !(worldIn.hasBlockState(pos, state -> state.getBlock().equals(ModBlocks.GRAVEL_DARK.get()))))
+        {
+            return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
+        }
+
+        pos = pos.down(1);
         int i = 2 + rand.nextInt(2);
         int j = 2 + rand.nextInt(2);
 
@@ -88,5 +87,13 @@ public class GeothermalVentFeature extends Feature<NoFeatureConfig>
             }
         }
         return true;
+    }
+
+    public static boolean isAirOrLeavesAt(IWorldGenerationBaseReader p_236412_0_, BlockPos p_236412_1_)
+    {
+        return p_236412_0_.hasBlockState(p_236412_1_, (p_236411_0_) ->
+        {
+            return p_236411_0_.isAir() || p_236411_0_.isIn(BlockTags.LEAVES);
+        });
     }
 }

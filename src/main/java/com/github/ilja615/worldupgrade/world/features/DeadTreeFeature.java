@@ -81,7 +81,7 @@ public class DeadTreeFeature extends Feature<NoFeatureConfig>
         // Moving down until it is on the ground
         while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.down();
 
-        if (!isDirtAt(worldIn, positionIn))
+        if (!isDirtAt(worldIn, positionIn) && !(worldIn.hasBlockState(positionIn, state -> state.getBlock().equals(ModBlocks.ASH_DIRT.get()))) && !(worldIn.hasBlockState(positionIn, state -> state.getBlock().equals(ModBlocks.GRAVEL_DARK.get()))))
         {
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
