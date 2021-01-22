@@ -14,5 +14,5 @@ public class ModItems
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WorldUpgrade.MOD_ID);
 
     //public static final RegistryObject<Item> TRILOBITE_SHELL = ITEMS.register("trilobite_shell", () -> new Item(ModProperties.ITEM_PROPERTY));
-    public static final RegistryObject<Item> BUBBLE_EEL_BUCKET = ITEMS.register("bubble_eel_bucket", () -> new FishBucketItem(() -> ModEntities.BUBBLE_EEL, () -> Fluids.WATER, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
+    public static final RegistryObject<Item> BUBBLE_EEL_BUCKET = ITEMS.register("bubble_eel_bucket", () -> new FishBucketItem(() -> ModEntities.BUBBLE_EEL.get(), () -> Fluids.WATER, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
 }

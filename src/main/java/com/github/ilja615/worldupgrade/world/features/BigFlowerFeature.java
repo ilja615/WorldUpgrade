@@ -32,15 +32,17 @@ public class BigFlowerFeature extends Feature<NoFeatureConfig>
     @Override
     public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos positionIn, NoFeatureConfig config)
     {
-        System.out.println("hi");
+        //System.out.println("y"+positionIn.getY());
+        positionIn = new BlockPos(positionIn.getX(), 128, positionIn.getZ());
         // Moving down until it is on the ground
         while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.down();
 
         if (!isDirtAt(worldIn, positionIn))
         {
+            System.out.println("false.");
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
-
+        //System.out.println("true. coord: "+positionIn.getCoordinatesAsString());
         int stemHight = rand.nextInt(4) + 5;
         BlockState FPB = FLOWERPETALBLOCKS[rand.nextInt(FLOWERPETALBLOCKS.length)];
         for (int i = 1; i < stemHight; i++)

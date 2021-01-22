@@ -47,7 +47,8 @@ public class WorldUpgrade
         ModBlocks.BLOCKS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
-        ModBiomes.reserveBiomeIDs();
+        ModEntities.ENTITIES.register(modEventBus);
+        ModBiomes.BIOMES.register(modEventBus);
         ModBiomes.registerBiomes();
     }
 
@@ -80,8 +81,6 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void onEntitiesRegistry(final RegistryEvent.Register<EntityType<?>> event)
         {
-            for (EntityType e : ModEntities.ENTITY_TYPES_FOR_REGISTRY) { event.getRegistry().register(e); }
-
             ModEntities.registerEntityWorldSpawns();
         }
 

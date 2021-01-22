@@ -36,9 +36,11 @@ public class ModFeatures
     public static final RegistryObject<GunneraPlantFeature> GUNNERA_PLANT = FEATURES.register("gunnera_plant", () -> new GunneraPlantFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<BigFlowerFeature> BIG_FLOWER = FEATURES.register("big_flower", () -> new BigFlowerFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<RockFeature> ROCK1 = FEATURES.register("rock1", () -> new RockFeature(BlockStateFeatureConfig.field_236455_a_));
+    public static final RegistryObject<BigWaterLilyFeature> BIG_LILY = FEATURES.register("big_lily", () -> new BigWaterLilyFeature(NoFeatureConfig.field_236558_a_));
 
     // configured feature
-    public static final Lazy<ConfiguredFeature<?, ?>> CONFIGURED_BIG_FLOWER = Lazy.of(() -> Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "big_flower"), BIG_FLOWER.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1)))));
+    public static final Lazy<ConfiguredFeature<?, ?>> CONFIGURED_BIG_FLOWER = Lazy.of(() -> Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "big_flower"), BIG_FLOWER.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).square().withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 3)))));
+    public static final Lazy<ConfiguredFeature<?, ?>> CONFIGURED_BIG_LILY = Lazy.of(() -> Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "big_lily"), BIG_LILY.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).square().withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(4, 0.1F, 3)))));
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class FeatureEvents
@@ -46,10 +48,11 @@ public class ModFeatures
         @SubscribeEvent
         public static void biomeModification(final BiomeLoadingEvent event)
         {
-            System.out.println("Biome Modification Event");
             if (RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName()).equals(Biomes.FLOWER_FOREST)) {
                 event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> CONFIGURED_BIG_FLOWER.get());
-                System.out.println("added flower to biome");
+            }
+            if (RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName()).equals(Biomes.SWAMP)) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> CONFIGURED_BIG_LILY.get());
             }
         }
     }

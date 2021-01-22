@@ -14,10 +14,10 @@ public class ModRenderRegistry
 {
     public static void registerEntityRenderers()
     {
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.BUBBLE_EEL, BubbleEelRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPOONBILL, SpoonBillRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.GRIBBER, GribberRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.BEAVER, BeaverRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.BUBBLE_EEL.get(), BubbleEelRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPOONBILL.get(), SpoonBillRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.GRIBBER.get(), GribberRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.BEAVER.get(), BeaverRender::new);
 
     }
 }

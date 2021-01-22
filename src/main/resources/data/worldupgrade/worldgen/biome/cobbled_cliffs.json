@@ -26,7 +26,8 @@
       "minecraft:lake_lava"
     ],
     [
-      "worldupgrade:rock1"
+      "worldupgrade:rock1",
+      "worldupgrade:boulder_rubble"
     ],
     [
       "minecraft:monster_room"
