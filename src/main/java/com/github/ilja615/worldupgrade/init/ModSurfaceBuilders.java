@@ -18,4 +18,6 @@ public class ModSurfaceBuilders
     public static final RegistryObject<OvergrownPeaksSurfaceBuilder> OVERGROWN_PEAKS = SURFACE_BUILDERS.register("overgrown_peaks", () -> new OvergrownPeaksSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
     public static final RegistryObject<PolderSurfaceBuilder> POLDER = SURFACE_BUILDERS.register("polder", () -> new PolderSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
     public static final RegistryObject<FumaroleFieldsSurfaceBuilder> FUMAROLE_FIELDS = SURFACE_BUILDERS.register("fumarole_fields", () -> new FumaroleFieldsSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
+    public static final RegistryObject<BogSurfaceBuilder> BOG = SURFACE_BUILDERS.register("bog", () -> new BogSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
+
 }

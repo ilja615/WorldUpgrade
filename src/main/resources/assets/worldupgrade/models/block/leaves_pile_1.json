@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/block",
 	"textures": {
 		"1": "worldupgrade:block/fallen_leaves",
 		"particle": "worldupgrade:block/leaves_pile",

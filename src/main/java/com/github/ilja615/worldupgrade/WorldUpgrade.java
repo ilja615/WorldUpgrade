@@ -48,13 +48,14 @@ public class WorldUpgrade
         ModFeatures.FEATURES.register(modEventBus);
         ModSurfaceBuilders.SURFACE_BUILDERS.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
+        ModBiomes.BIOMES.register(modEventBus);
+        ModBiomes.registerBiomes();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(WorldUpgrade::afterCommonSetup);
         ModEntities.SetupEntityAttributes();
-        ModBiomes.registerBiomes();
     }
 
     static void afterCommonSetup()

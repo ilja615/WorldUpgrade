@@ -28,6 +28,8 @@ public class ModBlocks
     public static final RegistryObject<Block> ASH_DIRT = BLOCKS.register("ash_dirt", () -> new GrassyBlockBase(Block.Properties.from(Blocks.DIRT).tickRandomly()));
     public static final RegistryObject<Block> ASH_BLOCK = BLOCKS.register("ash_block", () -> new Block(Block.Properties.from(Blocks.DIRT)));
     public static final RegistryObject<Block> BOULDER = BLOCKS.register("boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
+    public static final RegistryObject<Block> DARK_BOULDER = BLOCKS.register("dark_boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
+    public static final RegistryObject<Block> SOGGY_CLAY = BLOCKS.register("soggy_clay", () -> new SoggyClayBlock(Block.Properties.from(Blocks.CLAY)));
 
     // JUngle Rocks
     public static final RegistryObject<Block> JUNGLE_ROCK = BLOCKS.register("jungle_rock", () -> new Block(ModProperties.JUNGLE_ROCK_PROPERTY));
@@ -73,9 +75,9 @@ public class ModBlocks
     public static final RegistryObject<Block> TALL_DEAD_BUSH = BLOCKS.register("tall_dead_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
     public static final RegistryObject<Block> TALL_CHARRED_BUSH = BLOCKS.register("tall_charred_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
     public static final RegistryObject<Block> CHARRED_BUSH = BLOCKS.register("charred_bush", () -> new DeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
-    public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_STEM_OR_LEAF_PROPERTY));
-    public static final RegistryObject<Block> BIG_PLANT_LEAF = BLOCKS.register("big_plant_leaf", () -> new BigPlantLeafBlock(ModProperties.BIG_PLANT_OR_GUNNERA_STEM_OR_LEAF_PROPERTY));
-    public static final RegistryObject<Block> BIG_PLANT_STEM = BLOCKS.register("big_plant_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_STEM_OR_LEAF_PROPERTY));
+    public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
+    public static final RegistryObject<Block> BIG_PLANT_LEAF = BLOCKS.register("big_plant_leaf", () -> new BigPlantLeafBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
+    public static final RegistryObject<Block> BIG_PLANT_STEM = BLOCKS.register("big_plant_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
     public static final RegistryObject<Block> LILY_PAD = BLOCKS.register("lily_pad", () -> new Block(ModProperties.BIG_WATER_LILY_PROPERTY));
     public static final RegistryObject<Block> LILY_STEM = BLOCKS.register("lily_stem", () -> new RotatedPillarBlock(ModProperties.BIG_WATER_LILY_PROPERTY));
     public static final RegistryObject<Block> FLOWERPETALBLOCK_LIGHTYELLOW = BLOCKS.register("flowerpetalblock_lightyellow", () -> new Block(ModProperties.LEAVES_PROPERTY));

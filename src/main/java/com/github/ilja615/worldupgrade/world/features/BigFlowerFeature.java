@@ -35,15 +35,14 @@ public class BigFlowerFeature extends Feature<NoFeatureConfig>
         //System.out.println("y"+positionIn.getY());
         positionIn = new BlockPos(positionIn.getX(), 128, positionIn.getZ());
         // Moving down until it is on the ground
-        while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.down();
+        while (positionIn.getY() > 1 && isAirAt(worldIn, positionIn)) positionIn = positionIn.down();
 
         if (!isDirtAt(worldIn, positionIn))
         {
             System.out.println("false.");
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
-        //System.out.println("true. coord: "+positionIn.getCoordinatesAsString());
-        int stemHight = rand.nextInt(4) + 5;
+        int stemHight = rand.nextInt(3) + 6;
         BlockState FPB = FLOWERPETALBLOCKS[rand.nextInt(FLOWERPETALBLOCKS.length)];
         for (int i = 1; i < stemHight; i++)
             ifAirSetBlock(worldIn, new BlockPos(positionIn.getX(), positionIn.getY() + i, positionIn.getZ()), STEM);
@@ -56,15 +55,19 @@ public class BigFlowerFeature extends Feature<NoFeatureConfig>
             ifAirSetBlock(worldIn, new BlockPos(positionIn.getX(), positionIn.getY() + stemHight + 1, positionIn.getZ()).offset(d).offset(DirectionUtil.getClockWise(d)), FPB);
             ifAirSetBlock(worldIn, new BlockPos(positionIn.getX(), positionIn.getY() + stemHight + 2, positionIn.getZ()).offset(d).offset(DirectionUtil.getClockWise(d)), FPB);
         }
-        return true;
-    }
-
-    public static boolean isAirOrLeavesAt(IWorldGenerationBaseReader p_236412_0_, BlockPos p_236412_1_)
-    {
-        return p_236412_0_.hasBlockState(p_236412_1_, (p_236411_0_) ->
+        Direction leafsDirection1 = DirectionUtil.DIRECTIONS_4h[rand.nextInt(4)];
+        Direction leafsDirection2 = leafsDirection1.getOpposite();
+        for (int i = 2; i < 5; i++)
         {
-            return p_236411_0_.isAir() || p_236411_0_.isIn(BlockTags.LEAVES);
-        });
+            ifAirSetBlock(worldIn, positionIn.offset(leafsDirection1).up(i), LEAF);
+            ifAirSetBlock(worldIn, positionIn.offset(leafsDirection1,2).up(i+1), LEAF);
+        }
+        for (int i = 3; i < 5; i++)
+        {
+            ifAirSetBlock(worldIn, positionIn.offset(leafsDirection2).up(i), LEAF);
+            ifAirSetBlock(worldIn, positionIn.offset(leafsDirection2,2).up(i+1), LEAF);
+        }
+        return true;
     }
 
     private void ifAirSetBlock(ISeedReader worldIn, BlockPos pos, BlockState blockState)

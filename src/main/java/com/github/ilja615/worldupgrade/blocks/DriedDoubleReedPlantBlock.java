@@ -115,39 +115,6 @@ public class DriedDoubleReedPlantBlock extends DoublePlantBlock implements ILiqu
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
-    {
-        if (!worldIn.isAreaLoaded(pos, 1)) return; // prevent growing from loading unloaded chunks with block update
-        if (!state.isValidPosition(worldIn, pos))
-        {
-            worldIn.destroyBlock(pos, true);
-        } else
-        {
-            BlockPos blockpos = pos.up();
-            if (worldIn.isAirBlock(blockpos))
-            {
-
-                int j = state.get(AGE);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true))
-                {
-                    if (j == 3)
-                    {
-                        worldIn.setBlockState(blockpos, ModBlocks.DRY_TOP_REED.get().getDefaultState());
-                        BlockState blockstate = state.with(AGE, 0);
-                        worldIn.setBlockState(pos, blockstate, 3);
-                        blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
-                    } else
-                    {
-                        worldIn.setBlockState(pos, state.with(AGE, j + 1).with(ABOVE, true), 4);
-                    }
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
-                }
-                //:smileW:
-            }
-        }
-    }
-
-    @Override
     public Block.OffsetType getOffsetType()
     {
         return OffsetType.XZ;

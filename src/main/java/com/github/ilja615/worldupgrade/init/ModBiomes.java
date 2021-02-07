@@ -15,20 +15,56 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Supplier;
+
 public class ModBiomes
 {
-    public static void registerBiomes()
-    {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "overgrown_peaks")), 4));
-        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "polder")), 8));
-        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_desert")), 8));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "dragon_forest")), 6));
-        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "cloud_forest")), 6));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "scorched_forest")), 3));
-        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "fumarole_fields")), 2));
-        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "cobbled_cliffs")), 4));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "heath")), 4));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "lily_pond")), 3));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, "bog")), 5));
+    // thx affehund
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, WorldUpgrade.MOD_ID);
+
+    static {
+        createBiome("overgrown_peaks", BiomeMaker::makeVoidBiome);
+        createBiome("polder", BiomeMaker::makeVoidBiome);
+        createBiome("dragon_desert", BiomeMaker::makeVoidBiome);
+        createBiome("dragon_forest", BiomeMaker::makeVoidBiome);
+        createBiome("cloud_forest", BiomeMaker::makeVoidBiome);
+        createBiome("scorched_forest", BiomeMaker::makeVoidBiome);
+        createBiome("fumarole_fields", BiomeMaker::makeVoidBiome);
+        createBiome("cobbled_cliffs", BiomeMaker::makeVoidBiome);
+        createBiome("lily_pond", BiomeMaker::makeVoidBiome);
+        createBiome("bog", BiomeMaker::makeVoidBiome);
+    }
+
+    public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biome) {
+        return BIOMES.register(name, biome);
+    }
+
+    //register tje biome and add it to the biome manager
+    public static RegistryKey<Biome> OVERGROWN_PEAKS_KEY = registryKey("overgrown_peaks");
+    public static RegistryKey<Biome> POLDER_KEY = registryKey("polder");
+    public static RegistryKey<Biome> DRAGON_DESERT_KEY = registryKey("dragon_desert");
+    public static RegistryKey<Biome> DRAGON_FOREST_KEY = registryKey("dragon_forest");
+    public static RegistryKey<Biome> CLOUD_FOREST_KEY = registryKey("cloud_forest");
+    public static RegistryKey<Biome> SCORCHED_FOREST_KEY = registryKey("scorched_forest");
+    public static RegistryKey<Biome> FUMAROLE_FIELDS_KEY = registryKey("fumarole_fields");
+    public static RegistryKey<Biome> COBBLED_CLIFFS_KEY = registryKey("cobbled_cliffs");
+    public static RegistryKey<Biome> LILY_POND = registryKey("lily_pond");
+    public static RegistryKey<Biome> BOG = registryKey("bog");
+
+    public static RegistryKey<Biome> registryKey(String name) {
+        return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, name));
+    }
+
+    public static void registerBiomes() {
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(OVERGROWN_PEAKS_KEY, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(POLDER_KEY, 8));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(DRAGON_DESERT_KEY, 8));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(DRAGON_FOREST_KEY, 6));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(CLOUD_FOREST_KEY, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SCORCHED_FOREST_KEY, 3));
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(FUMAROLE_FIELDS_KEY, 2));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(COBBLED_CLIFFS_KEY, 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(LILY_POND, 2));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BOG, 6));
     }
 }
