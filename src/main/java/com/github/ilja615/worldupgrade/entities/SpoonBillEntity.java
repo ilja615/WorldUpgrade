@@ -1,5 +1,8 @@
 package com.github.ilja615.worldupgrade.entities;
 
+import com.github.ilja615.worldupgrade.init.ModItems;
+import com.github.ilja615.worldupgrade.util.FoodChecker;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -8,22 +11,26 @@ import net.minecraft.entity.ai.goal.PanicGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.IFlyingAnimal;
+import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
 {
@@ -42,6 +49,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     {
         this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(1, new SpoonBillEntity.SpoonBillBreedGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
     }
@@ -57,7 +65,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     @Override
     public boolean isBreedingItem(ItemStack stack)
     {
-        return false;
+        return stack.getItem().isIn(ItemTags.FISHES) && !FoodChecker.isPoisonous(stack.getItem());
     }
 
     @Nullable
@@ -114,7 +122,38 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     {
         return MobEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.1D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
+    }
+
+    static class SpoonBillBreedGoal extends BreedGoal {
+        private final SpoonBillEntity spoonBillEntity;
+
+        SpoonBillBreedGoal(SpoonBillEntity spoonBillEntity, double speedIn) {
+            super(spoonBillEntity, speedIn);
+            this.spoonBillEntity = spoonBillEntity;
+        }
+
+        /**
+         * Spawns a baby animal of the same type.
+         */
+        protected void spawnBaby() {
+            ServerPlayerEntity serverplayerentity = this.animal.getLoveCause();
+            if (serverplayerentity == null && this.targetMate.getLoveCause() != null) {
+                serverplayerentity = this.targetMate.getLoveCause();
+            }
+
+            if (serverplayerentity != null) {
+                serverplayerentity.addStat(Stats.ANIMALS_BRED);
+                CriteriaTriggers.BRED_ANIMALS.trigger(serverplayerentity, this.animal, this.targetMate, (AgeableEntity)null);
+            }
+
+            this.animal.entityDropItem(ModItems.SPOONBILL_EGG.get(), 1);
+            this.animal.resetInLove();
+            this.targetMate.resetInLove();
+            Random random = this.animal.getRNG();
+            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
+                this.world.addEntity(new ExperienceOrbEntity(this.world, this.animal.getPosX(), this.animal.getPosY(), this.animal.getPosZ(), random.nextInt(7) + 1));
+            }
+        }
     }
 }

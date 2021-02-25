@@ -1,7 +1,9 @@
 package com.github.ilja615.worldupgrade.init;
 
 import com.github.ilja615.worldupgrade.util.WorldUpgradeItemGroup;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Food;
@@ -17,6 +19,7 @@ public class ModProperties
     public static final Block.Properties STONE_PROPERTY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 30.0F);
     public static final Block.Properties COBBLE_PROPERTY = Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 30.0F);
     public static final Block.Properties SAND_PROPERTY = Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F, 2.5F);
+    public static final Block.Properties FLOWER_PROPERTY = Block.Properties.create(Material.PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT);
 
     //blocks special or a little bit special
     public static final Block.Properties JUNGLE_ROCK_PROPERTY = Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(1.2F, 21.0F);

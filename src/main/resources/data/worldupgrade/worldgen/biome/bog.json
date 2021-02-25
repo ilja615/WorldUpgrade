@@ -44,10 +44,7 @@
       "minecraft:ore_gold",
       "minecraft:ore_redstone",
       "minecraft:ore_diamond",
-      "minecraft:ore_lapis",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:ore_lapis"
     ],
     [],
     [
@@ -63,8 +60,8 @@
       "worldupgrade:patch_dead_bush_4",
       "worldupgrade:brown_mushroom_bog",
       "worldupgrade:red_mushroom_bog",
-      "worldupgrade:big_red_mushroom",
-      "worldupgrade:big_brown_mushroom"
+      "worldupgrade:big_brown_mushroom",
+      "worldupgrade:big_red_mushroom"
     ],
     [
       "minecraft:freeze_top_layer"

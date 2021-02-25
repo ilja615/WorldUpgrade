@@ -3,7 +3,7 @@
     "feature": "minecraft:brown_mushroom_taiga",
     "decorator": {
       "config": {
-        "count": 40
+        "count": 15
       },
       "type": "minecraft:count"
     }

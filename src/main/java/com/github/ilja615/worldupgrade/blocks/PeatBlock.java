@@ -10,9 +10,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
-public class SoggyClayBlock extends Block
+public class PeatBlock extends Block
 {
-    public SoggyClayBlock(Properties properties)
+    public PeatBlock(Properties properties)
     {
         super(properties);
     }

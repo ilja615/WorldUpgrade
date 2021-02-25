@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/tall_gunnera_flower_top",
+    "cross": "worldupgrade:block/tall_gunnera_flower_top"
+  }
+}

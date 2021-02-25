@@ -5,6 +5,8 @@ import com.github.ilja615.worldupgrade.client.renders.BubbleEelRender;
 import com.github.ilja615.worldupgrade.client.renders.GribberRender;
 import com.github.ilja615.worldupgrade.client.renders.SpoonBillRender;
 import com.github.ilja615.worldupgrade.init.ModEntities;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -18,6 +20,7 @@ public class ModRenderRegistry
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPOONBILL.get(), SpoonBillRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.GRIBBER.get(), GribberRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.BEAVER.get(), BeaverRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPOONBILL_EGG.get(), (renderManager) -> new SpriteRenderer<>(renderManager, Minecraft.getInstance().getItemRenderer()));
 
     }
 }

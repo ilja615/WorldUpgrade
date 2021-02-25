@@ -28,8 +28,10 @@ public class ModBlocks
     public static final RegistryObject<Block> ASH_DIRT = BLOCKS.register("ash_dirt", () -> new GrassyBlockBase(Block.Properties.from(Blocks.DIRT).tickRandomly()));
     public static final RegistryObject<Block> ASH_BLOCK = BLOCKS.register("ash_block", () -> new Block(Block.Properties.from(Blocks.DIRT)));
     public static final RegistryObject<Block> BOULDER = BLOCKS.register("boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
-    public static final RegistryObject<Block> DARK_BOULDER = BLOCKS.register("dark_boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
-    public static final RegistryObject<Block> SOGGY_CLAY = BLOCKS.register("soggy_clay", () -> new SoggyClayBlock(Block.Properties.from(Blocks.CLAY)));
+    public static final RegistryObject<Block> DENSE_BOULDER = BLOCKS.register("dense_boulder", () -> new Block(ModProperties.STONE_PROPERTY));
+    public static final RegistryObject<Block> PEAT = BLOCKS.register("peat", () -> new PeatBlock(Block.Properties.from(Blocks.CLAY)));
+    public static final RegistryObject<Block> MOSSY_BOULDER = BLOCKS.register("mossy_boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
+    public static final RegistryObject<Block> MOSSY_DENSE_BOULDER = BLOCKS.register("mossy_dense_boulder", () -> new Block(ModProperties.STONE_PROPERTY));
 
     // JUngle Rocks
     public static final RegistryObject<Block> JUNGLE_ROCK = BLOCKS.register("jungle_rock", () -> new Block(ModProperties.JUNGLE_ROCK_PROPERTY));
@@ -57,7 +59,6 @@ public class ModBlocks
     public static final RegistryObject<WallBlock> JUNGLE_COBBLE_MOSSY_WALL = BLOCKS.register("jungle_cobble_mossy_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<WallBlock> JUNGLE_ROCK_WALL = BLOCKS.register("jungle_rock_wall", () -> new WallBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
 
-
     //Plants
     public static final RegistryObject<Block> AGAVE = BLOCKS.register("agave", () -> new AgavePlantBlock(ModProperties.AGAVE_PROPERTY));
     public static final RegistryObject<Block> ALOE_VERY = BLOCKS.register("aloe_vera", () -> new AgavePlantBlock(ModProperties.AGAVE_PROPERTY));
@@ -82,10 +83,16 @@ public class ModBlocks
     public static final RegistryObject<Block> LILY_STEM = BLOCKS.register("lily_stem", () -> new RotatedPillarBlock(ModProperties.BIG_WATER_LILY_PROPERTY));
     public static final RegistryObject<Block> FLOWERPETALBLOCK_LIGHTYELLOW = BLOCKS.register("flowerpetalblock_lightyellow", () -> new Block(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> FLOWERPETALBLOCK_LIGHTPINK = BLOCKS.register("flowerpetalblock_lightpink", () -> new Block(ModProperties.LEAVES_PROPERTY));
+    public static final RegistryObject<Block> CHAMAENERION = BLOCKS.register("chamaenerion", () -> new DoublePlantBlock(ModProperties.FLOWER_PROPERTY));
+//    public static final RegistryObject<Block> GUNNERA_FLOWER = BLOCKS.register("gunnera_flower", () -> new BushBlock(ModProperties.FLOWER_PROPERTY));
+    public static final RegistryObject<Block> GUNNERA_TALLFLOWER = BLOCKS.register("tall_gunnera_flower", () -> new DoublePlantBlock(ModProperties.FLOWER_PROPERTY));
 
     // Plant crafted blocks
     public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
     public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.AXE)));
+
+    // Other Blocks
+    public static final RegistryObject<Block> INTERTWINED_TWIGS_BLOCK = BLOCKS.register("intertwined_twigs_block", () -> new Block(ModProperties.LOG_PROPERTY));
 
     //wood
     public static final RegistryObject<Block> CHARRED_LOG = BLOCKS.register("charred_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
@@ -95,6 +102,8 @@ public class ModBlocks
     public static final RegistryObject<Block> DRAGON_LOG = BLOCKS.register("dragon_log", () -> new RotatedPillarBlock(ModProperties.LOG_PROPERTY));
     public static final RegistryObject<Block> DRAGON_LEAVES = BLOCKS.register("dragon_leaves", () -> new LeavesBlock(ModProperties.LEAVES_PROPERTY));
 
+
+    // list stuff
     public static Set<Block> CARVABLE_BLOCKS;
 
     public static void initializeLists()

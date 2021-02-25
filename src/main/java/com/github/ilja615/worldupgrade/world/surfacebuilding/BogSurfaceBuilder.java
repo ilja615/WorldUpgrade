@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class BogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final SurfaceBuilderConfig SOGGYCLAY_CONFIG = new SurfaceBuilderConfig(ModBlocks.SOGGY_CLAY.get().getDefaultState(), ModBlocks.SOGGY_CLAY.get().getDefaultState(), ModBlocks.SOGGY_CLAY.get().getDefaultState());
+    public static final SurfaceBuilderConfig PEAT_CONFIG = new SurfaceBuilderConfig(ModBlocks.PEAT.get().getDefaultState(), ModBlocks.PEAT.get().getDefaultState(), ModBlocks.PEAT.get().getDefaultState());
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(2358L), Collections.singletonList(4));
 
     public BogSurfaceBuilder(Codec<SurfaceBuilderConfig> p_i232136_1_)
@@ -30,11 +30,11 @@ public class BogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         if (noise > -1.5f && noise < 1.5f) {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SOGGYCLAY_CONFIG);
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, PEAT_CONFIG);
         } else {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
         }
-        if (perlinNoiseGenerator.noiseAt(x/5, z/5, false) > 0.3)
+        if (perlinNoiseGenerator.noiseAt(x/25.0f, z/25.0f, false) > 0.3)
         {
             for (int y = chunkIn.getTopBlockY(Heightmap.Type.WORLD_SURFACE, x, z); y > 61; y--)
             {

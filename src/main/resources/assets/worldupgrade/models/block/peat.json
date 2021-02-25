@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "worldupgrade:block/soggy_clay"
+    "all": "worldupgrade:block/peat"
   }
 }

@@ -1,4 +1,4 @@
-package com.github.ilja615.worldupgrade.util;
+package com.github.ilja615.worldupgrade.client;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
 import com.github.ilja615.worldupgrade.init.ModBlocks;
@@ -59,6 +59,8 @@ public class ClientEventBusSubscriber
         RenderTypeLookup.setRenderLayer(ModBlocks.ASH_DIRT.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_LEAVES_PILE.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.LEAVES_PILE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GUNNERA_TALLFLOWER.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHAMAENERION.get(), RenderType.getCutout());
 
     }
 }

@@ -41,7 +41,7 @@ public class PolderSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
             chunkIn.setBlockState(new BlockPos(x, 62, z), Blocks.WATER.getDefaultState(), false);
         } else
         {
-            if (perlinNoiseGenerator.noiseAt(x/10, z/10, false) > 0.4)
+            if (perlinNoiseGenerator.noiseAt(x/30.0f, z/30.0f, false) > 0.4)
             {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CLAY_CONFIG);
             } else

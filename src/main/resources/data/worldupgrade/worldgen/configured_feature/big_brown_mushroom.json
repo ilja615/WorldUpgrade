@@ -2,10 +2,7 @@
   "config": {
     "feature": {
       "config": {
-        "feature": {
-          "config": {},
-          "type": "minecraft:huge_brown_mushroom"
-        },
+        "feature": "minecraft:huge_brown_mushroom",
         "decorator": {
           "config": {
             "outer": {
@@ -14,7 +11,7 @@
             },
             "inner": {
               "config": {},
-              "type": "minecraft:heightmap_spread_double"
+              "type": "minecraft:heightmap"
             }
           },
           "type": "minecraft:decorated"
