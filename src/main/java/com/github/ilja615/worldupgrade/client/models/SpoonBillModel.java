@@ -1,12 +1,14 @@
 package com.github.ilja615.worldupgrade.client.models;
 
 import com.github.ilja615.worldupgrade.entities.SpoonBillEntity;
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
-public class SpoonBillModel extends EntityModel<SpoonBillEntity>
+public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
 {
     private final ModelRenderer leg1;
     private final ModelRenderer leg2;
@@ -121,6 +123,16 @@ public class SpoonBillModel extends EntityModel<SpoonBillEntity>
         leg2.render(matrixStack, buffer, packedLight, packedOverlay);
         body.render(matrixStack, buffer, packedLight, packedOverlay);
         neck.render(matrixStack, buffer, packedLight, packedOverlay);
+    }
+
+    @Override
+    protected Iterable<ModelRenderer> getHeadParts() {
+        return ImmutableList.of(neck);
+    }
+
+    @Override
+    protected Iterable<ModelRenderer> getBodyParts() {
+        return ImmutableList.of(leg1, leg2, body, wing1, wing2, wing3, wing4);
     }
 
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z)
