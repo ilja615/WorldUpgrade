@@ -26,12 +26,14 @@ public class ModEntities
     public static final EntityType<GribberEntity> TYPE_GRIBBER = EntityType.Builder.create(GribberEntity::new, EntityClassification.CREATURE).size(2.5F, 2.0F).build("worldupgrade:gribber");
     public static final EntityType<BeaverEntity> TYPE_BEAVER = EntityType.Builder.create(BeaverEntity::new, EntityClassification.CREATURE).size(0.4F, 0.4F).build("worldupgrade:beaver");
     public static final EntityType<SpoonBillEggEntity> TYPE_SPOONBILL_EGG = EntityType.Builder.<SpoonBillEggEntity>create(SpoonBillEggEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).trackingRange(4).func_233608_b_(10).build("worldupgrade:spoonbill_egg");
+    public static final EntityType<FlightArrowEntity> TYPE_FLIGHT_ARROW = EntityType.Builder.<FlightArrowEntity>create(FlightArrowEntity::new, EntityClassification.MISC).size(0.5F, 0.5F).trackingRange(4).func_233608_b_(20).build("worldupgrade:flight_arrow");
 
     public static final RegistryObject<EntityType<BubbleEelEntity>> BUBBLE_EEL = ENTITIES.register("bubble_eel", () -> TYPE_BUBBLE_EEL);
     public static final RegistryObject<EntityType<SpoonBillEntity>> SPOONBILL = ENTITIES.register("spoonbill", () -> TYPE_SPOONBILL);
     public static final RegistryObject<EntityType<GribberEntity>> GRIBBER = ENTITIES.register("gribber", () -> TYPE_GRIBBER);
     public static final RegistryObject<EntityType<BeaverEntity>> BEAVER = ENTITIES.register("beaver", () -> TYPE_BEAVER);
     public static final RegistryObject<EntityType<SpoonBillEggEntity>> SPOONBILL_EGG = ENTITIES.register("spoonbill_egg", () -> TYPE_SPOONBILL_EGG);
+    public static final RegistryObject<EntityType<FlightArrowEntity>> FLIGHT_ARROW = ENTITIES.register("flight_arrow", () -> TYPE_FLIGHT_ARROW);
 
 
     public static void registerEntitySpawnEggs(final RegistryEvent.Register<Item> event)

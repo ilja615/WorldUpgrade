@@ -2,7 +2,10 @@
   "config": {
     "feature": {
       "config": {
-        "feature": "minecraft:huge_brown_mushroom",
+        "feature": {
+              "config": {},
+              "type": "worldupgrade:reeds"
+        },
         "decorator": {
           "config": {
             "outer": {
@@ -11,7 +14,7 @@
             },
             "inner": {
               "config": {},
-              "type": "minecraft:heightmap"
+              "type": "minecraft:heightmap_spread_double"
             }
           },
           "type": "minecraft:decorated"
@@ -21,11 +24,9 @@
     },
     "decorator": {
       "config": {
-        "count": 0,
-        "extra_chance": 0.15,
-        "extra_count": 2
+        "count": 8
       },
-      "type": "minecraft:count_extra"
+      "type": "minecraft:count"
     }
   },
   "type": "minecraft:decorated"

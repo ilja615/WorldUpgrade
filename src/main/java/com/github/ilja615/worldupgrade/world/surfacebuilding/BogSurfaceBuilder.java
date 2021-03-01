@@ -34,9 +34,9 @@ public class BogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
         } else {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
         }
-        if (perlinNoiseGenerator.noiseAt(x/25.0f, z/25.0f, false) > 0.3)
+        if (perlinNoiseGenerator.noiseAt(x/100.0f, z/100.0f, false) > 0.3)
         {
-            for (int y = chunkIn.getTopBlockY(Heightmap.Type.WORLD_SURFACE, x, z); y > 61; y--)
+            for (int y = 63; y > 61; y--)
             {
                 chunkIn.setBlockState(new BlockPos(x, y, z), Blocks.AIR.getDefaultState(), false);
             }

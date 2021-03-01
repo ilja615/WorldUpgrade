@@ -1,5 +1,6 @@
 package com.github.ilja615.worldupgrade.entities;
 
+import com.github.ilja615.worldupgrade.init.ModEntities;
 import com.github.ilja615.worldupgrade.init.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -7,20 +8,21 @@ import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class FlightArrowEntity extends AbstractArrowEntity
 {
-    public FlightArrowEntity(EntityType<? extends SpectralArrowEntity> p_i50158_1_, World p_i50158_2_)
-    { super(p_i50158_1_, p_i50158_2_);
-    }
 
     public FlightArrowEntity(World worldIn, LivingEntity shooter)
-    { super(EntityType.SPECTRAL_ARROW, shooter, worldIn);
+    {
+        super(ModEntities.FLIGHT_ARROW.get(), shooter, worldIn);
     }
 
-    public FlightArrowEntity(World worldIn, double x, double y, double z)
-    { super(EntityType.SPECTRAL_ARROW, x, y, z, worldIn);
+    public FlightArrowEntity(EntityType<FlightArrowEntity> flightArrowEntityEntityType, World world)
+    {
+        super(flightArrowEntityEntityType, world);
     }
 
     @Override
@@ -36,5 +38,11 @@ public class FlightArrowEntity extends AbstractArrowEntity
     @Override
     public boolean hasNoGravity() {
         return true;
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

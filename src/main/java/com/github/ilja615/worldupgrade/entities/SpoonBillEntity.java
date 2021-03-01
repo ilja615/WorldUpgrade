@@ -1,5 +1,6 @@
 package com.github.ilja615.worldupgrade.entities;
 
+import com.github.ilja615.worldupgrade.init.ModEntities;
 import com.github.ilja615.worldupgrade.init.ModItems;
 import com.github.ilja615.worldupgrade.util.FoodChecker;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -71,7 +72,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     @Nullable
     @Override
     public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return null;
+        return ModEntities.SPOONBILL.get().create(serverWorld);
     }
 
     protected void registerData() { super.registerData(); this.dataManager.register(SPOONBILL_TYPE, 0); }

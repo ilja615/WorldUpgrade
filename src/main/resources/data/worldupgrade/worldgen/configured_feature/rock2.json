@@ -2,7 +2,14 @@
   "config": {
     "feature": {
       "config": {
-        "feature": "minecraft:huge_brown_mushroom",
+        "feature": {
+          "config": {
+            "state": {
+              "Name": "worldupgrade:boulder"
+            }
+          },
+          "type": "worldupgrade:rock2"
+        },
         "decorator": {
           "config": {
             "outer": {
@@ -21,11 +28,12 @@
     },
     "decorator": {
       "config": {
-        "count": 0,
-        "extra_chance": 0.15,
-        "extra_count": 2
+        "count": {
+          "base": 0,
+          "spread": 2
+        }
       },
-      "type": "minecraft:count_extra"
+      "type": "minecraft:count"
     }
   },
   "type": "minecraft:decorated"

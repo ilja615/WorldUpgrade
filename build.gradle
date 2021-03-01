@@ -119,7 +119,7 @@ jar {
                 "Implementation-Version"  : project.version,
                 "Implementation-Vendor"   : "ilja615",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "project.mod_id.mixins.json"
+                "MixinConfigs": project.mod_id + ".mixins.json"
         ])
     }
 }
@@ -169,5 +169,5 @@ publishing {
 apply plugin: 'org.spongepowered.mixin'
 
 mixin {
-    add sourceSets.main, "project.mod_id.refmap.json"
+    add sourceSets.main, project.mod_id + ".refmap.json"
 }

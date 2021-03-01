@@ -18,7 +18,7 @@ public class ClientEventsForMod
     public static void onFogColor(EntityViewRenderEvent.FogColors event)
     {
         Biome b = event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition());
-        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString() == "cloud_forest")
+        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
             event.setRed(0.92F);
             event.setGreen(0.95F);
@@ -30,7 +30,7 @@ public class ClientEventsForMod
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event)
     {
         Biome b = event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition());
-        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString() == "cloud_forest")
+        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
             event.setDensity(0.05f);
             event.setCanceled(true);
