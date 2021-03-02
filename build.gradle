@@ -12,76 +12,53 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = project.minecraft_version + "-" + project.mod_version
-group = project.maven_group
-archivesBaseName = project.archives_base_name
+version = "${mod_version}"
+group = "${maven_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${archives_base_name}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-
 minecraft {
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: project.mappings_channel, version: project.mappings_version
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-
+    mappings channel: 'snapshot', version: "${mappings_version}"
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
-            arg "-mixin.config="+archivesBaseName+".mixins.json"
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=worldupgrade.mixins.json"
 
             mods {
-                worldupgrade {
+                hyperbox {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
-            arg "-mixin.config="+archivesBaseName+".mixins.json"
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=worldupgrade.mixins.json"
 
             mods {
-                worldupgrade {
+                hyperbox {
                     source sourceSets.main
                 }
             }
         }
 
         data {
-            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
-            arg "-mixin.config="+archivesBaseName+".mixins.json"
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=worldupgrade.mixins.json"
 
-            args "--mod", project.mod_id, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
+            args '--mod', 'worldupgrade', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                worldupgrade {
+                hyperbox {
                     source sourceSets.main
                 }
             }
@@ -89,7 +66,7 @@ minecraft {
     }
 }
 
-repositories{
+repositories {
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -100,58 +77,35 @@ repositories{
         name = "ModMaven"
         url = "https://modmaven.k-4u.nl"
     }
-    jcenter()
-    mavenCentral()
-
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:" + project.minecraft_version + "-" + project.forge_version
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // compile against the JEI API but do not include it at runtime
+    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    // at runtime, use the full JEI jar
+    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
 }
 
+// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : project.mod_id,
-                "Specification-Vendor"    : "ilja615",
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.version,
-                "Implementation-Vendor"   : "ilja615",
+                "Specification-Title": "${mod_id}",
+                "Specification-Vendor": "ilja615",
+                "Specification-Version": "1", // We are version 1 of ourselves
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor" :"Commoble",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": project.mod_id + ".mixins.json"
+                "MixinConfigs": "${mod_id}.mixins.json"
         ])
     }
 }
 
 jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-//publish.dependsOn('reobfJar')
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = "sources"
-    from sourceSets.main.allSource
-}
-
-build.dependsOn sourcesJar
-
-artifacts {
-    archives sourcesJar
-}
-
-processResources {
-    inputs.property "version", project.version
-
-    from(sourceSets.main.resources.srcDirs) {
-        include "META-INF/mods.toml"
-
-        expand "version": project.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "META-INF/mods.toml"
-    }
-}
 
 publishing {
     publications {
@@ -169,5 +123,5 @@ publishing {
 apply plugin: 'org.spongepowered.mixin'
 
 mixin {
-    add sourceSets.main, project.mod_id + ".refmap.json"
+    add sourceSets.main, "${mod_id}.refmap.json"
 }

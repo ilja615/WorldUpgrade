@@ -4,7 +4,7 @@ issueTrackerURL = "https://github.com/ilja615/WorldUpgrade/issues/"
 license="Abnormals License"
 [[mods]]
 modId = "worldupgrade"
-version = "${version}"
+version = "1.16.5-0.1"
 displayName = "WorldUpgrade"
 displayURL = "https://github.com/ilja615/WorldUpgrade"
 authors = "ilja615"
