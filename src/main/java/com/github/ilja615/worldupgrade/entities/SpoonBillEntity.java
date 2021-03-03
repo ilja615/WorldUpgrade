@@ -21,6 +21,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -29,6 +30,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.*;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -75,7 +77,11 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         return ModEntities.SPOONBILL.get().create(serverWorld);
     }
 
-    protected void registerData() { super.registerData(); this.dataManager.register(SPOONBILL_TYPE, 0); }
+    protected void registerData()
+    {
+        super.registerData();
+        this.dataManager.register(SPOONBILL_TYPE, 0);
+    }
 
     public int getVariant() { return MathHelper.clamp(this.dataManager.get(SPOONBILL_TYPE), 0, 3); }
 
@@ -156,5 +162,10 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
                 this.world.addEntity(new ExperienceOrbEntity(this.world, this.animal.getPosX(), this.animal.getPosY(), this.animal.getPosZ(), random.nextInt(7) + 1));
             }
         }
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

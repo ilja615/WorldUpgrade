@@ -48,7 +48,8 @@ public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig
                 while(var11.hasNext()) {
                     BlockPos lvt_12_1_ = (BlockPos)var11.next();
                     if (lvt_12_1_.distanceSq(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
-                        iSeedReader.setBlockState(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy ? MOSSY_DENSE_BOULDER : MOSSY_BOULDER) : (mossy ? MOSSY_BOULDER : config.state), 4);
+                        boolean hi = rand.nextFloat() > 0.8f;
+                        iSeedReader.setBlockState(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy && hi? MOSSY_DENSE_BOULDER : MOSSY_BOULDER) : (mossy && hi? MOSSY_BOULDER : config.state), 4);
                     }
                 }
                 pos = pos.add(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));

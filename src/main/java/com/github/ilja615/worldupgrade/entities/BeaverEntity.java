@@ -12,8 +12,10 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
@@ -49,5 +51,10 @@ public class BeaverEntity extends AnimalEntity
                 .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.1D)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
-public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
+public class SpoonBillModel<T extends SpoonBillEntity> extends AgeableModel<SpoonBillEntity>
 {
     private final ModelRenderer leg1;
     private final ModelRenderer leg2;
@@ -18,10 +18,17 @@ public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
     private final ModelRenderer wing3;
     private final ModelRenderer wing4;
     private final ModelRenderer neck;
+    private final ModelRenderer idk1;
+    private final ModelRenderer idk2;
+    private final ModelRenderer feet1;
+    private final ModelRenderer feet2;
+    private final ModelRenderer head;
+    private final ModelRenderer beak;
 
 
     public SpoonBillModel()
     {
+        super(true, 4.0F, 4.0F, 2.0F, 2.0F, 24);
         textureWidth = 64;
         textureHeight = 64;
 
@@ -29,12 +36,12 @@ public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
         leg1.setRotationPoint(-3.0F, 10.0F, 2.0F);
         leg1.setTextureOffset(17, 27).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 6.0F, 1.0F, 0.0F, false);
 
-        ModelRenderer idk1 = new ModelRenderer(this);
+        idk1 = new ModelRenderer(this);
         idk1.setRotationPoint(0.0F, 6.0F, 0.0F);
         leg1.addChild(idk1);
         idk1.setTextureOffset(0, 21).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 8.0F, 1.0F, 0.0F, false);
 
-        ModelRenderer feet1 = new ModelRenderer(this);
+        feet1 = new ModelRenderer(this);
         feet1.setRotationPoint(0.0F, 8.0F, 0.0F);
         idk1.addChild(feet1);
         feet1.setTextureOffset(0, 50).addBox(-3.0F, 0.0F, -6.0F, 5.0F, 0.0F, 6.0F, 0.0F, false);
@@ -43,12 +50,12 @@ public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
         leg2.setRotationPoint(3.0F, 10.0F, 2.0F);
         leg2.setTextureOffset(6, 27).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 6.0F, 1.0F, 0.0F, false);
 
-        ModelRenderer idk2 = new ModelRenderer(this);
+        idk2 = new ModelRenderer(this);
         idk2.setRotationPoint(0.0F, 6.0F, 0.0F);
         leg2.addChild(idk2);
         idk2.setTextureOffset(25, 25).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 8.0F, 1.0F, 0.0F, false);
 
-        ModelRenderer feet2 = new ModelRenderer(this);
+        feet2 = new ModelRenderer(this);
         feet2.setRotationPoint(0.0F, 8.0F, 0.0F);
         idk2.addChild(feet2);
         feet2.setTextureOffset(0, 50).addBox(-2.0F, 0.0F, -6.0F, 5.0F, 0.0F, 6.0F, 0.0F, false);
@@ -82,13 +89,13 @@ public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
         neck.setRotationPoint(0.0F, 23.0F, 1.0F);
         neck.setTextureOffset(0, 0).addBox(-2.0F, -28.0F, -8.0F, 4.0F, 10.0F, 3.0F, 0.0F, false);
 
-        ModelRenderer head = new ModelRenderer(this);
+        head = new ModelRenderer(this);
         head.setRotationPoint(0.0F, 0.0F, -1.0F);
         neck.addChild(head);
         head.setTextureOffset(34, 21).addBox(-2.0F, -32.0F, -9.0F, 4.0F, 4.0F, 5.0F, 0.0F, false);
         head.setTextureOffset(0, 33).addBox(0.0F, -33.0F, -4.0F, 0.0F, 9.0F, 8.0F, 0.0F, false);
 
-        ModelRenderer beak = new ModelRenderer(this);
+        beak = new ModelRenderer(this);
         beak.setRotationPoint(0.0F, -29.0F, -9.0F);
         head.addChild(beak);
         setRotationAngle(beak, 0.5236F, 0.0F, 0.0F);
@@ -127,12 +134,12 @@ public class SpoonBillModel extends AgeableModel<SpoonBillEntity>
 
     @Override
     protected Iterable<ModelRenderer> getHeadParts() {
-        return ImmutableList.of(neck);
+        return ImmutableList.of(this.neck, this.head, this.beak);
     }
 
     @Override
     protected Iterable<ModelRenderer> getBodyParts() {
-        return ImmutableList.of(leg1, leg2, body, wing1, wing2, wing3, wing4);
+        return ImmutableList.of(this.leg1, this.leg2, this.body, this.wing1, this.wing2, this.wing3, this.wing4, this.idk1, this.idk2, this.feet1, this.feet2);
     }
 
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z)

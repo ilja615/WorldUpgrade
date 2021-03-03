@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel>
+public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel<SpoonBillEntity>>
 {
     private static final ResourceLocation[] SPOONBILL_TEXTURES = new ResourceLocation[]
     {

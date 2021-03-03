@@ -8,10 +8,12 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class BubbleEelEntity extends AbstractGroupFishEntity
 {
@@ -56,5 +58,10 @@ public class BubbleEelEntity extends AbstractGroupFishEntity
                 .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 5.0D)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

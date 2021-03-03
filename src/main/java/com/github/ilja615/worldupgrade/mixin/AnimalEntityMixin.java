@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -34,5 +35,6 @@ public abstract class AnimalEntityMixin extends AgeableEntity
         super(entityType, world);
     }
 
+    @Unique
     private static final HashSet<Block> SUPPORTS_ANIMAL_SPAWNS = new HashSet<Block>(Arrays.asList(ModBlocks.GRASSY_CLAY.get(), ModBlocks.GRASSY_STONE.get(), ModBlocks.JUNGLE_ROCK_OVERGROWN.get()));
 }
