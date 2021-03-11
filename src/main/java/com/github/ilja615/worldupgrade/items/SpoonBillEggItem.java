@@ -17,24 +17,24 @@ public class SpoonBillEggItem extends Item
         super(p_i48466_1_);
     }
 
-    public ActionResult<ItemStack> onItemRightClick(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_)
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
-        ItemStack lvt_4_1_ = p_77659_2_.getHeldItem(p_77659_3_);
-        p_77659_1_.playSound((PlayerEntity)null, p_77659_2_.getPosX(), p_77659_2_.getPosY(), p_77659_2_.getPosZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-        if (!p_77659_1_.isRemote)
+        ItemStack stack = player.getHeldItem(hand);
+        world.playSound((PlayerEntity)null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+        if (!world.isRemote)
         {
-            SpoonBillEggEntity lvt_5_1_ = new SpoonBillEggEntity(p_77659_1_, p_77659_2_);
-            lvt_5_1_.setItem(lvt_4_1_);
-            lvt_5_1_.func_234612_a_(p_77659_2_, p_77659_2_.rotationPitch, p_77659_2_.rotationYaw, 0.0F, 1.5F, 1.0F);
-            p_77659_1_.addEntity(lvt_5_1_);
+            SpoonBillEggEntity eggEntity = new SpoonBillEggEntity(world, player);
+            eggEntity.setItem(stack);
+            eggEntity.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+            world.addEntity(eggEntity);
         }
 
-        p_77659_2_.addStat(Stats.ITEM_USED.get(this));
-        if (!p_77659_2_.abilities.isCreativeMode)
+        player.addStat(Stats.ITEM_USED.get(this));
+        if (!player.abilities.isCreativeMode)
         {
-            lvt_4_1_.shrink(1);
+            stack.shrink(1);
         }
 
-        return ActionResult.func_233538_a_(lvt_4_1_, p_77659_1_.isRemote());
+        return ActionResult.func_233538_a_(stack, world.isRemote());
     }
 }

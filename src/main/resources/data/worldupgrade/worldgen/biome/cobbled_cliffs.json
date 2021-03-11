@@ -1,5 +1,5 @@
 {
-  "scale": 0.4,
+  "scale": 0.2,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -13,7 +13,7 @@
     "water_fog_color": 329011,
     "grass_color": 11119983
   },
-  "surface_builder": "minecraft:grass",
+  "surface_builder": "worldupgrade:cobbled_cliffs",
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -55,7 +55,8 @@
     [
       "minecraft:trees_mountain",
       "minecraft:flower_default",
-      "minecraft:patch_grass_badlands",
+      "minecraft:patch_grass_normal",
+      "minecraft:patch_tall_grass",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
@@ -198,5 +199,5 @@
   "temperature": 0.4,
   "downfall": 0.9,
   "category": "swamp",
-  "depth": 0.7
+  "depth": 0.5
 }

@@ -12,7 +12,7 @@
             "zspread": 7,
             "whitelist": [],
             "blacklist": [],
-            "tries": 40,
+            "tries": 80,
             "state_provider": {
               "state": {
                 "Properties": {
@@ -46,7 +46,7 @@
     },
     "decorator": {
       "config": {
-        "count": 10
+        "count": 6
       },
       "type": "minecraft:count"
     }

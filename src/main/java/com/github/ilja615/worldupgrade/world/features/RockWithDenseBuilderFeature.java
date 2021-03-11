@@ -6,9 +6,12 @@ import com.github.ilja615.worldupgrade.init.ModBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
@@ -24,7 +27,8 @@ public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig
         super(p_i231931_1_);
     }
 
-    public boolean generate(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
+    public boolean generate(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config)
+    {
         for(; pos.getY() > 8; pos = pos.down()) {
             if (!iSeedReader.isAirBlock(pos.down())) {
                 Block lvt_6_1_ = iSeedReader.getBlockState(pos.down()).getBlock();
@@ -33,7 +37,6 @@ public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig
                 }
             }
         }
-
         if (pos.getY() <= 8) {
             return false;
         } else {
@@ -49,12 +52,11 @@ public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig
                     BlockPos lvt_12_1_ = (BlockPos)var11.next();
                     if (lvt_12_1_.distanceSq(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
                         boolean hi = rand.nextFloat() > 0.8f;
-                        iSeedReader.setBlockState(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy && hi? MOSSY_DENSE_BOULDER : MOSSY_BOULDER) : (mossy && hi? MOSSY_BOULDER : config.state), 4);
+                        iSeedReader.setBlockState(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy && hi? MOSSY_DENSE_BOULDER : DENSE_BOULDER) : (mossy && hi? MOSSY_BOULDER : config.state), 4);
                     }
                 }
                 pos = pos.add(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));
             }
-
             return true;
         }
     }

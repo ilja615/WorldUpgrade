@@ -126,6 +126,10 @@ public class SpoonBillModel<T extends SpoonBillEntity> extends AgeableModel<Spoo
     @Override
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha)
     {
+        if (isChild) {
+            matrixStack.translate(0, 1.0, 0);
+            matrixStack.scale(0.3F, 0.5F, 0.3F);
+        }
         leg1.render(matrixStack, buffer, packedLight, packedOverlay);
         leg2.render(matrixStack, buffer, packedLight, packedOverlay);
         body.render(matrixStack, buffer, packedLight, packedOverlay);

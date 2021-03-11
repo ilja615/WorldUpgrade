@@ -108,7 +108,8 @@ public class ModBlocks
 
     public static void initializeLists()
     {
-        CARVABLE_BLOCKS = ImmutableSet.of(GRAVEL_DARK.get(), REGOLITH.get(), GRASSY_CLAY.get(), GRASSY_STONE.get(), JUNGLE_COBBLE.get(), JUNGLE_ROCK.get(),
-                JUNGLE_ROCK_OVERGROWN.get(), COARSE_SAND.get(), ASH_DIRT.get(), ASH_BLOCK.get(), Blocks.CLAY);
+        CARVABLE_BLOCKS = ImmutableSet.of( Blocks.CLAY, GRASSY_CLAY.get(), GRASSY_STONE.get(), JUNGLE_COBBLE.get(), JUNGLE_ROCK.get(), JUNGLE_ROCK_OVERGROWN.get(),
+                GRAVEL_DARK.get(),ASH_DIRT.get(), ASH_BLOCK.get(), PEAT.get(),
+                REGOLITH.get(), COARSE_SAND.get(), BOULDER.get(), DENSE_BOULDER.get(), MOSSY_BOULDER.get(), MOSSY_DENSE_BOULDER.get());
     }
 }
