@@ -21,7 +21,7 @@ public class BubbleEelRender extends MobRenderer<BubbleEelEntity, BubbleEelModel
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(BubbleEelEntity entity)
+    public ResourceLocation getTextureLocation(BubbleEelEntity entity)
     {
         return new ResourceLocation("worldupgrade:textures/entity/bubble_eel.png");
     }

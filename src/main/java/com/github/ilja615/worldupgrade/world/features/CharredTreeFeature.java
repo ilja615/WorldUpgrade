@@ -21,8 +21,8 @@ import java.util.Random;
 
 public class CharredTreeFeature extends Feature<NoFeatureConfig>
 {
-    private static final BlockState TRUNK = ModBlocks.CHARRED_LOG.get().getDefaultState();
-    private static final BlockState LEAF = ModBlocks.CHARRED_LEAVES.get().getDefaultState().with(LeavesBlock.DISTANCE, 1);
+    private static final BlockState TRUNK = ModBlocks.CHARRED_LOG.get().defaultBlockState();
+    private static final BlockState LEAF = ModBlocks.CHARRED_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 1);
 
     public CharredTreeFeature(Codec<NoFeatureConfig> p_i231953_1_) {
         super(p_i231953_1_);
@@ -31,7 +31,7 @@ public class CharredTreeFeature extends Feature<NoFeatureConfig>
     private void leafSpawn(ISeedReader worldIn, Random rand, BlockPos middle)
     {
         Direction randomDirection = DirectionUtil.DIRECTIONS_4h[rand.nextInt(4)];
-        ifAirSetBlock(worldIn, middle.offset(randomDirection), LEAF);
+        ifAirSetBlock(worldIn, middle.relative(randomDirection), LEAF);
     }
 
     private void branchSpawn(ISeedReader worldIn, Random rand, BlockPos middle)
@@ -39,48 +39,48 @@ public class CharredTreeFeature extends Feature<NoFeatureConfig>
         Direction randomDirection = DirectionUtil.DIRECTIONS_4h[rand.nextInt(4)];
         if (rand.nextBoolean())
         {
-            ifAirSetBlock(worldIn, middle.offset(randomDirection, 1), TRUNK.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, middle.offset(randomDirection, 2), LEAF);
+            ifAirSetBlock(worldIn, middle.relative(randomDirection, 1), TRUNK.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, middle.relative(randomDirection, 2), LEAF);
         } else
         {
-            ifAirSetBlock(worldIn, middle.offset(randomDirection, 1), TRUNK.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, middle.offset(randomDirection, 2), TRUNK.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, middle.offset(randomDirection, 3), LEAF);
+            ifAirSetBlock(worldIn, middle.relative(randomDirection, 1), TRUNK.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, middle.relative(randomDirection, 2), TRUNK.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, middle.relative(randomDirection, 3), LEAF);
         }
     }
 
     private void longBranchSpawn(ISeedReader worldIn, Random rand, BlockPos startPosition, Direction randomDirection)
     {
 
-        startPosition = startPosition.offset(randomDirection);
+        startPosition = startPosition.relative(randomDirection);
         for (int i = 1; i <= 2 + rand.nextInt(3); i++)
         {
-            ifAirSetBlock(worldIn, startPosition, TRUNK.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            startPosition = startPosition.offset(randomDirection);
+            ifAirSetBlock(worldIn, startPosition, TRUNK.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            startPosition = startPosition.relative(randomDirection);
 
             Direction addedDirection = rand.nextBoolean() ? Direction.UP : Direction.DOWN;
-            if (rand.nextInt(3) == 0) startPosition = startPosition.offset(addedDirection);
+            if (rand.nextInt(3) == 0) startPosition = startPosition.relative(addedDirection);
 
             int ejdnekjnwlkjnfw = rand.nextInt(3);
             if (ejdnekjnwlkjnfw == 0)
             {
-                ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getClockWise(randomDirection)), LEAF);
+                ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getClockWise(randomDirection)), LEAF);
             }
             if (ejdnekjnwlkjnfw == 0)
             {
-                ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getCounterClockWise(randomDirection)), LEAF);
+                ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getCounterClockWise(randomDirection)), LEAF);
             }
         }
         ifAirSetBlock(worldIn, startPosition, LEAF);
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos positionIn, NoFeatureConfig config)
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos positionIn, NoFeatureConfig config)
     {
         // Moving down until it is on the ground
-        while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.down();
+        while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.below();
 
-        if (!isDirtAt(worldIn, positionIn) && !(worldIn.hasBlockState(positionIn, state -> state.getBlock().equals(ModBlocks.ASH_DIRT.get()))) && !(worldIn.hasBlockState(positionIn, state -> state.getBlock().equals(ModBlocks.GRAVEL_DARK.get()))))
+        if (!isGrassOrDirt(worldIn, positionIn) && !(worldIn.isStateAtPosition(positionIn, state -> state.getBlock().equals(ModBlocks.ASH_DIRT.get()))) && !(worldIn.isStateAtPosition(positionIn, state -> state.getBlock().equals(ModBlocks.GRAVEL_DARK.get()))))
         {
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
@@ -89,7 +89,7 @@ public class CharredTreeFeature extends Feature<NoFeatureConfig>
         int hight = rand.nextInt(4) + 4;
         int hight2 = rand.nextInt(4) + 3;
         float lchance;
-        if (positionIn.getY() >= 1 && positionIn.getY() + hight + hight2 + 1 <= worldIn.getHeight())
+        if (positionIn.getY() >= 1 && positionIn.getY() + hight + hight2 + 1 <= worldIn.getMaxBuildHeight())
         {
             for (int j = positionIn.getY() + 1; j <= positionIn.getY() + 1 + hight; ++j)
             {
@@ -107,7 +107,7 @@ public class CharredTreeFeature extends Feature<NoFeatureConfig>
         }
 
         // Trunk continue
-        BlockPos continuePos = positionIn.up(hight + 2);
+        BlockPos continuePos = positionIn.above(hight + 2);
         int chance = rand.nextInt(4);
         int chance2 = rand.nextInt(3);
         chance += chance2 + 1;
@@ -157,14 +157,14 @@ public class CharredTreeFeature extends Feature<NoFeatureConfig>
 
     public static boolean isAirOrLeavesAt(IWorldGenerationBaseReader p_236412_0_, BlockPos p_236412_1_)
     {
-        return p_236412_0_.hasBlockState(p_236412_1_, (p_236411_0_) ->
+        return p_236412_0_.isStateAtPosition(p_236412_1_, (p_236411_0_) ->
         {
-            return p_236411_0_.isAir() || p_236411_0_.isIn(BlockTags.LEAVES);
+            return p_236411_0_.isAir() || p_236411_0_.is(BlockTags.LEAVES);
         });
     }
 
     private void ifAirSetBlock(ISeedReader worldIn, BlockPos pos, BlockState blockState)
     {
-        if (isAirAt(worldIn, pos)) setBlockState(worldIn, pos, blockState);
+        if (isAir(worldIn, pos)) setBlock(worldIn, pos, blockState);
     }
 }

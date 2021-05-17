@@ -10,9 +10,12 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class AgavePlantBlock extends BushBlock implements IPlantable
 {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
     public AgavePlantBlock(Properties properties)
     {
@@ -26,9 +29,9 @@ public class AgavePlantBlock extends BushBlock implements IPlantable
     }
 
     @Override
-    public Block.OffsetType getOffsetType()
+    public AbstractBlock.OffsetType getOffsetType()
     {
-        return Block.OffsetType.XYZ;
+        return AbstractBlock.OffsetType.XYZ;
     }
 
 

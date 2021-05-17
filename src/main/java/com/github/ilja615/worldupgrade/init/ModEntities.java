@@ -21,12 +21,12 @@ public class ModEntities
 {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, WorldUpgrade.MOD_ID);
 
-    public static final EntityType<BubbleEelEntity> TYPE_BUBBLE_EEL = EntityType.Builder.create(BubbleEelEntity::new, EntityClassification.WATER_CREATURE).size(0.4F, 0.4F).build("worldupgrade:bubble_eel");
-    public static final EntityType<SpoonBillEntity> TYPE_SPOONBILL = EntityType.Builder.create(SpoonBillEntity::new, EntityClassification.CREATURE).size(0.8F, 1.5F).build("worldupgrade:spoonbill");
-    public static final EntityType<GribberEntity> TYPE_GRIBBER = EntityType.Builder.create(GribberEntity::new, EntityClassification.CREATURE).size(2.5F, 2.0F).build("worldupgrade:gribber");
-    public static final EntityType<BeaverEntity> TYPE_BEAVER = EntityType.Builder.create(BeaverEntity::new, EntityClassification.CREATURE).size(0.4F, 0.4F).build("worldupgrade:beaver");
-    public static final EntityType<SpoonBillEggEntity> TYPE_SPOONBILL_EGG = EntityType.Builder.<SpoonBillEggEntity>create(SpoonBillEggEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).trackingRange(4).func_233608_b_(10).build("worldupgrade:spoonbill_egg");
-    public static final EntityType<FlightArrowEntity> TYPE_FLIGHT_ARROW = EntityType.Builder.<FlightArrowEntity>create(FlightArrowEntity::new, EntityClassification.MISC).size(0.5F, 0.5F).trackingRange(4).func_233608_b_(20).build("worldupgrade:flight_arrow");
+    public static final EntityType<BubbleEelEntity> TYPE_BUBBLE_EEL = EntityType.Builder.of(BubbleEelEntity::new, EntityClassification.WATER_CREATURE).sized(0.4F, 0.4F).build("worldupgrade:bubble_eel");
+    public static final EntityType<SpoonBillEntity> TYPE_SPOONBILL = EntityType.Builder.of(SpoonBillEntity::new, EntityClassification.CREATURE).sized(0.8F, 1.5F).build("worldupgrade:spoonbill");
+    public static final EntityType<GribberEntity> TYPE_GRIBBER = EntityType.Builder.of(GribberEntity::new, EntityClassification.CREATURE).sized(2.5F, 2.0F).build("worldupgrade:gribber");
+    public static final EntityType<BeaverEntity> TYPE_BEAVER = EntityType.Builder.of(BeaverEntity::new, EntityClassification.CREATURE).sized(0.4F, 0.4F).build("worldupgrade:beaver");
+    public static final EntityType<SpoonBillEggEntity> TYPE_SPOONBILL_EGG = EntityType.Builder.<SpoonBillEggEntity>of(SpoonBillEggEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("worldupgrade:spoonbill_egg");
+    public static final EntityType<FlightArrowEntity> TYPE_FLIGHT_ARROW = EntityType.Builder.<FlightArrowEntity>of(FlightArrowEntity::new, EntityClassification.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("worldupgrade:flight_arrow");
 
     public static final RegistryObject<EntityType<BubbleEelEntity>> BUBBLE_EEL = ENTITIES.register("bubble_eel", () -> TYPE_BUBBLE_EEL);
     public static final RegistryObject<EntityType<SpoonBillEntity>> SPOONBILL = ENTITIES.register("spoonbill", () -> TYPE_SPOONBILL);
@@ -53,7 +53,7 @@ public class ModEntities
 
     public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name)
     {
-        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE));
+        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().tab(WorldUpgradeItemGroup.INSTANCE));
         item.setRegistryName(name);
         return item;
     }
@@ -61,10 +61,10 @@ public class ModEntities
     public static void SetupEntityAttributes()
     {
         System.out.println("Setting up entity attributes for WorldUpgrade entities.");
-        GlobalEntityTypeAttributes.put(BUBBLE_EEL.get(), BubbleEelEntity.prepareAttributes().create());
-        GlobalEntityTypeAttributes.put(SPOONBILL.get(), SpoonBillEntity.prepareAttributes().create());
-        GlobalEntityTypeAttributes.put(GRIBBER.get(), GribberEntity.prepareAttributes().create());
-        GlobalEntityTypeAttributes.put(BEAVER.get(), BeaverEntity.prepareAttributes().create());
+        GlobalEntityTypeAttributes.put(BUBBLE_EEL.get(), BubbleEelEntity.prepareAttributes().build());
+        GlobalEntityTypeAttributes.put(SPOONBILL.get(), SpoonBillEntity.prepareAttributes().build());
+        GlobalEntityTypeAttributes.put(GRIBBER.get(), GribberEntity.prepareAttributes().build());
+        GlobalEntityTypeAttributes.put(BEAVER.get(), BeaverEntity.prepareAttributes().build());
     }
 
 //    public static void registerEntityWorldSpawn(EntityType<?> entity, int weight, int minGroupCountIn, int maxGroupCountIn, Biome... biomes)

@@ -19,10 +19,10 @@ import java.util.function.Function;
 public class BrambleFeature extends Feature<NoFeatureConfig>
 {
 
-    private static final BlockState BRAMBLE_FULL_2 = ModBlocks.BRAMBLE_FULL.get().getDefaultState().with(BrambleFullBlock.AGE, 2);
-    private static final BlockState BRAMBLE_FULL_3 = ModBlocks.BRAMBLE_FULL.get().getDefaultState().with(BrambleFullBlock.AGE, 3);
-    private static final BlockState BRAMBLE_BUSH_2 = ModBlocks.BRAMBLE_BUSH.get().getDefaultState().with(BrambleBushBlock.AGE, 2);
-    private static final BlockState BRAMBLE_BUSH_3 = ModBlocks.BRAMBLE_BUSH.get().getDefaultState().with(BrambleBushBlock.AGE, 3);
+    private static final BlockState BRAMBLE_FULL_2 = ModBlocks.BRAMBLE_FULL.get().defaultBlockState().setValue(BrambleFullBlock.AGE, 2);
+    private static final BlockState BRAMBLE_FULL_3 = ModBlocks.BRAMBLE_FULL.get().defaultBlockState().setValue(BrambleFullBlock.AGE, 3);
+    private static final BlockState BRAMBLE_BUSH_2 = ModBlocks.BRAMBLE_BUSH.get().defaultBlockState().setValue(BrambleBushBlock.AGE, 2);
+    private static final BlockState BRAMBLE_BUSH_3 = ModBlocks.BRAMBLE_BUSH.get().defaultBlockState().setValue(BrambleBushBlock.AGE, 3);
 
     public BrambleFeature(Codec<NoFeatureConfig> p_i231953_1_) {
         super(p_i231953_1_);
@@ -30,12 +30,12 @@ public class BrambleFeature extends Feature<NoFeatureConfig>
 
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
         int i = 3 + rand.nextInt(3);
         int j = 3 + rand.nextInt(3);
 
-        for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-i, 0, -j), pos.add(i, 1, j)))
+        for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-i, 0, -j), pos.offset(i, 1, j)))
         {
             int k = pos.getX() - blockpos.getX();
             int l = pos.getZ() - blockpos.getZ();
@@ -48,14 +48,14 @@ public class BrambleFeature extends Feature<NoFeatureConfig>
             }
         }
 
-        for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-i, 0, -j), pos.add(i, 1, j)))
+        for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-i, 0, -j), pos.offset(i, 1, j)))
         {
-            if (worldIn.getBlockState(blockpos).getBlock() instanceof BrambleFullBlock && worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.AIR)
+            if (worldIn.getBlockState(blockpos).getBlock() instanceof BrambleFullBlock && worldIn.getBlockState(blockpos.above()).getBlock() == Blocks.AIR)
             {
                 if (rand.nextBoolean())
                 {
-                    if (rand.nextBoolean()) setBlockState(worldIn, blockpos, BRAMBLE_BUSH_2);
-                    else setBlockState(worldIn, blockpos, BRAMBLE_BUSH_3);
+                    if (rand.nextBoolean()) setBlock(worldIn, blockpos, BRAMBLE_BUSH_2);
+                    else setBlock(worldIn, blockpos, BRAMBLE_BUSH_3);
                 }
             }
         }
@@ -67,10 +67,10 @@ public class BrambleFeature extends Feature<NoFeatureConfig>
     {
         if (world.getBlockState(pos).getBlock() == Blocks.AIR)
         {
-            if (ModBlocks.BRAMBLE_BUSH.get().getDefaultState().isValidPosition(world, pos) || world.getBlockState(pos.down()).getBlock() instanceof BrambleFullBlock)
+            if (ModBlocks.BRAMBLE_BUSH.get().defaultBlockState().canSurvive(world, pos) || world.getBlockState(pos.below()).getBlock() instanceof BrambleFullBlock)
             {
-                if (rand.nextBoolean()) setBlockState(world, pos, BRAMBLE_FULL_2);
-                else setBlockState(world, pos, BRAMBLE_FULL_3);
+                if (rand.nextBoolean()) setBlock(world, pos, BRAMBLE_FULL_2);
+                else setBlock(world, pos, BRAMBLE_FULL_3);
             }
         }
     }

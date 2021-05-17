@@ -44,35 +44,35 @@ public class GribberEntity extends AnimalEntity implements IFlyingAnimal
     }
 
     @Override
-    public void livingTick()
+    public void aiStep()
     {
-        super.livingTick();
+        super.aiStep();
         this.wingSwing += 0.2f;
         this.wingSwing %= 6.2f;
     }
 
     @Override
-    public boolean isBreedingItem(ItemStack stack)
+    public boolean isFood(ItemStack stack)
     {
         return false;
     }
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return null;
     }
 
     public static AttributeModifierMap.MutableAttribute prepareAttributes()
     {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 1.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 8.0D)
+                .add(Attributes.MOVEMENT_SPEED, 1.0D)
+                .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

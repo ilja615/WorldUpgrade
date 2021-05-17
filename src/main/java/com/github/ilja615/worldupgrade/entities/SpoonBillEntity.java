@@ -37,7 +37,7 @@ import java.util.Random;
 
 public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
 {
-    private static final DataParameter<Integer> SPOONBILL_TYPE = EntityDataManager.createKey(SpoonBillEntity.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> SPOONBILL_TYPE = EntityDataManager.defineId(SpoonBillEntity.class, DataSerializers.INT);
 
     public final boolean flying = true;
     public float wingSwing = 0.0f;
@@ -58,39 +58,39 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
     }
 
     @Override
-    public void livingTick()
+    public void aiStep()
     {
-        super.livingTick();
+        super.aiStep();
         this.wingSwing += 0.2f;
         this.wingSwing %= 6.2f;
     }
 
     @Override
-    public boolean isBreedingItem(ItemStack stack)
+    public boolean isFood(ItemStack stack)
     {
-        return stack.getItem().isIn(ItemTags.FISHES) && !FoodChecker.isPoisonous(stack.getItem());
+        return stack.getItem().is(ItemTags.FISHES) && !FoodChecker.isPoisonous(stack.getItem());
     }
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return ModEntities.SPOONBILL.get().create(serverWorld);
     }
 
-    protected void registerData()
+    protected void defineSynchedData()
     {
-        super.registerData();
-        this.dataManager.register(SPOONBILL_TYPE, 0);
+        super.defineSynchedData();
+        this.entityData.define(SPOONBILL_TYPE, 0);
     }
 
-    public int getVariant() { return MathHelper.clamp(this.dataManager.get(SPOONBILL_TYPE), 0, 3); }
+    public int getVariant() { return MathHelper.clamp(this.entityData.get(SPOONBILL_TYPE), 0, 3); }
 
     public void setVariant(int variantIn) {
-        this.dataManager.set(SPOONBILL_TYPE, variantIn);
+        this.entityData.set(SPOONBILL_TYPE, variantIn);
     }
 
     @Nullable
-    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+    public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
     {
         int i;
         int f;
@@ -99,7 +99,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
             i = ((SpoonBillEntity.SpoonBillData)spawnDataIn).variant;
         } else {
             i = 0;
-            f = rand.nextInt(10);
+            f = random.nextInt(10);
                  if (f > 6)  i = 0;
             else if (f > 4)  i = 1;
             else if (f > 2)  i = 2;
@@ -108,7 +108,7 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         }
 
         this.setVariant(i);
-        return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+        return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
     static class SpoonBillData extends AgeableEntity.AgeableData
@@ -122,14 +122,14 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         }
     }
 
-    public void writeAdditional(CompoundNBT compound) { super.writeAdditional(compound); compound.putInt("Variant", this.getVariant()); }
-    public void readAdditional(CompoundNBT compound) { super.readAdditional(compound); this.setVariant(compound.getInt("Variant")); }
+    public void addAdditionalSaveData(CompoundNBT compound) { super.addAdditionalSaveData(compound); compound.putInt("Variant", this.getVariant()); }
+    public void readAdditionalSaveData(CompoundNBT compound) { super.readAdditionalSaveData(compound); this.setVariant(compound.getInt("Variant")); }
 
     public static AttributeModifierMap.MutableAttribute prepareAttributes()
     {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 8.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.25D);
     }
 
     static class SpoonBillBreedGoal extends BreedGoal {
@@ -143,29 +143,29 @@ public class SpoonBillEntity extends AnimalEntity implements IFlyingAnimal
         /**
          * Spawns a baby animal of the same type.
          */
-        protected void spawnBaby() {
+        protected void breed() {
             ServerPlayerEntity serverplayerentity = this.animal.getLoveCause();
-            if (serverplayerentity == null && this.targetMate.getLoveCause() != null) {
-                serverplayerentity = this.targetMate.getLoveCause();
+            if (serverplayerentity == null && this.partner.getLoveCause() != null) {
+                serverplayerentity = this.partner.getLoveCause();
             }
 
             if (serverplayerentity != null) {
-                serverplayerentity.addStat(Stats.ANIMALS_BRED);
-                CriteriaTriggers.BRED_ANIMALS.trigger(serverplayerentity, this.animal, this.targetMate, (AgeableEntity)null);
+                serverplayerentity.awardStat(Stats.ANIMALS_BRED);
+                CriteriaTriggers.BRED_ANIMALS.trigger(serverplayerentity, this.animal, this.partner, (AgeableEntity)null);
             }
 
-            this.animal.entityDropItem(ModItems.SPOONBILL_EGG.get(), 1);
-            this.animal.resetInLove();
-            this.targetMate.resetInLove();
-            Random random = this.animal.getRNG();
-            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
-                this.world.addEntity(new ExperienceOrbEntity(this.world, this.animal.getPosX(), this.animal.getPosY(), this.animal.getPosZ(), random.nextInt(7) + 1));
+            this.animal.spawnAtLocation(ModItems.SPOONBILL_EGG.get(), 1);
+            this.animal.resetLove();
+            this.partner.resetLove();
+            Random random = this.animal.getRandom();
+            if (this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
+                this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.animal.getX(), this.animal.getY(), this.animal.getZ(), random.nextInt(7) + 1));
             }
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

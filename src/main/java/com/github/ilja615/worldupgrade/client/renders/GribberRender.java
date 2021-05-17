@@ -23,7 +23,7 @@ public class GribberRender extends MobRenderer<GribberEntity, GribberModel>
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(GribberEntity entity)
+    public ResourceLocation getTextureLocation(GribberEntity entity)
     {
         return new ResourceLocation("worldupgrade:textures/entity/gribber.png");
     }

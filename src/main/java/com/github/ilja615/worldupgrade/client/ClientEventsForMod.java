@@ -17,8 +17,8 @@ public class ClientEventsForMod
     @SubscribeEvent
     public static void onFogColor(EntityViewRenderEvent.FogColors event)
     {
-        Biome b = event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition());
-        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
+        Biome b = event.getInfo().getEntity().level.getBiome(event.getInfo().getEntity().blockPosition());
+        if (event.getInfo().getEntity().level.registryAccess().registryOrThrow(Registry.BIOME_REGISTRY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
             event.setRed(0.92F);
             event.setGreen(0.95F);
@@ -29,8 +29,8 @@ public class ClientEventsForMod
     @SubscribeEvent
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event)
     {
-        Biome b = event.getInfo().getRenderViewEntity().world.getBiome(event.getInfo().getRenderViewEntity().getPosition());
-        if (event.getInfo().getRenderViewEntity().world.func_241828_r().getRegistry(Registry.BIOME_KEY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
+        Biome b = event.getInfo().getEntity().level.getBiome(event.getInfo().getEntity().blockPosition());
+        if (event.getInfo().getEntity().level.registryAccess().registryOrThrow(Registry.BIOME_REGISTRY).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
             event.setDensity(0.05f);
             event.setCanceled(true);

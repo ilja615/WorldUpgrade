@@ -18,10 +18,10 @@ public class RockFeature extends Feature<BlockStateFeatureConfig> {
         super(p_i231931_1_);
     }
 
-    public boolean generate(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
-        for(; pos.getY() > 3; pos = pos.down()) {
-            if (!iSeedReader.isAirBlock(pos.down())) {
-                Block lvt_6_1_ = iSeedReader.getBlockState(pos.down()).getBlock();
+    public boolean place(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
+        for(; pos.getY() > 3; pos = pos.below()) {
+            if (!iSeedReader.isEmptyBlock(pos.below())) {
+                Block lvt_6_1_ = iSeedReader.getBlockState(pos.below()).getBlock();
                 if (isDirt(lvt_6_1_) || isStone(lvt_6_1_) || lvt_6_1_ instanceof CoarseSandBlock || lvt_6_1_ instanceof RegolithBlock) {
                     break;
                 }
@@ -36,16 +36,16 @@ public class RockFeature extends Feature<BlockStateFeatureConfig> {
                 int lvt_8_1_ = rand.nextInt(4);
                 int lvt_9_1_ = rand.nextInt(3);
                 float lvt_10_1_ = (float)(lvt_7_1_ + lvt_8_1_ + lvt_9_1_) * 0.4F + 0.5F;
-                Iterator var11 = BlockPos.getAllInBoxMutable(pos.add(-lvt_7_1_, -lvt_8_1_, -lvt_9_1_), pos.add(lvt_7_1_, lvt_8_1_, lvt_9_1_)).iterator();
+                Iterator var11 = BlockPos.betweenClosed(pos.offset(-lvt_7_1_, -lvt_8_1_, -lvt_9_1_), pos.offset(lvt_7_1_, lvt_8_1_, lvt_9_1_)).iterator();
 
                 while(var11.hasNext()) {
                     BlockPos lvt_12_1_ = (BlockPos)var11.next();
-                    if (lvt_12_1_.distanceSq(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
-                        iSeedReader.setBlockState(lvt_12_1_, config.state, 4);
+                    if (lvt_12_1_.distSqr(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
+                        iSeedReader.setBlock(lvt_12_1_, config.state, 4);
                     }
                 }
 
-                pos = pos.add(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));
+                pos = pos.offset(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));
             }
 
             return true;

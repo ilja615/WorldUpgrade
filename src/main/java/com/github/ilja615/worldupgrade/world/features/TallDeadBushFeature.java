@@ -20,8 +20,8 @@ import java.util.function.Function;
 public class TallDeadBushFeature extends Feature<NoFeatureConfig>
 {
 
-    private static final BlockState BOTTOM_TALL_DEAD_BUSH = ModBlocks.TALL_DEAD_BUSH.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER);
-    private static final BlockState TOP_TALL_DEAD_BUSH = ModBlocks.TALL_DEAD_BUSH.get().getDefaultState().with(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER);
+    private static final BlockState BOTTOM_TALL_DEAD_BUSH = ModBlocks.TALL_DEAD_BUSH.get().defaultBlockState().setValue(DoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER);
+    private static final BlockState TOP_TALL_DEAD_BUSH = ModBlocks.TALL_DEAD_BUSH.get().defaultBlockState().setValue(DoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER);
 
     public TallDeadBushFeature(Codec<NoFeatureConfig> p_i231953_1_) {
         super(p_i231953_1_);
@@ -31,29 +31,29 @@ public class TallDeadBushFeature extends Feature<NoFeatureConfig>
     protected static boolean isAirOrLeaves(IWorldGenerationBaseReader worldIn, BlockPos pos)
     {
         if (!(worldIn instanceof net.minecraft.world.IWorldReader)) // FORGE: Redirect to state method when possible
-            return worldIn.hasBlockState(pos, (p_214581_0_) -> p_214581_0_.isAir() || p_214581_0_.isIn(BlockTags.LEAVES));
+            return worldIn.isStateAtPosition(pos, (p_214581_0_) -> p_214581_0_.isAir() || p_214581_0_.is(BlockTags.LEAVES));
         else
-            return worldIn.hasBlockState(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
+            return worldIn.isStateAtPosition(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
     {
         // Moving down until it is on the ground
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition))
-            startPosition = startPosition.down();
+            startPosition = startPosition.below();
 
-        startPosition = startPosition.up();
+        startPosition = startPosition.above();
 
 
-        if (!ModBlocks.TALL_DEAD_BUSH.get().getDefaultState().isValidPosition(worldIn, startPosition))
+        if (!ModBlocks.TALL_DEAD_BUSH.get().defaultBlockState().canSurvive(worldIn, startPosition))
         {
             return false; // to detect for a good ground to generate it on
         }
 
 
-        setBlockState(worldIn, startPosition, BOTTOM_TALL_DEAD_BUSH);
-        setBlockState(worldIn, startPosition.up(1), TOP_TALL_DEAD_BUSH);
+        setBlock(worldIn, startPosition, BOTTOM_TALL_DEAD_BUSH);
+        setBlock(worldIn, startPosition.above(1), TOP_TALL_DEAD_BUSH);
 
 
         return false;

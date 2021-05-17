@@ -11,9 +11,9 @@ public class FoodChecker
     public static boolean isPoisonous(Item item)
     {
         boolean r = false;
-        for (Pair<EffectInstance, Float> effectInstanceFloatPair : item.getFood().getEffects())
+        for (Pair<EffectInstance, Float> effectInstanceFloatPair : item.getFoodProperties().getEffects())
         {
-            if (effectInstanceFloatPair.getFirst().getPotion() == Effects.POISON) {
+            if (effectInstanceFloatPair.getFirst().getEffect() == Effects.POISON) {
                 r = true;
             }
         }

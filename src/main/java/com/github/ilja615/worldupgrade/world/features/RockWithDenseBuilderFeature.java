@@ -19,19 +19,19 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig> {
-    private static final BlockState DENSE_BOULDER = ModBlocks.DENSE_BOULDER.get().getDefaultState();
-    private static final BlockState MOSSY_DENSE_BOULDER = ModBlocks.MOSSY_DENSE_BOULDER.get().getDefaultState();
-    private static final BlockState MOSSY_BOULDER = ModBlocks.MOSSY_BOULDER.get().getDefaultState();
+    private static final BlockState DENSE_BOULDER = ModBlocks.DENSE_BOULDER.get().defaultBlockState();
+    private static final BlockState MOSSY_DENSE_BOULDER = ModBlocks.MOSSY_DENSE_BOULDER.get().defaultBlockState();
+    private static final BlockState MOSSY_BOULDER = ModBlocks.MOSSY_BOULDER.get().defaultBlockState();
 
     public RockWithDenseBuilderFeature(Codec<BlockStateFeatureConfig> p_i231931_1_) {
         super(p_i231931_1_);
     }
 
-    public boolean generate(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config)
+    public boolean place(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BlockStateFeatureConfig config)
     {
-        for(; pos.getY() > 8; pos = pos.down()) {
-            if (!iSeedReader.isAirBlock(pos.down())) {
-                Block lvt_6_1_ = iSeedReader.getBlockState(pos.down()).getBlock();
+        for(; pos.getY() > 8; pos = pos.below()) {
+            if (!iSeedReader.isEmptyBlock(pos.below())) {
+                Block lvt_6_1_ = iSeedReader.getBlockState(pos.below()).getBlock();
                 if (isDirt(lvt_6_1_) || isStone(lvt_6_1_) || lvt_6_1_ instanceof CoarseSandBlock || lvt_6_1_ instanceof RegolithBlock) {
                     break;
                 }
@@ -45,17 +45,17 @@ public class RockWithDenseBuilderFeature extends Feature<BlockStateFeatureConfig
                 int lvt_8_1_ = 1 + rand.nextInt(3);
                 int lvt_9_1_ = 1 + rand.nextInt(2);
                 float lvt_10_1_ = (float)(lvt_7_1_ + lvt_8_1_ + lvt_9_1_) * 0.3F + 0.5F;
-                Iterator var11 = BlockPos.getAllInBoxMutable(pos.add(-lvt_7_1_, -lvt_8_1_, -lvt_9_1_), pos.add(lvt_7_1_, lvt_8_1_, lvt_9_1_)).iterator();
+                Iterator var11 = BlockPos.betweenClosed(pos.offset(-lvt_7_1_, -lvt_8_1_, -lvt_9_1_), pos.offset(lvt_7_1_, lvt_8_1_, lvt_9_1_)).iterator();
                 boolean mossy = rand.nextBoolean();
 
                 while(var11.hasNext()) {
                     BlockPos lvt_12_1_ = (BlockPos)var11.next();
-                    if (lvt_12_1_.distanceSq(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
+                    if (lvt_12_1_.distSqr(pos) <= (double)(lvt_10_1_ * lvt_10_1_)) {
                         boolean hi = rand.nextFloat() > 0.8f;
-                        iSeedReader.setBlockState(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy && hi? MOSSY_DENSE_BOULDER : DENSE_BOULDER) : (mossy && hi? MOSSY_BOULDER : config.state), 4);
+                        iSeedReader.setBlock(lvt_12_1_, rand.nextFloat() * (pos.getY() - lvt_12_1_.getY() + 0.5f) > 0.5f ? (mossy && hi? MOSSY_DENSE_BOULDER : DENSE_BOULDER) : (mossy && hi? MOSSY_BOULDER : config.state), 4);
                     }
                 }
-                pos = pos.add(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));
+                pos = pos.offset(-1 + rand.nextInt(2), -rand.nextInt(2), -1 + rand.nextInt(2));
             }
             return true;
         }

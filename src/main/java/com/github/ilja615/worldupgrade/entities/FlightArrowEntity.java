@@ -26,22 +26,22 @@ public class FlightArrowEntity extends AbstractArrowEntity
     }
 
     @Override
-    protected ItemStack getArrowStack() {
+    protected ItemStack getPickupItem() {
          return new ItemStack(ModItems.FLIGHT_ARROW.get());
     }
 
     @Override
-    protected float getWaterDrag() {
+    protected float getWaterInertia() {
         return 0.0f;
     }
 
     @Override
-    public boolean hasNoGravity() {
+    public boolean isNoGravity() {
         return true;
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }

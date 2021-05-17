@@ -11,6 +11,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class RegolithBlock extends FallingBlock
 {
     public RegolithBlock(Properties properties)
@@ -19,15 +21,15 @@ public class RegolithBlock extends FallingBlock
     }
 
     @Override
-    public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving)
+    public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving)
     {
-        worldIn.getPendingBlockTicks().scheduleTick(pos, this, 100);
+        worldIn.getBlockTicks().scheduleTick(pos, this, 100);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 40);
-        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        worldIn.getBlockTicks().scheduleTick(currentPos, this, 40);
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 }

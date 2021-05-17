@@ -25,11 +25,11 @@ public class ModBlocks
     public static final RegistryObject<Block> SMOKE_VENT = BLOCKS.register("smoke_vent", () -> new SmokeVentBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
     public static final RegistryObject<Block> FUMAROLE = BLOCKS.register("fumarole", () -> new FumaroleBlock(ModProperties.VOLCANIC_STUFF_PROPERTY));
     public static final RegistryObject<Block> COARSE_SAND = BLOCKS.register("coarse_sand", () -> new CoarseSandBlock(ModProperties.SAND_PROPERTY));
-    public static final RegistryObject<Block> ASH_DIRT = BLOCKS.register("ash_dirt", () -> new GrassyBlockBase(Block.Properties.from(Blocks.DIRT).tickRandomly()));
-    public static final RegistryObject<Block> ASH_BLOCK = BLOCKS.register("ash_block", () -> new Block(Block.Properties.from(Blocks.DIRT)));
+    public static final RegistryObject<Block> ASH_DIRT = BLOCKS.register("ash_dirt", () -> new GrassyBlockBase(AbstractBlock.Properties.copy(Blocks.DIRT).randomTicks()));
+    public static final RegistryObject<Block> ASH_BLOCK = BLOCKS.register("ash_block", () -> new Block(AbstractBlock.Properties.copy(Blocks.DIRT)));
     public static final RegistryObject<Block> BOULDER = BLOCKS.register("boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
     public static final RegistryObject<Block> DENSE_BOULDER = BLOCKS.register("dense_boulder", () -> new Block(ModProperties.STONE_PROPERTY));
-    public static final RegistryObject<Block> PEAT = BLOCKS.register("peat", () -> new PeatBlock(Block.Properties.from(Blocks.CLAY)));
+    public static final RegistryObject<Block> PEAT = BLOCKS.register("peat", () -> new PeatBlock(AbstractBlock.Properties.copy(Blocks.CLAY)));
     public static final RegistryObject<Block> MOSSY_BOULDER = BLOCKS.register("mossy_boulder", () -> new RegolithBlock(ModProperties.STONE_PROPERTY));
     public static final RegistryObject<Block> MOSSY_DENSE_BOULDER = BLOCKS.register("mossy_dense_boulder", () -> new Block(ModProperties.STONE_PROPERTY));
 
@@ -43,11 +43,11 @@ public class ModBlocks
     public static final RegistryObject<Block> JUNGLE_ROCK_BRICKS_CRACKED = BLOCKS.register("jungle_rock_bricks_cracked", () -> new Block(ModProperties.JUNGLE_COBBLE_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_COBBLE_MOSSY = BLOCKS.register("jungle_cobble_mossy", () -> new Block(ModProperties.JUNGLE_COBBLE_PROPERTY));
     public static final RegistryObject<Block> JUNGLE_ROCK_PILLAR = BLOCKS.register("jungle_rock_pillar", () -> new RotatedPillarBlock(ModProperties.JUNGLE_COBBLE_PROPERTY));
-    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_STAIRS = BLOCKS.register("jungle_rock_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_STAIRS = BLOCKS.register("jungle_cobble_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_STAIRS = BLOCKS.register("jungle_rock_bricks_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_MOSSY_STAIRS = BLOCKS.register("jungle_rock_bricks_mossy_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
-    public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_MOSSY_STAIRS = BLOCKS.register("jungle_cobble_mossy_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().getDefaultState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_STAIRS = BLOCKS.register("jungle_rock_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().defaultBlockState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+    public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_STAIRS = BLOCKS.register("jungle_cobble_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().defaultBlockState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_STAIRS = BLOCKS.register("jungle_rock_bricks_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().defaultBlockState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+    public static final RegistryObject<StairsBlock> JUNGLE_ROCK_BRICKS_MOSSY_STAIRS = BLOCKS.register("jungle_rock_bricks_mossy_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().defaultBlockState(), ModProperties.JUNGLE_ROCK_PROPERTY));
+    public static final RegistryObject<StairsBlock> JUNGLE_COBBLE_MOSSY_STAIRS = BLOCKS.register("jungle_cobble_mossy_stairs", () -> new StairsBlock(() -> JUNGLE_ROCK.get().defaultBlockState(), ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_ROCK_SLAB = BLOCKS.register("jungle_rock_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_COBBLE_SLAB = BLOCKS.register("jungle_cobble_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
     public static final RegistryObject<SlabBlock> JUNGLE_ROCK_BRICKS_SLAB = BLOCKS.register("jungle_rock_bricks_slab", () -> new SlabBlock(ModProperties.JUNGLE_ROCK_PROPERTY));
@@ -67,14 +67,14 @@ public class ModBlocks
     public static final RegistryObject<Block> DRY_TALL_REED = BLOCKS.register("dry_tall_reed", () -> new DriedDoubleReedPlantBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> DRY_TOP_REED = BLOCKS.register("dry_top_reed", () -> new DriedExtraReedBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> LEAVES_PILE = BLOCKS.register("leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
-    public static final RegistryObject<Block> BRAMBLE_FULL = BLOCKS.register("bramble_full", () -> new BrambleFullBlock(Block.Properties.from(Blocks.SWEET_BERRY_BUSH).tickRandomly()));
-    public static final RegistryObject<Block> BRAMBLE_BUSH = BLOCKS.register("bramble_bush", () -> new BrambleBushBlock(Block.Properties.from(Blocks.SWEET_BERRY_BUSH).tickRandomly()));
+    public static final RegistryObject<Block> BRAMBLE_FULL = BLOCKS.register("bramble_full", () -> new BrambleFullBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH).randomTicks()));
+    public static final RegistryObject<Block> BRAMBLE_BUSH = BLOCKS.register("bramble_bush", () -> new BrambleBushBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH).randomTicks()));
     public static final RegistryObject<Block> FALLEN_LEAVES = BLOCKS.register("fallen_leaves", () -> new FallenLeavesBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> AUTUMN_FALLEN_LEAVES = BLOCKS.register("autumn_fallen_leaves", () -> new FallenLeavesBlock(ModProperties.LEAVES_PROPERTY));
     public static final RegistryObject<Block> AUTUMN_LEAVES_PILE = BLOCKS.register("autumn_leaves_pile", () -> new LeavesPileBlock(ModProperties.LEAVES_PROPERTY));
-    public static final RegistryObject<Block> TALL_DEAD_BUSH = BLOCKS.register("tall_dead_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
-    public static final RegistryObject<Block> TALL_CHARRED_BUSH = BLOCKS.register("tall_charred_bush", () -> new TallDeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
-    public static final RegistryObject<Block> CHARRED_BUSH = BLOCKS.register("charred_bush", () -> new DeadBushBlock(Block.Properties.from(Blocks.DEAD_BUSH)));
+    public static final RegistryObject<Block> TALL_DEAD_BUSH = BLOCKS.register("tall_dead_bush", () -> new TallDeadBushBlock(AbstractBlock.Properties.copy(Blocks.DEAD_BUSH)));
+    public static final RegistryObject<Block> TALL_CHARRED_BUSH = BLOCKS.register("tall_charred_bush", () -> new TallDeadBushBlock(AbstractBlock.Properties.copy(Blocks.DEAD_BUSH)));
+    public static final RegistryObject<Block> CHARRED_BUSH = BLOCKS.register("charred_bush", () -> new DeadBushBlock(AbstractBlock.Properties.copy(Blocks.DEAD_BUSH)));
     public static final RegistryObject<Block> GUNNERA_STEM = BLOCKS.register("gunnera_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
     public static final RegistryObject<Block> BIG_PLANT_LEAF = BLOCKS.register("big_plant_leaf", () -> new BigPlantLeafBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
     public static final RegistryObject<Block> BIG_PLANT_STEM = BLOCKS.register("big_plant_stem", () -> new RotatedPillarBlock(ModProperties.BIG_PLANT_OR_GUNNERA_PROPERTY));
@@ -87,14 +87,14 @@ public class ModBlocks
     public static final RegistryObject<Block> GUNNERA_TALLFLOWER = BLOCKS.register("tall_gunnera_flower", () -> new DoublePlantBlock(ModProperties.FLOWER_PROPERTY));
     public static final RegistryObject<Block> NETTLE = BLOCKS.register("nettle", () -> new BushBlock(ModProperties.FLOWER_PROPERTY));
     public static final RegistryObject<Block> LARGE_NETTLE = BLOCKS.register("large_nettle", () -> new DoublePlantBlock(ModProperties.FLOWER_PROPERTY));
-    public static final RegistryObject<Block> SPHAGNUM_MOSS = BLOCKS.register("sphagnum_moss", () -> new MossBlock(Block.Properties.from(Blocks.VINE).tickRandomly()));
+    public static final RegistryObject<Block> SPHAGNUM_MOSS = BLOCKS.register("sphagnum_moss", () -> new MossBlock(AbstractBlock.Properties.copy(Blocks.VINE).randomTicks()));
 
     // Plant crafted blocks
-    public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.HOE)));
-    public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.HAY_BLOCK).harvestTool(ToolType.HOE)));
-    public static final RegistryObject<Block> DRY_REED_THATCH = BLOCKS.register("dry_reed_thatch", () -> new ThatchBlock(Block.Properties.from(Blocks.HAY_BLOCK).tickRandomly().harvestTool(ToolType.HOE)));
-    public static final RegistryObject<Block> DRY_REED_THATCH_SLAB = BLOCKS.register("dry_reed_thatch_slab", () -> new ThatchSlabBlock(Block.Properties.from(Blocks.HAY_BLOCK).tickRandomly().harvestTool(ToolType.HOE)));
-    public static final RegistryObject<Block> DRY_REED_THATCH_STAIRS = BLOCKS.register("dry_reed_thatch_stairs", () -> new ThatchStairsBlock(DRY_REED_THATCH.get().getDefaultState(), Block.Properties.from(Blocks.HAY_BLOCK).tickRandomly().harvestTool(ToolType.HOE)));
+    public static final RegistryObject<Block> REED_BALE = BLOCKS.register("reed_bale", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.HAY_BLOCK).harvestTool(ToolType.HOE)));
+    public static final RegistryObject<Block> DRY_REED_BALE = BLOCKS.register("dry_reed_bale", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.HAY_BLOCK).harvestTool(ToolType.HOE)));
+    public static final RegistryObject<Block> DRY_REED_THATCH = BLOCKS.register("dry_reed_thatch", () -> new ThatchBlock(AbstractBlock.Properties.copy(Blocks.HAY_BLOCK).randomTicks().harvestTool(ToolType.HOE)));
+    public static final RegistryObject<Block> DRY_REED_THATCH_SLAB = BLOCKS.register("dry_reed_thatch_slab", () -> new ThatchSlabBlock(AbstractBlock.Properties.copy(Blocks.HAY_BLOCK).randomTicks().harvestTool(ToolType.HOE)));
+    public static final RegistryObject<Block> DRY_REED_THATCH_STAIRS = BLOCKS.register("dry_reed_thatch_stairs", () -> new ThatchStairsBlock(DRY_REED_THATCH.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.HAY_BLOCK).randomTicks().harvestTool(ToolType.HOE)));
 
     // Other Blocks
     public static final RegistryObject<Block> INTERTWINED_TWIGS_BLOCK = BLOCKS.register("intertwined_twigs_block", () -> new Block(ModProperties.LOG_PROPERTY));

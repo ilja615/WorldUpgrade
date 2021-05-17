@@ -17,59 +17,59 @@ public class BubbleEelModel extends EntityModel<BubbleEelEntity>
 
     public BubbleEelModel()
     {
-        textureWidth = 64;
-        textureHeight = 64;
+        texWidth = 64;
+        texHeight = 64;
 
         body = new ModelRenderer(this);
-        body.setRotationPoint(-2.0F, 21.5F, 0.0F);
-        body.setTextureOffset(0, 10).addBox(-12.0F, -2.5F, -2.5F, 12.0F, 5.0F, 5.0F, 0.0F, false);
-        body.setTextureOffset(0, 41).addBox(-12.0F, -5.5F, 0.0F, 12.0F, 3.0F, 0.0F, 0.0F, false);
+        body.setPos(-2.0F, 21.5F, 0.0F);
+        body.texOffs(0, 10).addBox(-12.0F, -2.5F, -2.5F, 12.0F, 5.0F, 5.0F, 0.0F, false);
+        body.texOffs(0, 41).addBox(-12.0F, -5.5F, 0.0F, 12.0F, 3.0F, 0.0F, 0.0F, false);
 
         ModelRenderer tail = new ModelRenderer(this);
-        tail.setRotationPoint(-12.0F, 0.5F, 0.0F);
+        tail.setPos(-12.0F, 0.5F, 0.0F);
         body.addChild(tail);
-        tail.setTextureOffset(0, 20).addBox(-12.0F, -2.0F, -1.5F, 12.0F, 4.0F, 3.0F, 0.0F, false);
-        tail.setTextureOffset(0, 27).addBox(-18.0F, -4.0F, 0.0F, 12.0F, 8.0F, 0.0F, 0.0F, false);
+        tail.texOffs(0, 20).addBox(-12.0F, -2.0F, -1.5F, 12.0F, 4.0F, 3.0F, 0.0F, false);
+        tail.texOffs(0, 27).addBox(-18.0F, -4.0F, 0.0F, 12.0F, 8.0F, 0.0F, 0.0F, false);
 
         body2 = new ModelRenderer(this);
-        body2.setRotationPoint(-2.0F, 21.5F, 0.0F);
-        body2.setTextureOffset(0, 0).addBox(0.0F, -2.5F, -2.5F, 12.0F, 5.0F, 5.0F, 0.0F, false);
-        body2.setTextureOffset(0, 38).addBox(0.0F, -5.5F, 0.0F, 12.0F, 3.0F, 0.0F, 0.0F, false);
+        body2.setPos(-2.0F, 21.5F, 0.0F);
+        body2.texOffs(0, 0).addBox(0.0F, -2.5F, -2.5F, 12.0F, 5.0F, 5.0F, 0.0F, false);
+        body2.texOffs(0, 38).addBox(0.0F, -5.5F, 0.0F, 12.0F, 3.0F, 0.0F, 0.0F, false);
 
         ModelRenderer body3 = new ModelRenderer(this);
-        body3.setRotationPoint(12.0F, 0.5F, 0.0F);
+        body3.setPos(12.0F, 0.5F, 0.0F);
         body2.addChild(body3);
-        body3.setTextureOffset(25, 25).addBox(0.0F, -2.0F, -2.5F, 8.0F, 4.0F, 5.0F, 0.0F, false);
+        body3.texOffs(25, 25).addBox(0.0F, -2.0F, -2.5F, 8.0F, 4.0F, 5.0F, 0.0F, false);
 
         ModelRenderer fin1 = new ModelRenderer(this);
-        fin1.setRotationPoint(2.0F, 1.0F, -2.0F);
+        fin1.setPos(2.0F, 1.0F, -2.0F);
         body3.addChild(fin1);
-        fin1.setTextureOffset(28, 6).addBox(-2.0F, 0.0F, -6.0F, 4.0F, 0.0F, 6.0F, 0.0F, false);
+        fin1.texOffs(28, 6).addBox(-2.0F, 0.0F, -6.0F, 4.0F, 0.0F, 6.0F, 0.0F, false);
 
         ModelRenderer fin2 = new ModelRenderer(this);
-        fin2.setRotationPoint(2.0F, 1.0F, 2.0F);
+        fin2.setPos(2.0F, 1.0F, 2.0F);
         body3.addChild(fin2);
-        fin2.setTextureOffset(28, 0).addBox(-2.0F, 0.0F, 0.0F, 4.0F, 0.0F, 6.0F, 0.0F, false);
+        fin2.texOffs(28, 0).addBox(-2.0F, 0.0F, 0.0F, 4.0F, 0.0F, 6.0F, 0.0F, false);
 
         ModelRenderer jaw1 = new ModelRenderer(this);
-        jaw1.setRotationPoint(8.0F, 1.0F, 0.0F);
+        jaw1.setPos(8.0F, 1.0F, 0.0F);
         body3.addChild(jaw1);
-        jaw1.setTextureOffset(21, 34).addBox(0.0F, 0.0F, -1.5F, 4.0F, 1.0F, 3.0F, 0.0F, false);
+        jaw1.texOffs(21, 34).addBox(0.0F, 0.0F, -1.5F, 4.0F, 1.0F, 3.0F, 0.0F, false);
 
         ModelRenderer jaw2 = new ModelRenderer(this);
-        jaw2.setRotationPoint(8.0F, 1.0F, 0.0F);
+        jaw2.setPos(8.0F, 1.0F, 0.0F);
         body3.addChild(jaw2);
-        jaw2.setTextureOffset(30, 20).addBox(0.0F, -2.0F, -1.5F, 4.0F, 2.0F, 3.0F, 0.0F, false);
+        jaw2.texOffs(30, 20).addBox(0.0F, -2.0F, -1.5F, 4.0F, 2.0F, 3.0F, 0.0F, false);
     }
 
     @Override
-    public void setRotationAngles(BubbleEelEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+    public void setupAnim(BubbleEelEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
     {
 
     }
 
     @Override
-    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha)
+    public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha)
     {
         body.render(matrixStack, buffer, packedLight, packedOverlay);
         body2.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -77,8 +77,8 @@ public class BubbleEelModel extends EntityModel<BubbleEelEntity>
 
     public void setRotationAngles(ModelRenderer modelRenderer, float x, float y, float z)
     {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+        modelRenderer.xRot = x;
+        modelRenderer.yRot = y;
+        modelRenderer.zRot = z;
     }
 }

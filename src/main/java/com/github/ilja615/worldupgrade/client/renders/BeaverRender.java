@@ -21,7 +21,7 @@ public class BeaverRender extends MobRenderer<BeaverEntity, BeaverModel>
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(BeaverEntity entity)
+    public ResourceLocation getTextureLocation(BeaverEntity entity)
     {
         return new ResourceLocation("worldupgrade:textures/entity/beaver.png");
     }

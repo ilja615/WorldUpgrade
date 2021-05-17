@@ -15,12 +15,12 @@ import java.util.function.Function;
 
 public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    private static final BlockState JUNGLE_ROCK = ModBlocks.JUNGLE_ROCK.get().getDefaultState();
-    private static final BlockState OVERGROWN = ModBlocks.JUNGLE_ROCK_OVERGROWN.get().getDefaultState();
-    private static final BlockState GRASS = Blocks.GRASS_BLOCK.getDefaultState();
-    private static final BlockState SAND = Blocks.SAND.getDefaultState();
-    private static final BlockState JUNGLE_COBBLE = ModBlocks.JUNGLE_COBBLE.get().getDefaultState();
-    private static final BlockState JUNGLE_FOSSIL = ModBlocks.JUNGLE_FOSSIL.get().getDefaultState();
+    private static final BlockState JUNGLE_ROCK = ModBlocks.JUNGLE_ROCK.get().defaultBlockState();
+    private static final BlockState OVERGROWN = ModBlocks.JUNGLE_ROCK_OVERGROWN.get().defaultBlockState();
+    private static final BlockState GRASS = Blocks.GRASS_BLOCK.defaultBlockState();
+    private static final BlockState SAND = Blocks.SAND.defaultBlockState();
+    private static final BlockState JUNGLE_COBBLE = ModBlocks.JUNGLE_COBBLE.get().defaultBlockState();
+    private static final BlockState JUNGLE_FOSSIL = ModBlocks.JUNGLE_FOSSIL.get().defaultBlockState();
 
     public OvergrownPeaksSurfaceBuilder(Codec<SurfaceBuilderConfig> p_i232136_1_)
     {
@@ -28,7 +28,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         if (random.nextBoolean())
             this.buildOverGrownPeeksSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, GRASS, JUNGLE_ROCK, SAND, seaLevel, 8);
@@ -49,7 +49,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
 
         for (int lvt_22_1_ = startHeight; lvt_22_1_ >= 0; --lvt_22_1_)
         {
-            lvt_17_1_.setPos(lvt_20_1_, lvt_22_1_, lvt_21_1_);
+            lvt_17_1_.set(lvt_20_1_, lvt_22_1_, lvt_21_1_);
             BlockState lvt_23_1_ = chunkIn.getBlockState(lvt_17_1_);
             if (lvt_23_1_.isAir())
             {
@@ -60,7 +60,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
                 {
                     if (lvt_19_1_ <= 0)
                     {
-                        lvt_15_1_ = Blocks.AIR.getDefaultState();
+                        lvt_15_1_ = Blocks.AIR.defaultBlockState();
                         lvt_16_1_ = defaultBlock;
                     } else if (lvt_22_1_ >= seaLevel - 4 && lvt_22_1_ <= seaLevel + 1)
                     {
@@ -70,15 +70,15 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
 
                     if (lvt_22_1_ < seaLevel && (lvt_15_1_ == null || lvt_15_1_.isAir()))
                     {
-                        if (biomeIn.getTemperature(lvt_17_1_.setPos(x, lvt_22_1_, z)) < 0.15F)
+                        if (biomeIn.getTemperature(lvt_17_1_.set(x, lvt_22_1_, z)) < 0.15F)
                         {
-                            lvt_15_1_ = Blocks.ICE.getDefaultState();
+                            lvt_15_1_ = Blocks.ICE.defaultBlockState();
                         } else
                         {
                             lvt_15_1_ = defaultFluid;
                         }
 
-                        lvt_17_1_.setPos(lvt_20_1_, lvt_22_1_, lvt_21_1_);
+                        lvt_17_1_.set(lvt_20_1_, lvt_22_1_, lvt_21_1_);
                     }
 
                     lvt_18_1_ = lvt_19_1_;
@@ -87,7 +87,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
                         placementBlock(chunkIn, lvt_17_1_, lvt_15_1_, random);
                     } else if (lvt_22_1_ < seaLevel - 7 - lvt_19_1_)
                     {
-                        lvt_15_1_ = Blocks.AIR.getDefaultState();
+                        lvt_15_1_ = Blocks.AIR.defaultBlockState();
                         lvt_16_1_ = defaultBlock;
                         placementBlock(chunkIn, lvt_17_1_, underWaterMaterial, random);
                     } else
@@ -101,7 +101,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
                     if (lvt_18_1_ == 0 && lvt_16_1_.getBlock() == Blocks.SAND && lvt_19_1_ > 1)
                     {
                         lvt_18_1_ = random.nextInt(4) + Math.max(0, lvt_22_1_ - 63);
-                        lvt_16_1_ = lvt_16_1_.getBlock() == Blocks.RED_SAND ? Blocks.RED_SANDSTONE.getDefaultState() : Blocks.SANDSTONE.getDefaultState();
+                        lvt_16_1_ = lvt_16_1_.getBlock() == Blocks.RED_SAND ? Blocks.RED_SANDSTONE.defaultBlockState() : Blocks.SANDSTONE.defaultBlockState();
                     }
                 }
             }
@@ -114,7 +114,7 @@ public class OvergrownPeaksSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderC
         double r;
         if (state == JUNGLE_ROCK)
         {
-            if (chunkIn.getBlockState(pos.up()) == Blocks.WATER.getDefaultState())
+            if (chunkIn.getBlockState(pos.above()) == Blocks.WATER.defaultBlockState())
             {
                 chunkIn.setBlockState(pos, SAND, false);
             } else

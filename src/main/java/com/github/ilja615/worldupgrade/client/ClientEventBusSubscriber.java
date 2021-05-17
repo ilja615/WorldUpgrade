@@ -25,7 +25,7 @@ public class ClientEventBusSubscriber
             //block color
             Minecraft.getInstance().getBlockColors().register(
                     (x, reader, pos, u) -> reader != null && pos != null
-                            ? BiomeColors.getGrassColor(reader, pos)
+                            ? BiomeColors.getAverageGrassColor(reader, pos)
                             : GrassColors.get(0.5D, 1.0D),
                     ModBlocks.JUNGLE_ROCK_OVERGROWN.get(),
                     ModBlocks.GRASSY_CLAY.get(),
@@ -37,32 +37,32 @@ public class ClientEventBusSubscriber
 //                    ModBlocks.DRAGON_LEAVES.get());
         });
         //render layers
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TALL_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TOP_REED.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_CLAY.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_STONE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.JUNGLE_ROCK_OVERGROWN.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_BUSH.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_FULL.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_FALLEN_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERY.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.SPHAGNUM_MOSS.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_DEAD_BUSH.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_BUSH.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_CHARRED_BUSH.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.ASH_DIRT.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_LEAVES_PILE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.LEAVES_PILE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GUNNERA_TALLFLOWER.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHAMAENERION.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.NETTLE.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.LARGE_NETTLE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.DRAGON_LEAVES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_LEAVES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TALL_REED.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.DRY_TOP_REED.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_CLAY.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRASSY_STONE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.JUNGLE_ROCK_OVERGROWN.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_BUSH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.BRAMBLE_FULL.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_FALLEN_LEAVES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERY.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.SPHAGNUM_MOSS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_DEAD_BUSH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_BUSH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_CHARRED_BUSH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.ASH_DIRT.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_LEAVES_PILE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LEAVES_PILE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GUNNERA_TALLFLOWER.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHAMAENERION.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.NETTLE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LARGE_NETTLE.get(), RenderType.cutout());
 
     }
 }

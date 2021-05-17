@@ -19,8 +19,8 @@ import java.util.function.Function;
 
 public class PolderSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final SurfaceBuilderConfig CLAY_CONFIG = new SurfaceBuilderConfig(Blocks.CLAY.getDefaultState(), Blocks.CLAY.getDefaultState(), Blocks.CLAY.getDefaultState());
-    public static final SurfaceBuilderConfig GRASSY_CLAY_CONFIG = new SurfaceBuilderConfig(ModBlocks.GRASSY_CLAY.get().getDefaultState(), Blocks.CLAY.getDefaultState(), Blocks.CLAY.getDefaultState());
+    public static final SurfaceBuilderConfig CLAY_CONFIG = new SurfaceBuilderConfig(Blocks.CLAY.defaultBlockState(), Blocks.CLAY.defaultBlockState(), Blocks.CLAY.defaultBlockState());
+    public static final SurfaceBuilderConfig GRASSY_CLAY_CONFIG = new SurfaceBuilderConfig(ModBlocks.GRASSY_CLAY.get().defaultBlockState(), Blocks.CLAY.defaultBlockState(), Blocks.CLAY.defaultBlockState());
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(4208L), Collections.singletonList(4));
 
     public PolderSurfaceBuilder(Codec<SurfaceBuilderConfig> p_i232136_1_)
@@ -29,24 +29,24 @@ public class PolderSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         if (noise > 0.2 && noise < 0.85)
         {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CLAY_CONFIG);
-            for (int y = chunkIn.getTopBlockY(Heightmap.Type.WORLD_SURFACE, x, z); y > 61; y--)
+            SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CLAY_CONFIG);
+            for (int y = chunkIn.getHeight(Heightmap.Type.WORLD_SURFACE, x, z); y > 61; y--)
             {
-                chunkIn.setBlockState(new BlockPos(x, y, z), Blocks.AIR.getDefaultState(), false);
+                chunkIn.setBlockState(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), false);
             }
-            chunkIn.setBlockState(new BlockPos(x, 62, z), Blocks.WATER.getDefaultState(), false);
+            chunkIn.setBlockState(new BlockPos(x, 62, z), Blocks.WATER.defaultBlockState(), false);
         } else
         {
-            if (perlinNoiseGenerator.noiseAt(x/100.0f, z/100.0f, false) > 0.4)
+            if (perlinNoiseGenerator.getValue(x/100.0f, z/100.0f, false) > 0.4)
             {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CLAY_CONFIG);
+                SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CLAY_CONFIG);
             } else
             {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASSY_CLAY_CONFIG);
+                SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASSY_CLAY_CONFIG);
             }
         }
     }

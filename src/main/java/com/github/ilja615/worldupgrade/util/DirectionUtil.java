@@ -12,7 +12,7 @@ public class DirectionUtil
     {
         try
         {
-            return direction.rotateY();
+            return direction.getClockWise();
         } catch (IllegalStateException exception)
         {
             return Direction.NORTH;
@@ -23,7 +23,7 @@ public class DirectionUtil
     {
         try
         {
-            return direction.rotateYCCW();
+            return direction.getCounterClockWise();
         } catch (IllegalStateException exception)
         {
             return Direction.NORTH;

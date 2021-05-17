@@ -17,11 +17,11 @@ import java.util.Random;
 
 public class DryReedsFeature extends Feature<NoFeatureConfig>
 {
-    private static final BlockState BOTTOM_REED = ModBlocks.DRY_TALL_REED.get().getDefaultState().with(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DriedDoubleReedPlantBlock.ABOVE, true).with(DriedDoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState BOTTOM_REED_W = ModBlocks.DRY_TALL_REED.get().getDefaultState().with(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).with(DriedDoubleReedPlantBlock.ABOVE, true).with(DriedDoubleReedPlantBlock.WATERLOGGED, true);
-    private static final BlockState MIDDLE_REED = ModBlocks.DRY_TALL_REED.get().getDefaultState().with(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DriedDoubleReedPlantBlock.ABOVE, true).with(DriedDoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState TOP_REED_2 = ModBlocks.DRY_TALL_REED.get().getDefaultState().with(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).with(DriedDoubleReedPlantBlock.ABOVE, false).with(DriedDoubleReedPlantBlock.WATERLOGGED, false);
-    private static final BlockState TOP_REED_3 = ModBlocks.DRY_TOP_REED.get().getDefaultState();
+    private static final BlockState BOTTOM_REED = ModBlocks.DRY_TALL_REED.get().defaultBlockState().setValue(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).setValue(DriedDoubleReedPlantBlock.ABOVE, true).setValue(DriedDoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState BOTTOM_REED_W = ModBlocks.DRY_TALL_REED.get().defaultBlockState().setValue(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.LOWER).setValue(DriedDoubleReedPlantBlock.ABOVE, true).setValue(DriedDoubleReedPlantBlock.WATERLOGGED, true);
+    private static final BlockState MIDDLE_REED = ModBlocks.DRY_TALL_REED.get().defaultBlockState().setValue(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).setValue(DriedDoubleReedPlantBlock.ABOVE, true).setValue(DriedDoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState TOP_REED_2 = ModBlocks.DRY_TALL_REED.get().defaultBlockState().setValue(DriedDoubleReedPlantBlock.HALF, DoubleBlockHalf.UPPER).setValue(DriedDoubleReedPlantBlock.ABOVE, false).setValue(DriedDoubleReedPlantBlock.WATERLOGGED, false);
+    private static final BlockState TOP_REED_3 = ModBlocks.DRY_TOP_REED.get().defaultBlockState();
 
     public DryReedsFeature(Codec<NoFeatureConfig> p_i231953_1_) {
         super(p_i231953_1_);
@@ -31,32 +31,32 @@ public class DryReedsFeature extends Feature<NoFeatureConfig>
     protected static boolean isAirOrLeaves(IWorldGenerationBaseReader worldIn, BlockPos pos)
     {
         if (!(worldIn instanceof net.minecraft.world.IWorldReader)) // FORGE: Redirect to state method when possible
-            return worldIn.hasBlockState(pos, (p_214581_0_) -> p_214581_0_.isAir() || p_214581_0_.isIn(BlockTags.LEAVES));
+            return worldIn.isStateAtPosition(pos, (p_214581_0_) -> p_214581_0_.isAir() || p_214581_0_.is(BlockTags.LEAVES));
         else
-            return worldIn.hasBlockState(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
+            return worldIn.isStateAtPosition(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos startPosition, NoFeatureConfig config)
     {
         // Moving down until it is on the ground
         while (startPosition.getY() > 1 && isAirOrLeaves(worldIn, startPosition))
-            startPosition = startPosition.down();
+            startPosition = startPosition.below();
 
-        startPosition = startPosition.up();
+        startPosition = startPosition.above();
 
 
-        if (!ModBlocks.TALL_REED.get().getDefaultState().isValidPosition(worldIn, startPosition))
+        if (!ModBlocks.TALL_REED.get().defaultBlockState().canSurvive(worldIn, startPosition))
         {
             return false; // to detect for a good ground to generate it on
         }
 
-        if (worldIn.getBlockState(startPosition.down()).getBlock() == ModBlocks.TOP_REED.get().getBlock())
+        if (worldIn.getBlockState(startPosition.below()).getBlock() == ModBlocks.TOP_REED.get().getBlock())
         {
             return false; // to detect for a good ground to generate it on
         }
 
-        if (worldIn.getBlockState(startPosition.down()).getBlock() == ModBlocks.TALL_REED.get().getBlock())
+        if (worldIn.getBlockState(startPosition.below()).getBlock() == ModBlocks.TALL_REED.get().getBlock())
         {
             return false; // to detect for a good ground to generate it on
         }
@@ -64,15 +64,15 @@ public class DryReedsFeature extends Feature<NoFeatureConfig>
         int randomint = rand.nextInt(10);
         if (randomint <= 6) //70% chance to get 3 hight
         {
-            setBlockState(worldIn, startPosition, BOTTOM_REED);
-            setBlockState(worldIn, startPosition.up(1), MIDDLE_REED);
-            setBlockState(worldIn, startPosition.up(2), TOP_REED_3);
+            setBlock(worldIn, startPosition, BOTTOM_REED);
+            setBlock(worldIn, startPosition.above(1), MIDDLE_REED);
+            setBlock(worldIn, startPosition.above(2), TOP_REED_3);
 
         } else
         { //30 % chance to get 2 hight
 
-            setBlockState(worldIn, startPosition, BOTTOM_REED);
-            setBlockState(worldIn, startPosition.up(1), TOP_REED_2);
+            setBlock(worldIn, startPosition, BOTTOM_REED);
+            setBlock(worldIn, startPosition.above(1), TOP_REED_2);
 
         }
         return false;

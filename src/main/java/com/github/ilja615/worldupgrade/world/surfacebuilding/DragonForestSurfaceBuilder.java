@@ -19,8 +19,8 @@ public class DragonForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 {
     public static final PerlinNoiseGenerator perlinNoiseGenerator = new PerlinNoiseGenerator(new SharedSeedRandom(2448L), Collections.singletonList(4));
 
-    public static final BlockState REGOLITH = ModBlocks.REGOLITH.get().getDefaultState();
-    public static final BlockState COARSE_SAND = ModBlocks.COARSE_SAND.get().getDefaultState();
+    public static final BlockState REGOLITH = ModBlocks.REGOLITH.get().defaultBlockState();
+    public static final BlockState COARSE_SAND = ModBlocks.COARSE_SAND.get().defaultBlockState();
     public static final SurfaceBuilderConfig CONFIG1 = new SurfaceBuilderConfig(REGOLITH, REGOLITH, REGOLITH);
     public static final SurfaceBuilderConfig CONFIG2 = new SurfaceBuilderConfig(COARSE_SAND, COARSE_SAND, COARSE_SAND);
 
@@ -30,16 +30,16 @@ public class DragonForestSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         if (noise +(random.nextFloat()) < 2.5f && noise +(random.nextFloat()) > -2.5f)
         {
-            if (perlinNoiseGenerator.noiseAt(x, z, false)+(random.nextFloat()/5.0f) < -0.1)
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
+            if (perlinNoiseGenerator.getValue(x, z, false)+(random.nextFloat()/5.0f) < -0.1)
+                SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG1);
             else
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG2);
+                SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG2);
         }
         else
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, GRASS_DIRT_SAND_CONFIG);
+            SurfaceBuilder.DEFAULT.apply(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, CONFIG_OCEAN_SAND);
     }
 }

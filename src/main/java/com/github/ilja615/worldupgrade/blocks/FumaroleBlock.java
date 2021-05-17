@@ -16,6 +16,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FumaroleBlock extends Block
 {
     public FumaroleBlock(Properties properties)
@@ -24,13 +26,13 @@ public class FumaroleBlock extends Block
     }
 
     @Override
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    public void stepOn(World worldIn, BlockPos pos, Entity entityIn)
     {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn))
+        if (!entityIn.fireImmune() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn))
         {
-            entityIn.attackEntityFrom(DamageSource.IN_FIRE, 1.0F);
+            entityIn.hurt(DamageSource.IN_FIRE, 1.0F);
         }
-        super.onEntityWalk(worldIn, pos, entityIn);
+        super.stepOn(worldIn, pos, entityIn);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class FumaroleBlock extends Block
     {
         if (rand.nextInt(10) == 0)
         {
-            worldIn.playSound((float) pos.getX() + 0.5F, (float) pos.getY() + 0.5F, (float) pos.getZ() + 0.5F, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 0.5F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.6F, false);
+            worldIn.playLocalSound((float) pos.getX() + 0.5F, (float) pos.getY() + 0.5F, (float) pos.getZ() + 0.5F, SoundEvents.CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 0.5F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.6F, false);
         }
 
         for (int i = 0; i < rand.nextInt(5) + 5; ++i)

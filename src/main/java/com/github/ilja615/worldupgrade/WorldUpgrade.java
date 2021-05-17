@@ -63,9 +63,9 @@ public class WorldUpgrade
         ModBlocks.initializeLists();
         ForgeRegistries.WORLD_CARVERS.getEntries().forEach(c ->
         {
-            Set<Block> cb = new HashSet<Block>(c.getValue().carvableBlocks);
+            Set<Block> cb = new HashSet<Block>(c.getValue().replaceableBlocks);
             for (Block block : ModBlocks.CARVABLE_BLOCKS) cb.add(block);
-            c.getValue().carvableBlocks = cb;
+            c.getValue().replaceableBlocks = cb;
         });
     }
 

@@ -33,40 +33,40 @@ public class SpoonBillEggEntity extends ProjectileItemEntity implements IRenders
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte p_70103_1_)
+    public void handleEntityEvent(byte p_70103_1_)
     {
         if (p_70103_1_ == 3)
         {
             for(int lvt_4_1_ = 0; lvt_4_1_ < 8; ++lvt_4_1_)
             {
-                this.world.addParticle(new ItemParticleData(ParticleTypes.ITEM, this.getItem()), this.getPosX(), this.getPosY(), this.getPosZ(), ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D);
+                this.level.addParticle(new ItemParticleData(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), ((double)this.random.nextFloat() - 0.5D) * 0.08D, ((double)this.random.nextFloat() - 0.5D) * 0.08D, ((double)this.random.nextFloat() - 0.5D) * 0.08D);
             }
         }
     }
 
-    protected void onEntityHit(EntityRayTraceResult p_213868_1_)
+    protected void onHitEntity(EntityRayTraceResult p_213868_1_)
     {
-        super.onEntityHit(p_213868_1_);
-        p_213868_1_.getEntity().attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 0.0f);
+        super.onHitEntity(p_213868_1_);
+        p_213868_1_.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), 0.0f);
     }
 
-    protected void onImpact(RayTraceResult p_70227_1_)
+    protected void onHit(RayTraceResult p_70227_1_)
     {
-        super.onImpact(p_70227_1_);
-        if (!this.world.isRemote)
+        super.onHit(p_70227_1_);
+        if (!this.level.isClientSide)
         {
-            this.world.setEntityState(this, (byte)3);
-            SpoonBillEntity entity = ModEntities.SPOONBILL.get().create(this.world);
-            entity.setGrowingAge(-24000);
-            entity.setLocationAndAngles(this.getPosX(), this.getPosY(), this.getPosZ(), this.rotationYaw, 0.0F);
-            entity.onInitialSpawn((ServerWorld)this.world, this.world.getDifficultyForLocation(this.getPosition()), SpawnReason.BREEDING, (ILivingEntityData)null, (CompoundNBT)null);
-            this.world.addEntity(entity);
+            this.level.broadcastEntityEvent(this, (byte)3);
+            SpoonBillEntity entity = ModEntities.SPOONBILL.get().create(this.level);
+            entity.setAge(-24000);
+            entity.moveTo(this.getX(), this.getY(), this.getZ(), this.yRot, 0.0F);
+            entity.finalizeSpawn((ServerWorld)this.level, this.level.getCurrentDifficultyAt(this.blockPosition()), SpawnReason.BREEDING, (ILivingEntityData)null, (CompoundNBT)null);
+            this.level.addFreshEntity(entity);
             this.remove();
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket()
+    public IPacket<?> getAddEntityPacket()
     {
         return NetworkHooks.getEntitySpawningPacket(this);
     }

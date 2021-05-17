@@ -9,9 +9,12 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FallenLeavesBlock extends Block
 {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
     public FallenLeavesBlock(Properties properties)
     {
@@ -25,7 +28,7 @@ public class FallenLeavesBlock extends Block
     }
 
     @Override
-    public boolean isTransparent(BlockState p_220074_1_)
+    public boolean useShapeForLightOcclusion(BlockState p_220074_1_)
     {
         return true;
     }
@@ -37,7 +40,7 @@ public class FallenLeavesBlock extends Block
     }
 
     @Override
-    public boolean isReplaceable(BlockState blockState, BlockItemUseContext blockItemUseContext)
+    public boolean canBeReplaced(BlockState blockState, BlockItemUseContext blockItemUseContext)
     {
         return true;
     }

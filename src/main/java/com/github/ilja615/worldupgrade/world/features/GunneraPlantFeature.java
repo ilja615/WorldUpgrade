@@ -22,8 +22,8 @@ import java.util.Random;
 
 public class GunneraPlantFeature extends Feature<NoFeatureConfig>
 {
-    private static final BlockState STEM = ModBlocks.GUNNERA_STEM.get().getDefaultState();
-    private static final BlockState LEAF = ModBlocks.BIG_PLANT_LEAF.get().getDefaultState();
+    private static final BlockState STEM = ModBlocks.GUNNERA_STEM.get().defaultBlockState();
+    private static final BlockState LEAF = ModBlocks.BIG_PLANT_LEAF.get().defaultBlockState();
 
     public GunneraPlantFeature(Codec<NoFeatureConfig> p_i231953_1_) {
         super(p_i231953_1_);
@@ -34,81 +34,81 @@ public class GunneraPlantFeature extends Feature<NoFeatureConfig>
         int a = rand.nextInt(4);
         if (a == 0)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(randomDirection), STEM);
-            ifAirSetBlock(worldIn, startPosition.up().offset(randomDirection, 2), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(2).offset(randomDirection, 3), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, startPosition.up(2).offset(randomDirection, 4), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            bigLeaf(worldIn, rand, startPosition.up(3).offset(randomDirection, 4), randomDirection);
+            ifAirSetBlock(worldIn, startPosition.relative(randomDirection), STEM);
+            ifAirSetBlock(worldIn, startPosition.above().relative(randomDirection, 2), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(2).relative(randomDirection, 3), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, startPosition.above(2).relative(randomDirection, 4), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            bigLeaf(worldIn, rand, startPosition.above(3).relative(randomDirection, 4), randomDirection);
         }
         if (a == 1)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(randomDirection), STEM);
-            ifAirSetBlock(worldIn, startPosition.up().offset(randomDirection), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(2).offset(randomDirection,2), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(3).offset(randomDirection, 3), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, startPosition.up(3).offset(randomDirection, 4), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            bigLeaf(worldIn, rand, startPosition.up(4).offset(randomDirection, 4), randomDirection);
+            ifAirSetBlock(worldIn, startPosition.relative(randomDirection), STEM);
+            ifAirSetBlock(worldIn, startPosition.above().relative(randomDirection), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(2).relative(randomDirection,2), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(3).relative(randomDirection, 3), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, startPosition.above(3).relative(randomDirection, 4), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            bigLeaf(worldIn, rand, startPosition.above(4).relative(randomDirection, 4), randomDirection);
         }
         if (a == 2)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(randomDirection), STEM);
-            ifAirSetBlock(worldIn, startPosition.up().offset(randomDirection, 2), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, startPosition.up().offset(randomDirection, 3), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            smolLeaf(worldIn, rand, startPosition.up(2).offset(randomDirection, 3), randomDirection);
+            ifAirSetBlock(worldIn, startPosition.relative(randomDirection), STEM);
+            ifAirSetBlock(worldIn, startPosition.above().relative(randomDirection, 2), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, startPosition.above().relative(randomDirection, 3), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            smolLeaf(worldIn, rand, startPosition.above(2).relative(randomDirection, 3), randomDirection);
         }
         if (a == 3)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(randomDirection), STEM);
-            ifAirSetBlock(worldIn, startPosition.up().offset(randomDirection, 2), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(2).offset(randomDirection, 2), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(3).offset(randomDirection, 3), STEM);
-            ifAirSetBlock(worldIn, startPosition.up(4).offset(randomDirection, 4), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            ifAirSetBlock(worldIn, startPosition.up(4).offset(randomDirection, 5), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-            bigLeaf(worldIn, rand, startPosition.up(5).offset(randomDirection, 5), randomDirection);
+            ifAirSetBlock(worldIn, startPosition.relative(randomDirection), STEM);
+            ifAirSetBlock(worldIn, startPosition.above().relative(randomDirection, 2), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(2).relative(randomDirection, 2), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(3).relative(randomDirection, 3), STEM);
+            ifAirSetBlock(worldIn, startPosition.above(4).relative(randomDirection, 4), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, startPosition.above(4).relative(randomDirection, 5), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            bigLeaf(worldIn, rand, startPosition.above(5).relative(randomDirection, 5), randomDirection);
         }
     }
 
     private void bigLeaf(ISeedReader worldIn, Random rand, BlockPos startPosition, Direction randomDirection)
     {
-        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection.getOpposite());
+        BlockState configuredLeafState = LEAF.setValue(HorizontalBlock.FACING, randomDirection.getOpposite());
         ifAirSetBlock(worldIn, startPosition, configuredLeafState);
         for (int i = 0; i < 5; i++)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getClockWise(randomDirection)).offset(randomDirection, i), configuredLeafState);
-            ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getCounterClockWise(randomDirection)).offset(randomDirection, i), configuredLeafState);
+            ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getClockWise(randomDirection)).relative(randomDirection, i), configuredLeafState);
+            ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getCounterClockWise(randomDirection)).relative(randomDirection, i), configuredLeafState);
         }
-        ifAirSetBlock(worldIn, startPosition.offset(randomDirection, 4), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(randomDirection, 4), configuredLeafState);
         for (int i = 1; i < 4; i++)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getClockWise(randomDirection),2).offset(randomDirection, i), configuredLeafState);
-            ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getCounterClockWise(randomDirection),2).offset(randomDirection, i), configuredLeafState);
+            ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getClockWise(randomDirection),2).relative(randomDirection, i), configuredLeafState);
+            ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getCounterClockWise(randomDirection),2).relative(randomDirection, i), configuredLeafState);
         }
         for (int i = 1; i < 4; i++)
         {
-            ifAirSetBlock(worldIn, startPosition.offset(randomDirection, i), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+            ifAirSetBlock(worldIn, startPosition.relative(randomDirection, i), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
         }
     }
 
     private void smolLeaf(ISeedReader worldIn, Random rand, BlockPos startPosition, Direction randomDirection)
     {
-        BlockState configuredLeafState = LEAF.with(HorizontalBlock.HORIZONTAL_FACING, randomDirection.getOpposite());
+        BlockState configuredLeafState = LEAF.setValue(HorizontalBlock.FACING, randomDirection.getOpposite());
         ifAirSetBlock(worldIn, startPosition, configuredLeafState);
-        ifAirSetBlock(worldIn, startPosition.offset(randomDirection,1), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-        ifAirSetBlock(worldIn, startPosition.offset(randomDirection,2), STEM.with(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
-        ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getClockWise(randomDirection)).offset(randomDirection,1), configuredLeafState);
-        ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getClockWise(randomDirection)).offset(randomDirection,2), configuredLeafState);
-        ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getCounterClockWise(randomDirection)).offset(randomDirection,1), configuredLeafState);
-        ifAirSetBlock(worldIn, startPosition.offset(DirectionUtil.getCounterClockWise(randomDirection)).offset(randomDirection,2), configuredLeafState);
-        ifAirSetBlock(worldIn, startPosition.offset(randomDirection,3), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(randomDirection,1), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+        ifAirSetBlock(worldIn, startPosition.relative(randomDirection,2), STEM.setValue(RotatedPillarBlock.AXIS, randomDirection.getAxis()));
+        ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getClockWise(randomDirection)).relative(randomDirection,1), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getClockWise(randomDirection)).relative(randomDirection,2), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getCounterClockWise(randomDirection)).relative(randomDirection,1), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(DirectionUtil.getCounterClockWise(randomDirection)).relative(randomDirection,2), configuredLeafState);
+        ifAirSetBlock(worldIn, startPosition.relative(randomDirection,3), configuredLeafState);
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos positionIn, NoFeatureConfig config)
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos positionIn, NoFeatureConfig config)
     {
         // Moving down until it is on the ground
-        while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.down();
+        while (positionIn.getY() > 1 && isAirOrLeavesAt(worldIn, positionIn)) positionIn = positionIn.below();
 
-        if (!isDirtAt(worldIn, positionIn))
+        if (!isGrassOrDirt(worldIn, positionIn))
         {
             return false; // this tree is only allowed to grow on soil, but not on water or plant or other thing
         }
@@ -128,14 +128,14 @@ public class GunneraPlantFeature extends Feature<NoFeatureConfig>
 
     public static boolean isAirOrLeavesAt(IWorldGenerationBaseReader p_236412_0_, BlockPos p_236412_1_)
     {
-        return p_236412_0_.hasBlockState(p_236412_1_, (p_236411_0_) ->
+        return p_236412_0_.isStateAtPosition(p_236412_1_, (p_236411_0_) ->
         {
-            return p_236411_0_.isAir() || p_236411_0_.isIn(BlockTags.LEAVES);
+            return p_236411_0_.isAir() || p_236411_0_.is(BlockTags.LEAVES);
         });
     }
 
     private void ifAirSetBlock(ISeedReader worldIn, BlockPos pos, BlockState blockState)
     {
-        if (isAirAt(worldIn, pos)) setBlockState(worldIn, pos, blockState);
+        if (isAir(worldIn, pos)) setBlock(worldIn, pos, blockState);
     }
 }

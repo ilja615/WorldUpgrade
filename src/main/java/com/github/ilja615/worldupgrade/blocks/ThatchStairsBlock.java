@@ -10,6 +10,8 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ThatchStairsBlock extends StairsBlock
 {
     public static final IntegerProperty DECAY = IntegerProperty.create("decay", 0, 2);
@@ -18,22 +20,22 @@ public class ThatchStairsBlock extends StairsBlock
     {
         super(state, properties);
     }
-    public boolean ticksRandomly(BlockState state) {
-        return state.get(DECAY) < 2;
+    public boolean isRandomlyTicking(BlockState state) {
+        return state.getValue(DECAY) < 2;
     }
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (random.nextInt(12) == 0 && state.hasProperty(DECAY))
         {
-            worldIn.setBlockState(pos, state.with(DECAY, Math.max(0, Math.min(state.get(DECAY) + 1, 2))), 11);
+            worldIn.setBlock(pos, state.setValue(DECAY, Math.max(0, Math.min(state.getValue(DECAY) + 1, 2))), 11);
         }
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_)
     {
-        super.fillStateContainer(p_206840_1_);
+        super.createBlockStateDefinition(p_206840_1_);
         p_206840_1_.add(DECAY);
     }
 }

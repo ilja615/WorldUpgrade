@@ -17,53 +17,53 @@ public class BeaverModel extends EntityModel<BeaverEntity> {
     private final ModelRenderer backleg2;
 
     public BeaverModel() {
-        textureWidth = 64;
-        textureHeight = 64;
+        texWidth = 64;
+        texHeight = 64;
 
         body = new ModelRenderer(this);
-        body.setRotationPoint(0.0F, 24.0F, 0.0F);
-        body.setTextureOffset(0, 0).addBox(-5.5F, -9.0F, -7.0F, 11.0F, 7.0F, 14.0F, 0.0F, false);
+        body.setPos(0.0F, 24.0F, 0.0F);
+        body.texOffs(0, 0).addBox(-5.5F, -9.0F, -7.0F, 11.0F, 7.0F, 14.0F, 0.0F, false);
 
         head = new ModelRenderer(this);
-        head.setRotationPoint(0.0F, 18.75F, -7.0F);
-        head.setTextureOffset(24, 21).addBox(-3.5F, -2.75F, -5.0F, 7.0F, 5.0F, 5.0F, 0.0F, false);
-        head.setTextureOffset(0, 10).addBox(-1.5F, -0.75F, -6.0F, 3.0F, 2.0F, 1.0F, 0.0F, false);
-        head.setTextureOffset(8, 10).addBox(3.5F, -2.75F, -2.0F, 1.0F, 2.0F, 2.0F, 0.0F, false);
-        head.setTextureOffset(0, 21).addBox(-4.5F, -2.75F, -2.0F, 1.0F, 2.0F, 2.0F, 0.0F, false);
-        head.setTextureOffset(39, 1).addBox(-2.5F, 2.25F, -5.0F, 5.0F, 1.0F, 0.0F, 0.0F, false);
+        head.setPos(0.0F, 18.75F, -7.0F);
+        head.texOffs(24, 21).addBox(-3.5F, -2.75F, -5.0F, 7.0F, 5.0F, 5.0F, 0.0F, false);
+        head.texOffs(0, 10).addBox(-1.5F, -0.75F, -6.0F, 3.0F, 2.0F, 1.0F, 0.0F, false);
+        head.texOffs(8, 10).addBox(3.5F, -2.75F, -2.0F, 1.0F, 2.0F, 2.0F, 0.0F, false);
+        head.texOffs(0, 21).addBox(-4.5F, -2.75F, -2.0F, 1.0F, 2.0F, 2.0F, 0.0F, false);
+        head.texOffs(39, 1).addBox(-2.5F, 2.25F, -5.0F, 5.0F, 1.0F, 0.0F, 0.0F, false);
 
         tail = new ModelRenderer(this);
-        tail.setRotationPoint(-0.5F, 19.5F, 7.5F);
-        tail.setTextureOffset(0, 21).addBox(-3.0F, -0.5F, -0.5F, 7.0F, 1.0F, 10.0F, 0.0F, false);
+        tail.setPos(-0.5F, 19.5F, 7.5F);
+        tail.texOffs(0, 21).addBox(-3.0F, -0.5F, -0.5F, 7.0F, 1.0F, 10.0F, 0.0F, false);
 
         frontleg1 = new ModelRenderer(this);
-        frontleg1.setRotationPoint(4.0F, 22.0F, -4.0F);
-        frontleg1.setTextureOffset(6, 2).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
-        frontleg1.setTextureOffset(9, 1).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 1.0F, 0.0F, false);
+        frontleg1.setPos(4.0F, 22.0F, -4.0F);
+        frontleg1.texOffs(6, 2).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        frontleg1.texOffs(9, 1).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 1.0F, 0.0F, false);
 
         frontleg2 = new ModelRenderer(this);
-        frontleg2.setRotationPoint(-4.0F, 22.0F, -4.0F);
-        frontleg2.setTextureOffset(6, 6).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
-        frontleg2.setTextureOffset(9, 0).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 1.0F, 0.0F, false);
+        frontleg2.setPos(-4.0F, 22.0F, -4.0F);
+        frontleg2.texOffs(6, 6).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        frontleg2.texOffs(9, 0).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 1.0F, 0.0F, false);
 
         backleg1 = new ModelRenderer(this);
-        backleg1.setRotationPoint(4.0F, 22.0F, 5.0F);
-        backleg1.setTextureOffset(0, 4).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
-        backleg1.setTextureOffset(0, 8).addBox(-1.0F, 2.0F, -3.0F, 2.0F, 0.0F, 2.0F, 0.0F, false);
+        backleg1.setPos(4.0F, 22.0F, 5.0F);
+        backleg1.texOffs(0, 4).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        backleg1.texOffs(0, 8).addBox(-1.0F, 2.0F, -3.0F, 2.0F, 0.0F, 2.0F, 0.0F, false);
 
         backleg2 = new ModelRenderer(this);
-        backleg2.setRotationPoint(-4.0F, 22.0F, 4.0F);
-        backleg2.setTextureOffset(0, 0).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
-        backleg2.setTextureOffset(4, 0).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 2.0F, 0.0F, false);
+        backleg2.setPos(-4.0F, 22.0F, 4.0F);
+        backleg2.texOffs(0, 0).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        backleg2.texOffs(4, 0).addBox(-1.0F, 2.0F, -2.0F, 2.0F, 0.0F, 2.0F, 0.0F, false);
     }
 
     @Override
-    public void setRotationAngles(BeaverEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+    public void setupAnim(BeaverEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
         //previously the render function, render code was moved to a method below
     }
 
     @Override
-    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+    public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
         body.render(matrixStack, buffer, packedLight, packedOverlay);
         head.render(matrixStack, buffer, packedLight, packedOverlay);
         tail.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -74,8 +74,8 @@ public class BeaverModel extends EntityModel<BeaverEntity> {
     }
 
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+        modelRenderer.xRot = x;
+        modelRenderer.yRot = y;
+        modelRenderer.zRot = z;
     }
 }

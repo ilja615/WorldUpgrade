@@ -10,9 +10,13 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DriedExtraReedBlock extends BushBlock
 {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public DriedExtraReedBlock(Properties properties)
     {
@@ -26,14 +30,14 @@ public class DriedExtraReedBlock extends BushBlock
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockState downblockstate = worldIn.getBlockState(pos.down());
+        BlockState downblockstate = worldIn.getBlockState(pos.below());
         return (downblockstate.getBlock() == ModBlocks.DRY_TALL_REED.get());
     }
 
     @Override
-    public Block.OffsetType getOffsetType()
+    public AbstractBlock.OffsetType getOffsetType()
     {
         return OffsetType.XZ;
     }

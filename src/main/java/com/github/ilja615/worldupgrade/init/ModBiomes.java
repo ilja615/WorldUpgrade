@@ -23,16 +23,16 @@ public class ModBiomes
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, WorldUpgrade.MOD_ID);
 
     static {
-        createBiome("overgrown_peaks", BiomeMaker::makeVoidBiome);
-        createBiome("polder", BiomeMaker::makeVoidBiome);
-        createBiome("dragon_desert", BiomeMaker::makeVoidBiome);
-        createBiome("dragon_forest", BiomeMaker::makeVoidBiome);
-        createBiome("cloud_forest", BiomeMaker::makeVoidBiome);
-        createBiome("scorched_forest", BiomeMaker::makeVoidBiome);
-        createBiome("fumarole_fields", BiomeMaker::makeVoidBiome);
-        createBiome("cobbled_cliffs", BiomeMaker::makeVoidBiome);
-        createBiome("lily_pond", BiomeMaker::makeVoidBiome);
-        createBiome("bog", BiomeMaker::makeVoidBiome);
+        createBiome("overgrown_peaks", BiomeMaker::theVoidBiome);
+        createBiome("polder", BiomeMaker::theVoidBiome);
+        createBiome("dragon_desert", BiomeMaker::theVoidBiome);
+        createBiome("dragon_forest", BiomeMaker::theVoidBiome);
+        createBiome("cloud_forest", BiomeMaker::theVoidBiome);
+        createBiome("scorched_forest", BiomeMaker::theVoidBiome);
+        createBiome("fumarole_fields", BiomeMaker::theVoidBiome);
+        createBiome("cobbled_cliffs", BiomeMaker::theVoidBiome);
+        createBiome("lily_pond", BiomeMaker::theVoidBiome);
+        createBiome("bog", BiomeMaker::theVoidBiome);
     }
 
     public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biome) {
@@ -52,7 +52,7 @@ public class ModBiomes
     public static RegistryKey<Biome> BOG = registryKey("bog");
 
     public static RegistryKey<Biome> registryKey(String name) {
-        return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(WorldUpgrade.MOD_ID, name));
+        return RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(WorldUpgrade.MOD_ID, name));
     }
 
     public static void registerBiomes() {

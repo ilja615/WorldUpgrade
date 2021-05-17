@@ -27,20 +27,23 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidContainer
 {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty ABOVE = BooleanProperty.create("above");
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
+    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public DoubleReedPlantBlock(Properties properties)
     {
         super(properties);
 
-        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER).with(ABOVE, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(ABOVE, false));
 
     }
 
@@ -51,19 +54,19 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, Fluid fluid)
+    public boolean canPlaceLiquid(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, Fluid fluid)
     {
         return false;
     }
 
     @Override
-    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, FluidState iFluidState)
+    public boolean placeLiquid(IWorld iWorld, BlockPos blockPos, BlockState blockState, FluidState iFluidState)
     {
         return false;
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(HALF, WATERLOGGED, ABOVE, AGE);
     }
@@ -72,73 +75,73 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context)
     { //ty Squishling for help mate
-        BlockPos blockpos = context.getPos();
-        FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
-        boolean water = context.getWorld().getFluidState(context.getPos()).isTagged(FluidTags.WATER) && context.getWorld().getFluidState(context.getPos()).getLevel() == 8;
-        BlockState state = getDefaultState().with(WATERLOGGED, water);
+        BlockPos blockpos = context.getClickedPos();
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        boolean water = context.getLevel().getFluidState(context.getClickedPos()).is(FluidTags.WATER) && context.getLevel().getFluidState(context.getClickedPos()).getAmount() == 8;
+        BlockState state = defaultBlockState().setValue(WATERLOGGED, water);
 
-        return blockpos.getY() < context.getWorld().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) && !context.getWorld().getFluidState(blockpos.up()).isTagged(FluidTags.WATER) ? state : null;
+        return blockpos.getY() < context.getLevel().getMaxBuildHeight() - 1 && context.getLevel().getBlockState(blockpos.above()).canBeReplaced(context) && !context.getLevel().getFluidState(blockpos.above()).is(FluidTags.WATER) ? state : null;
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
     {
-        BlockState blockState = worldIn.getBlockState(pos.up());
-        if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.TALL_REED.get() || worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.TOP_REED.get())
+        BlockState blockState = worldIn.getBlockState(pos.above());
+        if (worldIn.getBlockState(pos.below()).getBlock() == ModBlocks.TALL_REED.get() || worldIn.getBlockState(pos.below()).getBlock() == ModBlocks.TOP_REED.get())
         {
-            worldIn.setBlockState(pos, ModBlocks.TOP_REED.get().getDefaultState(), 3);
-        } else if (blockState.isAir(worldIn, pos.up()))
-            worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, false), 3);
+            worldIn.setBlock(pos, ModBlocks.TOP_REED.get().defaultBlockState(), 3);
+        } else if (blockState.isAir(worldIn, pos.above()))
+            worldIn.setBlock(pos.above(), this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(WATERLOGGED, false), 3);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2)
+    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2)
     {
-        if (state.get(WATERLOGGED))
-            world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        if (state.getValue(WATERLOGGED))
+            world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
-        if (world.getBlockState(pos.up()).getBlock() == ModBlocks.TALL_REED.get() || world.getBlockState(pos.up()).getBlock() == ModBlocks.TOP_REED.get())
+        if (world.getBlockState(pos.above()).getBlock() == ModBlocks.TALL_REED.get() || world.getBlockState(pos.above()).getBlock() == ModBlocks.TOP_REED.get())
         {
-            state = state.with(ABOVE, true);
+            state = state.setValue(ABOVE, true);
         } else
         {
-            state = state.with(ABOVE, false);
+            state = state.setValue(ABOVE, false);
         }
 
-        return super.updatePostPlacement(state, direction, state2, world, pos, pos2);
+        return super.updateShape(state, direction, state2, world, pos, pos2);
     }
 
     @Override
     public FluidState getFluidState(BlockState state)
     {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
     {
         if (!worldIn.isAreaLoaded(pos, 1)) return; // prevent growing from loading unloaded chunks with block update
-        if (!state.isValidPosition(worldIn, pos))
+        if (!state.canSurvive(worldIn, pos))
         {
             worldIn.destroyBlock(pos, true);
         } else
         {
-            BlockPos blockpos = pos.up();
-            if (worldIn.isAirBlock(blockpos))
+            BlockPos blockpos = pos.above();
+            if (worldIn.isEmptyBlock(blockpos))
             {
 
-                int j = state.get(AGE);
+                int j = state.getValue(AGE);
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true))
                 {
                     if (j == 3)
                     {
-                        worldIn.setBlockState(blockpos, ModBlocks.TOP_REED.get().getDefaultState());
-                        BlockState blockstate = state.with(AGE, 0);
-                        worldIn.setBlockState(pos, blockstate, 3);
+                        worldIn.setBlockAndUpdate(blockpos, ModBlocks.TOP_REED.get().defaultBlockState());
+                        BlockState blockstate = state.setValue(AGE, 0);
+                        worldIn.setBlock(pos, blockstate, 3);
                         blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
                     } else
                     {
-                        worldIn.setBlockState(pos, state.with(AGE, j + 1).with(ABOVE, true), 4);
+                        worldIn.setBlock(pos, state.setValue(AGE, j + 1).setValue(ABOVE, true), 4);
                     }
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
@@ -148,15 +151,15 @@ public class DoubleReedPlantBlock extends DoublePlantBlock implements ILiquidCon
     }
 
     @Override
-    public Block.OffsetType getOffsetType()
+    public AbstractBlock.OffsetType getOffsetType()
     {
         return OffsetType.XZ;
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || (block == ModBlocks.TALL_REED.get() && state.get(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER);
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND || (block == ModBlocks.TALL_REED.get() && state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER);
     }
 }

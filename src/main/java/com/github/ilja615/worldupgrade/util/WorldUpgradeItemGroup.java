@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class WorldUpgradeItemGroup extends ItemGroup
 {
-    public static final WorldUpgradeItemGroup INSTANCE = new WorldUpgradeItemGroup(ItemGroup.GROUPS.length, "worldupgrade");
+    public static final WorldUpgradeItemGroup INSTANCE = new WorldUpgradeItemGroup(ItemGroup.TABS.length, "worldupgrade");
 
     private WorldUpgradeItemGroup(int index, String label)
     {
@@ -14,7 +14,7 @@ public class WorldUpgradeItemGroup extends ItemGroup
     }
 
     @Override
-    public ItemStack createIcon()
+    public ItemStack makeIcon()
     {
         return new ItemStack(ModBlocks.GRAVEL_DARK.get());
     }

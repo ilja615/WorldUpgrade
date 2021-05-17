@@ -11,6 +11,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GrassyBlockBase extends GrassBlock
 {
     public GrassyBlockBase(Properties properties)
@@ -21,7 +23,7 @@ public class GrassyBlockBase extends GrassBlock
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        PlantType type = plantable.getPlantType(world, pos.up());
+        PlantType type = plantable.getPlantType(world, pos.above());
 
         if (PlantType.DESERT.equals(type) || PlantType.PLAINS.equals(type) || PlantType.CAVE.equals(type)) {
             return true;

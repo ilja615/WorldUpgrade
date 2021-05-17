@@ -28,7 +28,7 @@ public class SpoonBillRender extends MobRenderer<SpoonBillEntity, SpoonBillModel
 
     @Nullable
     @Override
-    public ResourceLocation getEntityTexture(SpoonBillEntity entity)
+    public ResourceLocation getTextureLocation(SpoonBillEntity entity)
     {
         return SPOONBILL_TEXTURES[entity.getVariant()];
     }

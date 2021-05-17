@@ -18,7 +18,7 @@ public class FlightArrowRenderer extends ArrowRenderer<FlightArrowEntity>
     /**
      * Returns the location of an entity's texture.
      */
-    public ResourceLocation getEntityTexture(FlightArrowEntity entity) {
+    public ResourceLocation getTextureLocation(FlightArrowEntity entity) {
         return new ResourceLocation("worldupgrade:textures/entity/flight_arrow.png");
     }
 }

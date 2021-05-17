@@ -23,7 +23,7 @@ public class BubbleEelEntity extends AbstractGroupFishEntity
     }
 
     @Override
-    protected ItemStack getFishBucket()
+    protected ItemStack getBucketItemStack()
     {
         return new ItemStack(ModItems.BUBBLE_EEL_BUCKET.get());
     }
@@ -31,37 +31,37 @@ public class BubbleEelEntity extends AbstractGroupFishEntity
     @Override
     protected SoundEvent getAmbientSound()
     {
-        return SoundEvents.ENTITY_COD_AMBIENT;
+        return SoundEvents.COD_AMBIENT;
     }
 
     @Override
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_COD_DEATH;
+        return SoundEvents.COD_DEATH;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource p_184601_1_)
     {
-        return SoundEvents.ENTITY_COD_HURT;
+        return SoundEvents.COD_HURT;
     }
 
     @Override
     protected SoundEvent getFlopSound()
     {
-        return SoundEvents.ENTITY_COD_FLOP;
+        return SoundEvents.COD_FLOP;
     }
 
     public static AttributeModifierMap.MutableAttribute prepareAttributes()
     {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 5.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 8.0D)
+                .add(Attributes.MOVEMENT_SPEED, 5.0D)
+                .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

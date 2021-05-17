@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class CoarseSandBlock extends FallingBlock
 {
     public CoarseSandBlock(Properties properties)
@@ -20,22 +22,22 @@ public class CoarseSandBlock extends FallingBlock
     }
 
     @Override
-    public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving)
+    public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving)
     {
-        worldIn.getPendingBlockTicks().scheduleTick(pos, this, 40);
+        worldIn.getBlockTicks().scheduleTick(pos, this, 40);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 40);
-        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        worldIn.getBlockTicks().scheduleTick(currentPos, this, 40);
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        PlantType type = plantable.getPlantType(world, pos.up());
+        PlantType type = plantable.getPlantType(world, pos.above());
 
         if (PlantType.DESERT.equals((PlantType) type) || PlantType.PLAINS.equals((PlantType) type) || PlantType.CAVE.equals((PlantType) type)) {
             return true;

@@ -27,7 +27,7 @@ public abstract class AnimalEntityMixin extends AgeableEntity
     @Inject(method = "canAnimalSpawn", at = @At("RETURN"), cancellable = true)
     private static void inject$canAnimalSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir)
     {
-        cir.setReturnValue(cir.getReturnValue() || (SUPPORTS_ANIMAL_SPAWNS.contains(worldIn.getBlockState(pos.down()).getBlock())) && worldIn.getLightSubtracted(pos, 0) > 8);
+        cir.setReturnValue(cir.getReturnValue() || (SUPPORTS_ANIMAL_SPAWNS.contains(worldIn.getBlockState(pos.below()).getBlock())) && worldIn.getRawBrightness(pos, 0) > 8);
     }
 
     private AnimalEntityMixin(EntityType<? extends AgeableEntity> entityType, World world)
