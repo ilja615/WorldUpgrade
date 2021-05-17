@@ -90,7 +90,10 @@ public class WorldUpgrade
             final IForgeRegistry<Item> registry = event.getRegistry();
             ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block ->
             {
-                if (!(block instanceof ExtraReedBlock) && !(block instanceof DriedExtraReedBlock)) {
+                if ((block instanceof ExtraReedBlock) || (block instanceof DriedExtraReedBlock))
+                {
+                    // it not register item.
+                } else {
                     BlockItem blockItem;
                     if (block instanceof BrambleBushBlock) {
                         blockItem = new BlockItem(block, ModProperties.BRAMBLE_FOOD_ITEM_PROPERTY);

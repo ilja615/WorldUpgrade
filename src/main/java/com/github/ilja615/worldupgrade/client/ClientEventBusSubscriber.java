@@ -52,7 +52,7 @@ public class ClientEventBusSubscriber
         RenderTypeLookup.setRenderLayer(ModBlocks.FALLEN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.AUTUMN_FALLEN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.ALOE_VERY.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.MOSS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.SPHAGNUM_MOSS.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TALL_DEAD_BUSH.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.CHARRED_BUSH.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.TALL_CHARRED_BUSH.get(), RenderType.getCutout());
@@ -61,6 +61,8 @@ public class ClientEventBusSubscriber
         RenderTypeLookup.setRenderLayer(ModBlocks.LEAVES_PILE.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.GUNNERA_TALLFLOWER.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.CHAMAENERION.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.NETTLE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LARGE_NETTLE.get(), RenderType.getCutout());
 
     }
 }

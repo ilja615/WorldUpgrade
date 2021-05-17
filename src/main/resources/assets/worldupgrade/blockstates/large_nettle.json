@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "worldupgrade:block/large_nettle_bottom"
+    },
+    "half=upper": {
+      "model": "worldupgrade:block/large_nettle_top"
+    }
+  }
+}

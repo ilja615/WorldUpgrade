@@ -3,28 +3,28 @@
     {
       "when": {"down": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_down",
+        "model": "worldupgrade:block/sphagnum_moss_down",
         "uvlock": true
       }
     },
     {
       "when": {"up": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_up",
+        "model": "worldupgrade:block/sphagnum_moss_up",
         "uvlock": true
       }
     },
     {
       "when": {"north": "true", "below": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_side",
+        "model": "worldupgrade:block/sphagnum_moss_side",
         "uvlock": true
       }
     },
     {
       "when": {"east": "true", "below": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_side",
+        "model": "worldupgrade:block/sphagnum_moss_side",
         "y": 90,
         "uvlock": true
       }
@@ -32,7 +32,7 @@
     {
       "when": {"south": "true", "below": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_side",
+        "model": "worldupgrade:block/sphagnum_moss_side",
         "y": 180,
         "uvlock": true
       }
@@ -40,7 +40,7 @@
     {
       "when": {"west": "true", "below": "true", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_side",
+        "model": "worldupgrade:block/sphagnum_moss_side",
         "y": 270,
         "uvlock": true
       }
@@ -48,14 +48,14 @@
     {
       "when": {"north": "true", "below": "false", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side",
+        "model": "worldupgrade:block/sphagnum_moss_small_side",
         "uvlock": true
       }
     },
     {
       "when": {"east": "true", "below": "false", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side",
+        "model": "worldupgrade:block/sphagnum_moss_small_side",
         "y": 90,
         "uvlock": true
       }
@@ -63,7 +63,7 @@
     {
       "when": {"south": "true", "below": "false", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side",
+        "model": "worldupgrade:block/sphagnum_moss_small_side",
         "y": 180,
         "uvlock": true
       }
@@ -71,7 +71,7 @@
     {
       "when": {"west": "true", "below": "false", "can_grow": "true"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side",
+        "model": "worldupgrade:block/sphagnum_moss_small_side",
         "y": 270,
         "uvlock": true
       }
@@ -79,28 +79,28 @@
     {
       "when": {"down": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_down_patches",
+        "model": "worldupgrade:block/sphagnum_moss_down_patches",
         "uvlock": true
       }
     },
     {
       "when": {"up": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_up_patches",
+        "model": "worldupgrade:block/sphagnum_moss_up_patches",
         "uvlock": true
       }
     },
     {
       "when": {"north": "true", "below": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_side_patches",
         "uvlock": true
       }
     },
     {
       "when": {"east": "true", "below": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_side_patches",
         "y": 90,
         "uvlock": true
       }
@@ -108,7 +108,7 @@
     {
       "when": {"south": "true", "below": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_side_patches",
         "y": 180,
         "uvlock": true
       }
@@ -116,7 +116,7 @@
     {
       "when": {"west": "true", "below": "true", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_side_patches",
         "y": 270,
         "uvlock": true
       }
@@ -124,14 +124,14 @@
     {
       "when": {"north": "true", "below": "false", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_small_side_patches",
         "uvlock": true
       }
     },
     {
       "when": {"east": "true", "below": "false", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_small_side_patches",
         "y": 90,
         "uvlock": true
       }
@@ -139,7 +139,7 @@
     {
       "when": {"south": "true", "below": "false", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_small_side_patches",
         "y": 180,
         "uvlock": true
       }
@@ -147,7 +147,7 @@
     {
       "when": {"west": "true", "below": "false", "can_grow": "false"},
       "apply": {
-        "model": "worldupgrade:block/moss_small_side_patches",
+        "model": "worldupgrade:block/sphagnum_moss_small_side_patches",
         "y": 270,
         "uvlock": true
       }

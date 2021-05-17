@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "decay=0,type=bottom": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_0"
+    },
+    "decay=0,type=double": {
+      "model": "worldupgrade:block/dry_reed_thatch_0"
+    },
+    "decay=0type=top": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_top_0"
+    },
+    "decay=1,type=bottom": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_1"
+    },
+    "decay=1,type=double": {
+      "model": "worldupgrade:block/dry_reed_thatch_1"
+    },
+    "decay=1,type=top": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_top_1"
+    },
+    "decay=2,type=bottom": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_2"
+    },
+    "decay=2,type=double": {
+      "model": "worldupgrade:block/dry_reed_thatch_2"
+    },
+    "decay=2,type=top": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_top_2"
+    }
+  }
+}

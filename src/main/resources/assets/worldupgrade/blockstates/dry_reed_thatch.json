@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "decay=0": {
+      "model": "worldupgrade:block/dry_reed_thatch_0"
+    },
+    "decay=1": {
+      "model": "worldupgrade:block/dry_reed_thatch_1"
+    },
+    "decay=2": {
+      "model": "worldupgrade:block/dry_reed_thatch_2"
+    }
+  }
+}

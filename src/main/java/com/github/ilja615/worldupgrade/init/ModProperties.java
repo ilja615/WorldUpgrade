@@ -8,6 +8,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 
 public class ModProperties
@@ -36,10 +38,13 @@ public class ModProperties
     public static final Block.Properties DRY_REED_PLANT_PROPERTY = Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.4F, 2.0F).doesNotBlockMovement();
 
     //foods
-    public static final Food BRAMBLE = (new Food.Builder()).hunger(2).saturation(0.1F).build();
+    public static final Food BRAMBLE = (new Food.Builder()).hunger(2).saturation(0.1F).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 80, 0), 1.0F).build();
+    public static final Food NETTLE_SOUP = (new Food.Builder()).hunger(5).saturation(0.6F).build();
+    public static final Food BRAMBLE_CHEESECAKE = (new Food.Builder()).hunger(8).saturation(0.7F).build();
+    public static final Food ALOE_VERA_PASTE = (new Food.Builder()).hunger(4).saturation(0.0F).setAlwaysEdible().build();
 
     //items
     public static final Item.Properties ITEM_PROPERTY = new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE);
     public static final Item.Properties BRAMBLE_FOOD_ITEM_PROPERTY = new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE).food(BRAMBLE);
-
+    public static final Item.Properties NETTLE_SOUP_ITEM_PROPERTY = new Item.Properties().group(WorldUpgradeItemGroup.INSTANCE).maxStackSize(1).food(NETTLE_SOUP);
 }
