@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "block/clay",
+    "bottom": "block/clay",
+    "top": "block/grass_block_top",
+    "side": "worldupgrade:block/grassy_clay_snowy_side"
+  }
+}

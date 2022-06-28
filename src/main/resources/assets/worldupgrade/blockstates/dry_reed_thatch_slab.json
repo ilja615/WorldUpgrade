@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_0"
+    },
+    "type=double": {
+      "model": "worldupgrade:block/dry_reed_thatch_0"
+    },
+    "type=top": {
+      "model": "worldupgrade:block/dry_reed_thatch_slab_top_0"
+    }
+  }
+}

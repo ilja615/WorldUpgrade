@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "worldupgrade:block/jungle_rock_overgrown"
+      },
+      {
+        "model": "worldupgrade:block/jungle_rock_overgrown",
+        "y": 90
+      },
+      {
+        "model": "worldupgrade:block/jungle_rock_overgrown",
+        "y": 180
+      },
+      {
+        "model": "worldupgrade:block/jungle_rock_overgrown",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "worldupgrade:block/jungle_rock_snowy"
+    }
+  }
+}

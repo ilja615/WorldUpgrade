@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "worldupgrade:block/dead_stripped_log"
+    },
+    "axis=z": {
+      "model": "worldupgrade:block/dead_stripped_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "worldupgrade:block/dead_stripped_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

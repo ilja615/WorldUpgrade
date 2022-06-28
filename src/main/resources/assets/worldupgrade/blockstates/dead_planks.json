@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "worldupgrade:block/dead_planks"
+      }
+    ]
+  }
+}

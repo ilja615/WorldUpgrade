@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "worldupgrade:block/dead_door_top",
+    "bottom": "worldupgrade:block/dead_door_bottom"
+  }
+}

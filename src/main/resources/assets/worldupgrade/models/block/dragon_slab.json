@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "worldupgrade:block/dragon_planks",
+    "top": "worldupgrade:block/dragon_planks",
+    "side": "worldupgrade:block/dragon_planks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "worldupgrade:block/jungle_cobble_mossy",
+    "top": "worldupgrade:block/jungle_cobble_mossy",
+    "side": "worldupgrade:block/jungle_cobble_mossy"
+  }
+}

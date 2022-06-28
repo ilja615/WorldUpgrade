@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "worldupgrade:block/gravel_light"
+      },
+      {
+        "model": "worldupgrade:block/gravel_light",
+        "y": 90
+      },
+      {
+        "model": "worldupgrade:block/gravel_light",
+        "y": 180
+      },
+      {
+        "model": "worldupgrade:block/gravel_light",
+        "y": 270
+      }
+    ]
+  }
+}

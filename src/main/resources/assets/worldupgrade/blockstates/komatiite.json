@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "worldupgrade:block/komatiite_0"
+      },
+      {
+        "model": "worldupgrade:block/komatiite_1"
+      },
+      {
+        "model": "worldupgrade:block/komatiite_2"
+      },
+      {
+        "model": "worldupgrade:block/komatiite_3"
+      }
+    ]
+  }
+}

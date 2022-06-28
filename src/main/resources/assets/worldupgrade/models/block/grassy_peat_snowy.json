@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "worldupgrade:block/peat",
+    "bottom": "worldupgrade:block/peat",
+    "top": "worldupgrade:block/grass_block_top",
+    "side": "worldupgrade:block/grassy_peat_snowy_side"
+  }
+}

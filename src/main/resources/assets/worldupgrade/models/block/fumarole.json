@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "worldupgrade:block/fumarole_side",
+    "down": "worldupgrade:block/fumarole_bottom",
+    "up": "worldupgrade:block/fumarole_top",
+    "north": "worldupgrade:block/fumarole_side",
+    "east": "worldupgrade:block/fumarole_side",
+    "south": "worldupgrade:block/fumarole_side",
+    "west": "worldupgrade:block/fumarole_side"
+  }
+}

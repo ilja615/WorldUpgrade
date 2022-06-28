@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "worldupgrade:block/jungle_rock_bricks_slab"
+    },
+    "type=top": {
+      "model": "worldupgrade:block/jungle_rock_bricks_slab_top"
+    },
+    "type=double": {
+      "model": "worldupgrade:block/jungle_rocks_bricks"
+    }
+  }
+}

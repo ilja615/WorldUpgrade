@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "worldupgrade:block/grassy_stone"
+    },
+    "snowy=true": {
+      "model": "worldupgrade:block/grassy_stone_snowy"
+    }
+  }
+}

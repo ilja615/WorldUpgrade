@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '1.19.1-0.1'
+version = '1.19-0.1'
 group = 'com.github.ilja615.worldupgrade' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'worldupgrade'
 

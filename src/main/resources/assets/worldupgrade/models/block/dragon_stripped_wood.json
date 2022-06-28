@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "worldupgrade:block/dragon_stripped_log",
+    "side": "worldupgrade:block/dragon_stripped_log"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "worldupgrade:block/dead_pressure_plate"
+    },
+    "powered=true": {
+      "model": "worldupgrade:block/dead_pressure_plate_down"
+    }
+  }
+}

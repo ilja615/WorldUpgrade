@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "worldupgrade:block/dead_slab"
+    },
+    "type=double": {
+      "model": "worldupgrade:block/dead_planks"
+    },
+    "type=top": {
+      "model": "worldupgrade:block/dead_slab_top"
+    }
+  }
+}

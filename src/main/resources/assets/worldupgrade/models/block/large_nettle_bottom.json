@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/large_nettle_bottom",
+    "cross": "worldupgrade:block/large_nettle_bottom"
+  }
+}

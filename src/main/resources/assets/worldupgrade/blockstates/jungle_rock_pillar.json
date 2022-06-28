@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "worldupgrade:block/jungle_rock_pillar"
+    },
+    "axis=z": {
+      "model": "worldupgrade:block/jungle_rock_pillar",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "worldupgrade:block/jungle_rock_pillar",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

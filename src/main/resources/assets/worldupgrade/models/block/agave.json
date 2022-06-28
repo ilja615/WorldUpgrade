@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/agave",
+    "cross": "worldupgrade:block/agave"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/chamaenerion_top",
+    "cross": "worldupgrade:block/chamaenerion_top"
+  }
+}

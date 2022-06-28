@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "worldupgrade:block/dragon_slab"
+    },
+    "type=double": {
+      "model": "worldupgrade:block/dragon_planks"
+    },
+    "type=top": {
+      "model": "worldupgrade:block/dragon_slab_top"
+    }
+  }
+}

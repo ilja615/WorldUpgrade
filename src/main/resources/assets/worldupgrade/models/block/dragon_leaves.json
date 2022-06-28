@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "worldupgrade:block/dragon_leaves"
+  }
+}
