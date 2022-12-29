@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "worldupgrade:block/jungle_rock_bricks",
-    "top": "worldupgrade:block/jungle_rock_bricks",
-    "side": "worldupgrade:block/jungle_rock_bricks"
-  }
-}

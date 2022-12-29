@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=y":  { "model": "worldupgrade:block/lily_stem" },
-    "axis=z":   { "model": "worldupgrade:block/lily_stem", "x": 90 },
-    "axis=x":   { "model": "worldupgrade:block/lily_stem", "x": 90, "y": 90 }
-  }
-}

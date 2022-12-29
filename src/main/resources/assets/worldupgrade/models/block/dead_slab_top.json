@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "worldupgrade:block/dead_planks",
-    "top": "worldupgrade:block/dead_planks",
-    "side": "worldupgrade:block/dead_planks"
-  }
-}

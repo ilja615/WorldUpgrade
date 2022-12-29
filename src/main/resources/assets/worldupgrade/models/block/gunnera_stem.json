@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/gunnera_stem_top",
-    "side": "worldupgrade:block/gunnera_stem"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "worldupgrade:block/reed_thatch_weathered",
-    "top": "worldupgrade:block/reed_thatch_weathered",
-    "side": "worldupgrade:block/reed_thatch_weathered"
-  }
-}

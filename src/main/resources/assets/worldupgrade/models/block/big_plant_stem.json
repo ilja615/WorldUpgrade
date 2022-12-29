@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/big_plant_stem_top",
-    "side": "worldupgrade:block/big_plant_stem"
-  }
-}

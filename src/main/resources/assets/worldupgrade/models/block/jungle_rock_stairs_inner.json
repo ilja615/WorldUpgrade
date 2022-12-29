@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "worldupgrade:block/jungle_rock",
-    "top": "worldupgrade:block/jungle_rock",
-    "side": "worldupgrade:block/jungle_rock"
-  }
-}

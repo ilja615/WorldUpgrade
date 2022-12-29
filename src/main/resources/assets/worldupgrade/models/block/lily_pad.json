@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/lily_pad_top",
-    "side": "worldupgrade:block/lily_pad_side"
-  }
-}

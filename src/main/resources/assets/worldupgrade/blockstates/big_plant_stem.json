@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=y":  { "model": "worldupgrade:block/big_plant_stem" },
-    "axis=z":   { "model": "worldupgrade:block/big_plant_stem", "x": 90 },
-    "axis=x":   { "model": "worldupgrade:block/big_plant_stem", "x": 90, "y": 90 }
-  }
-}

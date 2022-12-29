@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/jungle_rock_pillar_top",
-    "side": "worldupgrade:block/jungle_rock_pillar"
-  }
-}

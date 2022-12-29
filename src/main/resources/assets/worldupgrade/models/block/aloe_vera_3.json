@@ -1,7 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "particle": "worldupgrade:block/aloe_vera_3",
-    "cross": "worldupgrade:block/aloe_vera_3"
-  }
-}

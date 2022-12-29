@@ -1,7 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "particle": "worldupgrade:block/dragonbush_leaves",
-    "cross": "worldupgrade:block/dragonbush_leaves"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/dry_reed_bale_top",
-    "side": "worldupgrade:block/dry_reed_bale"
-  }
-}

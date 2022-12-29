@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "":
-    [
-      { "model": "worldupgrade:block/regolith" }
-    ]
-  }
-}
