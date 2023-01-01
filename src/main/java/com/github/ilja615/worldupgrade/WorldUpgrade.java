@@ -2,7 +2,13 @@ package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.init.ModBlocks;
 import com.github.ilja615.worldupgrade.init.ModItems;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -47,6 +53,21 @@ public class WorldUpgrade
     static void afterClientSetup()
     {
         System.out.println("WorldUpgrade afterClientSetup now run.");
+    }
+
+    public static CreativeModeTab WORLDUPGRADE_CREATIVE_TAB;
+
+    @SubscribeEvent
+    private void registerTabs(CreativeModeTabEvent.Register event)
+    {
+        WORLDUPGRADE_CREATIVE_TAB = event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "worldupgrade_tab"), builder -> builder
+                .icon(() -> new ItemStack(ModBlocks.BIG_PLANT_LEAF.get()))
+                .title(Component.translatable("tabs.modid.main_tab"))
+                .displayItems((featureFlags, output, hasOp) -> {
+                    output.accept(ModBlocks.BIG_PLANT_LEAF.get());
+                    output.accept(Blocks.OAK_SAPLING, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
+                })
+        );
     }
 }
 

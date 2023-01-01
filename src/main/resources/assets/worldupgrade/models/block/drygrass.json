@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/drygrass",
+    "cross": "worldupgrade:block/drygrass"
+  }
+}

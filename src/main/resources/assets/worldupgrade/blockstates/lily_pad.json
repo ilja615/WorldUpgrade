@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "":
+    [
+      { "model": "worldupgrade:block/lily_pad" }
+    ]
+  }
+}
