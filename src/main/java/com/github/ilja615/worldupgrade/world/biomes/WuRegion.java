@@ -1,6 +1,7 @@
 package com.github.ilja615.worldupgrade.world.biomes;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
+import com.github.ilja615.worldupgrade.init.ModBiomes;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +30,7 @@ public class WuRegion extends Region
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             //builder.replaceBiome();
 
-            List<Climate.ParameterPoint> frozenPeaksPoints = new ParameterPointListBuilder()
+            List<Climate.ParameterPoint> cloudForestPoints = new ParameterPointListBuilder()
                     .temperature(Temperature.HOT, Temperature.WARM)
                     .humidity(Humidity.WET, Humidity.HUMID)
                     .continentalness(Continentalness.span(Continentalness.NEAR_INLAND, Continentalness.FAR_INLAND))
@@ -38,7 +39,7 @@ public class WuRegion extends Region
                     .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.PEAK_VARIANT, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.PEAK_NORMAL)
                     .build();
 
-            frozenPeaksPoints.forEach(point -> builder.replaceBiome(point, ResourceKey.create(Registries.BIOME, new ResourceLocation("worldupgrade:cloud_forest"))));
+            cloudForestPoints.forEach(point -> builder.replaceBiome(point, ModBiomes.CLOUD_FOREST));
         });
     }
 }
