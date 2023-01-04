@@ -1,7 +1,9 @@
 package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.init.ModBlocks;
+import com.github.ilja615.worldupgrade.init.ModFeatures;
 import com.github.ilja615.worldupgrade.init.ModItems;
+import com.github.ilja615.worldupgrade.world.biomes.WuRegion;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import terrablender.api.Regions;
 
 import static com.github.ilja615.worldupgrade.WorldUpgrade.MOD_ID;
 
@@ -33,6 +36,7 @@ public class WorldUpgrade
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -43,6 +47,8 @@ public class WorldUpgrade
     static void afterCommonSetup()
     {
         System.out.println("WorldUpgrade afterCommonSetup now run.");
+        // Terrablender WorldUpgrade biomes region
+        Regions.register(new WuRegion(new ResourceLocation(MOD_ID, "overworld"), 50));
     }
 
     private void clientSetup(final FMLClientSetupEvent event)
@@ -55,19 +61,33 @@ public class WorldUpgrade
         System.out.println("WorldUpgrade afterClientSetup now run.");
     }
 
-    public static CreativeModeTab WORLDUPGRADE_CREATIVE_TAB;
+    public static CreativeModeTab CREATIVE_TAB;
 
-    @SubscribeEvent
-    private void registerTabs(CreativeModeTabEvent.Register event)
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class Events
     {
-        WORLDUPGRADE_CREATIVE_TAB = event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "worldupgrade_tab"), builder -> builder
-                .icon(() -> new ItemStack(ModBlocks.BIG_PLANT_LEAF.get()))
-                .title(Component.translatable("tabs.modid.main_tab"))
-                .displayItems((featureFlags, output, hasOp) -> {
-                    output.accept(ModBlocks.BIG_PLANT_LEAF.get());
-                    output.accept(Blocks.OAK_SAPLING, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
-                })
-        );
+        @SubscribeEvent
+        public static void registerTabs(CreativeModeTabEvent.Register event)
+        {
+            CREATIVE_TAB = event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "worldupgrade_tab"), builder -> builder
+                    .icon(() -> new ItemStack(ModBlocks.BIG_PLANT_LEAF.get()))
+                    .title(Component.translatable("tabs.worldupgrade.worldupgrade_tab"))
+                    .displayItems((featureFlags, output, hasOp) -> {
+                        output.accept(ModBlocks.BIG_PLANT_LEAF.get());
+                        output.accept(Blocks.OAK_SAPLING, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
+                    })
+            );
+        }
+
+        @SubscribeEvent
+        public static void fillTabs(CreativeModeTabEvent.BuildContents event)
+        {
+            if (event.getTab() == CREATIVE_TAB)
+            {
+                ModItems.ITEMS.getEntries().forEach(itemRegistryObject -> event.accept(itemRegistryObject.get()));
+                ModBlocks.BLOCKS.getEntries().forEach(blockRegistryObject -> event.accept(blockRegistryObject.get()));
+            }
+        }
     }
 }
 
