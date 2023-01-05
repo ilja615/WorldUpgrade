@@ -77,8 +77,8 @@
     ],
     [
       "minecraft:glow_lichen",
+      "worldupgrade:trees_cloud_forest",
       "minecraft:bamboo_light",
-
       "minecraft:patch_pumpkin",
       "minecraft:spring_water",
       "minecraft:spring_lava",
@@ -88,8 +88,7 @@
       "minecraft:patch_grass_jungle",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "worldupgrade:spider_webs"
+      "minecraft:patch_sugar_cane"
     ],
     [
       "minecraft:freeze_top_layer"

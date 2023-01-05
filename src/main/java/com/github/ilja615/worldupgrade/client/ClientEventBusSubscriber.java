@@ -21,7 +21,7 @@ public class ClientEventBusSubscriber
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
             event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.2f);
-            event.setCanceled(true);
+            event.setFarPlaneDistance(event.getFarPlaneDistance() * 0.2f);
         }
     }
 }
