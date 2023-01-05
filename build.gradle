@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 
@@ -14,7 +15,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
-
+// MixinGradle:
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.19.3-0.1'
@@ -48,9 +49,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg")
+            //arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
 
             workingDirectory project.file('run')
 
@@ -78,9 +77,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg")
+            //arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
 
             workingDirectory project.file('run')
 
@@ -102,9 +99,7 @@ minecraft {
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg")
+            //arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
 
             workingDirectory project.file('run')
 
@@ -123,9 +118,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg")
+            //arg "-mixin.config=" + "worldupgrade" + ".mixins.json"
 
             workingDirectory project.file('run')
 
@@ -211,5 +204,5 @@ repositories {
 
 dependencies {
     implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.3-2.1.0.139')
-    implementation fg.deobf('curse.maven:cyanide-541676:3832812')
+    //implementation fg.deobf('curse.maven:cyanide-541676:3832812')
 }
