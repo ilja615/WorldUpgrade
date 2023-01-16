@@ -37,21 +37,59 @@ public class BigLilyPadFeature extends Feature<NoneFeatureConfiguration>
         if (!isGrassOrDirt(context.level(), positionIn)) {
             return false; // this lily is only allowed to grow on soil, but not on water or plant or other thing
         }
-        if (positionIn.getY() > 59) {
+        if (positionIn.getY() > 60) {
             return false; // needs enough blocks of water
         }
         
         // lily stem
         BlockPos pos1 = positionIn;
-        while (pos1.getY() < 62 + context.random().nextInt(2)) {
+        ArrayList<BlockPos> stem = new ArrayList<>();
+        while (pos1.getY() < 63) {
             ArrayList<Direction> dirs = Arrays.stream(Direction.values()).filter(direction -> direction.getAxis() != Direction.Axis.Y).collect(Collectors.toCollection(ArrayList::new));
             if (context.random().nextFloat() < 0.1f) pos1 = pos1.relative(dirs.get(context.random().nextInt(4)));
-            ifAirOrWaterSetBlock(context.level(), pos1, STEM);
+            if (isAirOrLeavesOrWaterAt(context.level(), pos1))
+            {
+                stem.add(pos1);
+            }
             pos1 = pos1.above();
         }
 
-        // lily pad
+        // detection
         int range = 2 + context.random().nextInt(3);
+        boolean overlap = false;
+        for (int ix = -range-1; ix <= range+1; ++ix)
+        {
+            for (int iy = -range-1; iy <= range+1; ++iy)
+            {
+                if (ix * ix + iy * iy <= (range+1)*(range+1) * 1.15)
+                    if (!(context.level().getBlockState(pos1.offset(ix, 0, iy)).canBeReplaced() || context.level().getBlockState(pos1.offset(ix, 0, iy)).isAir()))
+                        overlap = true;
+            }
+        }
+        if (overlap)
+        {
+            // Try if the smallest one fits
+            range = 2;
+            overlap = false;
+            for (int ix = -range-1; ix <= range+1; ++ix)
+            {
+                for (int iy = -range-1; iy <= range+1; ++iy)
+                {
+                    if (ix * ix + iy * iy <= (range+1)*(range+1) * 1.15)
+                        if (!(context.level().getBlockState(pos1.offset(ix, 0, iy)).canBeReplaced() || context.level().getBlockState(pos1.offset(ix, 0, iy)).isAir()))
+                            overlap = true;
+                }
+            }
+            if (overlap)
+            {
+                // If there is no space for the lily pad, placement should be cancelled.
+                return false;
+            }
+        }
+
+        // if there was no problem with the placement, time to place the stem and the lily pad.
+        for (BlockPos stempos : stem)
+            setBlock(context.level(), stempos, STEM);
         for (int ix = -range; ix <= range; ++ix) {
             for (int iy = -range; iy <= range; ++iy) {
                 if (range == 2) {
@@ -71,27 +109,15 @@ public class BigLilyPadFeature extends Feature<NoneFeatureConfiguration>
         // pac man
         ArrayList<Direction> dirs = Arrays.stream(Direction.values()).filter(direction -> direction.getAxis() != Direction.Axis.Y).collect(Collectors.toCollection(ArrayList::new));
         Direction pacmanDirection = dirs.get(context.random().nextInt(4));
-        if (range == 2)
-        {
-            setBlock(context.level(), pos1.relative(pacmanDirection), y1 <= 62 ? WATER : AIR);
-        }
+        setBlock(context.level(), pos1.relative(pacmanDirection), y1 <= 62 ? WATER : AIR);
         setBlock(context.level(), pos1.relative(pacmanDirection, 2), y1 <= 62 ? WATER : AIR);
-        if (range == 3)
-        {
-            setBlock(context.level(), pos1.relative(pacmanDirection, 2).relative(pacmanDirection.getClockWise()), y1 <= 62 ? WATER : AIR);
-            setBlock(context.level(), pos1.relative(pacmanDirection, 2).relative(pacmanDirection.getCounterClockWise()), y1 <= 62 ? WATER : AIR);
-        }
-        if (range > 2)
+        if (range >= 3)
         {
             setBlock(context.level(), pos1.relative(pacmanDirection, 3), y1 <= 62 ? WATER : AIR);
-            setBlock(context.level(), pos1.relative(pacmanDirection, 3).relative(pacmanDirection.getClockWise()), y1 <= 62 ? WATER : AIR);
-            setBlock(context.level(), pos1.relative(pacmanDirection, 3).relative(pacmanDirection.getCounterClockWise()), y1 <= 62 ? WATER : AIR);
         }
-        if (range == 4)
+        if (range >= 4)
         {
             setBlock(context.level(), pos1.relative(pacmanDirection, 4), y1 <= 62 ? WATER : AIR);
-            setBlock(context.level(), pos1.relative(pacmanDirection, 4).relative(pacmanDirection.getClockWise()), y1 <= 62 ? WATER : AIR);
-            setBlock(context.level(), pos1.relative(pacmanDirection, 4).relative(pacmanDirection.getCounterClockWise()), y1 <= 62 ? WATER : AIR);
         }
         return true;
     }

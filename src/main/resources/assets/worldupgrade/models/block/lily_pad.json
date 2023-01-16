@@ -1,7 +1,20 @@
 {
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "worldupgrade:block/lily_pad_top",
-    "side": "worldupgrade:block/lily_pad_side"
-  }
-}
+	"textures": {
+      "side": "worldupgrade:block/lily_pad_side",
+      "end": "worldupgrade:block/lily_pad_top"
+    },
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 4], "texture": "#side"},
+				"east": {"uv": [0, 0, 16, 4], "texture": "#side"},
+				"south": {"uv": [0, 0, 16, 4], "texture": "#side"},
+				"west": {"uv": [0, 0, 16, 4], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#end"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#end"}
+			}
+		}
+	]
+},
