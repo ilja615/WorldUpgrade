@@ -1,5 +1,5 @@
 {
-  "type": "worldupgrade:random_patch_with_needs_adjacent",
+  "type": "minecraft:random_patch",
   "config": {
     "feature": {
       "feature": {
@@ -8,7 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "minecraft:cobweb"
+              "Name": "worldupgrade:drygrass"
             }
           }
         }
@@ -23,8 +23,8 @@
         }
       ]
     },
-    "tries": 24,
+    "tries": 32,
     "xz_spread": 7,
-    "y_spread": 9
+    "y_spread": 3
   }
 }

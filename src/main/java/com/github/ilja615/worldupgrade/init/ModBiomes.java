@@ -14,6 +14,7 @@ import java.util.function.Supplier;
 public class ModBiomes
 {
     public static final ResourceKey<Biome> CLOUD_FOREST = register("cloud_forest");
+    public static final ResourceKey<Biome> BOG = register("bog");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, new ResourceLocation(WorldUpgrade.MOD_ID, name));

@@ -11,8 +11,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConf
 
 public class RandomPatchWithNeedsAdjacentFeature extends Feature<RandomPatchConfiguration>
 {
-    public RandomPatchWithNeedsAdjacentFeature(Codec<RandomPatchConfiguration> p_66605_) {
-        super(p_66605_);
+    public RandomPatchWithNeedsAdjacentFeature(Codec<RandomPatchConfiguration> configurationCodec) {
+        super(configurationCodec);
     }
 
     public boolean place(FeaturePlaceContext<RandomPatchConfiguration> p_160210_)

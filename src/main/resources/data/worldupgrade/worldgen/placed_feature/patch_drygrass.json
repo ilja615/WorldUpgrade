@@ -1,0 +1,21 @@
+{
+  "feature": "worldupgrade:patch_drygrass",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 20.0,
+      "noise_offset": 0.3,
+      "noise_to_count_ratio": 4
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

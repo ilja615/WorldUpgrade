@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "worldupgrade:block/big_plant_leaf"
+    "all": "worldupgrade:block/gunnera_leaf"
   }
 }

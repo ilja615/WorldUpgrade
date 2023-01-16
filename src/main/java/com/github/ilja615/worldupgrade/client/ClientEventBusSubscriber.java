@@ -14,15 +14,28 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientEventBusSubscriber
 {
     @SubscribeEvent
-    public static void onFogColor(ViewportEvent.RenderFog event)
+    public static void onRenderFog(ViewportEvent.RenderFog event)
     {
         Level l = event.getCamera().getEntity().level;
         Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
-            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.005f);
+            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.01f);
             event.setFarPlaneDistance(event.getFarPlaneDistance() * 0.08f);
             event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onFogColor(ViewportEvent.ComputeFogColor event)
+    {
+        Level l = event.getCamera().getEntity().level;
+        Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
+        if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
+        {
+            event.setRed(0.92F);
+            event.setGreen(0.95F);
+            event.setBlue(0.95F);
         }
     }
 }

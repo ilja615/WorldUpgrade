@@ -3,16 +3,14 @@ package com.github.ilja615.worldupgrade;
 import com.github.ilja615.worldupgrade.init.ModBlocks;
 import com.github.ilja615.worldupgrade.init.ModFeatures;
 import com.github.ilja615.worldupgrade.init.ModItems;
-import com.github.ilja615.worldupgrade.world.biomes.WuRegion;
+import com.github.ilja615.worldupgrade.init.ModSurfaceRules;
+import com.github.ilja615.worldupgrade.init.ModRegion;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -47,8 +45,12 @@ public class WorldUpgrade
     static void afterCommonSetup()
     {
         System.out.println("WorldUpgrade afterCommonSetup now run.");
+
         // Terrablender WorldUpgrade biomes region
-        Regions.register(new WuRegion(new ResourceLocation(MOD_ID, "overworld"), 50));
+        Regions.register(new ModRegion(new ResourceLocation(MOD_ID, "overworld"), 4));
+
+        // Terrablender WorldUpgrade register our surface rules
+        ModSurfaceRules.makeRules();
     }
 
     private void clientSetup(final FMLClientSetupEvent event)
@@ -70,10 +72,10 @@ public class WorldUpgrade
         public static void registerTabs(CreativeModeTabEvent.Register event)
         {
             CREATIVE_TAB = event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "worldupgrade_tab"), builder -> builder
-                    .icon(() -> new ItemStack(ModBlocks.BIG_PLANT_LEAF.get()))
+                    .icon(() -> new ItemStack(ModBlocks.GUNNERA_LEAF.get()))
                     .title(Component.translatable("tabs.worldupgrade.worldupgrade_tab"))
                     .displayItems((featureFlags, output, hasOp) -> {
-                        output.accept(ModBlocks.BIG_PLANT_LEAF.get());
+                        output.accept(ModBlocks.GUNNERA_LEAF.get());
                         output.accept(Blocks.OAK_SAPLING, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
                     })
             );
