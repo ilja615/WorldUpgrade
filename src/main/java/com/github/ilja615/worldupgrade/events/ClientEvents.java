@@ -28,28 +28,9 @@ public class ClientEvents
         Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
-//            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.01f);
-//            event.setFarPlaneDistance(event.getFarPlaneDistance() * 0.08f);
-            event.setNearPlaneDistance(Math.min(event.getNearPlaneDistance(),event.getNearPlaneDistance() / (float)ClientFogData.getPlayerFog()));
-            event.setFarPlaneDistance(Math.min(event.getFarPlaneDistance(), 8 * event.getFarPlaneDistance() / (float)ClientFogData.getPlayerFog()));
-            if (en instanceof ServerPlayer player)
-            {
-                player.getCapability(PlayerFogProvider.PLAYER_FOG).ifPresent(fog -> {
-                    fog.addFog(1);
-
-                    ModMessages.sendToPlayer(new FogDataSyncS2CPacket(fog.getFog()), player);
-                });
-            }
+            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.01f);
+            event.setFarPlaneDistance(event.getFarPlaneDistance() * 0.08f);
             event.setCanceled(true);
-        } else {
-            if (en instanceof ServerPlayer player)
-            {
-                player.getCapability(PlayerFogProvider.PLAYER_FOG).ifPresent(fog -> {
-                    fog.substractFog(1);
-
-                    ModMessages.sendToPlayer(new FogDataSyncS2CPacket(fog.getFog()), player);
-                });
-            }
         }
     }
 
