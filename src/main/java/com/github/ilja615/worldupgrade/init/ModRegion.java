@@ -29,7 +29,7 @@ public class ModRegion extends Region
         this.addModifiedVanillaOverworldBiomes(mapper, builder ->
         {
             // The bog
-            builder.replaceBiome(Biomes.DESERT, ModBiomes.BOG);
+            builder.replaceBiome(Biomes.SWAMP, ModBiomes.BOG);
         });
 
         // The cloud forest

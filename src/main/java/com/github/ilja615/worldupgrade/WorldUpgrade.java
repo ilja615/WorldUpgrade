@@ -1,16 +1,15 @@
 package com.github.ilja615.worldupgrade;
 
-import com.github.ilja615.worldupgrade.init.ModBlocks;
-import com.github.ilja615.worldupgrade.init.ModFeatures;
-import com.github.ilja615.worldupgrade.init.ModItems;
-import com.github.ilja615.worldupgrade.init.ModSurfaceRules;
-import com.github.ilja615.worldupgrade.init.ModRegion;
+import com.github.ilja615.worldupgrade.init.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +34,9 @@ public class WorldUpgrade
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
+        ModEntities.ENTITY_TYPES.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModParticles.PARTICLES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -68,6 +70,17 @@ public class WorldUpgrade
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class Events
     {
+
+        @SubscribeEvent(priority = EventPriority.LOWEST)
+        public static void registerParticles(RegisterParticleProvidersEvent event) {
+            ModParticles.registerParticles(event); //It registers particles
+        }
+
+        @SubscribeEvent
+        public static void entityAttributes(final EntityAttributeCreationEvent event) {
+            ModEntities.createEntityAttributes(event); //It creates entity attributes
+        }
+
         @SubscribeEvent
         public static void registerTabs(CreativeModeTabEvent.Register event)
         {

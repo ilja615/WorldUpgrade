@@ -1,0 +1,8 @@
+{
+  "disguisager_call_horn": {
+    "subtitle": "sounds.worldupgrade.disguisager_call_horn",
+    "sounds": [
+      "worldupgrade:disguisager_call_horn"
+    ]
+  }
+}

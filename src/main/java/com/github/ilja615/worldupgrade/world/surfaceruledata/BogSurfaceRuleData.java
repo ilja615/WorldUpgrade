@@ -14,7 +14,6 @@ public class BogSurfaceRuleData
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final SurfaceRules.RuleSource MUD = makeStateRule(Blocks.MUD);
-    private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
 
     public static SurfaceRules.RuleSource makeRules()
     {
@@ -24,17 +23,8 @@ public class BogSurfaceRuleData
         SurfaceRules.ConditionSource mud3 = SurfaceRules.noiseCondition(Noises.SURFACE, 0.1D, 0.15D);
 
         SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
-        SurfaceRules.ConditionSource atY62 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(62), 0);
-        SurfaceRules.ConditionSource atY63 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(63), 0);
 
         return SurfaceRules.sequence(
-            SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.BOG),
-                SurfaceRules.ifTrue(atY62,
-                    SurfaceRules.ifTrue(SurfaceRules.not(atY63),
-                            SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0D), WATER)
-                    )
-                )
-            ),
             SurfaceRules.ifTrue(mud1, SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.BOG), MUD),
                 // Default to a grass and dirt surface
