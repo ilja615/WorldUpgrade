@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/dry_reed_2",
+    "cross": "worldupgrade:block/dry_reed_2"
+  }
+}

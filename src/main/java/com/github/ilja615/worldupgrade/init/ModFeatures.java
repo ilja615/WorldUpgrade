@@ -1,9 +1,7 @@
 package com.github.ilja615.worldupgrade.init;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
-import com.github.ilja615.worldupgrade.world.feature.BigLilyPadFeature;
-import com.github.ilja615.worldupgrade.world.feature.GunneraFeature;
-import com.github.ilja615.worldupgrade.world.feature.RandomPatchWithNeedsAdjacentFeature;
+import com.github.ilja615.worldupgrade.world.feature.*;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -24,4 +22,8 @@ public class ModFeatures
             GunneraFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<BigLilyPadFeature> BIG_LILY_PAD = FEATURES.register("big_lily_pad", () -> new
             BigLilyPadFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<ReedsFeature> REEDS = FEATURES.register("reeds", () -> new
+            ReedsFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<DryReedsFeature> DRY_REEDS = FEATURES.register("dry_reeds", () -> new
+            DryReedsFeature(NoneFeatureConfiguration.CODEC));
 }

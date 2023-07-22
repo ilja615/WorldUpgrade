@@ -24,7 +24,7 @@ public class ClientEvents
         Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
-            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.01f);
+            event.setNearPlaneDistance(event.getNearPlaneDistance() * 0.02f);
             event.setFarPlaneDistance(event.getFarPlaneDistance() * 0.08f);
             event.setCanceled(true);
         }

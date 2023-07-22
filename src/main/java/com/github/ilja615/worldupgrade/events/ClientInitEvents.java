@@ -22,6 +22,11 @@ public class ClientInitEvents
     public static void clientSetup(FMLClientSetupEvent event)
     {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRYGRASS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BOG_BEACON.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TALL_REED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOP_REED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TALL_DRY_REED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOP_DRY_REED.get(), RenderType.cutout());
     }
 
     @SubscribeEvent

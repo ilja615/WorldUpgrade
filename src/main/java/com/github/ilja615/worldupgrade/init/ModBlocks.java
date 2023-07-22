@@ -1,9 +1,7 @@
 package com.github.ilja615.worldupgrade.init;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
-import com.github.ilja615.worldupgrade.blocks.BigLilyPadBlock;
-import com.github.ilja615.worldupgrade.blocks.BigPlantLeafBlock;
-import com.github.ilja615.worldupgrade.blocks.DoubleBromeliadBlock;
+import com.github.ilja615.worldupgrade.blocks.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -12,8 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -32,6 +28,10 @@ public class ModBlocks
     public static final RegistryObject<Block> BOG_BEACON = registerBlockWithItem("bog_beacon", () -> new MushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM).lightLevel((p_50892_) -> {
         return 4;
     }), ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "huge_bog_beacon_mushroom"))));
+    public static final RegistryObject<Block> TALL_REED = registerBlockWithItem("tall_reed", () -> new DoubleReedBlock(ModProperties.REED_PLANT_PROPERTY));
+    public static final RegistryObject<Block> TOP_REED = BLOCKS.register("top_reed", () -> new TopReedBlock(ModProperties.REED_PLANT_PROPERTY));
+    public static final RegistryObject<Block> TALL_DRY_REED = registerBlockWithItem("tall_dry_reed", () -> new DoubleDryReedBlock(ModProperties.REED_PLANT_PROPERTY));
+    public static final RegistryObject<Block> TOP_DRY_REED = BLOCKS.register("top_dry_reed", () -> new TopDryReedBlock(ModProperties.REED_PLANT_PROPERTY));
 
     public static <BLOCK extends Block, ITEM extends BlockItem> RegistryObject<BLOCK> registerBlockWithItem(String name, Supplier<BLOCK> blockSupplier, Supplier<ITEM> itemSupplier)
     {
