@@ -28,6 +28,9 @@ public class ModBlocks
     public static final RegistryObject<Block> BOG_BEACON = registerBlockWithItem("bog_beacon", () -> new MushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM).lightLevel((p_50892_) -> {
         return 4;
     }), ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(WorldUpgrade.MOD_ID, "huge_bog_beacon_mushroom"))));
+    public static final RegistryObject<Block> BOG_BEACON_MUSHROOM_BLOCK = registerBlockWithItem("bog_beacon_mushroom_block", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK).lightLevel((p_50892_) -> {
+        return 4;
+    })));
     public static final RegistryObject<Block> TALL_REED = registerBlockWithItem("tall_reed", () -> new DoubleReedBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> TOP_REED = BLOCKS.register("top_reed", () -> new TopReedBlock(ModProperties.REED_PLANT_PROPERTY));
     public static final RegistryObject<Block> TALL_DRY_REED = registerBlockWithItem("tall_dry_reed", () -> new DoubleDryReedBlock(ModProperties.REED_PLANT_PROPERTY));

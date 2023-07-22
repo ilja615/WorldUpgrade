@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "worldupgrade:block/bog_beacon_mushroom_block"
+  }
+}

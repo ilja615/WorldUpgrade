@@ -69,7 +69,6 @@ public class DoubleReedBlock extends DoublePlantBlock implements SimpleWaterlogg
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
         builder.add(HALF, WATERLOGGED, ABOVE, AGE);
-        super.createBlockStateDefinition(builder);
     }
 
     @Nullable

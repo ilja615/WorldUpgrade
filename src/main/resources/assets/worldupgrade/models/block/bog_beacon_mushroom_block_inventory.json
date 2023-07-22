@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "worldupgrade:block/bog_beacon_mushroom_block"
+  }
+}
