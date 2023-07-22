@@ -36,14 +36,20 @@ public class ReedsFeature extends Feature<NoneFeatureConfiguration>
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context)
     {
-        int currentWaterDepth = 0;
-        BlockPos positionIn = new BlockPos(context.origin().getX(), 63, context.origin().getZ());
-        // Moving down until it is on the ground
-        while (positionIn.getY() > 1 && (isAirOrLeavesAt(context.level(), positionIn) || context.level().getBlockState(positionIn).is(Blocks.WATER)))
+        BlockPos positionIn = context.origin();
+        if (!context.level().getBlockState(positionIn).canBeReplaced() || !context.level().getBlockState(positionIn.above()).canBeReplaced() || !context.level().getBlockState(positionIn.above(2)).canBeReplaced())
         {
-            positionIn = positionIn.below();
-            if (context.level().getBlockState(positionIn).is(Blocks.WATER)) currentWaterDepth++;
-            if (currentWaterDepth > 1) return false;
+            return false; // it has to be an empty block first
+        }
+
+        if (!isAirOrLeavesAt(context.level(), positionIn.above(2)) || !isAirOrLeavesAt(context.level(), positionIn.above(3)))
+        {
+            return false; // the block above reeds should preferably be air, but leaves also is acceptable
+        }
+
+        if (!context.level().getBlockState(positionIn.above()).getFluidState().isEmpty() || !context.level().getBlockState(positionIn.above(2)).getFluidState().isEmpty())
+        {
+            return false; // the water should not be on the 2nd or 3rd block or above the 3rd block
         }
 
         if (!ModBlocks.TALL_REED.get().defaultBlockState().canSurvive(context.level(), positionIn))
@@ -72,7 +78,7 @@ public class ReedsFeature extends Feature<NoneFeatureConfiguration>
 
         } else
         { //30 % chance to get 2 hight
-            setBlock(context.level(), positionIn, BOTTOM_REED);
+            setBlock(context.level(), positionIn, BOTTOM_REED.setValue(DoubleDryReedBlock.WATERLOGGED, water));
             setBlock(context.level(), positionIn.above(1), TOP_REED_2);
         }
         return false;

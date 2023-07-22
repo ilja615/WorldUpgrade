@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +48,7 @@ public class BigLilyPadFeature extends Feature<NoneFeatureConfiguration>
         while (pos1.getY() < 63) {
             ArrayList<Direction> dirs = Arrays.stream(Direction.values()).filter(direction -> direction.getAxis() != Direction.Axis.Y).collect(Collectors.toCollection(ArrayList::new));
             if (context.random().nextFloat() < 0.1f) pos1 = pos1.relative(dirs.get(context.random().nextInt(4)));
-            if (isAirOrLeavesOrWaterAt(context.level(), pos1))
+            if (context.level().getFluidState(pos1).is(Fluids.WATER)) // The stem should be completely in the water
             {
                 stem.add(pos1);
             }
@@ -62,8 +63,12 @@ public class BigLilyPadFeature extends Feature<NoneFeatureConfiguration>
             for (int iy = -range-1; iy <= range+1; ++iy)
             {
                 if (ix * ix + iy * iy <= (range+1)*(range+1) * 1.15)
+                {
                     if (!(context.level().getBlockState(pos1.offset(ix, 0, iy)).canBeReplaced() || context.level().getBlockState(pos1.offset(ix, 0, iy)).isAir()))
                         overlap = true;
+                    if (!context.level().getFluidState(pos1.offset(ix, -1, iy)).is(Fluids.WATER))
+                        return false; // The lily pad should be completely above the water, and not above land or air
+                }
             }
         }
         if (overlap)
@@ -76,8 +81,12 @@ public class BigLilyPadFeature extends Feature<NoneFeatureConfiguration>
                 for (int iy = -range-1; iy <= range+1; ++iy)
                 {
                     if (ix * ix + iy * iy <= (range+1)*(range+1) * 1.15)
+                    {
                         if (!(context.level().getBlockState(pos1.offset(ix, 0, iy)).canBeReplaced() || context.level().getBlockState(pos1.offset(ix, 0, iy)).isAir()))
                             overlap = true;
+                        if (!context.level().getFluidState(pos1.offset(ix, -1, iy)).is(Fluids.WATER))
+                            return false; // The lily pad should be completely above the water, and not above land or air
+                    }
                 }
             }
             if (overlap)

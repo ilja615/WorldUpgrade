@@ -4,7 +4,7 @@
     "default": "worldupgrade:swamp_oak_checked",
     "features": [
       {
-        "chance": 0.1,
+        "chance": 0.08,
         "feature": {
           "feature": "minecraft:huge_brown_mushroom",
           "placement": []
@@ -18,11 +18,18 @@
         }
       },
       {
-        "chance": 0.3,
+        "chance": 0.06,
+        "feature": {
+          "feature": "worldupgrade:huge_bog_beacon_mushroom",
+          "placement": []
+        }
+        },
+      {
+        "chance": 0.26,
         "feature": "worldupgrade:bog_spruce_checked"
       },
       {
-        "chance": 0.3,
+        "chance": 0.26,
         "feature": "worldupgrade:bog_pine_checked"
       }
     ]

@@ -6,6 +6,7 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,4 +27,6 @@ public class ModFeatures
             ReedsFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<DryReedsFeature> DRY_REEDS = FEATURES.register("dry_reeds", () -> new
             DryReedsFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<HugeBogBeaconMushroomFeature> HUGE_BOG_BEACON_MUSHROOM = FEATURES.register("huge_bog_beacon_mushroom", () -> new
+            HugeBogBeaconMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
 }

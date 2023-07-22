@@ -84,11 +84,12 @@
       "minecraft:patch_grass_normal",
       "worldupgrade:patch_drygrass",
       "worldupgrade:patch_drygrass_on_mud",
-      "worldupgrade:reeds",
+      "worldupgrade:dry_reeds",
       "minecraft:patch_dead_bush",
       "minecraft:patch_waterlily",
       "worldupgrade:brown_mushroom_bog",
       "worldupgrade:red_mushroom_bog",
+      "worldupgrade:bog_beacon_mushroom_bog",
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
       "minecraft:seagrass_swamp"
