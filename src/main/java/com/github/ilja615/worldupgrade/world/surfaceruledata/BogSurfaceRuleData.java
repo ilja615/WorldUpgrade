@@ -18,9 +18,9 @@ public class BogSurfaceRuleData
     public static SurfaceRules.RuleSource makeRules()
     {
         SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
-        SurfaceRules.ConditionSource mud1 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.9D, -0.7D);
-        SurfaceRules.ConditionSource mud2 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.5D, -0.1D);
-        SurfaceRules.ConditionSource mud3 = SurfaceRules.noiseCondition(Noises.SURFACE, 0.1D, 0.15D);
+        SurfaceRules.ConditionSource mud1 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.9D, -0.75D);
+        SurfaceRules.ConditionSource mud2 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.55D, 0.2D);
+        SurfaceRules.ConditionSource mud3 = SurfaceRules.noiseCondition(Noises.SURFACE, 0.3D, 0.35D);
 
         SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 

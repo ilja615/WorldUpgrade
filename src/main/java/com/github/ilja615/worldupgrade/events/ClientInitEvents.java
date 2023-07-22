@@ -2,7 +2,9 @@ package com.github.ilja615.worldupgrade.events;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
 import com.github.ilja615.worldupgrade.client.models.DisguisagerModel;
+import com.github.ilja615.worldupgrade.client.models.SlothModel;
 import com.github.ilja615.worldupgrade.client.renderer.entity.DisguisagerRenderer;
+import com.github.ilja615.worldupgrade.client.renderer.entity.SlothRenderer;
 import com.github.ilja615.worldupgrade.init.ModBlocks;
 import com.github.ilja615.worldupgrade.init.ModEntities;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -26,11 +28,13 @@ public class ClientInitEvents
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerEntityRenderer(ModEntities.DISGUISAGER.get(), DisguisagerRenderer::new);
+        event.registerEntityRenderer(ModEntities.SLOTH.get(), SlothRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
         event.registerLayerDefinition(DisguisagerRenderer.ENTITY_LAYER, DisguisagerModel::createBodyLayer);
+        event.registerLayerDefinition(SlothRenderer.ENTITY_LAYER, SlothModel::createBodyLayer);
     }
 }

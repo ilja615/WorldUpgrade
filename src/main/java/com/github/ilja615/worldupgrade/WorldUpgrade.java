@@ -1,13 +1,8 @@
 package com.github.ilja615.worldupgrade;
 
 import com.github.ilja615.worldupgrade.init.*;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -37,6 +32,7 @@ public class WorldUpgrade
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         ModParticles.PARTICLES.register(modEventBus);
+        ModCreativeTabs.TABS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -65,8 +61,6 @@ public class WorldUpgrade
         System.out.println("WorldUpgrade afterClientSetup now run.");
     }
 
-    public static CreativeModeTab CREATIVE_TAB;
-
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class Events
     {
@@ -79,29 +73,6 @@ public class WorldUpgrade
         @SubscribeEvent
         public static void entityAttributes(final EntityAttributeCreationEvent event) {
             ModEntities.createEntityAttributes(event); //It creates entity attributes
-        }
-
-        @SubscribeEvent
-        public static void registerTabs(CreativeModeTabEvent.Register event)
-        {
-            CREATIVE_TAB = event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "worldupgrade_tab"), builder -> builder
-                    .icon(() -> new ItemStack(ModBlocks.GUNNERA_LEAF.get()))
-                    .title(Component.translatable("tabs.worldupgrade.worldupgrade_tab"))
-                    .displayItems((featureFlags, output, hasOp) -> {
-                        output.accept(ModBlocks.GUNNERA_LEAF.get());
-                        output.accept(Blocks.OAK_SAPLING, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
-                    })
-            );
-        }
-
-        @SubscribeEvent
-        public static void fillTabs(CreativeModeTabEvent.BuildContents event)
-        {
-            if (event.getTab() == CREATIVE_TAB)
-            {
-                ModItems.ITEMS.getEntries().forEach(itemRegistryObject -> event.accept(itemRegistryObject.get()));
-                ModBlocks.BLOCKS.getEntries().forEach(blockRegistryObject -> event.accept(blockRegistryObject.get()));
-            }
         }
     }
 }

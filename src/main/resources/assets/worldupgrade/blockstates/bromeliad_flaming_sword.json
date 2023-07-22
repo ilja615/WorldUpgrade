@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "worldupgrade:block/bromeliad_flaming_sword_bottom"
+    },
+    "half=upper": {
+      "model": "worldupgrade:block/bromeliad_flaming_sword_top"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "worldupgrade:block/bromeliad_flaming_sword_bottom"
+  }
+}

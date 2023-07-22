@@ -160,8 +160,8 @@ public class Disguisager extends AbstractIllager
             }
         }
 
-        if (!this.level.isClientSide) {
-            this.level.broadcastEntityEvent(this, (byte)1);
+        if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte)1);
         }
     }
 
@@ -194,11 +194,11 @@ public class Disguisager extends AbstractIllager
         }
 
         if (!this.isNoAi() && GoalUtils.hasGroundPathNavigation(this)) {
-            boolean flag = ((ServerLevel)this.level).isRaided(this.blockPosition());
+            boolean flag = ((ServerLevel)this.level()).isRaided(this.blockPosition());
             ((GroundPathNavigation)this.getNavigation()).setCanOpenDoors(flag);
         }
 
-        if (this.onGround) {
+        if (this.onGround()) {
             if (!this.wasOnGround) {
                 this.setJumping(false);
                 this.checkLandingDelay();
@@ -231,7 +231,7 @@ public class Disguisager extends AbstractIllager
             }
         }
 
-        this.wasOnGround = this.onGround;
+        this.wasOnGround = this.onGround();
 
         //super.customServerAiStep();
     }
@@ -328,7 +328,7 @@ public class Disguisager extends AbstractIllager
         }
 
         public void tick() {
-            if (this.disguisager.onGround && !this.disguisager.jumping && !((Disguisager.JumpHelperController)this.disguisager.jumpControl).wantJump()) {
+            if (this.disguisager.onGround() && !this.disguisager.jumping && !((Disguisager.JumpHelperController)this.disguisager.jumpControl).wantJump()) {
                 this.disguisager.setSpeedModifier(0.0D);
             } else if (this.hasWanted()) {
                 this.disguisager.setSpeedModifier(this.nextJumpSpeed);
@@ -445,7 +445,7 @@ public class Disguisager extends AbstractIllager
             this.disguisager.entityData.set(DATA_IS_DISGUISED, false);
             this.disguisager.move(MoverType.SELF, new Vec3(0.0f, 1.5f, 0.0f));
             this.delay = 70;
-            if (this.disguisager.level instanceof ServerLevel serverLevel)
+            if (this.disguisager.level() instanceof ServerLevel serverLevel)
                 for (int i = 0; i < 15; i++)
                     serverLevel.sendParticles(ModParticles.LEAF_PARTICLE.get(), this.disguisager.position().x, this.disguisager.position().y + 0.05d, this.disguisager.position().z, 1, 0.0d, 0.0d, 0.0d, 0.0d);
         }
@@ -456,12 +456,12 @@ public class Disguisager extends AbstractIllager
             if (this.delay == 0) {
                 this.disguisager.entityData.set(DATA_IS_BLOWING_HORN, false);
                 this.disguisager.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.WOODEN_AXE));
-            } else if (!this.blewHorn && this.disguisager.onGround)
+            } else if (!this.blewHorn && this.disguisager.onGround())
             {
                 this.blewHorn = true;
                 this.disguisager.playSound(ModSounds.DISGUISAGER_CALL_HORN.get(), 1.0f, 1.0f);
             } else if (this.blewHorn && this.delay % 10 == 0) {
-                if (this.disguisager.level instanceof ServerLevel serverLevel)
+                if (this.disguisager.level() instanceof ServerLevel serverLevel)
                     serverLevel.sendParticles(ParticleTypes.NOTE, this.disguisager.position().x, this.disguisager.position().y + 2.2d, this.disguisager.position().z, 1, 0.0d, 0.0d, 0.0d, 0.0d);
             }
         }

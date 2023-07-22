@@ -1,8 +1,9 @@
 {
 	"textures": {
       "side": "worldupgrade:block/lily_pad_side",
-      "end": "worldupgrade:block/lily_pad_top"
-    },
+      "end": "worldupgrade:block/lily_pad_top",
+		"particle": "worldupgrade:block/lily_pad_top"
+	},
 	"elements": [
 		{
 			"from": [0, 0, 0],

@@ -3,15 +3,12 @@ package com.github.ilja615.worldupgrade.client.models;
 import com.github.ilja615.worldupgrade.entity.Disguisager;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.IllagerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.AbstractIllager;
 
 public class DisguisagerModel<T extends Disguisager> extends IllagerModel<Disguisager> implements ArmedModel, HeadedModel
 {

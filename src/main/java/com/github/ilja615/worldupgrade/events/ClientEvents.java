@@ -1,10 +1,6 @@
 package com.github.ilja615.worldupgrade.events;
 
 import com.github.ilja615.worldupgrade.WorldUpgrade;
-import com.github.ilja615.worldupgrade.capability.fog.PlayerFogProvider;
-import com.github.ilja615.worldupgrade.client.ClientFogData;
-import com.github.ilja615.worldupgrade.networking.ModMessages;
-import com.github.ilja615.worldupgrade.networking.packet.FogDataSyncS2CPacket;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +20,7 @@ public class ClientEvents
     public static void onRenderFog(ViewportEvent.RenderFog event)
     {
         Entity en = event.getCamera().getEntity();
-        Level l = en.level;
+        Level l = en.level();
         Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {
@@ -37,7 +33,7 @@ public class ClientEvents
     @SubscribeEvent
     public static void onFogColor(ViewportEvent.ComputeFogColor event)
     {
-        Level l = event.getCamera().getEntity().level;
+        Level l = event.getCamera().getEntity().level();
         Biome b = l.getBiome(event.getCamera().getEntity().blockPosition()).get();
         if (l.registryAccess().registryOrThrow(Registries.BIOME).getKey(b).toString().equals("worldupgrade:cloud_forest"))
         {

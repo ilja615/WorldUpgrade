@@ -1,10 +1,15 @@
 {
+  "itemGroup.worldupgrade_tab": "WorldUpgrade",
+
   "block.worldupgrade.gunnera_leaf": "Gunnera Leaf",
   "block.worldupgrade.big_plant_stem": "Big Plant Stem",
   "block.worldupgrade.drygrass": "Drygrass",
   "block.worldupgrade.lily_pad": "Big Lily Pad",
+  "block.worldupgrade.bromeliad_flaming_sword": "Flaming Sword Bromeliad",
+  "block.worldupgrade.bog_beacon": "Bog Beacon",
 
   "item.worldupgrade.disguisager_spawn_egg": "Spawn Disguisager",
+  "item.worldupgrade.sloth_spawn_egg": "Spawn Sloth",
 
   "sounds.worldupgrade.disguisager_call_horn": "Disguisager blows horn"
 }

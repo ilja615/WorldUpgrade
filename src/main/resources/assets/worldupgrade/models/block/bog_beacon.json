@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "particle": "worldupgrade:block/bog_beacon",
+    "cross": "worldupgrade:block/bog_beacon"
+  }
+}
