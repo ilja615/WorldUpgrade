@@ -29,6 +29,7 @@ public class WorldUpgrade
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
+        ModFeatures.TRUNK_PLACER_TYPES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         ModParticles.PARTICLES.register(modEventBus);
